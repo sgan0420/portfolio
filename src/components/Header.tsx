@@ -42,6 +42,11 @@ const Header = () => {
     },
   };
 
+  const underlineVariants = {
+    initial: { scaleX: 0 },
+    hover: { scaleX: 1 },
+  };
+
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
@@ -101,17 +106,20 @@ const Header = () => {
                 variants={navItemVariants}
                 initial="initial"
                 whileHover="hover"
+                className="relative group"
               >
                 <Link
                   href={item.href}
-                  className="relative text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 font-medium group"
+                  className="relative text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 font-medium"
                 >
                   {item.name}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 group-hover:w-full transition-all duration-300"
-                    whileHover={{ width: "100%" }}
-                  />
                 </Link>
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600"
+                  variants={underlineVariants}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  style={{ transformOrigin: "left" }}
+                />
               </motion.div>
             ))}
           </nav>

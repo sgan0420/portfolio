@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -20,7 +20,11 @@ export const metadata: Metadata = {
     "A modern, interactive portfolio showcasing Shijie Gan's skills and projects in web development, built with React and Next.js.",
   keywords: ["developer", "portfolio", "react", "nextjs", "web development"],
   authors: [{ name: "Shijie Gan" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import {
   motion,
   useScroll,
@@ -211,29 +212,48 @@ const HeroSection = () => {
             variants={textVariants}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-8 sm:mt-12 px-4 sm:px-0"
           >
-            <motion.button
+            <motion.div
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 40px rgba(102, 126, 234, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
             >
-              <HiCode className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
-              View My Projects
-            </motion.button>
+              <Link
+                href="/projects"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                <HiCode className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
+                View My Projects
+              </Link>
+            </motion.div>
 
-            <motion.button
+            <motion.div
               whileHover={{
                 scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:border-blue-500 transition-all duration-300 flex items-center justify-center gap-2 group glass"
             >
-              <HiSparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-yellow-400 transition-colors duration-300" />
-              Hire Me
-            </motion.button>
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:bg-white/10 hover:border-blue-500 transition-all duration-300 flex items-center justify-center gap-2 group glass"
+              >
+                <HiSparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-yellow-400 transition-colors duration-300" />
+                Hire Me
+              </Link>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                href="/about"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-gray-600 dark:text-gray-400 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                Get to Know Me
+                <HiArrowDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 rotate-[-45deg]" />
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Social Links */}

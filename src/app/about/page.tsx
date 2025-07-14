@@ -227,6 +227,53 @@ const About = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Timeline Item 3 - Tutoring Experience */}
+                <div className="border-l-4 border-teal-500 pl-6 pb-6">
+                  <div className="relative">
+                    <div className="absolute -left-8.5 w-4 h-4 bg-teal-500 rounded-full"></div>
+                    
+                    <div className="flex flex-col gap-6">
+                      {/* Experience Content */}
+                      <div>
+                        <h3 className="text-xl font-semibold text-white mb-2">
+                          Computer Science Mathematics Tutor
+                        </h3>
+                        <p className="text-teal-400 mb-4">Monash University Malaysia • Jul 2023 - Aug 2023 • 2 months • Hybrid</p>
+                        <div className="text-gray-300 space-y-3">
+                          <p>
+                            Provided personalized instruction and support for the continuous mathematics unit MAT1830 at Monash University, 
+                            delivering both in-person and online tutoring in a hybrid format.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-4 my-4">
+                            <div>
+                              <p className="text-teal-300 font-medium mb-2">Key Responsibilities:</p>
+                              <ul className="text-sm space-y-1">
+                                <li>• Personalized mathematics instruction</li>
+                                <li>• Hybrid teaching (in-person & online)</li>
+                                <li>• Exam preparation support</li>
+                                <li>• Complex concept clarification</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <p className="text-teal-300 font-medium mb-2">Achievements:</p>
+                              <ul className="text-sm space-y-1">
+                                <li>• Enhanced student confidence & skills</li>
+                                <li>• Helped student achieve academic success</li>
+                                <li>• Applied deep mathematical understanding</li>
+                                <li>• Adapted to hybrid learning environment</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p className="text-sm text-gray-400">
+                            <strong>Subject:</strong> MAT1830 - Continuous Mathematics, Mathematical Concepts, 
+                            Exam Preparation, Hybrid Teaching Methods
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -238,18 +285,140 @@ const About = () => {
                 <HiAcademicCap className="w-6 h-6 text-green-400" />
                 <h2 className="text-2xl font-bold">Education</h2>
               </div>
-              <div className="space-y-4">
-                <div className="border-l-4 border-green-500 pl-6">
+              <div className="space-y-8">
+                {/* Monash University */}
+                <div className="border-l-4 border-green-500 pl-6 pb-6">
                   <div className="relative">
                     <div className="absolute -left-8.5 w-4 h-4 bg-green-500 rounded-full"></div>
                     <h3 className="text-xl font-semibold text-white mb-2">
-                      [Degree - Placeholder]
+                      Bachelor's Degree, Computer Science
                     </h3>
-                    <p className="text-green-400 mb-2">[University Name] • [Year]</p>
-                    <p className="text-gray-300">
-                      [Placeholder] - Brief description of your studies, relevant coursework, 
-                      achievements, or projects during your education.
-                    </p>
+                    <p className="text-green-400 mb-4">Monash University • Oct 2022 - Jul 2025</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p className="text-lg font-medium text-green-300">
+                        🏆 CGPA: 3.97/4.0 | WAM: 90.154/100 | Monash High Achiever Award
+                      </p>
+                      <p>
+                        Maintained exceptional academic excellence with outstanding performance in computer science fundamentals, 
+                        including perfect scores and competition victories that showcase both theoretical knowledge and practical skills.
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4 my-4">
+                        <div>
+                          <p className="text-green-300 font-medium mb-2">Core Achievements:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Outstanding CGPA of 3.97/4.0 & WAM of 90.154/100</li>
+                            <li>• 🏆 1st place in AI Pacman Challenge</li>
+                            <li>• 💯 100% full marks in Python Development</li>
+                            <li>• 💯 100% full marks in Mobile Application</li>
+                            <li>• Highest scores achieved in multiple subjects</li>
+                            <li>• Monash High Achiever Award (RM30,000 scholarship)</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-green-300 font-medium mb-2">Key Skills Developed:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Full-stack Development (Java, Python, JS)</li>
+                            <li>• Mobile App Development & Android</li>
+                            <li>• Database Design & Data Analysis</li>
+                            <li>• Cybersecurity & System Administration</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        <strong>Tech Stack:</strong> Java, Python, JavaScript, TypeScript, HTML, CSS, Android Studio, 
+                        Git, GitHub, GitLab, Oracle Database, R, Haskell, Linux, Unix, MARIE Assembly & more!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Imperial College London */}
+                <div className="border-l-4 border-emerald-500 pl-6 pb-6">
+                  <div className="relative">
+                    <div className="absolute -left-8.5 w-4 h-4 bg-emerald-500 rounded-full"></div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Certificate of Higher Education, Mechanical Engineering
+                    </h3>
+                    <p className="text-emerald-400 mb-4">Imperial College London • Oct 2019 - Jul 2022</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p className="text-lg font-medium text-emerald-300">
+                        🏫 Imperial College London - Ranked 2nd in the World
+                      </p>
+                      <p>
+                        Excelled in mechanical engineering with recognition for outstanding technical skills and academic performance 
+                        at one of the world's leading engineering institutions.
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4 my-4">
+                        <div>
+                          <p className="text-emerald-300 font-medium mb-2">Key Achievements:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Recognition for Excellence in Design & Manufacture</li>
+                            <li>• Top 10% ranking in multiple examinations</li>
+                            <li>• Outstanding project work recognition</li>
+                            <li>• Strong engineering principles mastery</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-emerald-300 font-medium mb-2">Technical Skills:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• CAD & SOLIDWORKS proficiency</li>
+                            <li>• Finite Element Analysis (FEA)</li>
+                            <li>• Fluid Mechanics & Thermodynamics</li>
+                            <li>• Manufacturing & Mechatronics</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        <strong>Engineering Focus:</strong> Design & Manufacture, Stress Analysis, Fluid Mechanics, 
+                        Thermodynamics, Mechatronics, Python, SOLIDWORKS, FEA
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Taylor's College */}
+                <div className="border-l-4 border-teal-500 pl-6 pb-6">
+                  <div className="relative">
+                    <div className="absolute -left-8.5 w-4 h-4 bg-teal-500 rounded-full"></div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Cambridge A-Levels
+                    </h3>
+                    <p className="text-teal-400 mb-4">Taylor's College • Jan 2018 - Jul 2019</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p className="text-lg font-medium text-teal-300">
+                        🌟 Grade: 4A* | A-Level High Achiever | Taylor's Merit Scholarship
+                      </p>
+                      <p>
+                        Achieved exceptional results in Cambridge A-Levels with perfect A* grades, 
+                        earning recognition as a high achiever and merit scholarship recipient.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SMJK Yok Bin */}
+                <div className="border-l-4 border-cyan-500 pl-6">
+                  <div className="relative">
+                    <div className="absolute -left-8.5 w-4 h-4 bg-cyan-500 rounded-full"></div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      SPM (Malaysian Certificate of Education)
+                    </h3>
+                    <p className="text-cyan-400 mb-4">SMJK Yok Bin • 2013 - 2017</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p className="text-lg font-medium text-cyan-300">
+                        🎯 Grade: 7A+ 2A 1A-
+                      </p>
+                      <div className="grid md:grid-cols-1 gap-4 my-4">
+                        <div>
+                          <p className="text-cyan-300 font-medium mb-2">Leadership Roles:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• President of Chinese Society</li>
+                            <li>• Vice President of Chess Club</li>
+                            <li>• Deputy Head of School Emcee</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

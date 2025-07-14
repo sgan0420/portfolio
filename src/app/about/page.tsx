@@ -104,35 +104,6 @@ const About = () => {
           {/* Quick Links to Experience & Education */}
           <motion.section variants={itemVariants} className="mb-16">
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Experience Link */}
-              <Link href="/experience">
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="glass rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-blue-500/50 group"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors duration-300">
-                      <HiBriefcase className="w-8 h-8 text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white">Experience</h3>
-                      <p className="text-blue-400">My Professional Journey</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-4">
-                    Explore my work experience at leading tech companies including Ant International, iFAST Corporation, 
-                    and my tutoring journey at Monash University.
-                  </p>
-                  <div className="flex items-center text-blue-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                    <span>View Experience</span>
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.div>
-              </Link>
-
               {/* Education Link */}
               <Link href="/education">
                 <motion.div
@@ -155,6 +126,35 @@ const About = () => {
                   </p>
                   <div className="flex items-center text-green-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
                     <span>View Education</span>
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </motion.div>
+              </Link>
+
+              {/* Experience Link */}
+              <Link href="/experience">
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="glass rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-blue-500/50 group"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors duration-300">
+                      <HiBriefcase className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">Experience</h3>
+                      <p className="text-blue-400">My Professional Journey</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 mb-4">
+                    Explore my work experience at leading tech companies including Ant International, iFAST Corporation, 
+                    and my tutoring journey at Monash University.
+                  </p>
+                  <div className="flex items-center text-blue-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>View Experience</span>
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>

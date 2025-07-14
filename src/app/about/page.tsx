@@ -112,7 +112,7 @@ const About = () => {
                 {/* Timeline Item 1 - Ant International */}
                 <div className="border-l-4 border-blue-500 pl-6 pb-6">
                   <div className="relative">
-                    <div className="absolute -left-8 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div className="absolute -left-8.5 w-4 h-4 bg-blue-500 rounded-full"></div>
                     
                     <div className="flex flex-col gap-6">
                       {/* Experience Content */}
@@ -175,7 +175,7 @@ const About = () => {
                 {/* Timeline Item 2 - iFAST Corporation */}
                 <div className="border-l-4 border-purple-500 pl-6 pb-6">
                   <div className="relative">
-                    <div className="absolute -left-8 w-4 h-4 bg-purple-500 rounded-full"></div>
+                    <div className="absolute -left-8.5 w-4 h-4 bg-purple-500 rounded-full"></div>
                     
                     <div className="flex flex-col gap-6">
                       {/* Experience Content */}
@@ -241,7 +241,7 @@ const About = () => {
               <div className="space-y-4">
                 <div className="border-l-4 border-green-500 pl-6">
                   <div className="relative">
-                    <div className="absolute -left-8 w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div className="absolute -left-8.5 w-4 h-4 bg-green-500 rounded-full"></div>
                     <h3 className="text-xl font-semibold text-white mb-2">
                       [Degree - Placeholder]
                     </h3>

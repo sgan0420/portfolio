@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiAcademicCap, HiUser, HiHeart, HiCode, HiArrowLeft, HiHome } from "react-icons/hi";
+import { HiUser, HiHeart, HiArrowLeft, HiHome, HiBriefcase, HiAcademicCap } from "react-icons/hi";
 
 const About = () => {
   const containerVariants = {
@@ -56,7 +56,7 @@ const About = () => {
               About Me
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A passionate full-stack developer who treats coding like the ultimate game and loves turning wild ideas into reality! 🚀
+              A passionate full-stack developer who treats coding like the ultimate game and loves turning wild ideas into reality!
             </p>
           </motion.div>
 
@@ -101,327 +101,66 @@ const About = () => {
             </div>
           </motion.section>
 
-          {/* Skills & Experience Timeline */}
+          {/* Quick Links to Experience & Education */}
           <motion.section variants={itemVariants} className="mb-16">
-            <div className="glass rounded-2xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <HiCode className="w-6 h-6 text-purple-400" />
-                <h2 className="text-2xl font-bold">Experience & Skills</h2>
-              </div>
-              <div className="space-y-8">
-                {/* Timeline Item 1 - Ant International */}
-                <div className="border-l-4 border-blue-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-blue-500 rounded-full"></div>
-                    
-                    <div className="flex flex-col gap-6">
-                      {/* Experience Content */}
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Backend Engineer
-                        </h3>
-                        <p className="text-blue-400 mb-4">Ant International • Nov 2024 - Mar 2025 • 5 months</p>
-                        <div className="text-gray-300 space-y-3">
-                          <p>
-                            What an incredible journey at one of the world's leading fintech companies! 
-                            Dove deep into the fascinating world of backend development and middleware systems.
-                          </p>
-                          <div className="grid md:grid-cols-2 gap-4 my-4">
-                            <div>
-                              <p className="text-blue-300 font-medium mb-2">Technical Highlights:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Backend & Middleware mastery</li>
-                                <li>• Security & Risk Management</li>
-                                <li>• Large-scale traffic handling (11.11 events!)</li>
-                                <li>• Payments ecosystem deep dive</li>
-                              </ul>
-                            </div>
-                            <div>
-                              <p className="text-blue-300 font-medium mb-2">Amazing Experiences:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Visited Hangzhou HQ & Alibaba Xixi campus</li>
-                                <li>• Met brilliant, supportive teammates</li>
-                                <li>• Performed at the annual dinner!</li>
-                                <li>• Thrived in fast-paced environment</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-400">
-                            <strong>Tech Stack:</strong> Spring Framework, Microservices, Message Queue, APIs, 
-                            Authentication Systems, Git, Network Security, Technical Documentation & more!
-                          </p>
-                        </div>
-                        
-                        {/* Work Photos */}
-                        <div className="mt-4">
-                          <div className="flex flex-col sm:flex-row gap-4">
-                            <img 
-                              src="/ant-me.png" 
-                              alt="At Ant International office" 
-                              className="w-48 h-54 object-cover rounded-lg border border-gray-600 shadow-lg"
-                            />
-                            <img 
-                              src="/ant-group.png" 
-                              alt="Ant International team" 
-                              className="w-72 h-54 object-cover rounded-lg border border-gray-600 shadow-lg"
-                            />
-                          </div>
-                        </div>
-                      </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Experience Link */}
+              <Link href="/experience">
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="glass rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-blue-500/50 group"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors duration-300">
+                      <HiBriefcase className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">Experience</h3>
+                      <p className="text-blue-400">My Professional Journey</p>
                     </div>
                   </div>
-                </div>
+                  <p className="text-gray-300 mb-4">
+                    Explore my work experience at leading tech companies including Ant International, iFAST Corporation, 
+                    and my tutoring journey at Monash University.
+                  </p>
+                  <div className="flex items-center text-blue-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>View Experience</span>
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </motion.div>
+              </Link>
 
-                {/* Timeline Item 2 - iFAST Corporation */}
-                <div className="border-l-4 border-purple-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-purple-500 rounded-full"></div>
-                    
-                    <div className="flex flex-col gap-6">
-                      {/* Experience Content */}
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Fullstack Software Engineer
-                        </h3>
-                        <p className="text-purple-400 mb-4">iFAST Corporation Ltd • Nov 2023 - Feb 2024 • 4 months</p>
-                        <div className="text-gray-300 space-y-3">
-                          <p>
-                            My first full-stack adventure! Contributed to the iFAST Global Bank platform 
-                            and learned so much about modern web development.
-                          </p>
-                          <div className="grid md:grid-cols-2 gap-4 my-4">
-                            <div>
-                              <p className="text-purple-300 font-medium mb-2">Key Achievements:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Full-stack development on live platform</li>
-                                <li>• Mastered Angular framework</li>
-                                <li>• Built RESTful APIs with Spring Boot</li>
-                                <li>• Bug fixing hero</li>
-                              </ul>
-                            </div>
-                            <div>
-                              <p className="text-purple-300 font-medium mb-2">Team Experience:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Practiced Scrum methodology</li>
-                                <li>• Collaborated with UI/UX team</li>
-                                <li>• Participated in KitaHack hackathon</li>
-                                <li>• Built back-office email project</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-400">
-                            <strong>Tech Stack:</strong> Angular, TypeScript, Java, Spring Framework, RESTful APIs, 
-                            Bootstrap, CSS, HTML, JavaScript, Git, Jira, Trello & more!
-                          </p>
-                        </div>
-                        
-                        {/* Work Photo */}
-                        <div className="mt-4">
-                          <img 
-                            src="/ifast-group.png" 
-                            alt="iFAST team group photo" 
-                            className="w-72 h-48 object-cover rounded-lg border border-gray-600 shadow-lg"
-                          />
-                        </div>
-                      </div>
+              {/* Education Link */}
+              <Link href="/education">
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="glass rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-green-500/50 group"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-green-500/20 rounded-xl group-hover:bg-green-500/30 transition-colors duration-300">
+                      <HiAcademicCap className="w-8 h-8 text-green-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">Education</h3>
+                      <p className="text-green-400">Academic Excellence</p>
                     </div>
                   </div>
-                </div>
-
-                {/* Timeline Item 3 - Tutoring Experience */}
-                <div className="border-l-4 border-teal-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-teal-500 rounded-full"></div>
-                    
-                    <div className="flex flex-col gap-6">
-                      {/* Experience Content */}
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Computer Science Mathematics Tutor
-                        </h3>
-                        <p className="text-teal-400 mb-4">Monash University Malaysia • Jul 2023 - Aug 2023 • 2 months • Hybrid</p>
-                        <div className="text-gray-300 space-y-3">
-                          <p>
-                            Provided personalized instruction and support for the continuous mathematics unit MAT1830 at Monash University, 
-                            delivering both in-person and online tutoring in a hybrid format.
-                          </p>
-                          <div className="grid md:grid-cols-2 gap-4 my-4">
-                            <div>
-                              <p className="text-teal-300 font-medium mb-2">Key Responsibilities:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Personalized mathematics instruction</li>
-                                <li>• Hybrid teaching (in-person & online)</li>
-                                <li>• Exam preparation support</li>
-                                <li>• Complex concept clarification</li>
-                              </ul>
-                            </div>
-                            <div>
-                              <p className="text-teal-300 font-medium mb-2">Achievements:</p>
-                              <ul className="text-sm space-y-1">
-                                <li>• Enhanced student confidence & skills</li>
-                                <li>• Helped student achieve academic success</li>
-                                <li>• Applied deep mathematical understanding</li>
-                                <li>• Adapted to hybrid learning environment</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-400">
-                            <strong>Subject:</strong> MAT1830 - Continuous Mathematics, Mathematical Concepts, 
-                            Exam Preparation, Hybrid Teaching Methods
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                  <p className="text-gray-300 mb-4">
+                    Discover my educational journey from Monash University's Computer Science program 
+                    to Imperial College London's world-renowned engineering program.
+                  </p>
+                  <div className="flex items-center text-green-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>View Education</span>
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </div>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Education Section */}
-          <motion.section variants={itemVariants} className="mb-16">
-            <div className="glass rounded-2xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <HiAcademicCap className="w-6 h-6 text-green-400" />
-                <h2 className="text-2xl font-bold">Education</h2>
-              </div>
-              <div className="space-y-8">
-                {/* Monash University */}
-                <div className="border-l-4 border-green-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-green-500 rounded-full"></div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      Bachelor's Degree, Computer Science
-                    </h3>
-                    <p className="text-green-400 mb-4">Monash University • Oct 2022 - Jul 2025</p>
-                    <div className="text-gray-300 space-y-3">
-                      <p className="text-lg font-medium text-green-300">
-                        🏆 CGPA: 3.97/4.0 | WAM: 90.154/100 | Monash High Achiever Award
-                      </p>
-                      <p>
-                        Maintained exceptional academic excellence with outstanding performance in computer science fundamentals, 
-                        including perfect scores and competition victories that showcase both theoretical knowledge and practical skills.
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-4 my-4">
-                        <div>
-                          <p className="text-green-300 font-medium mb-2">Core Achievements:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>• Outstanding CGPA of 3.97/4.0 & WAM of 90.154/100</li>
-                            <li>• 🏆 1st place in AI Pacman Challenge</li>
-                            <li>• 💯 100% full marks in Python Development</li>
-                            <li>• 💯 100% full marks in Mobile Application</li>
-                            <li>• Highest scores achieved in multiple subjects</li>
-                            <li>• Monash High Achiever Award (RM30,000 scholarship)</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-green-300 font-medium mb-2">Key Skills Developed:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>• Full-stack Development (Java, Python, JS)</li>
-                            <li>• Mobile App Development & Android</li>
-                            <li>• Database Design & Data Analysis</li>
-                            <li>• Cybersecurity & System Administration</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-400">
-                        <strong>Tech Stack:</strong> Java, Python, JavaScript, TypeScript, HTML, CSS, Android Studio, 
-                        Git, GitHub, GitLab, Oracle Database, R, Haskell, Linux, Unix, MARIE Assembly & more!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Imperial College London */}
-                <div className="border-l-4 border-emerald-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-emerald-500 rounded-full"></div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      Certificate of Higher Education, Mechanical Engineering
-                    </h3>
-                    <p className="text-emerald-400 mb-4">Imperial College London • Oct 2019 - Jul 2022</p>
-                    <div className="text-gray-300 space-y-3">
-                      <p className="text-lg font-medium text-emerald-300">
-                        🏫 Imperial College London - Ranked 2nd in the World
-                      </p>
-                      <p>
-                        Excelled in mechanical engineering with recognition for outstanding technical skills and academic performance 
-                        at one of the world's leading engineering institutions.
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-4 my-4">
-                        <div>
-                          <p className="text-emerald-300 font-medium mb-2">Key Achievements:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>• Recognition for Excellence in Design & Manufacture</li>
-                            <li>• Top 10% ranking in multiple examinations</li>
-                            <li>• Outstanding project work recognition</li>
-                            <li>• Strong engineering principles mastery</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-emerald-300 font-medium mb-2">Technical Skills:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>• CAD & SOLIDWORKS proficiency</li>
-                            <li>• Finite Element Analysis (FEA)</li>
-                            <li>• Fluid Mechanics & Thermodynamics</li>
-                            <li>• Manufacturing & Mechatronics</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-400">
-                        <strong>Engineering Focus:</strong> Design & Manufacture, Stress Analysis, Fluid Mechanics, 
-                        Thermodynamics, Mechatronics, Python, SOLIDWORKS, FEA
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Taylor's College */}
-                <div className="border-l-4 border-teal-500 pl-6 pb-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-teal-500 rounded-full"></div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      Cambridge A-Levels
-                    </h3>
-                    <p className="text-teal-400 mb-4">Taylor's College • Jan 2018 - Jul 2019</p>
-                    <div className="text-gray-300 space-y-3">
-                      <p className="text-lg font-medium text-teal-300">
-                        🌟 Grade: 4A* | A-Level High Achiever | Taylor's Merit Scholarship
-                      </p>
-                      <p>
-                        Achieved exceptional results in Cambridge A-Levels with perfect A* grades, 
-                        earning recognition as a high achiever and merit scholarship recipient.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* SMJK Yok Bin */}
-                <div className="border-l-4 border-cyan-500 pl-6">
-                  <div className="relative">
-                    <div className="absolute -left-8.5 w-4 h-4 bg-cyan-500 rounded-full"></div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      SPM (Malaysian Certificate of Education)
-                    </h3>
-                    <p className="text-cyan-400 mb-4">SMJK Yok Bin • 2013 - 2017</p>
-                    <div className="text-gray-300 space-y-3">
-                      <p className="text-lg font-medium text-cyan-300">
-                        🎯 Grade: 7A+ 2A 1A-
-                      </p>
-                      <div className="grid md:grid-cols-1 gap-4 my-4">
-                        <div>
-                          <p className="text-cyan-300 font-medium mb-2">Leadership Roles:</p>
-                          <ul className="text-sm space-y-1">
-                            <li>• President of Chinese Society</li>
-                            <li>• Vice President of Chess Club</li>
-                            <li>• Deputy Head of School Emcee</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              </Link>
             </div>
           </motion.section>
 
@@ -436,21 +175,31 @@ const About = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">Professional Interests</h3>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• [Placeholder] - AI & Machine Learning</li>
-                    <li>• [Placeholder] - Web Development</li>
-                    <li>• [Placeholder] - Mobile App Development</li>
-                    <li>• [Placeholder] - Cloud Computing</li>
+                    <li>• AI & Machine Learning (ChatGPT is my coding buddy!)</li>
+                    <li>• Full-stack Web Development</li>
+                    <li>• Mobile App Development</li>
+                    <li>• Cloud Computing & DevOps</li>
+                    <li>• UI/UX Design & User Experience</li>
+                    <li>• Cybersecurity & System Administration</li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">Personal Hobbies</h3>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• [Placeholder] - Your hobby 1</li>
-                    <li>• [Placeholder] - Your hobby 2</li>
-                    <li>• [Placeholder] - Your hobby 3</li>
-                    <li>• [Placeholder] - Your hobby 4</li>
+                    <li>• Gaming (treating life like a video game!)</li>
+                    <li>• Problem Solving & Puzzle Games</li>
+                    <li>• Music & Live Performances</li>
+                    <li>• Continuous Learning & Tech Exploration</li>
+                    <li>• Chess Strategy (former VP of Chess Club)</li>
+                    <li>• Public Speaking & Emceeing</li>
                   </ul>
                 </div>
+              </div>
+              <div className="mt-6 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
+                <p className="text-center text-gray-300 italic">
+                  "Technology is my playground, and I thrive in dynamic environments where I can embrace new challenges 
+                  and turn wild ideas into reality!"
+                </p>
               </div>
             </div>
           </motion.section>

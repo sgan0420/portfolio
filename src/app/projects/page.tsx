@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HiExternalLink, HiCode, HiEye } from "react-icons/hi";
+import Link from "next/link";
+import { HiExternalLink, HiCode, HiEye, HiArrowLeft, HiHome } from "react-icons/hi";
 import { FaGithub, FaReact, FaNodeJs, FaPython, FaJava } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb } from "react-icons/si";
 
@@ -77,8 +78,25 @@ const Projects = () => {
   const categories = ["All", "Web Development", "Full Stack", "AI/ML", "Mobile"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-      <div className="container mx-auto px-6 py-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
+      {/* Back/Home Button - Fixed Position */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-6 left-6 z-40"
+      >
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300 group bg-black/30 backdrop-blur-sm rounded-lg"
+        >
+          <HiArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+          <HiHome className="w-5 h-5" />
+          <span className="font-medium">Back to Home</span>
+        </Link>
+      </motion.div>
+      
+      <div className="container mx-auto px-6 pt-28 pb-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -87,7 +105,7 @@ const Projects = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6 leading-tight py-4">
               My Projects
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">

@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { 
   HiMail, 
   HiPhone, 
   HiLocationMarker, 
   HiPaperAirplane,
   HiUser,
-  HiChat
+  HiChat,
+  HiArrowLeft,
+  HiHome
 } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
@@ -96,8 +99,25 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-      <div className="container mx-auto px-6 py-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
+      {/* Back/Home Button - Fixed Position */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-6 left-6 z-40"
+      >
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300 group bg-black/30 backdrop-blur-sm rounded-lg"
+        >
+          <HiArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+          <HiHome className="w-5 h-5" />
+          <span className="font-medium">Back to Home</span>
+        </Link>
+      </motion.div>
+      
+      <div className="container mx-auto px-6 pt-28 pb-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"

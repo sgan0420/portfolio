@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaHeart } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 
 const Footer = () => {
@@ -19,21 +19,21 @@ const Footer = () => {
       color: "hover:text-blue-600",
     },
     {
-      icon: FaTwitter,
+      icon: FaInstagram,
       href: "#",
-      label: "Twitter",
-      color: "hover:text-blue-400",
+      label: "Instagram",
+      color: "hover:text-pink-500",
     },
   ];
 
   const contactInfo = [
     {
       icon: HiMail,
-      text: "hello@developer.com",
-      href: "mailto:hello@developer.com",
+      text: "shijiegan.gs@gmail.com",
+      href: "mailto:shijiegan.gs@gmail.com",
     },
-    { icon: HiPhone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: HiLocationMarker, text: "San Francisco, CA", href: "#" },
+    { icon: HiPhone, text: "+60 12-638 3016", href: "tel:+60126383016" },
+    { icon: HiLocationMarker, text: "Bukit Jalil, Kuala Lumpur", href: "#" },
   ];
 
   const quickLinks = [
@@ -61,12 +61,11 @@ const Footer = () => {
               className="lg:col-span-2"
             >
               <h3 className="text-2xl font-bold gradient-text mb-4">
-                Portfolio
+                Shijie Gan
               </h3>
               <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-                Passionate developer creating beautiful, functional, and
-                user-friendly digital experiences with modern technologies and
-                creative solutions.
+                Full-Stack Software Engineer with expertise in React, Angular, Java, Python, and Node.js. 
+                Fast learner passionate about AI technologies and building innovative solutions that drive business success.
               </p>
 
               {/* Social Links */}
@@ -193,7 +192,7 @@ const Footer = () => {
             </div>
 
             <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Portfolio. All rights reserved.
+              © {new Date().getFullYear()} Shijie Gan. All rights reserved.
             </div>
           </div>
         </motion.div>

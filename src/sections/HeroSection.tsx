@@ -14,7 +14,7 @@ import {
   HiLightningBolt,
   HiSparkles,
 } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,16 +55,21 @@ const HeroSection = () => {
   const socialLinks = [
     { icon: FaGithub, href: "#", label: "GitHub" },
     { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-    { icon: FaTwitter, href: "#", label: "Twitter" },
+    { icon: FaInstagram, href: "#", label: "Instagram" },
   ];
 
   const skills = [
     "React",
-    "Next.js",
+    "Angular",
     "TypeScript",
-    "Node.js",
+    "Next.js",
+    "Java",
     "Python",
-    "UI/UX",
+    "Spring Boot",
+    "Flask",
+    "Node.js",
+    "AI",
+    "Chatbot",
   ];
 
   return (
@@ -151,7 +156,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Developer
+              Shijie Gan
             </motion.h1>
           </motion.div>
 
@@ -165,10 +170,11 @@ const HeroSection = () => {
               className="text-xl sm:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 leading-relaxed"
               whileHover={{ y: -2 }}
             >
-              Crafting beautiful digital experiences with{" "}
+              Full-Stack Software Engineer building{" "}
               <span className="gradient-text font-semibold">
-                modern technologies
-              </span>
+                scalable web applications
+              </span>{" "}
+              with modern technologies
             </motion.p>
           </motion.div>
 
@@ -214,7 +220,7 @@ const HeroSection = () => {
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group"
             >
               <HiCode className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              View My Work
+              View My Projects
             </motion.button>
 
             <motion.button
@@ -226,7 +232,7 @@ const HeroSection = () => {
               className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:border-blue-500 transition-all duration-300 flex items-center gap-2 group glass"
             >
               <HiSparkles className="w-5 h-5 group-hover:text-yellow-400 transition-colors duration-300" />
-              Get In Touch
+              Hire Me
             </motion.button>
           </motion.div>
 
@@ -244,13 +250,22 @@ const HeroSection = () => {
                   href={social.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5 + index * 0.1 }}
-                  whileHover={{
-                    scale: 1.2,
-                    y: -5,
-                    color: "#667eea",
+                  transition={{ 
+                    delay: 1.5 + index * 0.1,
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20
                   }}
-                  className="p-3 rounded-full glass hover:bg-white/20 transition-all duration-300 text-gray-600 dark:text-gray-400"
+                  whileHover={{
+                    scale: 1.1,
+                    y: -2,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ 
+                    scale: 0.9,
+                    transition: { duration: 0.05 }
+                  }}
+                  className="p-3 rounded-full glass hover:bg-white/20 hover:text-blue-500 transition-all duration-150 text-gray-600 dark:text-gray-400 transform will-change-transform cursor-pointer"
                   aria-label={social.label}
                 >
                   <Icon className="w-6 h-6" />

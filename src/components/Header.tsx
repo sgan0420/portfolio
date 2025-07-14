@@ -22,6 +22,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
+    { name: "Experience", href: "/experience" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -88,7 +89,7 @@ const Header = () => {
             className="relative"
           >
             <Link href="/" className="text-2xl font-bold">
-              <span className="gradient-text">Portfolio</span>
+              <span className="gradient-text">Shijie Gan</span>
             </Link>
           </motion.div>
 

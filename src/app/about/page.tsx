@@ -56,7 +56,7 @@ const About = () => {
               About Me
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              [Placeholder] - A passionate software engineer who loves creating innovative solutions and learning new technologies.
+              A passionate full-stack developer who treats coding like the ultimate game and loves turning wild ideas into reality! 🚀
             </p>
           </motion.div>
 
@@ -69,12 +69,16 @@ const About = () => {
               </div>
               <div className="text-gray-300 space-y-4">
                 <p>
-                  [Placeholder] - This is where you'll share your personal journey into software development, 
-                  what inspired you to become a developer, and key moments that shaped your career.
+                  Hey there! I'm a passionate coder who treats coding like the ultimate video game - 
+                  solving puzzles, breaking things (intentionally... mostly 😅), and building dreams into reality!
                 </p>
                 <p>
-                  [Placeholder] - Talk about your passion for technology, problem-solving approach, 
-                  and what drives you to create meaningful software solutions.
+                  I'm all about full-stack development and design, with a knack for rapid learning and turning ideas into reality. 
+                  I'm absolutely amazed by AI (ChatGPT and I are basically best friends), and I love designing things that make people go "Wow!"
+                </p>
+                <p>
+                  Technology is my playground, and I thrive in dynamic environments where I can embrace new challenges. 
+                  Let's connect and create something amazing together!
                 </p>
               </div>
             </div>
@@ -87,38 +91,88 @@ const About = () => {
                 <HiCode className="w-6 h-6 text-purple-400" />
                 <h2 className="text-2xl font-bold">Experience & Skills</h2>
               </div>
-              <div className="space-y-6">
-                {/* Timeline Item 1 */}
+              <div className="space-y-8">
+                {/* Timeline Item 1 - Ant International */}
                 <div className="border-l-4 border-blue-500 pl-6 pb-6">
                   <div className="relative">
                     <div className="absolute -left-8 w-4 h-4 bg-blue-500 rounded-full"></div>
                     <h3 className="text-xl font-semibold text-white mb-2">
-                      [Current/Recent Position - Placeholder]
+                      Backend Engineer
                     </h3>
-                    <p className="text-blue-400 mb-2">[Company Name] • [Duration]</p>
-                    <p className="text-gray-300">
-                      [Placeholder] - Brief description of your role, key responsibilities, 
-                      and major achievements or projects you worked on.
-                    </p>
+                    <p className="text-blue-400 mb-4">Ant International • Nov 2024 - Mar 2025 • 5 months</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p>
+                        What an incredible journey at one of the world's leading fintech companies! 
+                        Dove deep into the fascinating world of backend development and middleware systems.
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4 my-4">
+                        <div>
+                          <p className="text-blue-300 font-medium mb-2">Technical Highlights:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Backend & Middleware mastery</li>
+                            <li>• Security & Risk Management</li>
+                            <li>• Large-scale traffic handling (11.11 events!)</li>
+                            <li>• Payments ecosystem deep dive</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-blue-300 font-medium mb-2">Amazing Experiences:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Visited Hangzhou HQ & Alibaba Xixi campus</li>
+                            <li>• Met brilliant, supportive teammates</li>
+                            <li>• Performed at the annual dinner!</li>
+                            <li>• Thrived in fast-paced environment</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        <strong>Tech Stack:</strong> Spring Framework, Microservices, Message Queue, APIs, 
+                        Authentication Systems, Git, Network Security, Technical Documentation & more!
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Timeline Item 2 */}
+                {/* Timeline Item 2 - iFAST Corporation */}
                 <div className="border-l-4 border-purple-500 pl-6 pb-6">
                   <div className="relative">
                     <div className="absolute -left-8 w-4 h-4 bg-purple-500 rounded-full"></div>
                     <h3 className="text-xl font-semibold text-white mb-2">
-                      [Previous Position - Placeholder]
+                      Fullstack Software Engineer
                     </h3>
-                    <p className="text-purple-400 mb-2">[Company Name] • [Duration]</p>
-                    <p className="text-gray-300">
-                      [Placeholder] - Description of previous experience, technologies used, 
-                      and key learning outcomes.
-                    </p>
+                    <p className="text-purple-400 mb-4">iFAST Corporation Ltd • Nov 2023 - Feb 2024 • 4 months</p>
+                    <div className="text-gray-300 space-y-3">
+                      <p>
+                        My first full-stack adventure! Contributed to the iFAST Global Bank platform 
+                        and learned so much about modern web development.
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4 my-4">
+                        <div>
+                          <p className="text-purple-300 font-medium mb-2">Key Achievements:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Full-stack development on live platform</li>
+                            <li>• Mastered Angular framework</li>
+                            <li>• Built RESTful APIs with Spring Boot</li>
+                            <li>• Bug fixing hero</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-purple-300 font-medium mb-2">Team Experience:</p>
+                          <ul className="text-sm space-y-1">
+                            <li>• Practiced Scrum methodology</li>
+                            <li>• Collaborated with UI/UX team</li>
+                            <li>• Participated in KitaHack hackathon</li>
+                            <li>• Built back-office email project</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        <strong>Tech Stack:</strong> Angular, TypeScript, Java, Spring Framework, RESTful APIs, 
+                        Bootstrap, CSS, HTML, JavaScript, Git, Jira, Trello & more!
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                {/* Add more timeline items as needed */}
               </div>
             </div>
           </motion.section>

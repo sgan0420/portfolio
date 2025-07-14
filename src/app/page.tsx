@@ -66,8 +66,8 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
             >
-              Ready to Create Something{" "}
-              <span className="gradient-text">Amazing?</span>
+              Looking for a{" "}
+              <span className="gradient-text">Full-Stack Developer?</span>
             </motion.h2>
 
             <motion.p
@@ -77,8 +77,8 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
             >
-              Let's collaborate and bring your ideas to life with cutting-edge
-              technology and innovative design solutions.
+              Passionate software engineer who learns incredibly fast and adapts quickly to new technologies. 
+              Capable with modern tech stack, AI integration, and ready to contribute to your team's success from day one.
             </motion.p>
 
             <motion.div
@@ -96,7 +96,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Start a Project
+                Download Resume
               </motion.button>
 
               <motion.button
@@ -107,7 +107,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300"
               >
-                View Portfolio
+                Schedule Interview
               </motion.button>
             </motion.div>
           </div>

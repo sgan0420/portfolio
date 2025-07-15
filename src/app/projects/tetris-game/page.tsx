@@ -29,7 +29,7 @@ const ProjectDetail = () => {
 
   // Project data - Tetris Game
   const project = {
-    title: "Tetris Game (Reactive, TypeScript + RxJS)",
+    title: "Tetris Game",
     description: "A fully interactive, modern Tetris game built with TypeScript and RxJS, designed with reactive architecture that handles game logic, rendering, and user inputs in real time.",
     longDescription: (
       <div>
@@ -300,7 +300,7 @@ const ProjectDetail = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer"
                 >
                   Discuss Reactive Solutions
                 </motion.button>

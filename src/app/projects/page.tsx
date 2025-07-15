@@ -80,7 +80,7 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Tetris Game (Reactive, TypeScript + RxJS)",
+      title: "Tetris Game",
       slug: "tetris-game",
       description: "A fully interactive, modern Tetris game built with TypeScript and RxJS using reactive architecture. Features real-time game logic, SVG rendering, and immutable state management.",
       image: "/tetris.png",

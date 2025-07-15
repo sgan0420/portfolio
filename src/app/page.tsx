@@ -61,7 +61,7 @@ export default function HomePage() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: isDesktop ? 0.5 : 0.3 }}
       className="min-h-screen bg-white dark:bg-black relative overflow-x-hidden"
       style={{ overflowY: "auto" }}
     >
@@ -77,7 +77,7 @@ export default function HomePage() {
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: isDesktop ? 0.8 : 0.4 }}
           viewport={{ once: true }}
           className="relative z-20 py-20 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20"
         >

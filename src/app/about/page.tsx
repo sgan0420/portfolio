@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiUser, HiHeart, HiArrowLeft, HiHome, HiBriefcase, HiAcademicCap } from "react-icons/hi";
+import Header from "@/components/Header";
+import { HiUser, HiHeart, HiBriefcase, HiAcademicCap } from "react-icons/hi";
 
 const About = () => {
   const containerVariants = {
@@ -26,22 +27,8 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      {/* Back/Home Button - Fixed Position */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-6 left-6 z-40"
-      >
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300 group bg-black/30 backdrop-blur-sm rounded-lg"
-        >
-          <HiArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-          <HiHome className="w-5 h-5" />
-          <span className="font-medium">Back to Home</span>
-        </Link>
-      </motion.div>
+      {/* Header */}
+      <Header />
       
       <div className="container mx-auto px-6 pt-28 pb-20">
         <motion.div

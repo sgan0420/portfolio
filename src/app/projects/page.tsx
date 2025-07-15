@@ -48,19 +48,19 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "[Project Title 2 - Placeholder]",
-      slug: "project-title-2-placeholder",
-      description: "An innovative mobile-first solution that demonstrates advanced programming concepts. Placeholder description showcasing problem-solving skills and technical expertise in modern development practices.",
-      image: "/api/placeholder/600/400",
+      title: "Chrome Extension - Quickie",
+      slug: "chrome-extension-quickie",
+      description: "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions. From tab management and history to site settings, downloads, and QR code generation.",
+      image: "/quickie.png",
       technologies: [
-        { name: "Node.js", icon: FaNodeJs, color: "text-green-500" },
-        { name: "Python", icon: FaPython, color: "text-yellow-400" },
-        { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-        { name: "React", icon: FaReact, color: "text-blue-400" },
+        { name: "JavaScript", icon: FaNodeJs, color: "text-yellow-400" },
+        { name: "HTML", icon: FaReact, color: "text-orange-500" },
+        { name: "CSS", icon: SiTailwindcss, color: "text-blue-400" },
+        { name: "Chrome API", icon: FaReact, color: "text-green-500" },
       ],
-      githubUrl: "https://github.com/sgan0420/placeholder-repo-2",
-      liveUrl: "https://your-project-2.vercel.app",
-      category: "Full Stack",
+      githubUrl: "https://github.com/sgan0420/extension-shortcut-launcher",
+      liveUrl: "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
+      category: "Web Extension",
     },
     {
       id: 3,
@@ -80,7 +80,7 @@ const Projects = () => {
     },
   ];
 
-  const categories = ["All", "Web Development", "Full Stack", "AI/ML", "Mobile"];
+  const categories = ["All", "Web Development", "Web Extension", "Full Stack", "AI/ML", "Mobile"];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">

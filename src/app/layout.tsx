@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     "A modern, interactive portfolio showcasing Shijie Gan's skills and projects in web development, built with React and Next.js.",
   keywords: ["developer", "portfolio", "react", "nextjs", "web development"],
   authors: [{ name: "Shijie Gan" }],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export const viewport: Viewport = {

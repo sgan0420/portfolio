@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiCode } from "react-icons/hi";
-import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain } from "react-icons/fa";
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiFlask, SiOpenai, SiNumpy } from "react-icons/si";
+import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain, FaGamepad } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiFlask, SiOpenai, SiNumpy, SiHtml5, SiCss3, SiReactivex } from "react-icons/si";
 
 const Projects = () => {
   const containerVariants = {
@@ -64,19 +64,36 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "[Project Title 3 - Placeholder]",
-      slug: "project-title-3-placeholder",
-      description: "A cutting-edge application leveraging AI and machine learning technologies. This placeholder project showcases expertise in modern AI frameworks and data processing capabilities.",
-      image: "/api/placeholder/600/400",
+      title: "Pac-Man AI",
+      slug: "pacman-ai",
+      description: "Intelligent AI agents designed to master the classic Pac-Man game using search algorithms, adversarial agents, reinforcement learning, and custom perceptron models.",
+      image: "/pacman.png",
       technologies: [
         { name: "Python", icon: FaPython, color: "text-yellow-400" },
-        { name: "Java", icon: FaJava, color: "text-red-500" },
-        { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-        { name: "React", icon: FaReact, color: "text-blue-400" },
+        { name: "AI Search", icon: FaBrain, color: "text-purple-400" },
+        { name: "Q-Learning", icon: FaDatabase, color: "text-blue-500" },
+        { name: "Perceptron", icon: FaReact, color: "text-green-400" },
       ],
-      githubUrl: "https://github.com/sgan0420/placeholder-repo-3",
-      liveUrl: "https://your-project-3.vercel.app",
+      githubUrl: "https://github.com/sgan0420/pacman-ai",
+      liveUrl: "https://your-pacman-ai-demo.vercel.app",
       category: "AI/ML",
+    },
+    {
+      id: 4,
+      title: "Tetris Game (Reactive, TypeScript + RxJS)",
+      slug: "tetris-game",
+      description: "A fully interactive, modern Tetris game built with TypeScript and RxJS using reactive architecture. Features real-time game logic, SVG rendering, and immutable state management.",
+      image: "/tetris.png",
+      technologies: [
+        { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
+        { name: "RxJS", icon: SiReactivex, color: "text-purple-400" },
+        { name: "HTML", icon: SiHtml5, color: "text-orange-500" },
+        { name: "CSS", icon: SiCss3, color: "text-blue-500" },
+        { name: "SVG", icon: FaGamepad, color: "text-green-400" },
+      ],
+      githubUrl: "https://github.com/sgan0420/tetris-game",
+      liveUrl: "https://sgan0420.github.io/tetris-game/",
+      category: "Web Development",
     },
   ];
 

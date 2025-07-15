@@ -93,7 +93,7 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/sgan0420/tetris-game",
       liveUrl: "https://sgan0420.github.io/tetris-game/",
-      category: "Web Development",
+      category: "Interactive Game",
     },
   ];
 
@@ -119,16 +119,22 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          {/* Category Filter */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="px-6 py-3 rounded-full border border-gray-600 text-gray-300 hover:bg-white/10 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
-              >
-                {category}
-              </button>
-            ))}
+          {/* Play My Tetris Button */}
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <motion.a
+              href="https://sgan0420.github.io/tetris-game/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-green-500 text-white font-bold text-lg rounded-2xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+            >
+              <FaGamepad className="w-6 h-6" />
+              Play My Tetris Game
+            </motion.a>
+            <p className="text-gray-300 mt-2 text-sm">
+              ⬆️ One of my favourite projects | Play on desktop | Refer to the Tetris Game card below for the details
+            </p>
           </motion.div>
 
           {/* Projects Grid */}

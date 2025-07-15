@@ -168,6 +168,13 @@ const ProjectDetail = () => {
                   </div>
                 )}
               </div>
+              
+              {/* Desktop Only Note */}
+              {project.liveUrl && (
+                <p className="text-gray-400 text-sm text-center">
+                  🖥️ Best experienced on desktop - mobile controls not supported
+                </p>
+              )}
             </div>
           </motion.div>
 

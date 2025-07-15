@@ -1,73 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import HeroSection from "@/sections/HeroSection";
-import CustomCursor from "@/components/CustomCursor";
 
 export default function HomePage() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    let styleElement: HTMLStyleElement | null = null;
-    
-    const updateCursorDisplay = () => {
-      const desktop = window.innerWidth > 768;
-      setIsDesktop(desktop);
-      
-      if (desktop) {
-        // Hide default cursor on desktop
-        document.body.style.cursor = "none";
-
-        // Add cursor back on interactive elements for accessibility
-        if (!styleElement) {
-          styleElement = document.createElement("style");
-          styleElement.textContent = `
-            a, button, [role="button"], input, textarea, select {
-              cursor: none !important;
-            }
-          `;
-          document.head.appendChild(styleElement);
-        }
-      } else {
-        // Show default cursor on mobile
-        document.body.style.cursor = "auto";
-        
-        // Remove custom styles
-        if (styleElement) {
-          document.head.removeChild(styleElement);
-          styleElement = null;
-        }
-      }
-    };
-
-    // Initial setup
-    updateCursorDisplay();
-    
-    // Listen for resize events
-    window.addEventListener('resize', updateCursorDisplay);
-
-    return () => {
-      window.removeEventListener('resize', updateCursorDisplay);
-      document.body.style.cursor = "auto";
-      if (styleElement) {
-        document.head.removeChild(styleElement);
-      }
-    };
-  }, []);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: isDesktop ? 0.5 : 0.3 }}
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-white dark:bg-black relative overflow-x-hidden"
       style={{ overflowY: "auto" }}
     >
-      {/* Custom Cursor - only on desktop */}
-      {isDesktop && <CustomCursor />}
-
       {/* Main Content */}
       <main>
         {/* Hero Section */}
@@ -77,7 +22,7 @@ export default function HomePage() {
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: isDesktop ? 0.8 : 0.4 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="relative z-20 py-20 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20"
         >
@@ -118,7 +63,7 @@ export default function HomePage() {
                     boxShadow: "0 20px 40px rgba(102, 126, 234, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   Get In Touch
                 </motion.button>
@@ -131,7 +76,7 @@ export default function HomePage() {
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300"
+                  className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   Connect on LinkedIn
                 </motion.button>

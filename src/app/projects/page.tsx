@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiCode } from "react-icons/hi";
-import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain, FaGamepad } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain, FaGamepad, FaEnvelope } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiFlask, SiOpenai, SiNumpy, SiHtml5, SiCss3, SiReactivex } from "react-icons/si";
 
 const Projects = () => {
@@ -216,17 +216,29 @@ const Projects = () => {
                 These are just a few examples of my work. I'm always working on new projects 
                 and exploring cutting-edge technologies. Check out my GitHub for more!
               </p>
-              <motion.a
-                href="https://github.com/sgan0420"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-              >
-                <FaGithub className="w-5 h-5" />
-                View All Projects on GitHub
-              </motion.a>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch">
+                <motion.a
+                  href="https://github.com/sgan0420"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  View GitHub
+                </motion.a>
+                <Link href="/contact" className="flex-1 sm:flex-none">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 hover:shadow-lg transition-all duration-300 cursor-pointer w-full sm:min-w-[180px]"
+                  >
+                    <FaEnvelope className="w-4 h-4" />
+                    Contact Me
+                  </motion.button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </motion.div>

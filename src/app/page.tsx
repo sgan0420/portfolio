@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import HeroSection from "@/sections/HeroSection";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -83,27 +84,31 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(102, 126, 234, 0.4)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Download Resume
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(102, 126, 234, 0.4)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Get In Touch
+                </motion.button>
+              </Link>
 
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300"
-              >
-                Schedule Interview
-              </motion.button>
+              <a href="https://www.linkedin.com/in/shijie-gan-968926197/" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300"
+                >
+                  Connect on LinkedIn
+                </motion.button>
+              </a>
             </motion.div>
           </div>
         </motion.section>

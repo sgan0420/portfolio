@@ -1,26 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaHeart, FaWhatsapp } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 
 const Footer = () => {
   const socialLinks = [
     {
       icon: FaGithub,
-      href: "#",
+      href: "https://github.com/sgan0420",
       label: "GitHub",
       color: "hover:text-gray-900",
     },
     {
       icon: FaLinkedin,
-      href: "#",
+      href: "https://www.linkedin.com/in/shijie-gan-968926197/",
       label: "LinkedIn",
       color: "hover:text-blue-600",
     },
     {
       icon: FaInstagram,
-      href: "#",
+      href: "https://instagram.com/gan_shijie",
       label: "Instagram",
       color: "hover:text-pink-500",
     },
@@ -32,13 +32,20 @@ const Footer = () => {
       text: "shijiegan.gs@gmail.com",
       href: "mailto:shijiegan.gs@gmail.com",
     },
-    { icon: HiPhone, text: "+60 12-638 3016", href: "tel:+60126383016" },
-    { icon: HiLocationMarker, text: "Bukit Jalil, Kuala Lumpur", href: "#" },
+    { 
+      icon: HiPhone, 
+      text: "+60 12-638 3016", 
+      href: "https://wa.me/60126383016",
+      isWhatsApp: true
+    },
+    { icon: HiLocationMarker, text: "Bukit Jalil, Kuala Lumpur", href: "https://maps.google.com/?q=Bukit+Jalil,+Kuala+Lumpur" },
   ];
 
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Education", href: "/education" },
+    { name: "Experience", href: "/experience" },
     { name: "Projects", href: "/projects" },
     { name: "Contact", href: "/contact" },
   ];
@@ -76,6 +83,8 @@ const Footer = () => {
                     <motion.a
                       key={social.label}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       initial={{ opacity: 0, scale: 0 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1, duration: 0.3 }}
@@ -149,11 +158,21 @@ const Footer = () => {
                     >
                       <motion.a
                         href={contact.href}
+                        target={contact.href?.startsWith("https://wa.me") || contact.href?.startsWith("https://maps.google.com") ? "_blank" : undefined}
+                        rel={contact.href?.startsWith("https://wa.me") || contact.href?.startsWith("https://maps.google.com") ? "noopener noreferrer" : undefined}
                         whileHover={{ x: 5 }}
                         className="flex items-center text-gray-300 hover:text-purple-400 transition-all duration-200 group"
                       >
                         <Icon className="w-5 h-5 mr-3 group-hover:text-purple-400 transition-colors duration-200" />
-                        <span className="text-sm">{contact.text}</span>
+                        <div className="flex flex-col">
+                          <span className="text-sm">{contact.text}</span>
+                          {contact.isWhatsApp && (
+                            <div className="flex items-center gap-1 mt-1">
+                              <FaWhatsapp className="w-3 h-3 text-green-400" />
+                              <span className="text-xs text-green-400">WhatsApp</span>
+                            </div>
+                          )}
+                        </div>
                       </motion.a>
                     </motion.li>
                   );

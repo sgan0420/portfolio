@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
+import emailjs from '@emailjs/browser';
 import { 
   HiMail, 
   HiPhone, 
@@ -12,7 +13,7 @@ import {
   HiUser,
   HiChat
 } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,10 @@ const Contact = () => {
     message: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -29,11 +34,39 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder - form submission logic will be added later
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! This is a placeholder - form functionality will be added later.");
+    setIsLoading(true);
+    setError("");
+
+    try {
+      // EmailJS configuration using environment variables
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'shijiegan.gs@gmail.com',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      console.log('Email sent successfully:', result);
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", subject: "", message: "" }); // Reset form
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSuccess(false), 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setError("Failed to send message. Please try again or contact me directly.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const containerVariants = {
@@ -64,15 +97,16 @@ const Contact = () => {
     },
     {
       icon: HiPhone,
-      label: "Phone",
+      label: "Phone / WhatsApp",
       value: "+60 12-638 3016",
-      href: "tel:+60126383016",
+      href: "https://wa.me/60126383016",
+      isWhatsApp: true,
     },
     {
       icon: HiLocationMarker,
       label: "Location",
       value: "Bukit Jalil, Kuala Lumpur",
-      href: "#",
+      href: "https://maps.google.com/?q=Bukit+Jalil,+Kuala+Lumpur",
     },
   ];
 
@@ -86,13 +120,13 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/shijie-gan",
+      href: "https://www.linkedin.com/in/shijie-gan-968926197/",
       color: "hover:text-blue-400",
     },
     {
       icon: FaInstagram,
       label: "Instagram",
-      href: "https://instagram.com/shijie.gan",
+      href: "https://instagram.com/gan_shijie",
       color: "hover:text-pink-400",
     },
   ];
@@ -202,14 +236,47 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Status Messages */}
+                  {isSuccess && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400"
+                    >
+                      ✅ Thank you! Your message has been sent successfully. I'll get back to you soon!
+                    </motion.div>
+                  )}
+
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400"
+                    >
+                      ❌ {error}
+                    </motion.div>
+                  )}
+
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: isLoading ? 1 : 1.05 }}
+                    whileTap={{ scale: isLoading ? 1 : 0.95 }}
                     type="submit"
-                    className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                    disabled={isLoading}
+                    className={`w-full flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 ${
+                      isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
                   >
-                    <HiPaperAirplane className="w-5 h-5" />
-                    Send Message
+                    {isLoading ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <HiPaperAirplane className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
                   </motion.button>
                 </form>
               </div>
@@ -227,15 +294,23 @@ const Contact = () => {
                       <motion.a
                         key={index}
                         href={info.href}
+                        target={info.href?.startsWith("https://wa.me") || info.href?.startsWith("https://maps.google.com") ? "_blank" : undefined}
+                        rel={info.href?.startsWith("https://wa.me") || info.href?.startsWith("https://maps.google.com") ? "noopener noreferrer" : undefined}
                         className="flex items-center gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300 group"
                         whileHover={{ x: 5 }}
                       >
                         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           <Icon className="w-6 h-6 text-white" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <p className="text-sm text-gray-400">{info.label}</p>
                           <p className="text-white font-medium">{info.value}</p>
+                          {info.isWhatsApp && (
+                            <div className="flex items-center gap-1 mt-1">
+                              <FaWhatsapp className="w-4 h-4 text-green-400" />
+                              <span className="text-xs text-green-400">WhatsApp me directly</span>
+                            </div>
+                          )}
                         </div>
                       </motion.a>
                     );

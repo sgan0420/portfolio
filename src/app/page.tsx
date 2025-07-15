@@ -1,31 +1,60 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import HeroSection from "@/sections/HeroSection";
 import CustomCursor from "@/components/CustomCursor";
 
 export default function HomePage() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
   useEffect(() => {
-    // Hide default cursor on desktop
-    if (window.innerWidth > 768) {
-      document.body.style.cursor = "none";
+    let styleElement: HTMLStyleElement | null = null;
+    
+    const updateCursorDisplay = () => {
+      const desktop = window.innerWidth > 768;
+      setIsDesktop(desktop);
+      
+      if (desktop) {
+        // Hide default cursor on desktop
+        document.body.style.cursor = "none";
 
-      // Add cursor back on interactive elements for accessibility
-      const style = document.createElement("style");
-      style.textContent = `
-        a, button, [role="button"], input, textarea, select {
-          cursor: none !important;
+        // Add cursor back on interactive elements for accessibility
+        if (!styleElement) {
+          styleElement = document.createElement("style");
+          styleElement.textContent = `
+            a, button, [role="button"], input, textarea, select {
+              cursor: none !important;
+            }
+          `;
+          document.head.appendChild(styleElement);
         }
-      `;
-      document.head.appendChild(style);
-
-      return () => {
+      } else {
+        // Show default cursor on mobile
         document.body.style.cursor = "auto";
-        document.head.removeChild(style);
-      };
-    }
+        
+        // Remove custom styles
+        if (styleElement) {
+          document.head.removeChild(styleElement);
+          styleElement = null;
+        }
+      }
+    };
+
+    // Initial setup
+    updateCursorDisplay();
+    
+    // Listen for resize events
+    window.addEventListener('resize', updateCursorDisplay);
+
+    return () => {
+      window.removeEventListener('resize', updateCursorDisplay);
+      document.body.style.cursor = "auto";
+      if (styleElement) {
+        document.head.removeChild(styleElement);
+      }
+    };
   }, []);
 
   return (
@@ -37,9 +66,7 @@ export default function HomePage() {
       style={{ overflowY: "auto" }}
     >
       {/* Custom Cursor - only on desktop */}
-      <div className="hidden md:block">
-        <CustomCursor />
-      </div>
+      {isDesktop && <CustomCursor />}
 
       {/* Main Content */}
       <main>

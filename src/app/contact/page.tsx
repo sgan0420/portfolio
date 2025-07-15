@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Header from "@/components/Header";
 import emailjs from '@emailjs/browser';
 import { 
   HiMail, 
@@ -133,9 +132,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      {/* Header */}
-      <Header />
-      
       <div className="container mx-auto px-6 pt-28 pb-20">
         <motion.div
           variants={containerVariants}

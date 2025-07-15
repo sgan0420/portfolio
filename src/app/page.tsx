@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import HeroSection from "@/sections/HeroSection";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -41,9 +39,6 @@ export default function HomePage() {
       <div className="hidden md:block">
         <CustomCursor />
       </div>
-
-      {/* Header */}
-      <Header />
 
       {/* Main Content */}
       <main>
@@ -114,8 +109,6 @@ export default function HomePage() {
         </motion.section>
       </main>
 
-      {/* Footer */}
-      <Footer />
     </motion.div>
   );
 }

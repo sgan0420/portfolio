@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -17,37 +17,68 @@ import {
 } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
+/**
+ * HeroSection component with mobile optimizations:
+ * 
+ * MOBILE PERFORMANCE OPTIMIZATIONS:
+ * ✅ Removes scroll-based disappearing effect on mobile devices (hero stays static)
+ * ✅ Simplifies background orb animations (reduced movement, shorter durations)
+ * ✅ Reduces animation delays and complexities (faster stagger animations)
+ * ✅ Lighter text animations (smaller y-offset, shorter duration)
+ * ✅ Custom cursor is conditionally disabled on mobile devices
+ * 
+ * DESKTOP EXPERIENCE:
+ * ✅ Maintains full scroll-based parallax and disappearing effects
+ * ✅ Complex background animations with rotation and larger movements
+ * ✅ Full animation timings and stagger effects
+ * ✅ Custom cursor enabled with hover interactions
+ */
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.8], [1, 0.5, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  // Only apply scroll transforms on desktop
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "0%"] : ["0%", "80%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [1, 1, 1] : [1, 0.5, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 0.5]);
 
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const ySpring = useSpring(y, springConfig);
 
-  // Additional transform for content that disappears faster
-  const contentY = useTransform(scrollYProgress, [0, 0.6], ["0%", "60%"]);
+  // Additional transform for content that disappears faster - disabled on mobile
+  const contentY = useTransform(scrollYProgress, [0, 0.6], isMobile ? ["0%", "0%"] : ["0%", "60%"]);
   const contentOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
-    [1, 0.5, 0]
+    isMobile ? [1, 1, 1] : [1, 0.5, 0]
   );
 
-  // Text animation variants
+  // Text animation variants - simplified on mobile
   const textVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: isMobile ? 20 : 50 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
-        duration: 0.6,
+        delay: i * (isMobile ? 0.05 : 0.1),
+        duration: isMobile ? 0.4 : 0.6,
         ease: "easeOut" as const,
       },
     }),
@@ -76,7 +107,7 @@ const HeroSection = () => {
   return (
     <motion.section
       ref={containerRef}
-      style={{ y: ySpring, opacity, scale }}
+      style={isMobile ? {} : { y: ySpring, opacity, scale }}
       className="relative min-h-screen flex items-center justify-center overflow-hidden grid-background pt-20 sm:pt-16 md:pt-0"
     >
       {/* Animated background elements - orbs independent of scroll transforms */}
@@ -87,42 +118,53 @@ const HeroSection = () => {
 
       {/* Gradient orbs - positioned outside scroll container to prevent disappearing */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Vibrant gradient orbs for ambient atmosphere */}
+        {/* Vibrant gradient orbs for ambient atmosphere - simplified on mobile */}
         <motion.div
-          animate={{
+          animate={isMobile ? {
+            // Simpler animation for mobile
+            x: [0, 40, 0],
+            y: [0, -40, 0],
+          } : {
             x: [0, 80, 0],
             y: [0, -80, 0],
             rotate: [0, 180, 360],
           }}
           transition={{
-            duration: 20,
+            duration: isMobile ? 15 : 20,
             repeat: Infinity,
             ease: "linear",
           }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
+          animate={isMobile ? {
+            // Simpler animation for mobile
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+          } : {
             x: [0, -80, 0],
             y: [0, 80, 0],
             rotate: [360, 180, 0],
           }}
           transition={{
-            duration: 25,
+            duration: isMobile ? 20 : 25,
             repeat: Infinity,
             ease: "linear",
           }}
           className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl"
         />
 
-        {/* Large ambient breathing orb for atmosphere */}
+        {/* Large ambient breathing orb for atmosphere - simplified on mobile */}
         <motion.div
-          animate={{
+          animate={isMobile ? {
+            scale: [1, 1.05, 1],
+            opacity: [0.1, 0.15, 0.1],
+          } : {
             scale: [1, 1.15, 1],
             opacity: [0.1, 0.2, 0.1],
           }}
           transition={{
-            duration: 15,
+            duration: isMobile ? 10 : 15,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -132,7 +174,9 @@ const HeroSection = () => {
 
       <motion.div
         className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center will-change-transform py-8 sm:py-12"
-        style={{
+        style={isMobile ? {
+          transform: "translateZ(0)", // Force hardware acceleration
+        } : {
           y: contentY,
           opacity: contentOpacity,
           transform: "translateZ(0)", // Force hardware acceleration
@@ -191,7 +235,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
-                  delay: 1 + index * 0.1,
+                  delay: 1 + index * (isMobile ? 0.05 : 0.1),
                   type: "spring",
                   stiffness: 200,
                 }}
@@ -271,7 +315,7 @@ const HeroSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 1.5 + index * 0.1,
+                    delay: 1.5 + index * (isMobile ? 0.05 : 0.1),
                     type: "spring",
                     stiffness: 300,
                     damping: 20

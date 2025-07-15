@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HiArrowLeft, HiExternalLink } from "react-icons/hi";
 import { FaGithub, FaReact, FaPython, FaDatabase, FaBrain } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiFlask, SiOpenai, SiNumpy } from "react-icons/si";
+import BackButton from "../../../components/BackButton";
 
 const ProjectDetail = () => {
   const containerVariants = {
@@ -100,15 +101,7 @@ const ProjectDetail = () => {
         >
           {/* Back Button */}
           <motion.div variants={itemVariants} className="mb-8">
-            <Link href="/projects">
-              <motion.button
-                whileHover={{ x: -5 }}
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                <HiArrowLeft className="w-5 h-5" />
-                Back to Projects
-              </motion.button>
-            </Link>
+            <BackButton href="/projects" text="Back to Projects" />
           </motion.div>
 
           {/* Project Header */}

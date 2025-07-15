@@ -115,26 +115,26 @@ const Footer = () => {
               viewport={{ once: true }}
             >
               <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-              <ul className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
                 {quickLinks.map((link, index) => (
-                  <motion.li
+                  <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
+                    transition={{ delay: 0.3 + index * 0.05, duration: 0.3 }}
                     viewport={{ once: true }}
                   >
                     <motion.a
                       href={link.href}
-                      whileHover={{ x: 5, color: "#a855f7" }}
-                      className="text-gray-300 hover:text-purple-400 transition-all duration-200 flex items-center group"
+                      whileHover={{ x: 3, color: "#a855f7" }}
+                      className="text-gray-300 hover:text-purple-400 transition-all duration-200 flex items-center group text-sm"
                     >
-                      <span className="w-2 h-2 bg-purple-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                      <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                       {link.name}
                     </motion.a>
-                  </motion.li>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
 
             {/* Contact Info */}

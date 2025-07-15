@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Header from "@/components/Header";
 import { HiExternalLink, HiCode, HiEye } from "react-icons/hi";
 import { FaGithub, FaReact, FaNodeJs, FaPython, FaJava } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb } from "react-icons/si";
@@ -80,9 +79,6 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      {/* Header */}
-      <Header />
-      
       <div className="container mx-auto px-6 pt-28 pb-20">
         <motion.div
           variants={containerVariants}

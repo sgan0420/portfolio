@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { HiUser, HiHeart, HiBriefcase, HiAcademicCap } from "react-icons/hi";
 
 const About = () => {
@@ -55,9 +56,11 @@ const About = () => {
                 {/* Personal Image */}
                 <div className="md:col-span-1">
                   <div className="relative">
-                    <img 
+                    <Image 
                       src="/me.png" 
                       alt="Shijie Gan" 
+                      width={224}
+                      height={224}
                       className="w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl border border-gray-600 shadow-lg mx-auto"
                     />
                   </div>
@@ -67,16 +70,16 @@ const About = () => {
                 <div className="md:col-span-2">
                   <div className="text-gray-300 space-y-4">
                     <p>
-                      Hey there! I'm a passionate coder who treats coding like the ultimate video game - 
+                      Hey there! I&apos;m a passionate coder who treats coding like the ultimate video game - 
                       solving puzzles, breaking things (intentionally... mostly 😅), and building dreams into reality!
                     </p>
                     <p>
-                      I'm all about full-stack development and design, with a knack for rapid learning and turning ideas into reality. 
-                      I'm absolutely amazed by AI (ChatGPT and I are basically best friends), and I love designing things that make people go "Wow!"
+                      I&apos;m all about full-stack development and design, with a knack for rapid learning and turning ideas into reality. 
+                      I&apos;m absolutely amazed by AI (ChatGPT and I are basically best friends), and I love designing things that make people go &quot;Wow!&quot;
                     </p>
                     <p>
                       Technology is my playground, and I thrive in dynamic environments where I can embrace new challenges. 
-                      Let's connect and create something amazing together!
+                      Let&apos;s connect and create something amazing together!
                     </p>
                   </div>
                 </div>
@@ -104,8 +107,8 @@ const About = () => {
                     </div>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    Discover my educational journey from Monash University's Computer Science program 
-                    to Imperial College London's world-renowned engineering program.
+                    Discover my educational journey from Monash University&apos;s Computer Science program 
+                    to Imperial College London&apos;s world-renowned engineering program.
                   </p>
                   <div className="flex items-center text-green-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
                     <span>View Education</span>
@@ -177,8 +180,8 @@ const About = () => {
               </div>
               <div className="mt-6 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
                 <p className="text-center text-gray-300 italic">
-                  "Technology is my playground, and I thrive in dynamic environments where I can embrace new challenges 
-                  and turn wild ideas into reality!"
+                  &quot;Technology is my playground, and I thrive in dynamic environments where I can embrace new challenges 
+                  and turn wild ideas into reality!&quot;
                 </p>
               </div>
             </div>

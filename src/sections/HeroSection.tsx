@@ -63,15 +63,15 @@ const HeroSection = () => {
   });
 
   // Only apply scroll transforms on desktop
-  const y = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "0%"] : ["0%", "80%"]);
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "0%"] : ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.8], isMobile ? [1, 1, 1] : [1, 0.5, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 0.5]);
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 0.8]);
 
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const ySpring = useSpring(y, springConfig);
 
   // Additional transform for content that disappears faster - disabled on mobile
-  const contentY = useTransform(scrollYProgress, [0, 0.6], isMobile ? ["0%", "0%"] : ["0%", "60%"]);
+  const contentY = useTransform(scrollYProgress, [0, 0.6], isMobile ? ["0%", "0%"] : ["0%", "30%"]);
   const contentOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
@@ -125,7 +125,7 @@ const HeroSection = () => {
       </div>
 
       {/* Gradient orbs - much simpler on mobile, reduced on desktop */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Only show main background orb on mobile, full set on desktop */}
         {isMobile ? (
           // Single static gradient for mobile

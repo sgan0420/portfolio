@@ -64,6 +64,26 @@ body {
     will-change: auto;
   }
   
+  /* Ensure gradient text works on ALL mobile devices */
+  /* Remove mobile-specific gradient restrictions to allow shining effect */
+  
+  /* Fallback for mobile devices that don't support background-clip */
+  @supports not (-webkit-background-clip: text) {
+    .gradient-text {
+      color: #667eea !important;
+      background: none !important;
+      -webkit-text-fill-color: #667eea !important;
+      animation: none !important;
+    }
+  }
+  
+  /* Force hardware acceleration for text rendering on mobile */
+  .mobile-optimized h1 {
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
   /* Ensure mobile menu has priority */
   .mobile-menu-priority {
     z-index: 999999 !important;
@@ -74,6 +94,38 @@ body {
   .reduce-repaints {
     transform: translateZ(0);
     backface-visibility: hidden;
+  }
+  
+  /* Disable expensive blur effects on mobile */
+  .mobile-optimized .blur-3xl {
+    filter: blur(20px); /* Reduced from blur(3xl) */
+  }
+  
+  /* Simplify backdrop blur on mobile */
+  .mobile-optimized .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  /* Ensure skill badges are visible on mobile */
+  .mobile-optimized .glass {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Fix skill badge visibility on mobile */
+  @media (max-width: 768px) {
+    .glass {
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .backdrop-blur-sm {
+      backdrop-filter: none !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
   }
 }
 
@@ -102,7 +154,7 @@ body {
   will-change: transform;
 }
 
-/* Gradient text animation */
+/* Gradient text animation - simplified for performance */
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
@@ -117,11 +169,30 @@ body {
 
 .gradient-text {
   background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-  background-size: 400% 400%;
+  background-size: 200% 200%; /* Reduced from 400% for performance */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 6s ease infinite;
+  animation: gradient-shift 8s ease infinite; /* Slower for performance */
+  /* Fallback color for unsupported browsers */
+  color: transparent;
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) {
+  .gradient-text {
+    color: #667eea;
+    background: none;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+    background: linear-gradient(-45deg, #667eea, #764ba2);
+    background-size: 100% 100%;
+  }
 }
 
 /* Floating animation */

@@ -160,25 +160,22 @@ const About = () => {
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Professional Interests</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">Tech & Strategy</h3>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• AI & Machine Learning (ChatGPT is my coding buddy!)</li>
-                    <li>• Full-stack Web Development</li>
-                    <li>• Mobile App Development</li>
-                    <li>• Cloud Computing & DevOps</li>
+                    <li>• Coding & Software Development (my ultimate passion!)</li>
                     <li>• UI/UX Design & User Experience</li>
-                    <li>• Cybersecurity & System Administration</li>
+                    <li>• Gaming (Teamfight Tactics - reached Rank 300 in Europe!)</li>
+                    <li>• Chess (former VP of Chess Club)</li>
+                    <li>• Puzzle games & brain teasers</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Personal Hobbies</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">Entertainment & Sports</h3>
                   <ul className="space-y-2 text-gray-300">
-                    <li>• Gaming (treating life like a video game!)</li>
-                    <li>• Problem Solving & Puzzle Games</li>
-                    <li>• Music & Live Performances</li>
-                    <li>• Continuous Learning & Tech Exploration</li>
-                    <li>• Chess Strategy (former VP of Chess Club)</li>
-                    <li>• Public Speaking & Emceeing</li>
+                    <li>• Listening to Jay Chou music</li>
+                    <li>• Watching movies & entertainment</li>
+                    <li>• Board games (Werewolves, Avalon)</li>
+                    <li>• Playing badminton</li>
                   </ul>
                 </div>
               </div>

@@ -24,7 +24,7 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
  * ✅ STATIC background orbs (no animations on mobile)
  * ✅ Simplified text animations (reduced duration, delays, and transforms)
  * ✅ Disabled hover effects on mobile (no scale/transform animations)
- * ✅ Faster skill badge animations (simple opacity fade vs spring animations)
+ * ✅ Simple skill badges (no animations)
  * ✅ Reduced gradient text animation complexity
  * ✅ Simplified scroll indicators (no bouncing animation)
  * ✅ Static hero section (no scroll-based disappearing effect)
@@ -33,11 +33,11 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
  * ✅ Maintains quality animations but with reduced complexity
  * ✅ Simplified background orb movements (no rotation, smaller movements)
  * ✅ Full scroll-based parallax effects
- * ✅ Custom cursor with hover interactions
+ * ✅ Simple skill badges (no spring animations or complex hover effects)
  * 
  * PERFORMANCE GAINS:
- * ⚡ ~70% reduction in mobile animations
- * ⚡ Eliminated expensive spring/physics-based animations on mobile
+ * ⚡ ~80% reduction in mobile animations
+ * ⚡ Eliminated expensive spring/physics-based animations on both mobile and desktop
  * ⚡ Reduced will-change properties and GPU usage
  * ⚡ Faster load times and smoother interactions
  */
@@ -215,34 +215,17 @@ const HeroSection = () => {
 
           {/* Skills badges */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 px-4 sm:px-0">
-            {skills.map((skill, index) => (
-              isMobile ? (
-                <span
-                  key={skill}
-                  className="px-3 py-1.5 bg-white/20 border border-white/40 rounded-full text-xs font-medium cursor-default"
-                >
-                  {skill}
-                </span>
-              ) : (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    delay: 1 + index * 0.05,
-                    type: "spring",
-                    duration: 0.5,
-                    stiffness: 200,
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 5px 15px rgba(102, 126, 234, 0.2)",
-                  }}
-                  className="px-4 py-2 bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 glass hover:bg-white/20 rounded-full text-sm font-medium transition-all duration-300 cursor-default"
-                >
-                  {skill}
-                </motion.span>
-              )
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className={`${
+                  isMobile 
+                    ? "px-3 py-1.5 bg-white/20 border border-white/40 rounded-full text-xs font-medium cursor-default"
+                    : "px-4 py-2 bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 glass hover:bg-white/20 rounded-full text-sm font-medium transition-all duration-300 cursor-default"
+                }`}
+              >
+                {skill}
+              </span>
             ))}
           </div>
 

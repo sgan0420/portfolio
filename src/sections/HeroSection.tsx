@@ -108,7 +108,7 @@ const HeroSection = () => {
     <motion.section
       ref={containerRef}
       style={isMobile ? {} : { y: ySpring, opacity, scale }}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden grid-background pt-20 sm:pt-16 md:pt-0"
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden grid-background pt-20 sm:pt-16 md:pt-0 ${isMobile ? 'mobile-optimized' : ''}`}
     >
       {/* Animated background elements - orbs independent of scroll transforms */}
       <div className="absolute inset-0 overflow-hidden -z-10">

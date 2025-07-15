@@ -57,6 +57,26 @@ body {
   perspective: 1000px;
 }
 
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .mobile-optimized {
+    will-change: auto;
+  }
+  
+  /* Ensure mobile menu has priority */
+  .mobile-menu-priority {
+    z-index: 999999 !important;
+    contain: layout style paint;
+  }
+  
+  /* Reduce repaints on mobile */
+  .reduce-repaints {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
 /* Custom cursor styles */
 .cursor-dot {
   width: 5px;

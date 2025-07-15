@@ -8,14 +8,25 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navItems = [
@@ -51,10 +62,10 @@ const Header = () => {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      y: -20,
+      y: isMobile ? -10 : -20,
       transition: {
-        duration: 0.2,
-        staggerChildren: 0.05,
+        duration: isMobile ? 0.15 : 0.2,
+        staggerChildren: isMobile ? 0.02 : 0.05,
         staggerDirection: -1,
       },
     },
@@ -62,15 +73,15 @@ const Header = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.3,
-        staggerChildren: 0.07,
-        delayChildren: 0.1,
+        duration: isMobile ? 0.2 : 0.3,
+        staggerChildren: isMobile ? 0.03 : 0.07,
+        delayChildren: isMobile ? 0.05 : 0.1,
       },
     },
   };
 
   const mobileNavItemVariants = {
-    closed: { opacity: 0, x: -20 },
+    closed: { opacity: 0, x: isMobile ? -10 : -20 },
     open: { opacity: 1, x: 0 },
   };
 
@@ -79,7 +90,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-[99999] transition-all duration-300 ${isMobile ? 'mobile-menu-priority' : ''} ${
         isScrolled
           ? "bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-lg border-b border-gray-200/20"
           : "bg-transparent"
@@ -129,7 +140,8 @@ const Header = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg glass hover:bg-white/20 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg glass hover:bg-white/20 transition-colors duration-200 relative z-[100000]"
+            style={{ touchAction: 'manipulation' }} // Improve touch responsiveness
           >
             <AnimatePresence mode="wait">
               {isMobileMenuOpen ? (
@@ -165,15 +177,32 @@ const Header = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden py-4 border-t border-gray-200/20 bg-white/95 dark:bg-black/95 backdrop-blur-md rounded-b-lg shadow-lg"
+              className={`md:hidden py-4 border-t border-gray-200/20 bg-white/95 dark:bg-black/95 backdrop-blur-md rounded-b-lg shadow-lg ${isMobile ? 'reduce-repaints' : ''}`}
+              style={{ 
+                willChange: 'transform, opacity',
+                transform: 'translateZ(0)' // Force hardware acceleration
+              }}
             >
               <nav className="flex flex-col space-y-4">
                 {navItems.map((item) => (
-                  <motion.div key={item.name} variants={mobileNavItemVariants}>
+                  <motion.div 
+                    key={item.name} 
+                    variants={mobileNavItemVariants}
+                    style={{ willChange: 'transform, opacity' }}
+                  >
                     <Link
                       href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        // Small delay to ensure menu closes smoothly before navigation
+                        if (isMobile) {
+                          setTimeout(() => {
+                            // Force any remaining animations to complete
+                          }, 100);
+                        }
+                      }}
                       className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 font-medium rounded-lg hover:bg-white/20 dark:hover:bg-white/10"
+                      style={{ touchAction: 'manipulation' }}
                     >
                       {item.name}
                     </Link>

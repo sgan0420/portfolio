@@ -206,6 +206,48 @@ const Projects = () => {
                 </motion.div>
               </Link>
             ))}
+            
+            {/* Coming Soon Card */}
+            <motion.div
+              variants={itemVariants}
+              className="glass rounded-2xl overflow-hidden border-2 border-dashed border-gray-600 hover:border-blue-500 transition-all duration-300"
+            >
+              {/* Coming Soon Image */}
+              <div className="relative h-48 bg-gradient-to-br from-gray-800/50 to-gray-900/50 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-3xl">🚀</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-300">Coming Soon</h3>
+                </div>
+                <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
+                  In Development
+                </div>
+              </div>
+
+              {/* Coming Soon Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-3">
+                  More Amazing Projects
+                </h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  I have many other exciting projects that I want to share with you! 
+                  This portfolio site is still under development and more project showcases are coming soon.
+                </p>
+
+                {/* Coming Soon Tags */}
+                <div className="flex flex-wrap gap-2">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-sm">
+                    <span className="text-orange-400">⏳</span>
+                    <span className="text-orange-300">In Progress</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm">
+                    <span className="text-blue-400">📝</span>
+                    <span className="text-blue-300">More Content</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Call to Action */}

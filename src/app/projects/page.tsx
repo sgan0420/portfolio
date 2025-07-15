@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiExternalLink, HiCode, HiEye } from "react-icons/hi";
-import { FaGithub, FaReact, FaNodeJs, FaPython, FaJava } from "react-icons/fa";
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb } from "react-icons/si";
+import { HiCode } from "react-icons/hi";
+import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiFlask, SiOpenai, SiNumpy } from "react-icons/si";
 
 const Projects = () => {
   const containerVariants = {
@@ -26,26 +26,30 @@ const Projects = () => {
     },
   };
 
-  // Placeholder projects data
+  // Projects data
   const projects = [
     {
       id: 1,
-      title: "[Project Title 1 - Placeholder]",
-      description: "A comprehensive web application built with modern technologies. This is placeholder content that will be replaced with your actual project description, highlighting key features and technical challenges solved.",
-      image: "/api/placeholder/600/400",
+      title: "AI Chatbot Platform",
+      slug: "ai-chatbot",
+      description: "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques with FAISS vector database.",
+      image: "/ai-chatbot.png",
       technologies: [
         { name: "React", icon: FaReact, color: "text-blue-400" },
-        { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-        { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
-        { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400" },
+        { name: "Flask", icon: SiFlask, color: "text-white" },
+        { name: "OpenAI API", icon: SiOpenai, color: "text-green-400" },
+        { name: "RAG", icon: FaBrain, color: "text-pink-400" },
+        { name: "FAISS", icon: SiNumpy, color: "text-blue-500" },
+        { name: "Vector DB", icon: FaDatabase, color: "text-purple-400" },
       ],
-      githubUrl: "https://github.com/sgan0420/placeholder-repo-1",
-      liveUrl: "https://your-project-1.vercel.app",
-      category: "Web Development",
+      githubUrl: "https://github.com/sgan0420/chatbot",
+      liveUrl: "https://chatbot-69x9.onrender.com/",
+      category: "AI/ML",
     },
     {
       id: 2,
       title: "[Project Title 2 - Placeholder]",
+      slug: "project-title-2-placeholder",
       description: "An innovative mobile-first solution that demonstrates advanced programming concepts. Placeholder description showcasing problem-solving skills and technical expertise in modern development practices.",
       image: "/api/placeholder/600/400",
       technologies: [
@@ -61,6 +65,7 @@ const Projects = () => {
     {
       id: 3,
       title: "[Project Title 3 - Placeholder]",
+      slug: "project-title-3-placeholder",
       description: "A cutting-edge application leveraging AI and machine learning technologies. This placeholder project showcases expertise in modern AI frameworks and data processing capabilities.",
       image: "/api/placeholder/600/400",
       technologies: [
@@ -115,94 +120,68 @@ const Projects = () => {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="glass rounded-2xl overflow-hidden group"
-              >
-                {/* Project Image */}
-                <div className="relative h-48 bg-gray-800 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <HiCode className="w-16 h-16 text-gray-500" />
+              <Link key={project.id} href={`/projects/${project.slug}`}>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="glass rounded-2xl overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
+                >
+                  {/* Project Image */}
+                  <div className="relative h-48 bg-gray-800 overflow-hidden">
+                    {project.image && !project.image.includes('placeholder') ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                        <HiCode className="w-16 h-16 text-gray-500 group-hover:text-blue-400 transition-colors duration-300" />
+                      </div>
+                    )}
                     <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
                       {project.category}
                     </div>
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <span className="text-white font-medium">Click to view details</span>
+                    </div>
                   </div>
-                  
-                  {/* Overlay with links */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    <motion.a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-300"
-                    >
-                      <FaGithub className="w-6 h-6" />
-                    </motion.a>
-                    <motion.a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
-                    >
-                      <HiExternalLink className="w-6 h-6" />
-                    </motion.a>
-                  </div>
-                </div>
 
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
+                  {/* Project Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-3 mb-4">
-                    {project.technologies.map((tech, index) => {
-                      const Icon = tech.icon;
-                      return (
-                        <div
-                          key={index}
-                          className="flex items-center gap-2 px-3 py-1 bg-gray-800/50 rounded-full text-sm"
-                        >
-                          <Icon className={`w-4 h-4 ${tech.color}`} />
-                          <span className="text-gray-300">{tech.name}</span>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 3).map((tech, index) => {
+                        const Icon = tech.icon;
+                        return (
+                          <div
+                            key={index}
+                            className="flex items-center gap-2 px-3 py-1 bg-gray-800/50 rounded-full text-sm"
+                          >
+                            <Icon className={`w-4 h-4 ${tech.color}`} />
+                            <span className="text-gray-300">{tech.name}</span>
+                          </div>
+                        );
+                      })}
+                      {project.technologies.length > 3 && (
+                        <div className="flex items-center px-3 py-1 bg-gray-800/50 rounded-full text-sm">
+                          <span className="text-gray-400">+{project.technologies.length - 3} more</span>
                         </div>
-                      );
-                    })}
+                      )}
+                    </div>
                   </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 text-sm"
-                    >
-                      <FaGithub className="w-4 h-4" />
-                      Code
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-300 text-sm"
-                    >
-                      <HiEye className="w-4 h-4" />
-                      Live Demo
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
 

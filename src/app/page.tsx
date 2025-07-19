@@ -56,7 +56,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link href="/contact">
+              <a href="/Resume_ShijieGan.pdf" download>
                 <motion.button
                   whileHover={{
                     scale: 1.05,
@@ -65,9 +65,9 @@ export default function HomePage() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  Get In Touch
+                  Download Resume
                 </motion.button>
-              </Link>
+              </a>
 
               <a href="https://www.linkedin.com/in/shijie-gan-968926197/" target="_blank" rel="noopener noreferrer">
                 <motion.button

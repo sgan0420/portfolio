@@ -3,8 +3,29 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiCode } from "react-icons/hi";
-import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDatabase, FaBrain, FaGamepad, FaEnvelope } from "react-icons/fa";
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiFlask, SiOpenai, SiNumpy, SiHtml5, SiCss3, SiReactivex } from "react-icons/si";
+import {
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaJava,
+  FaGithub,
+  FaDatabase,
+  FaBrain,
+  FaGamepad,
+  FaEnvelope,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiFlask,
+  SiOpenai,
+  SiNumpy,
+  SiHtml5,
+  SiCss3,
+  SiReactivex,
+} from "react-icons/si";
 
 const Projects = () => {
   const containerVariants = {
@@ -32,7 +53,8 @@ const Projects = () => {
       id: 1,
       title: "AI Chatbot Platform",
       slug: "ai-chatbot",
-      description: "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques with FAISS vector database.",
+      description:
+        "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques with FAISS vector database.",
       image: "/ai-chatbot.png",
       technologies: [
         { name: "React", icon: FaReact, color: "text-blue-400" },
@@ -50,7 +72,8 @@ const Projects = () => {
       id: 2,
       title: "Chrome Extension - Quickie",
       slug: "chrome-extension-quickie",
-      description: "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions. From tab management and history to site settings, downloads, and QR code generation.",
+      description:
+        "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions. From tab management and history to site settings, downloads, and QR code generation.",
       image: "/quickie.png",
       technologies: [
         { name: "JavaScript", icon: FaNodeJs, color: "text-yellow-400" },
@@ -59,14 +82,16 @@ const Projects = () => {
         { name: "Chrome API", icon: FaReact, color: "text-green-500" },
       ],
       githubUrl: "https://github.com/sgan0420/extension-shortcut-launcher",
-      liveUrl: "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
+      liveUrl:
+        "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
       category: "Web Extension",
     },
     {
       id: 3,
       title: "Pac-Man AI",
       slug: "pacman-ai",
-      description: "Intelligent AI agents designed to master the classic Pac-Man game using search algorithms, adversarial agents, reinforcement learning, and custom perceptron models.",
+      description:
+        "Intelligent AI agents designed to master the classic Pac-Man game using search algorithms, adversarial agents, reinforcement learning, and custom perceptron models.",
       image: "/pacman.png",
       technologies: [
         { name: "Python", icon: FaPython, color: "text-yellow-400" },
@@ -82,7 +107,8 @@ const Projects = () => {
       id: 4,
       title: "Tetris Game",
       slug: "tetris-game",
-      description: "A fully interactive, modern Tetris game built with TypeScript and RxJS using reactive architecture. Features real-time game logic, SVG rendering, and immutable state management.",
+      description:
+        "A fully interactive, modern Tetris game built with TypeScript and RxJS using reactive architecture. Features real-time game logic, SVG rendering, and immutable state management.",
       image: "/tetris.png",
       technologies: [
         { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
@@ -97,7 +123,14 @@ const Projects = () => {
     },
   ];
 
-  const categories = ["All", "Web Development", "Web Extension", "Full Stack", "AI/ML", "Mobile"];
+  const categories = [
+    "All",
+    "Web Development",
+    "Web Extension",
+    "Full Stack",
+    "AI/ML",
+    "Mobile",
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
@@ -114,8 +147,9 @@ const Projects = () => {
               My Projects
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A showcase of my work and technical skills. Each project represents a unique challenge 
-              and demonstrates different aspects of modern software development.
+              A showcase of my work and technical skills. Each project
+              represents a unique challenge and demonstrates different aspects
+              of modern software development.
             </p>
           </motion.div>
 
@@ -133,12 +167,13 @@ const Projects = () => {
               Play My Tetris Game
             </motion.a>
             <p className="text-gray-300 mt-2 text-sm">
-              ⬆️ One of my favourite projects | Play on desktop | Refer to the Tetris Game card below for the details
+              ⬆️ One of my favourite projects | Play on desktop | Refer to the
+              Tetris Game card below for the details
             </p>
           </motion.div>
 
           {/* Projects Grid */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
@@ -152,9 +187,9 @@ const Projects = () => {
                 >
                   {/* Project Image */}
                   <div className="relative h-48 bg-gray-800 overflow-hidden">
-                    {project.image && !project.image.includes('placeholder') ? (
-                      <img 
-                        src={project.image} 
+                    {project.image && !project.image.includes("placeholder") ? (
+                      <img
+                        src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover"
                       />
@@ -166,10 +201,12 @@ const Projects = () => {
                     <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
                       {project.category}
                     </div>
-                    
+
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                      <span className="text-white font-medium">Click to view details</span>
+                      <span className="text-white font-medium">
+                        Click to view details
+                      </span>
                     </div>
                   </div>
 
@@ -198,7 +235,9 @@ const Projects = () => {
                       })}
                       {project.technologies.length > 3 && (
                         <div className="flex items-center px-3 py-1 bg-gray-800/50 rounded-full text-sm">
-                          <span className="text-gray-400">+{project.technologies.length - 3} more</span>
+                          <span className="text-gray-400">
+                            +{project.technologies.length - 3} more
+                          </span>
                         </div>
                       )}
                     </div>
@@ -206,7 +245,7 @@ const Projects = () => {
                 </motion.div>
               </Link>
             ))}
-            
+
             {/* Coming Soon Card */}
             <motion.div
               variants={itemVariants}
@@ -218,7 +257,9 @@ const Projects = () => {
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
                     <span className="text-3xl">🚀</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-300">Coming Soon</h3>
+                  <h3 className="text-lg font-bold text-gray-300">
+                    Coming Soon
+                  </h3>
                 </div>
                 <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
                   In Development
@@ -231,8 +272,9 @@ const Projects = () => {
                   More Amazing Projects
                 </h3>
                 <p className="text-gray-300 text-sm mb-4">
-                  I have many other exciting projects that I want to share with you! 
-                  This portfolio site is still under development and more project showcases are coming soon.
+                  I have many other exciting projects that I want to share with
+                  you! This portfolio site is still under development and more
+                  project showcases are coming soon.
                 </p>
 
                 {/* Coming Soon Tags */}
@@ -255,8 +297,9 @@ const Projects = () => {
             <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
               <h2 className="text-2xl font-bold mb-4">Want to see more?</h2>
               <p className="text-gray-300 mb-6">
-                These are just a few examples of my work. I'm always working on new projects 
-                and exploring cutting-edge technologies. Check out my GitHub for more!
+                These are just a few examples of my work. I'm always working on
+                new projects and exploring cutting-edge technologies. Check out
+                my GitHub for more!
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch">
                 <motion.a

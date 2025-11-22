@@ -3,8 +3,21 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiArrowLeft, HiExternalLink } from "react-icons/hi";
-import { FaGithub, FaReact, FaPython, FaDatabase, FaBrain } from "react-icons/fa";
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiFlask, SiOpenai, SiNumpy } from "react-icons/si";
+import {
+  FaGithub,
+  FaReact,
+  FaPython,
+  FaDatabase,
+  FaBrain,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFlask,
+  SiOpenai,
+  SiNumpy,
+} from "react-icons/si";
 import BackButton from "../../../components/BackButton";
 
 const ProjectDetail = () => {
@@ -30,37 +43,73 @@ const ProjectDetail = () => {
   // Project data - AI Chatbot Platform
   const project = {
     title: "AI Chatbot Platform",
-    description: "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques.",
+    description:
+      "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques.",
     longDescription: (
       <div>
         <p className="mb-4">
-          I designed and developed an AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots. Users can upload documents (PDF, Word, Excel, Text), which are processed using Retrieval-Augmented Generation (RAG) techniques and indexed in a FAISS vector database. The system leverages OpenAI's ChatGPT API to generate intelligent responses based on the uploaded content.
+          I designed and developed an AI-powered chatbot platform that enables
+          businesses and individuals to easily create and deploy custom
+          chatbots. Users can upload documents (PDF, Word, Excel, Text), which
+          are processed using Retrieval-Augmented Generation (RAG) techniques
+          and indexed in a FAISS vector database. The system leverages OpenAI's
+          ChatGPT API to generate intelligent responses based on the uploaded
+          content.
         </p>
-        
+
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">Key Features:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            Key Features:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Built end-to-end web application with user registration and chatbot management</li>
-            <li>Backend implemented document processing, vector indexing (FAISS), and OpenAI API integration</li>
-            <li>Deployed chatbot can be embedded via a simple &lt;iframe&gt; tag into any website</li>
-            <li>Hands-on experience with LLM integration in real-world use cases</li>
+            <li>
+              Built end-to-end web application with user registration and
+              chatbot management
+            </li>
+            <li>
+              Backend implemented document processing, vector indexing (FAISS),
+              and OpenAI API integration
+            </li>
+            <li>
+              Deployed chatbot can be embedded via a simple &lt;iframe&gt; tag
+              into any website
+            </li>
+            <li>
+              Hands-on experience with LLM integration in real-world use cases
+            </li>
           </ul>
         </div>
 
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">Technical Implementation:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            Technical Implementation:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Document processing pipeline for multiple file formats (PDF, Word, Excel, Text)</li>
-            <li>Vector database integration using FAISS for efficient similarity search</li>
-            <li>OpenAI ChatGPT API integration for intelligent response generation</li>
-            <li>Retrieval-Augmented Generation (RAG) for context-aware responses</li>
+            <li>
+              Document processing pipeline for multiple file formats (PDF, Word,
+              Excel, Text)
+            </li>
+            <li>
+              Vector database integration using FAISS for efficient similarity
+              search
+            </li>
+            <li>
+              OpenAI ChatGPT API integration for intelligent response generation
+            </li>
+            <li>
+              Retrieval-Augmented Generation (RAG) for context-aware responses
+            </li>
           </ul>
         </div>
 
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">Real-World Impact:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            Real-World Impact:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Businesses can create custom chatbots without technical expertise</li>
+            <li>
+              Businesses can create custom chatbots without technical expertise
+            </li>
             <li>Easy website integration through iframe embedding</li>
             <li>Scalable architecture for multiple concurrent users</li>
             <li>Cost-effective solution for customer support automation</li>
@@ -69,7 +118,8 @@ const ProjectDetail = () => {
 
         <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mt-4">
           <p className="text-yellow-300">
-            <strong>Note:</strong> The demo is live but hosted on a free server. Please contact me to wake the server up for error-free usage.
+            <strong>Note:</strong> The demo is live but hosted on a free server.
+            Please contact me to wake the server up for error-free usage.
           </p>
         </div>
       </div>
@@ -112,7 +162,7 @@ const ProjectDetail = () => {
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
               {project.description}
             </p>
-            
+
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm">
@@ -166,8 +216,8 @@ const ProjectDetail = () => {
                 {/* Demo Screenshot */}
                 <div className="space-y-4">
                   <div className="w-full h-48 rounded-lg overflow-hidden">
-                    <img 
-                      src="/ai-chatbot.png" 
+                    <img
+                      src="/ai-chatbot.png"
                       alt="AI Chatbot Platform Demo"
                       className="w-full h-full object-cover"
                     />
@@ -176,12 +226,15 @@ const ProjectDetail = () => {
                     AI Chatbot Platform Interface
                   </p>
                 </div>
-                
+
                 {/* Demo Guide */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">Step-by-Step Demo Guide</h3>
+                  <h3 className="text-xl font-semibold">
+                    Step-by-Step Demo Guide
+                  </h3>
                   <p className="text-gray-300 text-sm mb-4">
-                    Learn how to create a custom chatbot for your business using our platform.
+                    Learn how to create a custom chatbot for your business using
+                    our platform.
                   </p>
                   <motion.a
                     href="/How To Create A Shoe Store Chatbot.pdf"
@@ -213,7 +266,9 @@ const ProjectDetail = () => {
                       className="flex flex-col items-center gap-3 p-4 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-colors duration-300"
                     >
                       <Icon className={`w-8 h-8 ${tech.color}`} />
-                      <span className="text-gray-300 text-sm font-medium">{tech.name}</span>
+                      <span className="text-gray-300 text-sm font-medium">
+                        {tech.name}
+                      </span>
                     </div>
                   );
                 })}
@@ -234,10 +289,13 @@ const ProjectDetail = () => {
           {/* Call to Action */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-4">Interested in AI-powered solutions?</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                Interested in AI-powered solutions?
+              </h2>
               <p className="text-gray-300 mb-6">
-                This project showcases my expertise in AI, machine learning, and modern web development. 
-                Let's discuss how I can help build intelligent solutions for your business!
+                This project showcases my expertise in AI, machine learning, and
+                modern web development. Let's discuss how I can help build
+                intelligent solutions for your business!
               </p>
               <Link href="/contact">
                 <motion.button

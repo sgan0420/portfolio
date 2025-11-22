@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import emailjs from '@emailjs/browser';
-import { 
-  HiMail, 
-  HiPhone, 
-  HiLocationMarker, 
+import emailjs from "@emailjs/browser";
+import {
+  HiMail,
+  HiPhone,
+  HiLocationMarker,
   HiPaperAirplane,
   HiUser,
-  HiChat
+  HiChat,
 } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
@@ -26,7 +26,9 @@ const Contact = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -48,21 +50,22 @@ const Contact = () => {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'shijiegan.gs@gmail.com',
+          to_email: "shijiegan.gs@gmail.com",
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
-      console.log('Email sent successfully:', result);
+      console.log("Email sent successfully:", result);
       setIsSuccess(true);
       setFormData({ name: "", email: "", subject: "", message: "" }); // Reset form
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000);
-      
     } catch (error) {
-      console.error('Email sending failed:', error);
-      setError("Failed to send message. Please try again or contact me directly.");
+      console.error("Email sending failed:", error);
+      setError(
+        "Failed to send message. Please try again or contact me directly."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -145,8 +148,8 @@ const Contact = () => {
               Get In Touch
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Have a project in mind or want to collaborate? I'd love to hear from you. 
-              Let's create something amazing together!
+              Have a project in mind or want to collaborate? I'd love to hear
+              from you. Let's create something amazing together!
             </p>
           </motion.div>
 
@@ -158,11 +161,14 @@ const Contact = () => {
                   <HiChat className="w-6 h-6 text-blue-400" />
                   <h2 className="text-2xl font-bold">Send a Message</h2>
                 </div>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Your Name
                       </label>
                       <div className="relative">
@@ -179,9 +185,12 @@ const Contact = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Email Address
                       </label>
                       <div className="relative">
@@ -201,7 +210,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Subject
                     </label>
                     <input
@@ -217,7 +229,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Message
                     </label>
                     <textarea
@@ -239,7 +254,8 @@ const Contact = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400"
                     >
-                      ✅ Thank you! Your message has been sent successfully. I'll get back to you soon!
+                      ✅ Thank you! Your message has been sent successfully.
+                      I'll get back to you soon!
                     </motion.div>
                   )}
 
@@ -259,7 +275,7 @@ const Contact = () => {
                     type="submit"
                     disabled={isLoading}
                     className={`w-full flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 ${
-                      isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                      isLoading ? "opacity-70 cursor-not-allowed" : ""
                     }`}
                   >
                     {isLoading ? (
@@ -290,8 +306,18 @@ const Contact = () => {
                       <motion.a
                         key={index}
                         href={info.href}
-                        target={info.href?.startsWith("https://wa.me") || info.href?.startsWith("https://maps.google.com") ? "_blank" : undefined}
-                        rel={info.href?.startsWith("https://wa.me") || info.href?.startsWith("https://maps.google.com") ? "noopener noreferrer" : undefined}
+                        target={
+                          info.href?.startsWith("https://wa.me") ||
+                          info.href?.startsWith("https://maps.google.com")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          info.href?.startsWith("https://wa.me") ||
+                          info.href?.startsWith("https://maps.google.com")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className="flex items-center gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors duration-300 group"
                         whileHover={{ x: 5 }}
                       >
@@ -304,7 +330,9 @@ const Contact = () => {
                           {info.isWhatsApp && (
                             <div className="flex items-center gap-1 mt-1">
                               <FaWhatsapp className="w-4 h-4 text-green-400" />
-                              <span className="text-xs text-green-400">WhatsApp me directly</span>
+                              <span className="text-xs text-green-400">
+                                WhatsApp me directly
+                              </span>
                             </div>
                           )}
                         </div>
@@ -333,7 +361,9 @@ const Contact = () => {
                         <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center group-hover:bg-gray-700 transition-colors duration-300">
                           <Icon className="w-6 h-6" />
                         </div>
-                        <span className="text-sm font-medium">{social.label}</span>
+                        <span className="text-sm font-medium">
+                          {social.label}
+                        </span>
                       </motion.a>
                     );
                   })}
@@ -345,11 +375,14 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold mb-4">Availability</h2>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 font-medium">Available for new opportunities</span>
+                  <span className="text-green-400 font-medium">
+                    Available for new opportunities
+                  </span>
                 </div>
                 <p className="text-gray-300 text-sm">
-                  I'm currently open to new freelance projects and full-time opportunities. 
-                  Feel free to reach out if you have an exciting project or role in mind!
+                  I'm currently open to new freelance projects and full-time
+                  opportunities. Feel free to reach out if you have an exciting
+                  project or role in mind!
                 </p>
               </div>
             </motion.div>

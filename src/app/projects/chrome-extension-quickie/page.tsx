@@ -30,15 +30,22 @@ const ProjectDetail = () => {
   // Project data - Chrome Extension Quickie
   const project = {
     title: "Chrome Extension - Quickie",
-    description: "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions, no need to memorize shortcuts or dig through menus.",
+    description:
+      "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions, no need to memorize shortcuts or dig through menus.",
     longDescription: (
       <div>
         <p className="mb-4">
-          Quickie is your one-click Chrome toolbox. It offers instant access to Chrome's most useful actions, no need to memorize shortcuts or dig through menus. From tab management and history to site settings, downloads, and even QR code generation, Quickie helps users stay efficient and focused.
+          Quickie is your one-click Chrome toolbox. It offers instant access to
+          Chrome's most useful actions, no need to memorize shortcuts or dig
+          through menus. From tab management and history to site settings,
+          downloads, and even QR code generation, Quickie helps users stay
+          efficient and focused.
         </p>
-        
+
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">Key Features:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            Key Features:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>One-click access to Chrome's most useful features</li>
             <li>Tab management tools for better organization</li>
@@ -51,7 +58,9 @@ const ProjectDetail = () => {
         </div>
 
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">Technical Implementation:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            Technical Implementation:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Built using Chrome Extension Manifest V3</li>
             <li>Vanilla JavaScript for optimal performance</li>
@@ -62,7 +71,9 @@ const ProjectDetail = () => {
         </div>
 
         <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">User Experience:</h4>
+          <h4 className="text-lg font-bold text-blue-400 mb-2">
+            User Experience:
+          </h4>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Eliminates need to memorize keyboard shortcuts</li>
             <li>Reduces time spent navigating through Chrome menus</li>
@@ -73,7 +84,8 @@ const ProjectDetail = () => {
 
         <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 mt-4">
           <p className="text-green-300">
-            <strong>Available Now:</strong> Download Quickie from the Chrome Web Store and start boosting your browsing efficiency today!
+            <strong>Available Now:</strong> Download Quickie from the Chrome Web
+            Store and start boosting your browsing efficiency today!
           </p>
         </div>
       </div>
@@ -85,7 +97,8 @@ const ProjectDetail = () => {
       { name: "Chrome API", icon: FaChrome, color: "text-green-500" },
     ],
     githubUrl: "https://github.com/sgan0420/extension-shortcut-launcher",
-    liveUrl: "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
     category: "Web Extension",
     duration: "1 month",
     status: "Published",
@@ -113,7 +126,7 @@ const ProjectDetail = () => {
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
               {project.description}
             </p>
-            
+
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm">
@@ -167,8 +180,8 @@ const ProjectDetail = () => {
                 {/* Extension Screenshot */}
                 <div className="space-y-4">
                   <div className="w-full h-48 rounded-lg overflow-hidden">
-                    <img 
-                      src="/quickie.png" 
+                    <img
+                      src="/quickie.png"
                       alt="Chrome Extension Quickie Interface"
                       className="w-full h-full object-cover"
                     />
@@ -177,30 +190,42 @@ const ProjectDetail = () => {
                     Quickie Extension Interface
                   </p>
                 </div>
-                
+
                 {/* Features Overview */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">Quick Access Features</h3>
+                  <h3 className="text-xl font-semibold">
+                    Quick Access Features
+                  </h3>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">Tab Management</span>
+                      <span className="text-gray-300 text-sm">
+                        Tab Management
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">History & Bookmarks</span>
+                      <span className="text-gray-300 text-sm">
+                        History & Bookmarks
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">Site Settings</span>
+                      <span className="text-gray-300 text-sm">
+                        Site Settings
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">Downloads Manager</span>
+                      <span className="text-gray-300 text-sm">
+                        Downloads Manager
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">QR Code Generator</span>
+                      <span className="text-gray-300 text-sm">
+                        QR Code Generator
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -221,7 +246,9 @@ const ProjectDetail = () => {
                       className="flex flex-col items-center gap-3 p-4 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-colors duration-300"
                     >
                       <Icon className={`w-8 h-8 ${tech.color}`} />
-                      <span className="text-gray-300 text-sm font-medium">{tech.name}</span>
+                      <span className="text-gray-300 text-sm font-medium">
+                        {tech.name}
+                      </span>
                     </div>
                   );
                 })}
@@ -242,10 +269,13 @@ const ProjectDetail = () => {
           {/* Call to Action */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-4">Need a custom browser extension?</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                Need a custom browser extension?
+              </h2>
               <p className="text-gray-300 mb-6">
-                This project demonstrates my expertise in browser extension development and user experience design. 
-                Let's discuss how I can help build productivity tools for your users!
+                This project demonstrates my expertise in browser extension
+                development and user experience design. Let's discuss how I can
+                help build productivity tools for your users!
               </p>
               <Link href="/contact">
                 <motion.button

@@ -18,8 +18,8 @@ const TetrisGame = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
       <div className="container mx-auto px-6 py-8">
         {/* Back Button */}
-        <Link 
-          href="/projects/tetris-game" 
+        <Link
+          href="/projects/tetris-game"
           className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300"
         >
           <HiArrowLeft className="w-5 h-5" />
@@ -32,12 +32,13 @@ const TetrisGame = () => {
             Play Tetris
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Experience the reactive TypeScript + RxJS Tetris game directly in your browser
+            Experience the reactive TypeScript + RxJS Tetris game directly in
+            your browser
           </p>
         </div>
 
         {/* Game Container */}
-        <div 
+        <div
           ref={gameContainerRef}
           className="flex justify-center"
           id="tetris-game-container"
@@ -48,7 +49,9 @@ const TetrisGame = () => {
         {/* Game Instructions */}
         <div className="mt-8 max-w-2xl mx-auto">
           <div className="glass rounded-2xl p-6">
-            <h3 className="text-xl font-bold mb-4 text-center">Game Controls</h3>
+            <h3 className="text-xl font-bold mb-4 text-center">
+              Game Controls
+            </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div className="text-center">
                 <div className="bg-gray-700 px-3 py-2 rounded mb-2">↑</div>
@@ -276,78 +279,109 @@ interface GameState {
 function initSimpleTetris() {
   // Game state
   let gameState: GameState = {
-    grid: Array(20).fill(null).map(() => Array(10).fill(0)),
+    grid: Array(20)
+      .fill(null)
+      .map(() => Array(10).fill(0)),
     currentPiece: null,
     nextPiece: null,
     holdPiece: null,
     score: 0,
     level: 0,
-    highScore: parseInt(localStorage.getItem('tetris-high-score') || '0'),
+    highScore: parseInt(localStorage.getItem("tetris-high-score") || "0"),
     gameOver: false,
     paused: false,
     dropTime: 0,
-    dropInterval: 1000
+    dropInterval: 1000,
   };
 
   // Tetromino shapes
   const TETROMINOES = {
     I: {
-      shape: [[1,1,1,1]],
-      color: 'cyan'
+      shape: [[1, 1, 1, 1]],
+      color: "cyan",
     },
     O: {
-      shape: [[1,1],[1,1]],
-      color: 'yellow'
+      shape: [
+        [1, 1],
+        [1, 1],
+      ],
+      color: "yellow",
     },
     T: {
-      shape: [[0,1,0],[1,1,1]],
-      color: 'magenta'
+      shape: [
+        [0, 1, 0],
+        [1, 1, 1],
+      ],
+      color: "magenta",
     },
     S: {
-      shape: [[0,1,1],[1,1,0]],
-      color: 'green'
+      shape: [
+        [0, 1, 1],
+        [1, 1, 0],
+      ],
+      color: "green",
     },
     Z: {
-      shape: [[1,1,0],[0,1,1]],
-      color: 'red'
+      shape: [
+        [1, 1, 0],
+        [0, 1, 1],
+      ],
+      color: "red",
     },
     J: {
-      shape: [[1,0,0],[1,1,1]],
-      color: 'blue'
+      shape: [
+        [1, 0, 0],
+        [1, 1, 1],
+      ],
+      color: "blue",
     },
     L: {
-      shape: [[0,0,1],[1,1,1]],
-      color: 'orange'
-    }
+      shape: [
+        [0, 0, 1],
+        [1, 1, 1],
+      ],
+      color: "orange",
+    },
   };
 
-  const canvas = document.getElementById('tetris-canvas') as unknown as SVGElement;
-  const nextCanvas = document.getElementById('tetris-next') as unknown as SVGElement;
-  const holdCanvas = document.getElementById('tetris-hold') as unknown as SVGElement;
-  const levelText = document.getElementById('level-text')!;
-  const scoreText = document.getElementById('score-text')!;
-  const highScoreText = document.getElementById('high-score-text')!;
-  const pauseBtn = document.getElementById('pause-button')!;
-  const restartBtn = document.getElementById('restart-button')!;
-  const gameOverDiv = document.getElementById('game-over')!;
-  const gamePauseDiv = document.getElementById('game-pause')!;
+  const canvas = document.getElementById(
+    "tetris-canvas"
+  ) as unknown as SVGElement;
+  const nextCanvas = document.getElementById(
+    "tetris-next"
+  ) as unknown as SVGElement;
+  const holdCanvas = document.getElementById(
+    "tetris-hold"
+  ) as unknown as SVGElement;
+  const levelText = document.getElementById("level-text")!;
+  const scoreText = document.getElementById("score-text")!;
+  const highScoreText = document.getElementById("high-score-text")!;
+  const pauseBtn = document.getElementById("pause-button")!;
+  const restartBtn = document.getElementById("restart-button")!;
+  const gameOverDiv = document.getElementById("game-over")!;
+  const gamePauseDiv = document.getElementById("game-pause")!;
 
   // Create a random piece
   function createPiece(): TetrisPiece {
     const pieces = Object.keys(TETROMINOES);
     const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
     const piece = TETROMINOES[randomPiece as keyof typeof TETROMINOES];
-    
+
     return {
       shape: piece.shape,
       color: piece.color,
       x: Math.floor(10 / 2) - Math.floor(piece.shape[0].length / 2),
-      y: 0
+      y: 0,
     };
   }
 
   // Check collision
-  function isValidMove(piece: TetrisPiece, dx: number, dy: number, newShape?: number[][]) {
+  function isValidMove(
+    piece: TetrisPiece,
+    dx: number,
+    dy: number,
+    newShape?: number[][]
+  ) {
     const shape = newShape || piece.shape;
     const newX = piece.x + dx;
     const newY = piece.y + dy;
@@ -357,11 +391,11 @@ function initSimpleTetris() {
         if (shape[y][x]) {
           const boardX = newX + x;
           const boardY = newY + y;
-          
+
           if (boardX < 0 || boardX >= 10 || boardY >= 20) {
             return false;
           }
-          
+
           if (boardY >= 0 && gameState.grid[boardY][boardX]) {
             return false;
           }
@@ -373,10 +407,10 @@ function initSimpleTetris() {
 
   // Rotate piece
   function rotatePiece(piece: TetrisPiece) {
-    const rotated = piece.shape[0].map((_, index) => 
+    const rotated = piece.shape[0].map((_, index) =>
       piece.shape.map((row) => row[index]).reverse()
     );
-    
+
     if (isValidMove(piece, 0, 0, rotated)) {
       piece.shape = rotated;
     }
@@ -385,7 +419,7 @@ function initSimpleTetris() {
   // Place piece on board
   function placePiece() {
     if (!gameState.currentPiece) return;
-    
+
     const piece = gameState.currentPiece;
     for (let y = 0; y < piece.shape.length; y++) {
       for (let x = 0; x < piece.shape[y].length; x++) {
@@ -401,18 +435,21 @@ function initSimpleTetris() {
 
     // Clear lines
     clearLines();
-    
+
     // Spawn next piece
     gameState.currentPiece = gameState.nextPiece;
     gameState.nextPiece = createPiece();
-    
+
     // Check game over
     if (gameState.currentPiece && !isValidMove(gameState.currentPiece, 0, 0)) {
       gameState.gameOver = true;
-      gameOverDiv.style.display = 'block';
+      gameOverDiv.style.display = "block";
       if (gameState.score > gameState.highScore) {
         gameState.highScore = gameState.score;
-        localStorage.setItem('tetris-high-score', gameState.highScore.toString());
+        localStorage.setItem(
+          "tetris-high-score",
+          gameState.highScore.toString()
+        );
       }
     }
   }
@@ -421,14 +458,14 @@ function initSimpleTetris() {
   function clearLines() {
     let linesCleared = 0;
     for (let y = gameState.grid.length - 1; y >= 0; y--) {
-      if (gameState.grid[y].every(cell => cell === 1)) {
+      if (gameState.grid[y].every((cell) => cell === 1)) {
         gameState.grid.splice(y, 1);
         gameState.grid.unshift(Array(10).fill(0));
         linesCleared++;
         y++; // Check the same line again
       }
     }
-    
+
     if (linesCleared > 0) {
       gameState.score += linesCleared * 100 * (gameState.level + 1);
       gameState.level = Math.floor(gameState.score / 1000);
@@ -439,21 +476,26 @@ function initSimpleTetris() {
   // Render game
   function render() {
     // Clear canvas
-    canvas.innerHTML = '';
-    nextCanvas.innerHTML = '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">NEXT</text>';
-    holdCanvas.innerHTML = '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">HOLD</text>';
+    canvas.innerHTML = "";
+    nextCanvas.innerHTML =
+      '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">NEXT</text>';
+    holdCanvas.innerHTML =
+      '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">HOLD</text>';
 
     // Draw grid
     for (let y = 0; y < 20; y++) {
       for (let x = 0; x < 10; x++) {
         if (gameState.grid[y][x]) {
-          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          rect.setAttribute('x', (x * 20).toString());
-          rect.setAttribute('y', (y * 20).toString());
-          rect.setAttribute('width', '20');
-          rect.setAttribute('height', '20');
-          rect.setAttribute('fill', 'gray');
-          rect.setAttribute('class', 'tetris-block');
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect"
+          );
+          rect.setAttribute("x", (x * 20).toString());
+          rect.setAttribute("y", (y * 20).toString());
+          rect.setAttribute("width", "20");
+          rect.setAttribute("height", "20");
+          rect.setAttribute("fill", "gray");
+          rect.setAttribute("class", "tetris-block");
           canvas.appendChild(rect);
         }
       }
@@ -465,13 +507,16 @@ function initSimpleTetris() {
       for (let y = 0; y < piece.shape.length; y++) {
         for (let x = 0; x < piece.shape[y].length; x++) {
           if (piece.shape[y][x]) {
-            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            rect.setAttribute('x', ((piece.x + x) * 20).toString());
-            rect.setAttribute('y', ((piece.y + y) * 20).toString());
-            rect.setAttribute('width', '20');
-            rect.setAttribute('height', '20');
-            rect.setAttribute('fill', piece.color);
-            rect.setAttribute('class', 'tetris-block');
+            const rect = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "rect"
+            );
+            rect.setAttribute("x", ((piece.x + x) * 20).toString());
+            rect.setAttribute("y", ((piece.y + y) * 20).toString());
+            rect.setAttribute("width", "20");
+            rect.setAttribute("height", "20");
+            rect.setAttribute("fill", piece.color);
+            rect.setAttribute("class", "tetris-block");
             canvas.appendChild(rect);
           }
         }
@@ -484,13 +529,16 @@ function initSimpleTetris() {
       for (let y = 0; y < piece.shape.length; y++) {
         for (let x = 0; x < piece.shape[y].length; x++) {
           if (piece.shape[y][x]) {
-            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            rect.setAttribute('x', ((x + 3) * 15).toString());
-            rect.setAttribute('y', ((y + 2) * 15).toString());
-            rect.setAttribute('width', '15');
-            rect.setAttribute('height', '15');
-            rect.setAttribute('fill', piece.color);
-            rect.setAttribute('class', 'tetris-block');
+            const rect = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "rect"
+            );
+            rect.setAttribute("x", ((x + 3) * 15).toString());
+            rect.setAttribute("y", ((y + 2) * 15).toString());
+            rect.setAttribute("width", "15");
+            rect.setAttribute("height", "15");
+            rect.setAttribute("fill", piece.color);
+            rect.setAttribute("class", "tetris-block");
             nextCanvas.appendChild(rect);
           }
         }
@@ -507,7 +555,10 @@ function initSimpleTetris() {
   function gameLoop(timestamp: number) {
     if (!gameState.gameOver && !gameState.paused) {
       if (timestamp - gameState.dropTime > gameState.dropInterval) {
-        if (gameState.currentPiece && isValidMove(gameState.currentPiece, 0, 1)) {
+        if (
+          gameState.currentPiece &&
+          isValidMove(gameState.currentPiece, 0, 1)
+        ) {
           gameState.currentPiece.y++;
         } else {
           placePiece();
@@ -515,38 +566,38 @@ function initSimpleTetris() {
         gameState.dropTime = timestamp;
       }
     }
-    
+
     render();
     requestAnimationFrame(gameLoop);
   }
 
   // Controls
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener("keydown", (e) => {
     if (gameState.gameOver || gameState.paused) return;
-    
+
     if (!gameState.currentPiece) return;
-    
+
     switch (e.code) {
-      case 'ArrowLeft':
+      case "ArrowLeft":
         if (isValidMove(gameState.currentPiece, -1, 0)) {
           gameState.currentPiece.x--;
         }
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         if (isValidMove(gameState.currentPiece, 1, 0)) {
           gameState.currentPiece.x++;
         }
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         if (isValidMove(gameState.currentPiece, 0, 1)) {
           gameState.currentPiece.y++;
           gameState.score++;
         }
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         rotatePiece(gameState.currentPiece);
         break;
-      case 'Space':
+      case "Space":
         while (isValidMove(gameState.currentPiece, 0, 1)) {
           gameState.currentPiece.y++;
           gameState.score += 2;
@@ -558,37 +609,39 @@ function initSimpleTetris() {
   });
 
   // Button controls
-  pauseBtn.addEventListener('click', () => {
+  pauseBtn.addEventListener("click", () => {
     gameState.paused = !gameState.paused;
     if (gameState.paused) {
-      gamePauseDiv.style.display = 'block';
+      gamePauseDiv.style.display = "block";
     } else {
-      gamePauseDiv.style.display = 'none';
+      gamePauseDiv.style.display = "none";
     }
   });
 
-  restartBtn.addEventListener('click', () => {
+  restartBtn.addEventListener("click", () => {
     gameState = {
-      grid: Array(20).fill(null).map(() => Array(10).fill(0)),
+      grid: Array(20)
+        .fill(null)
+        .map(() => Array(10).fill(0)),
       currentPiece: createPiece(),
       nextPiece: createPiece(),
       holdPiece: null,
       score: 0,
       level: 0,
-      highScore: parseInt(localStorage.getItem('tetris-high-score') || '0'),
+      highScore: parseInt(localStorage.getItem("tetris-high-score") || "0"),
       gameOver: false,
       paused: false,
       dropTime: 0,
-      dropInterval: 1000
+      dropInterval: 1000,
     };
-    gameOverDiv.style.display = 'none';
-    gamePauseDiv.style.display = 'none';
+    gameOverDiv.style.display = "none";
+    gamePauseDiv.style.display = "none";
   });
 
   // Initialize game
   gameState.currentPiece = createPiece();
   gameState.nextPiece = createPiece();
-  
+
   // Start game loop
   requestAnimationFrame(gameLoop);
 }

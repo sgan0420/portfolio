@@ -13,6 +13,7 @@ import {
   FaGamepad,
   FaGithub,
   FaEnvelope,
+  FaChartLine,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -23,11 +24,31 @@ import {
   SiHtml5,
   SiCss3,
   SiReactivex,
+  SiVuedotjs,
+  SiVite,
+  SiBinance,
+  SiMongodb,
+  SiDocker,
 } from "react-icons/si";
 
 const Projects = () => {
   // Projects data
   const projects = [
+    {
+      id: 5,
+      title: "BTC Trading Chart",
+      slug: "btc-trading-chart",
+      description:
+        "A real-time Bitcoin trading chart application inspired by TradingView. Features live price updates via Binance API, interactive candlestick/line charts, and responsive design.",
+      image: "/btc-chart.png",
+      technologies: [
+        { name: "Vue 3", icon: SiVuedotjs },
+        { name: "Vite", icon: SiVite },
+        { name: "ApexCharts", icon: FaChartLine },
+        { name: "Binance API", icon: SiBinance },
+      ],
+      category: "Web Application",
+    },
     {
       id: 1,
       title: "AI Chatbot Platform",
@@ -90,6 +111,22 @@ const Projects = () => {
         { name: "SVG", icon: FaGamepad },
       ],
       category: "Interactive Game",
+    },
+    {
+      id: 6,
+      title: "Patlytics Infringement Checker",
+      slug: "patlytics-infringement-checker",
+      description:
+        "An AI-powered patent infringement analysis tool that leverages GPT-4o to analyze patent claims against company products, detecting potential infringements with high accuracy.",
+      image: "/patlytics.png",
+      technologies: [
+        { name: "React", icon: FaReact },
+        { name: "Flask", icon: SiFlask },
+        { name: "OpenAI", icon: SiOpenai },
+        { name: "MongoDB", icon: SiMongodb },
+        { name: "Docker", icon: SiDocker },
+      ],
+      category: "AI & Legal Tech",
     },
   ];
 

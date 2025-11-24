@@ -144,30 +144,11 @@ const Projects = () => {
             Projects
           </h1>
           <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
-            A showcase of my work and technical skills. Each project represents
-            a unique challenge and demonstrates different aspects of modern
-            software development.
-          </p>
-        </motion.div>
-
-        {/* Play My Tetris Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-24"
-        >
-          <a
-            href="https://sgan0420.github.io/tetris-game/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium text-lg rounded-full hover:opacity-80 transition-opacity duration-300"
-          >
-            <FaGamepad className="w-6 h-6" />
-            Play My Tetris Game
-          </a>
-          <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm font-light">
-            ↑ One of my favourite projects | Play on desktop
+            A showcase of my personal projects and technical skills. Each
+            project represents a unique challenge and demonstrates different
+            aspects of modern software development. Please note that
+            professional industrial projects are not displayed here due to
+            confidentiality.
           </p>
         </motion.div>
 

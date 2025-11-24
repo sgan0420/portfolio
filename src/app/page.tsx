@@ -27,11 +27,11 @@ export default function HomePage() {
                 stack, AI integration, and ready to contribute to your team's
                 success from day one.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <a
                   href="/Resume_ShijieGan.pdf"
                   download
-                  className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium hover:opacity-80 transition-opacity duration-200"
+                  className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium hover:opacity-80 transition-opacity duration-200 rounded-full"
                 >
                   Download Resume
                 </a>
@@ -39,7 +39,7 @@ export default function HomePage() {
                   href="https://www.linkedin.com/in/shijie-gan-968926197/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 border border-black dark:border-white text-black dark:text-white font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200"
+                  className="px-8 py-3 border border-black dark:border-white text-black dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 rounded-full"
                 >
                   Connect on LinkedIn
                 </a>

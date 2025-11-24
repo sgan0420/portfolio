@@ -15,7 +15,7 @@ const BackButton = ({ href, text, className = "" }: BackButtonProps) => {
     <Link href={href}>
       <motion.button
         whileHover={{ x: -5 }}
-        className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer ${className}`}
+        className={`flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 cursor-pointer ${className}`}
       >
         <HiArrowLeft className="w-5 h-5" />
         {text}

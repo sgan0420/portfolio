@@ -2,23 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiCode } from "react-icons/hi";
+import Image from "next/image";
+import { HiCode, HiArrowRight } from "react-icons/hi";
 import {
   FaReact,
   FaNodeJs,
   FaPython,
-  FaJava,
-  FaGithub,
   FaDatabase,
   FaBrain,
   FaGamepad,
+  FaGithub,
   FaEnvelope,
 } from "react-icons/fa";
 import {
   SiTypescript,
-  SiNextdotjs,
   SiTailwindcss,
-  SiMongodb,
   SiFlask,
   SiOpenai,
   SiNumpy,
@@ -28,25 +26,6 @@ import {
 } from "react-icons/si";
 
 const Projects = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   // Projects data
   const projects = [
     {
@@ -57,15 +36,13 @@ const Projects = () => {
         "An AI-powered chatbot platform that enables businesses and individuals to easily create and deploy custom chatbots using document upload and RAG techniques with FAISS vector database.",
       image: "/ai-chatbot.png",
       technologies: [
-        { name: "React", icon: FaReact, color: "text-blue-400" },
-        { name: "Flask", icon: SiFlask, color: "text-white" },
-        { name: "OpenAI API", icon: SiOpenai, color: "text-green-400" },
-        { name: "RAG", icon: FaBrain, color: "text-pink-400" },
-        { name: "FAISS", icon: SiNumpy, color: "text-blue-500" },
-        { name: "Vector DB", icon: FaDatabase, color: "text-purple-400" },
+        { name: "React", icon: FaReact },
+        { name: "Flask", icon: SiFlask },
+        { name: "OpenAI API", icon: SiOpenai },
+        { name: "RAG", icon: FaBrain },
+        { name: "FAISS", icon: SiNumpy },
+        { name: "Vector DB", icon: FaDatabase },
       ],
-      githubUrl: "https://github.com/sgan0420/chatbot",
-      liveUrl: "https://chatbot-69x9.onrender.com/",
       category: "AI/ML",
     },
     {
@@ -76,14 +53,11 @@ const Projects = () => {
         "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions. From tab management and history to site settings, downloads, and QR code generation.",
       image: "/quickie.png",
       technologies: [
-        { name: "JavaScript", icon: FaNodeJs, color: "text-yellow-400" },
-        { name: "HTML", icon: FaReact, color: "text-orange-500" },
-        { name: "CSS", icon: SiTailwindcss, color: "text-blue-400" },
-        { name: "Chrome API", icon: FaReact, color: "text-green-500" },
+        { name: "JavaScript", icon: FaNodeJs },
+        { name: "HTML", icon: FaReact },
+        { name: "CSS", icon: SiTailwindcss },
+        { name: "Chrome API", icon: FaReact },
       ],
-      githubUrl: "https://github.com/sgan0420/extension-shortcut-launcher",
-      liveUrl:
-        "https://chromewebstore.google.com/detail/ddbehnlodocjgdmkeaaiedkkdlnhehkp?utm_source=item-share-cb",
       category: "Web Extension",
     },
     {
@@ -94,13 +68,11 @@ const Projects = () => {
         "Intelligent AI agents designed to master the classic Pac-Man game using search algorithms, adversarial agents, reinforcement learning, and custom perceptron models.",
       image: "/pacman.png",
       technologies: [
-        { name: "Python", icon: FaPython, color: "text-yellow-400" },
-        { name: "AI Search", icon: FaBrain, color: "text-purple-400" },
-        { name: "Q-Learning", icon: FaDatabase, color: "text-blue-500" },
-        { name: "Perceptron", icon: FaReact, color: "text-green-400" },
+        { name: "Python", icon: FaPython },
+        { name: "AI Search", icon: FaBrain },
+        { name: "Q-Learning", icon: FaDatabase },
+        { name: "Perceptron", icon: FaReact },
       ],
-      githubUrl: "https://github.com/sgan0420/pacman-ai",
-      liveUrl: "https://your-pacman-ai-demo.vercel.app",
       category: "AI/ML",
     },
     {
@@ -111,221 +83,175 @@ const Projects = () => {
         "A fully interactive, modern Tetris game built with TypeScript and RxJS using reactive architecture. Features real-time game logic, SVG rendering, and immutable state management.",
       image: "/tetris.png",
       technologies: [
-        { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
-        { name: "RxJS", icon: SiReactivex, color: "text-purple-400" },
-        { name: "HTML", icon: SiHtml5, color: "text-orange-500" },
-        { name: "CSS", icon: SiCss3, color: "text-blue-500" },
-        { name: "SVG", icon: FaGamepad, color: "text-green-400" },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "RxJS", icon: SiReactivex },
+        { name: "HTML", icon: SiHtml5 },
+        { name: "CSS", icon: SiCss3 },
+        { name: "SVG", icon: FaGamepad },
       ],
-      githubUrl: "https://github.com/sgan0420/tetris-game",
-      liveUrl: "https://sgan0420.github.io/tetris-game/",
       category: "Interactive Game",
     },
   ];
 
-  const categories = [
-    "All",
-    "Web Development",
-    "Web Extension",
-    "Full Stack",
-    "AI/ML",
-    "Mobile",
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      <div className="container mx-auto px-6 pt-28 pb-20">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        {/* Header Section */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-7xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-24"
         >
-          {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6 leading-tight py-4">
-              My Projects
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A showcase of my work and technical skills. Each project
-              represents a unique challenge and demonstrates different aspects
-              of modern software development.
-            </p>
-          </motion.div>
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight mb-8">
+            Projects
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
+            A showcase of my work and technical skills. Each project represents
+            a unique challenge and demonstrates different aspects of modern
+            software development.
+          </p>
+        </motion.div>
 
-          {/* Play My Tetris Button */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <motion.a
-              href="https://sgan0420.github.io/tetris-game/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-green-500 text-white font-bold text-lg rounded-2xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-            >
-              <FaGamepad className="w-6 h-6" />
-              Play My Tetris Game
-            </motion.a>
-            <p className="text-gray-300 mt-2 text-sm">
-              ⬆️ One of my favourite projects | Play on desktop | Refer to the
-              Tetris Game card below for the details
-            </p>
-          </motion.div>
-
-          {/* Projects Grid */}
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        {/* Play My Tetris Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-24"
+        >
+          <a
+            href="https://sgan0420.github.io/tetris-game/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium text-lg rounded-full hover:opacity-80 transition-opacity duration-300"
           >
-            {projects.map((project) => (
-              <Link key={project.id} href={`/projects/${project.slug}`}>
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="glass rounded-2xl overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
-                >
-                  {/* Project Image */}
-                  <div className="relative h-48 bg-gray-800 overflow-hidden">
-                    {project.image && !project.image.includes("placeholder") ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                        <HiCode className="w-16 h-16 text-gray-500 group-hover:text-blue-400 transition-colors duration-300" />
+            <FaGamepad className="w-6 h-6" />
+            Play My Tetris Game
+          </a>
+          <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm font-light">
+            ↑ One of my favourite projects | Play on desktop
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+          {projects.map((project, index) => (
+            <Link key={project.id} href={`/projects/${project.slug}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group cursor-pointer border border-gray-300 dark:border-gray-700 rounded-2xl overflow-hidden hover:shadow-xl hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300 bg-white dark:bg-black"
+              >
+                <div className="relative aspect-[4/3] bg-gray-50 dark:bg-gray-900 overflow-hidden border-b border-gray-100 dark:border-gray-800">
+                  {project.image && !project.image.includes("placeholder") ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <HiCode className="w-16 h-16 text-gray-400" />
+                    </div>
+                  )}
+                  <div className="absolute top-4 right-4 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+                    {project.category}
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-2xl font-light mb-3 group-hover:underline underline-offset-4 decoration-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-400 font-light mb-6 line-clamp-3 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 3).map((tech, i) => {
+                      const Icon = tech.icon;
+                      return (
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300"
+                        >
+                          <Icon className="w-4 h-4" />
+                          <span>{tech.name}</span>
+                        </div>
+                      );
+                    })}
+                    {project.technologies.length > 3 && (
+                      <div className="px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-500 dark:text-gray-400">
+                        +{project.technologies.length - 3} more
                       </div>
                     )}
-                    <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
-                      {project.category}
-                    </div>
-
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                      <span className="text-white font-medium">
-                        Click to view details
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0, 3).map((tech, index) => {
-                        const Icon = tech.icon;
-                        return (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 px-3 py-1 bg-gray-800/50 rounded-full text-sm"
-                          >
-                            <Icon className={`w-4 h-4 ${tech.color}`} />
-                            <span className="text-gray-300">{tech.name}</span>
-                          </div>
-                        );
-                      })}
-                      {project.technologies.length > 3 && (
-                        <div className="flex items-center px-3 py-1 bg-gray-800/50 rounded-full text-sm">
-                          <span className="text-gray-400">
-                            +{project.technologies.length - 3} more
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-            ))}
-
-            {/* Coming Soon Card */}
-            <motion.div
-              variants={itemVariants}
-              className="glass rounded-2xl overflow-hidden border-2 border-dashed border-gray-600 hover:border-blue-500 transition-all duration-300"
-            >
-              {/* Coming Soon Image */}
-              <div className="relative h-48 bg-gradient-to-br from-gray-800/50 to-gray-900/50 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
-                    <span className="text-3xl">🚀</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-300">
-                    Coming Soon
-                  </h3>
-                </div>
-                <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
-                  In Development
-                </div>
-              </div>
-
-              {/* Coming Soon Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">
-                  More Amazing Projects
-                </h3>
-                <p className="text-gray-300 text-sm mb-4">
-                  I have many other exciting projects that I want to share with
-                  you! This portfolio site is still under development and more
-                  project showcases are coming soon.
-                </p>
-
-                {/* Coming Soon Tags */}
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-sm">
-                    <span className="text-orange-400">⏳</span>
-                    <span className="text-orange-300">In Progress</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm">
-                    <span className="text-blue-400">📝</span>
-                    <span className="text-blue-300">More Content</span>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              </motion.div>
+            </Link>
+          ))}
 
-          {/* Call to Action */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4">Want to see more?</h2>
-              <p className="text-gray-300 mb-6">
-                These are just a few examples of my work. I'm always working on
-                new projects and exploring cutting-edge technologies. Check out
-                my GitHub for more!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch">
-                <motion.a
-                  href="https://github.com/sgan0420"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]"
-                >
-                  <FaGithub className="w-4 h-4" />
-                  View GitHub
-                </motion.a>
-                <Link href="/contact" className="flex-1 sm:flex-none">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 hover:shadow-lg transition-all duration-300 cursor-pointer w-full sm:min-w-[180px]"
-                  >
-                    <FaEnvelope className="w-4 h-4" />
-                    Contact Me
-                  </motion.button>
-                </Link>
-              </div>
+          {/* Coming Soon Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="border border-dashed border-gray-300 dark:border-gray-700 rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]"
+          >
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center mb-6">
+              <span className="text-3xl">🚀</span>
+            </div>
+            <h3 className="text-2xl font-light mb-3">Coming Soon</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-light mb-6 leading-relaxed">
+              I have many other exciting projects that I want to share with you!
+              More project showcases are coming soon.
+            </p>
+            <div className="flex gap-2">
+              <span className="px-3 py-1 bg-gray-100 dark:bg-gray-900 rounded-full text-sm text-gray-500 dark:text-gray-400">
+                In Progress
+              </span>
             </div>
           </motion.div>
+        </div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="border-t border-gray-200 dark:border-gray-800 pt-24"
+        >
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-light mb-6">Want to see more?</h2>
+            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 leading-relaxed">
+              These are just a few examples of my work. I&apos;m always working
+              on new projects and exploring cutting-edge technologies.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="https://github.com/sgan0420"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
+              >
+                <FaGithub className="w-5 h-5" />
+                View GitHub
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300"
+              >
+                <FaEnvelope className="w-5 h-5" />
+                Contact Me
+              </Link>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>

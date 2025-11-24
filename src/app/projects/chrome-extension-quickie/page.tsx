@@ -2,99 +2,124 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiArrowLeft, HiExternalLink } from "react-icons/hi";
+import Image from "next/image";
+import { HiExternalLink } from "react-icons/hi";
 import { FaGithub, FaChrome, FaDownload } from "react-icons/fa";
 import { SiJavascript, SiHtml5, SiCss3 } from "react-icons/si";
 import BackButton from "../../../components/BackButton";
 
 const ProjectDetail = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   // Project data - Chrome Extension Quickie
   const project = {
     title: "Chrome Extension - Quickie",
     description:
       "A one-click Chrome toolbox that offers instant access to Chrome's most useful actions, no need to memorize shortcuts or dig through menus.",
     longDescription: (
-      <div>
-        <p className="mb-4">
-          Quickie is your one-click Chrome toolbox. It offers instant access to
-          Chrome's most useful actions, no need to memorize shortcuts or dig
-          through menus. From tab management and history to site settings,
-          downloads, and even QR code generation, Quickie helps users stay
-          efficient and focused.
-        </p>
+      <div className="space-y-12">
+        <div>
+          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+            Quickie is your one-click Chrome toolbox. It offers instant access
+            to Chrome&apos;s most useful actions, no need to memorize shortcuts
+            or dig through menus. From tab management and history to site
+            settings, downloads, and even QR code generation, Quickie helps
+            users stay efficient and focused.
+          </p>
+        </div>
 
-        <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">
-            Key Features:
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+              Key Features
+            </h4>
+            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                One-click access to Chrome&apos;s features
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Tab management tools
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                History & Bookmarks access
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Site settings & permissions
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                QR code generation
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+              Technical Implementation
+            </h4>
+            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Chrome Extension Manifest V3
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Vanilla JavaScript performance
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Responsive popup interface
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Chrome APIs integration
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            User Experience
           </h4>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>One-click access to Chrome's most useful features</li>
-            <li>Tab management tools for better organization</li>
-            <li>Quick access to browsing history and bookmarks</li>
-            <li>Site settings and permissions management</li>
-            <li>Downloads management interface</li>
-            <li>QR code generation for easy sharing</li>
-            <li>Clean, intuitive user interface</li>
+          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              Eliminates need for keyboard shortcuts
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              Reduces navigation time
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              Improves productivity
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              Accessible design
+            </li>
           </ul>
         </div>
 
-        <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">
-            Technical Implementation:
-          </h4>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Built using Chrome Extension Manifest V3</li>
-            <li>Vanilla JavaScript for optimal performance</li>
-            <li>HTML5 and CSS3 for responsive popup interface</li>
-            <li>Chrome APIs integration for browser functionality</li>
-            <li>Lightweight design with minimal resource usage</li>
-          </ul>
-        </div>
-
-        <div className="mb-4">
-          <h4 className="text-lg font-bold text-blue-400 mb-2">
-            User Experience:
-          </h4>
-          <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Eliminates need to memorize keyboard shortcuts</li>
-            <li>Reduces time spent navigating through Chrome menus</li>
-            <li>Improves productivity for power users and casual browsers</li>
-            <li>Accessible design for users of all technical levels</li>
-          </ul>
-        </div>
-
-        <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 mt-4">
-          <p className="text-green-300">
-            <strong>Available Now:</strong> Download Quickie from the Chrome Web
-            Store and start boosting your browsing efficiency today!
+        <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
+            <strong className="text-black dark:text-white font-medium">
+              Available Now:
+            </strong>{" "}
+            Download Quickie from the Chrome Web Store and start boosting your
+            browsing efficiency today!
           </p>
         </div>
       </div>
     ),
     technologies: [
-      { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-      { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
-      { name: "CSS3", icon: SiCss3, color: "text-blue-400" },
-      { name: "Chrome API", icon: FaChrome, color: "text-green-500" },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "HTML5", icon: SiHtml5 },
+      { name: "CSS3", icon: SiCss3 },
+      { name: "Chrome API", icon: FaChrome },
     ],
     githubUrl: "https://github.com/sgan0420/extension-shortcut-launcher",
     liveUrl:
@@ -105,37 +130,37 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      <div className="container mx-auto px-6 pt-28 pb-20">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+      <div className="container mx-auto px-6 sm:px-8">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
           {/* Back Button */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="mb-12">
             <BackButton href="/projects" text="Back to Projects" />
-          </motion.div>
+          </div>
 
           {/* Project Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm">
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
                 {project.category}
               </span>
-              <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm">
+              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
                 {project.duration}
               </span>
-              <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm">
+              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
                 {project.status}
               </span>
             </div>
@@ -143,151 +168,138 @@ const ProjectDetail = () => {
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
+                <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                  className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
                 >
                   <FaGithub className="w-5 h-5" />
                   View Code
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300"
+                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300"
                 >
                   <FaDownload className="w-5 h-5" />
                   Install from Chrome Store
-                </motion.a>
+                </a>
               </div>
-              <p className="text-xs text-green-300 text-center max-w-72">
+              <p className="text-xs text-gray-400 font-light">
                 ✅ Available now on Chrome Web Store
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Project Demo & Resources */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Extension Preview</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Extension Screenshot */}
-                <div className="space-y-4">
-                  <div className="w-full h-48 rounded-lg overflow-hidden">
-                    <img
-                      src="/quickie.png"
-                      alt="Chrome Extension Quickie Interface"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="text-gray-400 text-sm text-center">
-                    Quickie Extension Interface
-                  </p>
-                </div>
+          <div className="mb-24 space-y-12">
+            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+              <Image
+                src="/quickie.png"
+                alt="Chrome Extension Quickie Interface"
+                fill
+                className="object-contain p-4"
+              />
+            </div>
 
-                {/* Features Overview */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl">
+                <h3 className="text-xl font-light mb-6">
+                  Quick Access Features
+                </h3>
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold">
-                    Quick Access Features
-                  </h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">
-                        Tab Management
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">
-                        History & Bookmarks
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">
-                        Site Settings
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">
-                        Downloads Manager
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">
-                        QR Code Generator
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                      Tab Management
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                      History & Bookmarks
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                      Site Settings
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                      Downloads Manager
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                      QR Code Generator
+                    </span>
                   </div>
                 </div>
               </div>
+
+              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl flex flex-col justify-center">
+                <h3 className="text-xl font-light mb-4">Try it yourself</h3>
+                <p className="text-gray-500 dark:text-gray-400 font-light mb-6">
+                  Experience the efficiency boost firsthand. Install Quickie
+                  from the Chrome Web Store.
+                </p>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-black dark:text-white font-medium hover:underline underline-offset-4"
+                >
+                  Visit Chrome Web Store <HiExternalLink className="w-4 h-4" />
+                </a>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Technologies Used */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Technologies Used</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {project.technologies.map((tech, index) => {
-                  const Icon = tech.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center gap-3 p-4 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-colors duration-300"
-                    >
-                      <Icon className={`w-8 h-8 ${tech.color}`} />
-                      <span className="text-gray-300 text-sm font-medium">
-                        {tech.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+          <div className="mb-24">
+            <h2 className="text-2xl font-light mb-8 text-center">
+              Technologies Used
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              {project.technologies.map((tech, index) => {
+                const Icon = tech.icon;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-sm font-medium">{tech.name}</span>
+                  </div>
+                );
+              })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Detailed Description */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Project Details</h2>
-              <div className="text-gray-300 leading-relaxed">
-                {project.longDescription}
-              </div>
-            </div>
-          </motion.div>
+          <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <motion.div variants={itemVariants} className="text-center">
-            <div className="glass rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-4">
-                Need a custom browser extension?
-              </h2>
-              <p className="text-gray-300 mb-6">
-                This project demonstrates my expertise in browser extension
-                development and user experience design. Let's discuss how I can
-                help build productivity tools for your users!
-              </p>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer"
-                >
-                  Let's Build Something
-                </motion.button>
-              </Link>
-            </div>
-          </motion.div>
+          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
+            <h2 className="text-3xl font-light mb-6">
+              Need a custom browser extension?
+            </h2>
+            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+              Let&apos;s discuss how I can help build productivity tools for
+              your users!
+            </p>
+            <Link href="/contact" className="inline-block">
+              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+                Let&apos;s Build Something
+              </button>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>

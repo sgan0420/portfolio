@@ -37,12 +37,23 @@ const Experience = () => {
           >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-light mb-2">Trontal Group</h2>
-              <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
+              <p className="text-gray-500 dark:text-gray-400 font-light mb-6">
                 Mar 2025 - Present
               </p>
-              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
-                Full Stack Engineer
-              </p>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xl italic text-black dark:text-white">
+                    Full Stack & Charting Engineer
+                  </p>
+                  <p className="text-sm text-gray-400 font-light">Current</p>
+                </div>
+                <div>
+                  <p className="text-xl italic text-black dark:text-white">
+                    Full Stack Engineer
+                  </p>
+                  <p className="text-sm text-gray-400 font-light">Initial</p>
+                </div>
+              </div>
             </div>
             <div className="md:col-span-8 space-y-8">
               <div>
@@ -116,7 +127,7 @@ const Experience = () => {
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Nov 2024 - Mar 2025
               </p>
-              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
+              <p className="text-xl italic text-black dark:text-white">
                 Backend Engineer
               </p>
             </div>
@@ -200,7 +211,7 @@ const Experience = () => {
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Nov 2023 - Feb 2024
               </p>
-              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
+              <p className="text-xl italic text-black dark:text-white">
                 Full Stack Engineer
               </p>
             </div>
@@ -275,7 +286,7 @@ const Experience = () => {
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Jul 2023 - Aug 2023
               </p>
-              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
+              <p className="text-xl italic text-black dark:text-white">
                 Mathematics Tutor
               </p>
             </div>

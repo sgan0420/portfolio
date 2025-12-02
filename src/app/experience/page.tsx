@@ -62,10 +62,10 @@ const Experience = () => {
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
                   Developing Kiyotaka.ai — a cutting-edge quant analytics platform
-                  built for next-generation quantitative finance, designed as
-                  &quot;a playground for the sharpest minds.&quot; Working across
-                  the full stack on real-time charting, orderbook heatmaps, and
-                  comprehensive market analytics tools.
+                  built for next-generation quantitative finance and blockchain,
+                  designed as &quot;a playground for the sharpest minds.&quot;
+                  Working across the full stack on real-time charting, orderbook
+                  heatmaps, and comprehensive market analytics tools.
                 </p>
                 <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-gray-900 mb-8">
                   <Image

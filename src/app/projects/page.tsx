@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { HiCode, HiArrowRight } from "react-icons/hi";
+import { HiCode } from "react-icons/hi";
 import {
   FaReact,
   FaNodeJs,
@@ -14,6 +14,9 @@ import {
   FaGithub,
   FaEnvelope,
   FaChartLine,
+  FaCopyright,
+  FaShieldAlt,
+  FaSearch,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -118,7 +121,8 @@ const Projects = () => {
       slug: "patlytics-infringement-checker",
       description:
         "An AI-powered patent infringement analysis tool that leverages GPT-4o to analyze patent claims against company products, detecting potential infringements with high accuracy.",
-      image: "/patlytics.png",
+      image: null,
+      icon: FaCopyright,
       technologies: [
         { name: "React", icon: FaReact },
         { name: "Flask", icon: SiFlask },
@@ -171,6 +175,14 @@ const Projects = () => {
                       fill
                       className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                     />
+                  ) : project.icon ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative group-hover:scale-105 transition-transform duration-500">
+                        <FaShieldAlt className="w-36 h-36 text-gray-300 dark:text-gray-700" />
+                        <FaCopyright className="w-16 h-16 text-gray-600 dark:text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        <FaSearch className="w-10 h-10 text-gray-500 dark:text-gray-400 absolute -bottom-1 -right-1" />
+                      </div>
+                    </div>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <HiCode className="w-16 h-16 text-gray-400" />

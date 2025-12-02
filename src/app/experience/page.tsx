@@ -27,7 +27,7 @@ const Experience = () => {
 
         {/* Experience Items */}
         <div className="space-y-24">
-          {/* Ant International */}
+          {/* Trontal Group */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,13 +36,89 @@ const Experience = () => {
             className="grid md:grid-cols-12 gap-8 md:gap-12"
           >
             <div className="md:col-span-4">
+              <h2 className="text-2xl font-light mb-2">Trontal Group</h2>
+              <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
+                Mar 2025 - Present
+              </p>
+              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
+                Full Stack Engineer
+              </p>
+            </div>
+            <div className="md:col-span-8 space-y-8">
+              <div>
+                <h3 className="text-3xl font-light mb-4">
+                  Kiyotaka Trading Platform
+                </h3>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
+                  Developing Kiyotaka.ai — a cutting-edge quant analytics platform
+                  built for next-generation quantitative finance, designed as
+                  &quot;a playground for the sharpest minds.&quot; Working across
+                  the full stack on real-time charting, orderbook heatmaps, and
+                  comprehensive market analytics tools.
+                </p>
+                <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-gray-900 mb-8">
+                  <Image
+                    src="/kiyotaka.png"
+                    alt="Kiyotaka trading platform interface"
+                    fill
+                    className="object-contain hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                    Technical Highlights
+                  </h4>
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
+                    <li>• Real-time charting & data visualization</li>
+                    <li>• Microservices architecture design</li>
+                    <li>• Authentication & authorization systems</li>
+                    <li>• Collaborative features & WebSockets</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                    Key Contributions
+                  </h4>
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
+                    <li>• Full ownership across the entire stack</li>
+                    <li>• Frontend platform development</li>
+                    <li>• Backend services & APIs</li>
+                    <li>• Live collaboration features</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                  Tech Stack
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                  Vue 3, Nuxt 4, TypeScript, TailwindCSS, Pinia, Node.js,
+                  WebSockets, Docker, Kubernetes, Cloudflare Pages.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Ant International */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-12 gap-8 md:gap-12 border-t border-gray-100 dark:border-gray-900 pt-24"
+          >
+            <div className="md:col-span-4">
               <h2 className="text-2xl font-light mb-2">Ant International</h2>
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Nov 2024 - Mar 2025
               </p>
-              <div className="inline-block px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
                 Backend Engineer
-              </div>
+              </p>
             </div>
             <div className="md:col-span-8 space-y-8">
               <div>
@@ -124,9 +200,9 @@ const Experience = () => {
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Nov 2023 - Feb 2024
               </p>
-              <div className="inline-block px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
-                Fullstack Engineer
-              </div>
+              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
+                Full Stack Engineer
+              </p>
             </div>
             <div className="md:col-span-8 space-y-8">
               <div>
@@ -199,9 +275,9 @@ const Experience = () => {
               <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
                 Jul 2023 - Aug 2023
               </p>
-              <div className="inline-block px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-xl italic text-black dark:text-white drop-shadow-sm">
                 Mathematics Tutor
-              </div>
+              </p>
             </div>
             <div className="md:col-span-8 space-y-8">
               <div>

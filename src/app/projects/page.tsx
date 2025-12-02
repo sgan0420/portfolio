@@ -148,11 +148,12 @@ const Projects = () => {
             Projects
           </h1>
           <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
-            A showcase of my personal projects and technical skills. Each
-            project represents a unique challenge and demonstrates different
-            aspects of modern software development. Please note that
-            professional industrial projects are not displayed here due to
-            confidentiality.
+            A showcase of my{" "}
+            <span className="font-semibold">personal projects</span>{" "}
+            and technical skills. Each project represents a unique challenge and
+            demonstrates different aspects of modern software development.
+            Please note that professional industrial projects are not displayed
+            here due to confidentiality.
           </p>
         </motion.div>
 

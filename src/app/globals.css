@@ -60,6 +60,11 @@ body {
   animation: fadeIn 0.6s ease-out;
 }
 
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
 /* Clean underline effect */
 .underline-effect {
   position: relative;
@@ -79,4 +84,252 @@ body {
 
 .underline-effect:hover::after {
   width: 100%;
+}
+
+/* Notion-like Markdown Styling */
+.prose-notion {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #171717;
+}
+
+.dark .prose-notion {
+  color: #fafafa;
+}
+
+.prose-notion h1,
+.prose-notion h2,
+.prose-notion h3,
+.prose-notion h4,
+.prose-notion h5,
+.prose-notion h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.dark .prose-notion h1,
+.dark .prose-notion h2,
+.dark .prose-notion h3,
+.dark .prose-notion h4,
+.dark .prose-notion h5,
+.dark .prose-notion h6 {
+  color: #ffffff;
+}
+
+.prose-notion h1 {
+  font-size: 2.25rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
+}
+
+.dark .prose-notion h1 {
+  border-bottom-color: #404040;
+}
+
+.prose-notion h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.4rem;
+}
+
+.dark .prose-notion h2 {
+  border-bottom-color: #404040;
+}
+
+.prose-notion h3 {
+  font-size: 1.375rem;
+}
+
+.prose-notion h4 {
+  font-size: 1.125rem;
+}
+
+.prose-notion p {
+  margin-bottom: 1.25em;
+}
+
+.prose-notion a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #a3a3a3;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.prose-notion a:hover {
+  text-decoration-color: #000000;
+}
+
+.dark .prose-notion a:hover {
+  text-decoration-color: #ffffff;
+}
+
+.prose-notion strong {
+  font-weight: 600;
+}
+
+.prose-notion em {
+  font-style: italic;
+}
+
+.prose-notion ul,
+.prose-notion ol {
+  margin: 1.25em 0;
+  padding-left: 1.5em;
+}
+
+.prose-notion li {
+  margin-bottom: 0.5em;
+}
+
+.prose-notion li::marker {
+  color: #a3a3a3;
+}
+
+.prose-notion ul li {
+  list-style-type: disc;
+}
+
+.prose-notion ol li {
+  list-style-type: decimal;
+}
+
+/* Blockquote - Notion callout style */
+.prose-notion blockquote {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 1.25em 1.5em;
+  background-color: #fafafa;
+  border-radius: 4px;
+  border-left: 3px solid #d4d4d4;
+  font-style: normal;
+}
+
+.dark .prose-notion blockquote {
+  background-color: #171717;
+  border-left-color: #525252;
+}
+
+.prose-notion blockquote p {
+  margin: 0;
+}
+
+/* Inline code (not inside pre) */
+.prose-notion :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: #f5f5f5;
+  color: #171717;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.dark .prose-notion :not(pre) > code {
+  background-color: #262626;
+  color: #fafafa;
+}
+
+/* Code blocks */
+.prose-notion pre {
+  margin: 1.5em 0;
+  padding: 1.25em;
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.dark .prose-notion pre {
+  background-color: #171717;
+  border-color: #262626;
+}
+
+.prose-notion pre code {
+  font-family: var(--font-mono);
+  background: transparent !important;
+  padding: 0;
+  font-size: inherit;
+  color: #374151;
+  white-space: pre;
+  border-radius: 0;
+}
+
+.dark .prose-notion pre code {
+  background: transparent !important;
+  color: #e5e5e5;
+}
+
+/* Tables - Notion style */
+.prose-notion table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prose-notion thead {
+  background-color: #fafafa;
+}
+
+.dark .prose-notion thead {
+  background-color: #171717;
+}
+
+.prose-notion th,
+.prose-notion td {
+  padding: 0.75em 1em;
+  text-align: left;
+  border: 1px solid #e5e5e5;
+}
+
+.dark .prose-notion th,
+.dark .prose-notion td {
+  border-color: #262626;
+}
+
+.prose-notion th {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #525252;
+}
+
+.dark .prose-notion th {
+  color: #a3a3a3;
+}
+
+/* Horizontal rule */
+.prose-notion hr {
+  margin: 2.5em 0;
+  border: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.dark .prose-notion hr {
+  border-top-color: #262626;
+}
+
+/* Images */
+.prose-notion img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em 0;
+  border-radius: 8px;
+}
+
+/* First element no top margin */
+.prose-notion > *:first-child {
+  margin-top: 0;
+}
+
+/* Last element no bottom margin */
+.prose-notion > *:last-child {
+  margin-bottom: 0;
 }

@@ -17,6 +17,8 @@ import {
   FaCopyright,
   FaShieldAlt,
   FaSearch,
+  FaEthereum,
+  FaCubes,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -32,11 +34,28 @@ import {
   SiBinance,
   SiMongodb,
   SiDocker,
+  SiSolidity,
+  SiNextdotjs,
 } from "react-icons/si";
 
 const Projects = () => {
   // Projects data
   const projects = [
+    {
+      id: 7,
+      title: "Blockchain Treasure Hunt",
+      slug: "blockchain-treasure-hunt",
+      description:
+        "A decentralized treasure hunt game on Base (Ethereum L2). Players dig to find hidden treasure and win ETH. Full-stack Web3 with smart contracts, Wagmi, and MetaMask integration.",
+      image: "/blockchain-treasure-hunt.png",
+      technologies: [
+        { name: "Solidity", icon: SiSolidity },
+        { name: "Hardhat", icon: FaCubes },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "Wagmi", icon: FaEthereum },
+      ],
+      category: "Web3 / Blockchain",
+    },
     {
       id: 5,
       title: "BTC Trading Chart",
@@ -176,6 +195,13 @@ const Projects = () => {
                       fill
                       className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                     />
+                  ) : project.icon === FaEthereum ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative group-hover:scale-105 transition-transform duration-500">
+                        <FaCubes className="w-36 h-36 text-gray-300 dark:text-gray-700" />
+                        <FaEthereum className="w-16 h-16 text-gray-600 dark:text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      </div>
+                    </div>
                   ) : project.icon ? (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="relative group-hover:scale-105 transition-transform duration-500">

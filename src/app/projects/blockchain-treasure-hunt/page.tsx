@@ -2,55 +2,60 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { FaGithub, FaChartLine } from "react-icons/fa";
+import { FaGithub, FaEthereum, FaCubes } from "react-icons/fa";
 import { HiExternalLink } from "react-icons/hi";
-import { SiVuedotjs, SiVite, SiAxios, SiBinance } from "react-icons/si";
+import { SiSolidity, SiNextdotjs, SiTypescript } from "react-icons/si";
 import BackButton from "../../../components/BackButton";
 
 const ProjectDetail = () => {
-  // Project data - BTC Trading Chart
   const project = {
-    title: "BTC Trading Chart",
+    title: "Blockchain Treasure Hunt",
     description:
-      "A real-time Bitcoin trading chart application inspired by TradingView, built with Vue 3 and Vite. Features live price updates via Binance API and interactive candlestick/line charts using ApexCharts.",
+      "A decentralized treasure hunt game built on Base (Ethereum L2). Players dig on a 3x3 grid to find hidden treasure and win ETH prizes. Demonstrates full-stack blockchain development with smart contracts and Web3 frontend.",
     longDescription: (
       <div className="space-y-12">
         <div>
           <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
-            Developed a high-performance cryptocurrency charting application
-            that provides real-time Bitcoin price data and visualization. The
-            application mimics professional trading platforms with its dark mode
-            UI, interactive charts, and live data streaming from the Binance
-            API.
+            Built a complete decentralized application (dApp) from scratch,
+            learning blockchain fundamentals, smart contract development, and
+            Web3 frontend integration. The game features a trustless prize pool
+            mechanism where all logic runs on-chain.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Key Features
+              Blockchain Skills Gained
             </h4>
             <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                <span className="font-medium">Real-time Data:</span> Live price
-                updates from Binance API
+                <span>
+                  <span className="font-medium">Smart Contracts:</span> Wrote
+                  Solidity contracts with state management and events
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                <span className="font-medium">Interactive Charts:</span> Switch
-                between Candlestick and Line views
+                <span>
+                  <span className="font-medium">Web3 Integration:</span> Connected
+                  frontend using Wagmi/Viem and MetaMask
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                <span className="font-medium">Multiple Timeframes:</span> 1H,
-                4H, 1D, 1W, 1M intervals
+                <span>
+                  <span className="font-medium">JSON-RPC:</span> Frontend to
+                  blockchain node communication
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                <span className="font-medium">Responsive Design:</span> Fully
-                responsive dark-themed UI
+                <span>
+                  <span className="font-medium">ABI Encoding:</span> Function call
+                  encoding/decoding
+                </span>
               </li>
             </ul>
           </div>
@@ -62,19 +67,23 @@ const ProjectDetail = () => {
             <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                Vue 3 Composition API for state management
+                Solidity for smart contract development
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                Vite for lightning-fast development and build
+                Hardhat for testing, compilation, and deployment
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                ApexCharts for advanced data visualization
+                Next.js & TypeScript for the frontend
               </li>
               <li className="flex gap-3">
                 <span className="text-black dark:text-white">•</span>
-                Axios for efficient API data fetching
+                Wagmi/Viem for blockchain interactions
+              </li>
+              <li className="flex gap-3">
+                <span className="text-black dark:text-white">•</span>
+                Base Sepolia testnet for deployment
               </li>
             </ul>
           </div>
@@ -82,23 +91,28 @@ const ProjectDetail = () => {
 
         <div>
           <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-            Implementation Details
+            Key Learnings
           </h4>
           <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
             <li className="flex gap-3">
               <span className="text-black dark:text-white">•</span>
-              Implemented efficient data polling mechanism to ensure price
-              accuracy without overloading the API.
+              Blockchain data storage: Contract state variables act as a
+              decentralized database replicated across all nodes
             </li>
             <li className="flex gap-3">
               <span className="text-black dark:text-white">•</span>
-              Customized ApexCharts configuration to match the professional look
-              and feel of major trading platforms.
+              Transaction flow: From wallet signing to node validation to
+              on-chain execution
             </li>
             <li className="flex gap-3">
               <span className="text-black dark:text-white">•</span>
-              Utilized Vue's computed properties to handle dynamic chart data
-              formatting and reactivity.
+              Gas economics: Understanding costs for reads (free) vs writes
+              (costs gas)
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              Layer 2 benefits: Using Base for faster and cheaper transactions
+              while inheriting Ethereum security
             </li>
           </ul>
         </div>
@@ -106,26 +120,29 @@ const ProjectDetail = () => {
         <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
           <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
             <strong className="text-black dark:text-white font-medium">
-              Market Data Integration:
+              Decentralized Architecture:
             </strong>{" "}
-            This project demonstrates the ability to work with financial APIs,
-            handle real-time data streams, and visualize complex datasets in a
-            user-friendly interface.
+            No backend server needed! The smart contract IS the backend - it
+            stores code, data, and handles all game logic. The frontend
+            communicates directly with blockchain nodes via JSON-RPC.
           </p>
         </div>
       </div>
     ),
     technologies: [
-      { name: "Vue 3", icon: SiVuedotjs },
-      { name: "Vite", icon: SiVite },
-      { name: "Binance API", icon: SiBinance },
-      { name: "ApexCharts", icon: FaChartLine },
-      { name: "Axios", icon: SiAxios },
+      { name: "Solidity", icon: SiSolidity },
+      { name: "Hardhat", icon: FaCubes },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Wagmi/Viem", icon: FaEthereum },
+      { name: "Base L2", icon: FaEthereum },
     ],
-    githubUrl: "https://github.com/sgan0420/btc-chart",
-    liveUrl: "https://btc-chart-shijiegan.vercel.app/",
-    category: "Web Application",
-    status: "Coffee Break Project ☕",
+    githubUrl: "https://github.com/sgan0420/blockchain-treasure-hunt",
+    liveUrl: "https://blockchain-treasure-hunt.vercel.app/",
+    explorerUrl:
+      "https://sepolia.basescan.org/address/0xf1E5fc114176593d6090494682D0E2D745bC6B25",
+    category: "Web3 / Blockchain",
+    status: "Weekend Project",
   };
 
   return (
@@ -163,42 +180,62 @@ const ProjectDetail = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <FaGithub className="w-5 h-5" />
-                    View Code
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
-                  >
-                    <HiExternalLink className="w-5 h-5" />
-                    Live Demo
-                  </a>
-                )}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                >
+                  <FaGithub className="w-5 h-5" />
+                  View Code
+                </a>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                >
+                  <HiExternalLink className="w-5 h-5" />
+                  Play Game
+                </a>
+                <a
+                  href={project.explorerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                >
+                  <FaEthereum className="w-5 h-5" />
+                  View on BaseScan
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Project Screenshot */}
+          {/* Game Preview */}
           <div className="mb-24">
-            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-              <Image
-                src="/btc-chart.png"
-                alt="BTC Trading Chart Interface"
-                fill
-                className="object-contain p-4"
-              />
+            <div className="relative w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 p-8">
+              <div className="text-center">
+                <h3 className="text-2xl font-light text-white mb-4">
+                  💎 Treasure Hunt
+                </h3>
+                <div className="grid grid-cols-3 gap-2 max-w-[200px] mx-auto mb-4">
+                  {[...Array(9)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-2xl border border-gray-700 hover:border-gray-500 transition-colors"
+                    >
+                      {i === 4 ? "💎" : "?"}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-gray-400 text-sm">
+                  0.001 ETH per dig • Win 0.005 ETH
+                </p>
+                <p className="text-amber-500 text-xs mt-2">
+                  ⚠️ Connect to Base Sepolia network
+                </p>
+              </div>
             </div>
           </div>
 
@@ -229,11 +266,11 @@ const ProjectDetail = () => {
           {/* Call to Action */}
           <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
             <h2 className="text-3xl font-light mb-6">
-              Need a Financial Dashboard?
+              Interested in Web3 Development?
             </h2>
             <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
-              I can build responsive, high-performance data visualization tools
-              for your fintech needs.
+              I can build decentralized applications, smart contracts, and Web3
+              integrations for your blockchain projects.
             </p>
             <Link href="/contact" className="inline-block">
               <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
@@ -248,3 +285,4 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
+

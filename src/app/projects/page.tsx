@@ -19,6 +19,8 @@ import {
   FaSearch,
   FaEthereum,
   FaCubes,
+  FaRobot,
+  FaHandPaper,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -36,11 +38,28 @@ import {
   SiDocker,
   SiSolidity,
   SiNextdotjs,
+  SiPython,
+  SiOpencv,
 } from "react-icons/si";
 
 const Projects = () => {
   // Projects data
   const projects = [
+    {
+      id: 8,
+      title: "Project Atom",
+      slug: "project-atom",
+      description:
+        "A gesture-controlled 3D robot inspired by Real Steel. Control an animated robot in real-time using hand gestures via webcam. Built with Ursina/Panda3D, MediaPipe, and OpenCV.",
+      image: "/project-atom.png",
+      technologies: [
+        { name: "Python", icon: SiPython },
+        { name: "Ursina/Panda3D", icon: FaRobot },
+        { name: "MediaPipe", icon: FaHandPaper },
+        { name: "OpenCV", icon: SiOpencv },
+      ],
+      category: "Computer Vision / 3D",
+    },
     {
       id: 7,
       title: "Blockchain Treasure Hunt",
@@ -195,6 +214,13 @@ const Projects = () => {
                       fill
                       className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                     />
+                  ) : project.icon === FaRobot ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative group-hover:scale-105 transition-transform duration-500">
+                        <FaRobot className="w-32 h-32 text-gray-400 dark:text-gray-500" />
+                        <FaHandPaper className="w-12 h-12 text-gray-600 dark:text-gray-300 absolute -bottom-2 -right-2" />
+                      </div>
+                    </div>
                   ) : project.icon === FaEthereum ? (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="relative group-hover:scale-105 transition-transform duration-500">

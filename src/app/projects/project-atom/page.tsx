@@ -129,7 +129,7 @@ const ProjectDetail = () => {
     technologies: [
       { name: "Python", icon: SiPython },
       { name: "Ursina/Panda3D", icon: FaRobot },
-      { name: "MediaPipe", icon: FaHandPaper },
+      { name: "MediaPipe/TensorFlow", icon: FaHandPaper },
       { name: "OpenCV", icon: SiOpencv },
     ],
     githubUrl: "https://github.com/sgan0420/project-atom",

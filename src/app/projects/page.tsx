@@ -55,10 +55,10 @@ const Projects = () => {
       technologies: [
         { name: "Python", icon: SiPython },
         { name: "Ursina/Panda3D", icon: FaRobot },
-        { name: "MediaPipe", icon: FaHandPaper },
+        { name: "MediaPipe/TensorFlow", icon: FaHandPaper },
         { name: "OpenCV", icon: SiOpencv },
       ],
-      category: "Computer Vision / 3D",
+      category: "Computer Vision / AI",
     },
     {
       id: 7,

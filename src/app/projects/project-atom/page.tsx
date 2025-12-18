@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaGithub, FaRobot, FaHandPaper } from "react-icons/fa";
+import { FaGithub, FaRobot, FaHandPaper, FaCube, FaRunning } from "react-icons/fa";
 import { SiPython, SiOpencv } from "react-icons/si";
 import { HiVideoCamera } from "react-icons/hi";
 import Image from "next/image";
@@ -117,12 +117,42 @@ const ProjectDetail = () => {
         <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
           <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
             <strong className="text-black dark:text-white font-medium">
-              Clean Architecture:
+              Real-Time Performance:
             </strong>{" "}
-            The entire project is ~430 lines of focused Python code across 4 files.
-            Modular design separates camera capture, hand tracking, gesture detection,
-            and 3D rendering into distinct, reusable components.
+            Achieves smooth 30+ FPS by running ML inference and 3D rendering
+            in parallel threads, with lock-free queues for minimal latency
+            between gesture detection and robot animation response.
           </p>
+        </div>
+
+        <div>
+          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            Architecture Flow
+          </h4>
+          <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800 font-mono text-sm overflow-x-auto">
+            <div className="text-gray-600 dark:text-gray-300 whitespace-pre">
+{`Webcam → OpenCV → MediaPipe → Gesture Detection → Ursina/Panda3D → Robot GLB (Mixamo)`}</div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            3D Assets & Tools
+          </h4>
+          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              <strong className="text-black dark:text-white font-medium">Sketchfab</strong> - Robot 3D model sourced from the Sketchfab marketplace
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              <strong className="text-black dark:text-white font-medium">Mixamo</strong> - Character animations (punch, kick, dance, boxing) applied to the robot model
+            </li>
+            <li className="flex gap-3">
+              <span className="text-black dark:text-white">•</span>
+              <strong className="text-black dark:text-white font-medium">GLB Format</strong> - Exported animations in GLB format for Panda3D compatibility
+            </li>
+          </ul>
         </div>
       </div>
     ),
@@ -131,6 +161,8 @@ const ProjectDetail = () => {
       { name: "Ursina/Panda3D", icon: FaRobot },
       { name: "MediaPipe/TensorFlow", icon: FaHandPaper },
       { name: "OpenCV", icon: SiOpencv },
+      { name: "Mixamo", icon: FaRunning },
+      { name: "Sketchfab", icon: FaCube },
     ],
     githubUrl: "https://github.com/sgan0420/project-atom",
     category: "Computer Vision",

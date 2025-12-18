@@ -39,8 +39,8 @@ const Footer = () => {
     },
     {
       icon: HiLocationMarker,
-      text: "Bukit Jalil, Kuala Lumpur",
-      href: "https://maps.google.com/?q=Bukit+Jalil,+Kuala+Lumpur",
+      text: "Kuala Lumpur, Malaysia",
+      href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
     },
   ];
 

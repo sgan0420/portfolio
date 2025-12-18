@@ -93,7 +93,7 @@ const Header = () => {
             ))}
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+              className="p-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -108,7 +108,7 @@ const Header = () => {
           <div className="flex items-center gap-4 md:hidden">
             <button
               onClick={toggleTheme}
-              className="p-2 text-black dark:text-white"
+              className="p-2 text-black dark:text-white cursor-pointer"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (

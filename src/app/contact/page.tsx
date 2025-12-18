@@ -99,7 +99,7 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/shijie-gan-968926197/",
+      href: "https://www.linkedin.com/in/shijie-gan/",
     },
     {
       icon: FaInstagram,

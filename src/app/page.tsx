@@ -36,7 +36,7 @@ export default function HomePage() {
                   Download Resume
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/shijie-gan-968926197/"
+                  href="https://www.linkedin.com/in/shijie-gan/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-3 border border-black dark:border-white text-black dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 rounded-full"

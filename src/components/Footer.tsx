@@ -63,8 +63,7 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <h3 className="text-xl font-medium mb-4">Shijie Gan</h3>
               <p className="text-gray-400 dark:text-gray-600 mb-6 max-w-md leading-relaxed text-sm">
-                Full-Stack Software Engineer with expertise in React, Angular,
-                Java, Python, and Node.js. Fast learner passionate about AI
+                Full-Stack Software Engineer. Fast learner passionate about AI
                 technologies and building innovative solutions that drive
                 business success.
               </p>

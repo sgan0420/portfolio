@@ -50,8 +50,8 @@ const HeroSection = () => {
           {/* Tagline */}
           <motion.div variants={textVariants} className="max-w-2xl mx-auto">
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-              Full-Stack Software Engineer building scalable web applications
-              with modern technologies
+              Software Engineer specializing in Full-Stack Development and AI,
+              building scalable applications in Fintech and Web3
             </p>
           </motion.div>
 

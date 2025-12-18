@@ -19,7 +19,7 @@ export default function HomePage() {
               className="text-center space-y-8"
             >
               <h2 className="text-4xl sm:text-5xl font-light text-black dark:text-white">
-                Full-Stack Developer
+                Full-Stack Software Engineer
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
                 Passionate software engineer who learns incredibly fast and

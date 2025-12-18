@@ -13,7 +13,7 @@ const Footer = () => {
     },
     {
       icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/shijie-gan-968926197/",
+      href: "https://www.linkedin.com/in/shijie-gan/",
       label: "LinkedIn",
       color: "hover:text-blue-600",
     },

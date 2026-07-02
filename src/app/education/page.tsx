@@ -57,10 +57,10 @@ const Education = () => {
                   </p>
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light">
-                  Maintained exceptional academic excellence with outstanding
-                  performance in computer science fundamentals. Currently
-                  pursuing my final year with continued dedication to academic
-                  and practical excellence.
+                  Graduated with exceptional academic excellence and outstanding
+                  performance across computer science fundamentals, earning the
+                  Monash High Achiever Award and top marks in multiple core
+                  subjects.
                 </p>
               </div>
 

@@ -61,11 +61,13 @@ const Experience = () => {
                   Kiyotaka Trading Platform
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
-                  Developing Kiyotaka.ai — a cutting-edge quant analytics platform
-                  built for next-generation quantitative finance and blockchain,
-                  designed as &quot;a playground for the sharpest minds.&quot;
-                  Working across the full stack on real-time charting, orderbook
-                  heatmaps, and comprehensive market analytics tools.
+                  Building Kiyotaka.ai — a blockchain quantitative trading
+                  platform — end to end, from system design to deployment.
+                  Scaled the product from 0 to 50,000 monthly active users while
+                  refactoring the codebase into a modular, scalable architecture
+                  that kept the system fast and reliable as traffic grew.
+                  Promoted to Charting Engineer with ownership of the core
+                  charting library and platform infrastructure.
                 </p>
                 <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-gray-900 mb-8">
                   <Image
@@ -84,9 +86,14 @@ const Experience = () => {
                   </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
                     <li>• Real-time charting & data visualization</li>
-                    <li>• Microservices architecture design</li>
-                    <li>• Authentication & authorization systems</li>
-                    <li>• Collaborative features & WebSockets</li>
+                    <li>• Kata — AI assistant for authoring kScript indicators</li>
+                    <li>
+                      • Live collaboration over WebSockets (session management &
+                      live chat)
+                    </li>
+                    <li>
+                      • CEX & DEX integrations (Binance, Bybit, Hyperliquid)
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -94,10 +101,10 @@ const Experience = () => {
                     Key Contributions
                   </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
-                    <li>• Full ownership across the entire stack</li>
-                    <li>• Frontend platform development</li>
-                    <li>• Backend services & APIs</li>
-                    <li>• Live collaboration features</li>
+                    <li>• Scaled the platform from 0 to 50,000 monthly active users</li>
+                    <li>• Refactored into a modular, scalable architecture</li>
+                    <li>• Guest access system & Progressive Web App (PWA)</li>
+                    <li>• Alert, in-app & push notification systems</li>
                   </ul>
                 </div>
               </div>
@@ -108,7 +115,7 @@ const Experience = () => {
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 font-light leading-relaxed">
                   Vue 3, Nuxt 4, TypeScript, TailwindCSS, Pinia, Node.js,
-                  WebSockets, Docker, Kubernetes, Cloudflare Pages.
+                  WebSockets, PWA, Docker, Kubernetes, Cloudflare Pages.
                 </p>
               </div>
             </div>
@@ -137,9 +144,13 @@ const Experience = () => {
                   Backend & Middleware Systems
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
-                  Dove deep into the fascinating world of backend development
-                  and middleware systems, working on mission-critical payment
-                  infrastructure that serves millions of users globally.
+                  Delivered backend and middleware components for
+                  mission-critical payment systems — including the merchant
+                  registration system, non-insured refund project, and merchant
+                  OTP system — on a SOFABoot / Spring Boot stack serving millions
+                  of users globally. Selected for a business trip to Ant
+                  International&apos;s global event in Hangzhou, working onsite at
+                  Ant HQ and Alibaba&apos;s Xixi campus.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6 mb-8">
                   <div className="relative aspect-[3/2] rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-900">
@@ -167,10 +178,10 @@ const Experience = () => {
                     Technical Highlights
                   </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
-                    <li>• Backend & Middleware architecture</li>
-                    <li>• Security & Risk Management systems</li>
-                    <li>• Large-scale traffic handling (11.11)</li>
-                    <li>• Microservices design & implementation</li>
+                    <li>• Merchant registration, refund & OTP systems</li>
+                    <li>• Async processing with message brokers</li>
+                    <li>• Recurring tasks via job scheduling</li>
+                    <li>• Runtime tunability via dynamic resource config</li>
                   </ul>
                 </div>
                 <div>
@@ -178,10 +189,10 @@ const Experience = () => {
                     Key Achievements
                   </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
-                    <li>• High-volume payment processing</li>
-                    <li>• Enterprise fintech infrastructure</li>
-                    <li>• Security protocols implementation</li>
-                    <li>• Emergency response strategies</li>
+                    <li>• Three golden rules: grayscale, monitoring, emergency response</li>
+                    <li>• Large-scale traffic handling (11.11)</li>
+                    <li>• Cross-functional work across China & Singapore</li>
+                    <li>• Onsite at Ant HQ & Alibaba Xixi (Hangzhou)</li>
                   </ul>
                 </div>
               </div>
@@ -191,8 +202,9 @@ const Experience = () => {
                   Tech Stack
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 font-light leading-relaxed">
-                  Spring Framework, Microservices, Message Queue, RESTful APIs,
-                  Auth Systems, Git/GitLab, Network Security.
+                  SOFABoot, Spring Boot, Microservices, Message Brokers, Job
+                  Scheduling, RESTful APIs, Auth Systems, Git/GitLab, Network
+                  Security.
                 </p>
               </div>
             </div>

@@ -21,9 +21,21 @@ const HeroSection = () => {
   };
 
   const socialLinks = [
-    { icon: FaGithub, href: "#", label: "GitHub" },
-    { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-    { icon: FaInstagram, href: "#", label: "Instagram" },
+    {
+      icon: FaGithub,
+      href: "https://github.com/sgan0420",
+      label: "GitHub",
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/shijie-gan/",
+      label: "LinkedIn",
+    },
+    {
+      icon: FaInstagram,
+      href: "https://instagram.com/gan_shijie",
+      label: "Instagram",
+    },
   ];
 
   return (
@@ -85,6 +97,8 @@ const HeroSection = () => {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
                   aria-label={social.label}
                 >

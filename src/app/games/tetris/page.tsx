@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import PageHeading from "@/components/PageHeading";
 import { HiArrowLeft } from "react-icons/hi";
 
 const TetrisGame = () => {
@@ -14,8 +15,8 @@ const TetrisGame = () => {
   }, []);
 
   return (
-    <div className="page-shell">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="page-shell game-page">
+      <div className="site-container">
         {/* Back Button */}
         <Link href="/projects/tetris-game" className="back-link mb-8">
           <HiArrowLeft className="w-5 h-5" />
@@ -23,13 +24,10 @@ const TetrisGame = () => {
         </Link>
 
         {/* Game Title */}
-        <div className="text-center mb-8">
-          <h1 className="page-title">Play Tetris</h1>
-          <p className="page-lead mx-auto">
-            Experience the reactive TypeScript + RxJS Tetris game directly in
-            your browser
-          </p>
-        </div>
+        <PageHeading title="Play Tetris">
+          Experience the reactive TypeScript + RxJS Tetris game directly in your
+          browser
+        </PageHeading>
 
         {/* Game Container */}
         <div
@@ -44,7 +42,7 @@ const TetrisGame = () => {
 
         {/* Game Instructions */}
         <div className="mt-8 max-w-2xl mx-auto">
-          <div className="glass-panel p-6">
+          <div className="game-instructions p-6">
             <h3 className="text-xl font-bold mb-4 text-center">
               Game Controls
             </h3>
@@ -126,18 +124,19 @@ const gameMarkup = `
         display: flex;
         justify-content: space-between;
         margin-bottom: 0.5em;
-        font-weight: bold;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
       }
       
       .tetris-button {
         padding: 10px 20px;
-        font-size: 1.2em;
-        font-weight: bold;
+        font-size: var(--type-ui);
+        font-weight: var(--weight-ui);
+        min-height: 44px;
         border: none;
         cursor: pointer;
-        border-radius: 12px;
+        border-radius: var(--control-radius);
         margin: 0.25em 0;
-        transition: all 0.3s;
       }
       
       .pause-button {
@@ -146,19 +145,9 @@ const gameMarkup = `
         color: var(--foreground);
       }
       
-      .pause-button:hover {
-        background-color: var(--line);
-        transform: translateY(-2px);
-      }
-      
       .restart-button {
-        background-color: #176ab5;
-        color: white;
-      }
-      
-      .restart-button:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
+        background-color: var(--foreground);
+        color: var(--background);
       }
       
       .tetris-block {
@@ -171,12 +160,12 @@ const gameMarkup = `
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: white;
-        color: black;
+        background: var(--panel);
+        color: var(--foreground);
         padding: 20px;
         border-radius: 8px;
         font-size: 1.5em;
-        font-weight: bold;
+        font-weight: var(--weight-heading);
         text-align: center;
         z-index: 10;
         display: none;
@@ -188,17 +177,17 @@ const gameMarkup = `
         color: var(--muted);
         padding: 10px;
         border-radius: 8px;
-        font-size: 12px;
-        font-family: monospace;
+        font-size: var(--type-small);
+        font-family: var(--font-sans);
       }
       
       .key {
-        background-color: var(--muted);
+        background-color: var(--panel);
         padding: 2px 6px;
-        border: 1px solid #000000;
+        border: 1px solid var(--line);
         border-radius: 5px;
-        color: #000;
-        font-family: 'Courier New', monospace;
+        color: var(--foreground);
+        font-family: var(--font-mono);
       }
     </style>
     
@@ -241,8 +230,8 @@ const gameMarkup = `
               <span>High Score:</span>
               <span id="high-score-text">0</span>
             </div>
-            <button id="pause-button" class="tetris-button pause-button" aria-label="Pause or resume game">⏸️ | ▶️</button>
-            <button id="restart-button" class="tetris-button restart-button">Restart</button>
+            <button id="pause-button" class="tetris-button pause-button button-secondary" aria-label="Pause or resume game">⏸️ | ▶️</button>
+            <button id="restart-button" class="tetris-button restart-button button-primary">Restart</button>
           </div>
         </div>
       </div>

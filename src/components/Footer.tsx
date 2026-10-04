@@ -1,161 +1,99 @@
-import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
+import Link from "next/link";
+import { HiArrowUp, HiArrowDownTray } from "react-icons/hi2";
 
-const Footer = () => {
-  const socialLinks = [
-    {
-      icon: FaGithub,
-      href: "https://github.com/sgan0420",
-      label: "GitHub",
-      color: "hover:text-gray-900",
-    },
-    {
-      icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/shijie-gan/",
-      label: "LinkedIn",
-      color: "hover:text-blue-600",
-    },
-    {
-      icon: FaInstagram,
-      href: "https://instagram.com/gan_shijie",
-      label: "Instagram",
-      color: "hover:text-pink-500",
-    },
-  ];
+const explore = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Experience", href: "/experience" },
+  { name: "Education", href: "/education" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
+];
+const social = [
+  { name: "GitHub", href: "https://github.com/sgan0420" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/shijie-gan/" },
+  { name: "Instagram", href: "https://instagram.com/gan_shijie" },
+];
 
-  const contactInfo = [
-    {
-      icon: HiMail,
-      text: "shijiegan.gs@gmail.com",
-      href: "mailto:shijiegan.gs@gmail.com",
-    },
-    {
-      icon: HiPhone,
-      text: "+60 12-638 3016",
-      href: "https://wa.me/60126383016",
-      isWhatsApp: true,
-    },
-    {
-      icon: HiLocationMarker,
-      text: "Kuala Lumpur, Malaysia",
-      href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
-    },
-  ];
-
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Education", href: "/education" },
-    { name: "Experience", href: "/experience" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/contact" },
-  ];
-
+export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
-        {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Brand Section */}
-            <div className="lg:col-span-2">
-              <h3 className="text-xl font-medium mb-4">Shijie Gan</h3>
-              <p className="text-muted mb-6 max-w-md leading-relaxed text-sm">
-                Full-Stack Software Engineer. Fast learner passionate about AI
-                technologies and building innovative solutions that drive
-                business success.
-              </p>
-
-              {/* Social Links */}
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted hover:text-accent transition-colors duration-200"
-                      aria-label={social.label}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-sm font-medium mb-6">Quick Links</h4>
-              <div className="grid grid-cols-2 gap-3">
-                {quickLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-sm text-muted hover:text-accent transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-sm font-medium mb-6">Get in Touch</h4>
-              <ul className="space-y-4">
-                {contactInfo.map((contact) => {
-                  const Icon = contact.icon;
-                  return (
-                    <li key={contact.text}>
-                      <a
-                        href={contact.href}
-                        target={
-                          contact.href?.startsWith("https://wa.me") ||
-                          contact.href?.startsWith("https://maps.google.com")
-                            ? "_blank"
-                            : undefined
-                        }
-                        rel={
-                          contact.href?.startsWith("https://wa.me") ||
-                          contact.href?.startsWith("https://maps.google.com")
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                        className="flex items-center text-sm text-muted hover:text-accent transition-colors duration-200"
-                      >
-                        <Icon className="w-4 h-4 mr-3" />
-                        <div className="flex flex-col">
-                          <span>{contact.text}</span>
-                          {contact.isWhatsApp && (
-                            <div className="flex items-center gap-1 mt-1">
-                              <FaWhatsapp className="w-3 h-3" />
-                              <span className="text-xs">WhatsApp</span>
-                            </div>
-                          )}
-                        </div>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+      <div className="footer-inner">
+        <div className="footer-invitation" data-reveal>
+          <div>
+            <h2>
+              Let&apos;s build
+              <br />
+              <span>what&apos;s next.</span>
+            </h2>
+          </div>
+          <Link href="/contact" className="button-primary footer-cta">
+            Get in touch
+          </Link>
+        </div>
+        <div className="footer-grid">
+          <div className="footer-bio">
+            <Link href="/" className="brand">
+              Shijie Gan<span className="text-accent">.</span>
+            </Link>
+            <p>Full-Stack Software Engineer.</p>
+            <a
+              className="footer-location"
+              href="https://maps.google.com/?q=Kuala+Lumpur,+Malaysia"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span aria-hidden="true" />
+              Kuala Lumpur, Malaysia
+            </a>
+          </div>
+          <nav aria-label="Footer navigation">
+            <h3>Explore</h3>
+            {explore.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+          <div>
+            <h3>Elsewhere</h3>
+            {social.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a href="/Resume_ShijieGan.pdf" download>
+              Resume
+              <HiArrowDownTray aria-hidden="true" />
+            </a>
+          </div>
+          <div className="footer-contact">
+            <h3>Contact</h3>
+            <a href="mailto:shijiegan.gs@gmail.com">shijiegan.gs@gmail.com</a>
+            <a
+              href="https://wa.me/60126383016"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +60 12-638 3016
+            </a>
+            <span className="footer-note">Phone / WhatsApp</span>
+            <Link href="/contact">Contact form</Link>
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div className="footer-bottom py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-muted text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Shijie Gan. All rights reserved.
-            </div>
-          </div>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Shijie Gan. All rights reserved.</p>
+          <a href="#main-content" className="back-to-top">
+            <span>Back to top</span>
+            <HiArrowUp aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

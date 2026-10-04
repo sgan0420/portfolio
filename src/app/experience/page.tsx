@@ -1,25 +1,37 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import PageHeading from "@/components/PageHeading";
 import Image from "next/image";
-import { HiArrowRight, HiExternalLink } from "react-icons/hi";
+import { HiExternalLink } from "react-icons/hi";
 import { FaXTwitter } from "react-icons/fa6";
+
+export const metadata: Metadata = { title: "Experience" };
 
 const Experience = () => {
   return (
-    <div className="page-shell">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <div className="page-shell experience-page">
+      <div className="site-container">
         {/* Header Section */}
-        <div className="page-heading">
-          <h1 className="page-title">Experience</h1>
-          <p className="page-lead">
-            My professional journey, from a founding role at an AI startup to
-            fintech giants, full-stack development, and academic mentoring.
-          </p>
-        </div>
+        <PageHeading title="Experience">
+          My professional journey, from a founding role at an AI startup to
+          fintech giants, full-stack development, and academic mentoring.
+        </PageHeading>
 
+        <nav className="section-index" aria-label="Jump to experience">
+          <a href="#stealth">Stealth Startup</a>
+          <a href="#trontal">Trontal Group</a>
+          <a href="#ant">Ant International</a>
+          <a href="#ifast">iFAST</a>
+          <a href="#monash">Monash University</a>
+        </nav>
         {/* Experience Items */}
         <div className="space-y-8">
           {/* Stealth Startup */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            id="stealth"
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Stealth Startup</h2>
               <p className="text-muted font-normal mb-4">Aug 2026 - Present</p>
@@ -34,13 +46,8 @@ const Experience = () => {
               <h3 className="text-3xl font-normal mb-4">
                 Productizing AI for the Next Billion Users
               </h3>
-              <p className="timeline-overview">
-                Building AI products from 0 to 1 across the full stack, with a
-                focus on agents and model orchestration.
-              </p>
-              <details className="detail-disclosure">
-                <summary>Role details</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal mb-6">
                       Founding engineer at a stealth AI startup backed by $20M
@@ -83,12 +90,16 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* Trontal Group */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            id="trontal"
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Trontal Group</h2>
               <p className="text-muted font-normal mb-6">Mar 2025 - Aug 2026</p>
@@ -109,17 +120,12 @@ const Experience = () => {
               <h3 className="text-3xl font-normal mb-4">
                 OpenMarket Trading Platform
               </h3>
-              <p className="timeline-overview">
-                Built OpenMarket end to end and helped scale it to 50,000
-                monthly active users. Promoted to own core charting and platform
-                infrastructure.
-              </p>
               <div className="flex flex-wrap gap-6 mb-6">
                 <a
                   href="https://openmarket.xyz/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent underline-offset-4 hover:underline"
+                  className="inline-flex items-center gap-2 text-link text-sm text-muted"
                 >
                   <HiExternalLink className="w-4 h-4" />
                   openmarket.xyz
@@ -128,7 +134,7 @@ const Experience = () => {
                   href="https://x.com/openmarket_xyz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent underline-offset-4 hover:underline"
+                  className="inline-flex items-center gap-2 text-link text-sm text-muted"
                 >
                   <FaXTwitter className="w-4 h-4" />
                   @openmarket_xyz
@@ -140,12 +146,11 @@ const Experience = () => {
                   alt="OpenMarket (then Kiyotaka.ai) trading platform interface"
                   fill
                   sizes="(max-width: 768px) 100vw, 640px"
-                  className="object-contain hover:scale-105 transition-transform duration-500"
+                  className="object-contain"
                 />
               </div>
-              <details className="detail-disclosure">
-                <summary>Role details</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal mb-6">
                       Built OpenMarket (formerly Kiyotaka.ai) — a blockchain
@@ -170,7 +175,7 @@ const Experience = () => {
                           •{" "}
                           <Link
                             href="/projects/kata"
-                            className="underline underline-offset-4 decoration-1 hover:text-accent"
+                            className="underline underline-offset-4 decoration-1 hover:text-ink"
                           >
                             Kata
                           </Link>{" "}
@@ -184,7 +189,7 @@ const Experience = () => {
                           •{" "}
                           <Link
                             href="/projects/exchange-integrations"
-                            className="underline underline-offset-4 decoration-1 hover:text-accent"
+                            className="underline underline-offset-4 decoration-1 hover:text-ink"
                           >
                             CEX & DEX integrations
                           </Link>{" "}
@@ -222,12 +227,16 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* Ant International */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            id="ant"
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Ant International</h2>
               <p className="text-muted font-normal mb-4">Nov 2024 - Mar 2025</p>
@@ -237,10 +246,6 @@ const Experience = () => {
               <h3 className="text-3xl font-normal mb-4">
                 Backend & Middleware Systems
               </h3>
-              <p className="timeline-overview">
-                Built backend and middleware for payment systems serving
-                millions of users globally.
-              </p>
               <div className="grid sm:grid-cols-2 gap-6 mb-8">
                 <div className="relative aspect-[3/2] rounded-lg overflow-hidden bg-surface">
                   <Image
@@ -248,7 +253,7 @@ const Experience = () => {
                     alt="At Ant International office"
                     fill
                     sizes="(max-width: 768px) 100vw, 640px"
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover"
                   />
                 </div>
                 <div className="relative aspect-[3/2] rounded-lg overflow-hidden bg-surface">
@@ -257,13 +262,12 @@ const Experience = () => {
                     alt="Ant International team"
                     fill
                     sizes="(max-width: 768px) 100vw, 640px"
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover"
                   />
                 </div>
               </div>
-              <details className="detail-disclosure">
-                <summary>Role details</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal mb-6">
                       Delivered backend and middleware components for
@@ -320,12 +324,16 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* iFAST Corporation */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            id="ifast"
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">iFAST Corporation</h2>
               <p className="text-muted font-normal mb-4">Nov 2023 - Feb 2024</p>
@@ -335,22 +343,17 @@ const Experience = () => {
               <h3 className="text-3xl font-normal mb-4">
                 Global Bank Platform
               </h3>
-              <p className="timeline-overview">
-                Full-stack development for the iFAST Global Bank platform, from
-                responsive interfaces to banking APIs.
-              </p>
               <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-surface mb-8">
                 <Image
                   src="/ifast-group.png"
                   alt="iFAST team group photo"
                   fill
                   sizes="(max-width: 768px) 100vw, 640px"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover"
                 />
               </div>
-              <details className="detail-disclosure">
-                <summary>Role details</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal mb-6">
                       Contributed to the iFAST Global Bank platform, working on
@@ -395,12 +398,16 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* Monash University */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            id="monash"
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Monash University</h2>
               <p className="text-muted font-normal mb-4">Jul 2023 - Aug 2023</p>
@@ -410,13 +417,8 @@ const Experience = () => {
               <h3 className="text-3xl font-normal mb-4">
                 Computer Science Mathematics
               </h3>
-              <p className="timeline-overview">
-                Personalized mathematics tutoring for Monash Computer Science
-                students, online and in person.
-              </p>
-              <details className="detail-disclosure">
-                <summary>Role details</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal">
                       Provided personalized instruction and comprehensive
@@ -459,7 +461,7 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
         </div>
@@ -475,7 +477,7 @@ const Experience = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                Read Bio <HiArrowRight className="ml-2 w-4 h-4" />
+                Read Bio
               </div>
             </div>
           </Link>
@@ -489,7 +491,7 @@ const Experience = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                View Education <HiArrowRight className="ml-2 w-4 h-4" />
+                View Education
               </div>
             </div>
           </Link>

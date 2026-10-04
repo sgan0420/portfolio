@@ -1,4 +1,4 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import {
   FaGithub,
   FaRobot,
@@ -10,6 +10,8 @@ import { SiPython, SiOpencv } from "react-icons/si";
 import { HiVideoCamera } from "react-icons/hi";
 import Image from "next/image";
 import BackButton from "../../../components/BackButton";
+
+export const metadata: Metadata = { title: "Project Atom" };
 
 const ProjectDetail = () => {
   const project = {
@@ -185,7 +187,7 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="project-detail-header text-center">
+          <div className="project-detail-header text-center" data-reveal>
             <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
@@ -210,7 +212,7 @@ const ProjectDetail = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                  className="button-primary"
                 >
                   <FaGithub className="w-5 h-5" />
                   View Code
@@ -228,7 +230,7 @@ const ProjectDetail = () => {
                   src="/project-atom.png"
                   alt="Project Atom - 3D Robot"
                   fill
-                  sizes="(max-width: 768px) 100vw, 896px"
+                  sizes="(max-width: 768px) 100vw, 1120px"
                   className="object-contain"
                 />
               </div>
@@ -264,7 +266,7 @@ const ProjectDetail = () => {
             <h2 className="project-tools-heading text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
-            <div className="project-tools">
+            <div className="project-tools" data-reveal>
               {project.technologies.map((tech, index) => {
                 const Icon = tech.icon;
                 return (
@@ -281,24 +283,8 @@ const ProjectDetail = () => {
           </div>
 
           {/* Detailed Description */}
-          <div className="mb-24">{project.longDescription}</div>
-
-          {/* Call to Action */}
-          <div className="text-center border-t border-line pt-24">
-            <h2 className="text-3xl font-normal mb-6">
-              Interested in Computer Vision Projects?
-            </h2>
-            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
-              I can build interactive applications using computer vision, 3D
-              graphics, and real-time processing for innovative user
-              experiences.
-            </p>
-            <Link
-              href="/contact"
-              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
-            >
-              Get in Touch
-            </Link>
+          <div className="case-study-content mb-24" data-reveal>
+            {project.longDescription}
           </div>
         </div>
       </div>

@@ -1,13 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import PageHeading from "@/components/PageHeading";
 import emailjs from "@emailjs/browser";
-import {
-  HiMail,
-  HiPhone,
-  HiLocationMarker,
-  HiArrowRight,
-} from "react-icons/hi";
+import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
@@ -108,21 +104,24 @@ const Contact = () => {
   ];
 
   return (
-    <div className="page-shell">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <div className="page-shell contact-page">
+      <div className="site-container">
         {/* Header Section */}
-        <div className="page-heading">
-          <h1 className="page-title">Get in Touch</h1>
-          <p className="page-lead">
-            Have a project in mind or want to collaborate? I&apos;d love to hear
-            from you.
-          </p>
-        </div>
+        <PageHeading title="Get in Touch">
+          Have a project in mind or want to collaborate? I&apos;d love to hear
+          from you.
+        </PageHeading>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
+        <div
+          className="contact-layout grid lg:grid-cols-12 gap-12 lg:gap-16"
+          data-reveal
+        >
           {/* Contact Form */}
           <div className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="contact-form space-y-6">
+              <div className="form-heading">
+                <h2>Send a message</h2>
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="section-label text-muted">
@@ -185,8 +184,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className="form-field resize-none"
+                  rows={5}
+                  className="form-field resize-y"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -213,12 +212,10 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="button-primary group disabled:opacity-50"
+                aria-busy={isLoading}
+                className="button-primary"
               >
                 {isLoading ? "Sending..." : "Send Message"}
-                {!isLoading && (
-                  <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                )}
               </button>
             </form>
           </div>
@@ -249,7 +246,7 @@ const Contact = () => {
                       className="flex items-start gap-4 group"
                     >
                       <div className="mt-1">
-                        <Icon className="w-5 h-5 text-subtle group-hover:text-accent transition-colors duration-300" />
+                        <Icon className="w-5 h-5 text-subtle" />
                       </div>
                       <div>
                         <p className="text-sm text-muted mb-1">{info.label}</p>

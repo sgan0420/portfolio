@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { HiBars3, HiXMark, HiSun, HiMoon } from "react-icons/hi2";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Education", href: "/education" },
   { name: "Experience", href: "/experience" },
+  { name: "Education", href: "/education" },
   { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
@@ -56,14 +57,22 @@ export default function Header() {
     <header ref={header} className="site-header">
       <div className="header-inner">
         <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
-          Shijie Gan
+          <Image
+            src="/favicon.svg?v=split-s"
+            alt=""
+            width={34}
+            height={34}
+            className="brand-mark"
+            priority
+          />
+          <span>Shijie Gan</span>
         </Link>
         <nav aria-label="Main navigation" className="desktop-nav">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="nav-link"
+              className={`nav-link${item.href === "/contact" ? " nav-contact" : ""}`}
               aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.name}

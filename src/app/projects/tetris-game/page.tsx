@@ -1,8 +1,10 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { FaGithub, FaGamepad, FaCode, FaCube, FaPlay } from "react-icons/fa";
 import { SiTypescript, SiReactivex, SiHtml5, SiCss3 } from "react-icons/si";
 import BackButton from "../../../components/BackButton";
+
+export const metadata: Metadata = { title: "Tetris Game" };
 
 const ProjectDetail = () => {
   // Project data - Tetris Game
@@ -129,7 +131,7 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="project-detail-header text-center">
+          <div className="project-detail-header text-center" data-reveal>
             <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
@@ -158,7 +160,7 @@ const ProjectDetail = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                    className="button-primary"
                   >
                     <FaGithub className="w-5 h-5" />
                     View Code
@@ -169,7 +171,7 @@ const ProjectDetail = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
+                    className="button-secondary"
                   >
                     <FaPlay className="w-5 h-5" />
                     Play Game
@@ -193,7 +195,7 @@ const ProjectDetail = () => {
                 src="/tetris.png"
                 alt="Tetris Game Interface"
                 fill
-                sizes="(max-width: 768px) 100vw, 896px"
+                sizes="(max-width: 768px) 100vw, 1120px"
                 className="object-contain p-4"
               />
             </div>
@@ -282,7 +284,7 @@ const ProjectDetail = () => {
             <h2 className="project-tools-heading text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
-            <div className="project-tools">
+            <div className="project-tools" data-reveal>
               {project.technologies.map((tech, index) => {
                 const Icon = tech.icon;
                 return (
@@ -299,23 +301,8 @@ const ProjectDetail = () => {
           </div>
 
           {/* Detailed Description */}
-          <div className="mb-24">{project.longDescription}</div>
-
-          {/* Call to Action */}
-          <div className="text-center border-t border-line pt-24">
-            <h2 className="text-3xl font-normal mb-6">
-              Interested in Reactive Programming?
-            </h2>
-            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss how reactive architecture can enhance your next
-              web application!
-            </p>
-            <Link
-              href="/contact"
-              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
-            >
-              Discuss Reactive Solutions
-            </Link>
+          <div className="case-study-content mb-24" data-reveal>
+            {project.longDescription}
           </div>
         </div>
       </div>

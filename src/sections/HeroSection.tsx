@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HiArrowDown, HiArrowUpRight } from "react-icons/hi2";
+import { HiArrowDown } from "react-icons/hi2";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import SkyField from "@/components/SkyField";
 
@@ -36,10 +36,10 @@ export default function HeroSection() {
           </p>
           <div className="hero-actions">
             <Link href="/projects" className="button-primary">
-              View Projects <HiArrowUpRight aria-hidden="true" />
+              View Projects
             </Link>
             <Link href="/about" className="button-secondary">
-              About Me <HiArrowUpRight aria-hidden="true" />
+              About Me
             </Link>
           </div>
           <div className="hero-socials">

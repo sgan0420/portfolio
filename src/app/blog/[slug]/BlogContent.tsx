@@ -19,23 +19,23 @@ export default function BlogContent({ content, title }: BlogContentProps) {
   if (outline) body = body.replace(outline[0], "");
 
   return (
-    <>
+    <div className="article-layout">
       {outline && (
-        <details className="article-outline detail-disclosure">
-          <summary>Table of Contents</summary>
+        <aside className="article-outline">
+          <h2>On this page</h2>
           <nav
             aria-label="Article sections"
-            className="prose-notion disclosure-content"
+            className="prose-notion outline-links"
           >
             <ReactMarkdown>{outline[1]}</ReactMarkdown>
           </nav>
-        </details>
+        </aside>
       )}
       <div className="prose-notion">
         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
           {body}
         </ReactMarkdown>
       </div>
-    </>
+    </div>
   );
 }

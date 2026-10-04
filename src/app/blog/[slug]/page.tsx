@@ -43,12 +43,12 @@ export default async function BlogPost({
 
   return (
     <div className="page-shell article-reading">
-      <article className="max-w-3xl mx-auto px-6 sm:px-8">
+      <article className="site-container">
         {/* Back Link */}
         <div className="">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors mb-12"
+            className="back-link inline-flex items-center gap-2 text-sm text-muted mb-12"
           >
             <HiArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -56,7 +56,7 @@ export default async function BlogPost({
         </div>
 
         {/* Header */}
-        <header className="mb-12 ">
+        <header className="article-header">
           <h1 className="text-4xl sm:text-5xl font-normal tracking-tight mb-6 leading-tight">
             {post.title}
           </h1>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import ProjectVisual from "@/components/ProjectVisual";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
@@ -10,6 +10,8 @@ import {
   SiOpenai,
 } from "react-icons/si";
 import BackButton from "../../../components/BackButton";
+
+export const metadata: Metadata = { title: "Patlytics Infringement Checker" };
 
 const ProjectDetail = () => {
   // Project data - Patlytics Infringement Checker
@@ -139,7 +141,7 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="project-detail-header text-center">
+          <div className="project-detail-header text-center" data-reveal>
             <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
@@ -168,7 +170,7 @@ const ProjectDetail = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                    className="button-primary"
                   >
                     <FaGithub className="w-5 h-5" />
                     View Code
@@ -179,7 +181,7 @@ const ProjectDetail = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
+                    className="button-secondary"
                   >
                     <HiExternalLink className="w-5 h-5" />
                     Live Demo
@@ -209,7 +211,7 @@ const ProjectDetail = () => {
             <h2 className="project-tools-heading text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
-            <div className="project-tools">
+            <div className="project-tools" data-reveal>
               {project.technologies.map((tech, index) => {
                 const Icon = tech.icon;
                 return (
@@ -226,23 +228,8 @@ const ProjectDetail = () => {
           </div>
 
           {/* Detailed Description */}
-          <div className="mb-24">{project.longDescription}</div>
-
-          {/* Call to Action */}
-          <div className="text-center border-t border-line pt-24">
-            <h2 className="text-3xl font-normal mb-6">
-              Looking for AI-Powered Solutions?
-            </h2>
-            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
-              I can build sophisticated AI applications that solve real-world
-              business problems.
-            </p>
-            <Link
-              href="/contact"
-              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
-            >
-              Get in Touch
-            </Link>
+          <div className="case-study-content mb-24" data-reveal>
+            {project.longDescription}
           </div>
         </div>
       </div>

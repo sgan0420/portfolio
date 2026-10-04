@@ -1,23 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import PageHeading from "@/components/PageHeading";
 import Image from "next/image";
-import { HiArrowRight } from "react-icons/hi";
+
+export const metadata: Metadata = { title: "About" };
 
 const About = () => {
   return (
-    <div className="page-shell">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <div className="page-shell about-page">
+      <div className="site-container">
         {/* Header Section */}
-        <div className="page-heading">
-          <h1 className="page-title">About Me</h1>
-          <p className="page-lead">
-            Full-stack developer with a passion for building scalable
-            applications and solving complex problems. Based in Malaysia,
-            thinking globally.
-          </p>
-        </div>
+        <PageHeading title="About Me">
+          Full-stack developer with a passion for building scalable applications
+          and solving complex problems. Based in Malaysia, thinking globally.
+        </PageHeading>
 
         {/* Main Content Grid */}
-        <div className="about-layout grid md:grid-cols-12 gap-12 mb-24">
+        <div
+          data-reveal
+          className="about-layout grid md:grid-cols-12 gap-12 mb-24"
+        >
           {/* Profile Image */}
           <div className="md:col-span-5">
             <div className="profile-frame relative aspect-[4/5] w-full overflow-hidden bg-surface">
@@ -41,9 +43,8 @@ const About = () => {
                 to pursue Computer Science at Monash University and Engineering
                 at Imperial College London.
               </p>
-              <details className="detail-disclosure">
-                <summary>More about me</summary>
-                <div className="disclosure-content space-y-5">
+              <div className="visible-details">
+                <div className="detail-content space-y-5">
                   <p>
                     Today, I specialize in full-stack development, with
                     expertise in modern frameworks like React, Next.js, and
@@ -57,7 +58,7 @@ const About = () => {
                     stands the test of time.
                   </p>
                 </div>
-              </details>
+              </div>
             </div>
 
             {/* Stats / Quick Info */}
@@ -96,7 +97,7 @@ const About = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                View Details <HiArrowRight className="ml-2 w-4 h-4" />
+                View Details
               </div>
             </div>
           </Link>
@@ -110,7 +111,7 @@ const About = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                View Journey <HiArrowRight className="ml-2 w-4 h-4" />
+                View Journey
               </div>
             </div>
           </Link>

@@ -1,23 +1,46 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { HiArrowRight } from "react-icons/hi";
+import PageHeading from "@/components/PageHeading";
+
+export const metadata: Metadata = { title: "Education" };
 
 const Education = () => {
   return (
-    <div className="page-shell">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <div className="page-shell education-page">
+      <div className="site-container">
         {/* Header Section */}
-        <div className="page-heading">
-          <h1 className="page-title">Education</h1>
-          <p className="page-lead">
-            My academic journey, from engineering foundations to computer
-            science excellence.
-          </p>
-        </div>
+        <PageHeading title="Education">
+          My academic journey, from engineering foundations to computer science
+          excellence.
+        </PageHeading>
 
+        <div className="achievement-strip" data-reveal>
+          <div>
+            <span>
+              3.97<span className="metric-unit"> / 4.0</span>
+            </span>
+            <p>Computer Science CGPA</p>
+          </div>
+          <div>
+            <span>90.15</span>
+            <p>Weighted average mark</p>
+          </div>
+          <div>
+            <span>RM30k</span>
+            <p>High Achiever Scholarship</p>
+          </div>
+          <div>
+            <span>4 A*</span>
+            <p>Cambridge A-Levels</p>
+          </div>
+        </div>
         {/* Education Items */}
         <div className="space-y-8">
           {/* Monash University */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Monash University</h2>
               <p className="text-muted font-normal mb-4">Oct 2022 - Jul 2025</p>
@@ -37,9 +60,8 @@ const Education = () => {
                   Monash High Achiever Award (RM30,000 Scholarship)
                 </p>
               </div>
-              <details className="detail-disclosure">
-                <summary>Achievements & background</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal">
                       Graduated with exceptional academic excellence and
@@ -85,12 +107,15 @@ const Education = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* Imperial College London */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">
                 Imperial College London
@@ -115,9 +140,8 @@ const Education = () => {
                   Recognition for Excellence in Design & Manufacture
                 </p>
               </div>
-              <details className="detail-disclosure">
-                <summary>Achievements & background</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal">
                       Excelled in mechanical engineering at one of the
@@ -152,12 +176,15 @@ const Education = () => {
                     </div>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* Taylor's College */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">
                 Taylor&apos;s College
@@ -175,9 +202,8 @@ const Education = () => {
                   A-Level High Achiever Award • Taylor&apos;s Merit Scholarship
                 </p>
               </div>
-              <details className="detail-disclosure">
-                <summary>Achievements & background</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal">
                       Achieved exceptional results with perfect A* grades in
@@ -185,12 +211,15 @@ const Education = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
           {/* SMJK Yok Bin */}
-          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
+          <div
+            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
+            data-reveal
+          >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">SMJK Yok Bin</h2>
               <p className="text-muted font-normal mb-4">2013 - 2017</p>
@@ -206,9 +235,8 @@ const Education = () => {
                 <p className="text-lg font-medium mb-1">7A+, 2A, 1A-</p>
                 <p className="text-muted">Outstanding Academic Performance</p>
               </div>
-              <details className="detail-disclosure">
-                <summary>Achievements & background</summary>
-                <div className="disclosure-content space-y-7">
+              <div className="visible-details">
+                <div className="detail-content space-y-7">
                   <div>
                     <p className="text-lg text-muted leading-relaxed font-normal">
                       Demonstrated exceptional academic performance and
@@ -217,7 +245,7 @@ const Education = () => {
                     </p>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
         </div>
@@ -233,7 +261,7 @@ const Education = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                Read Bio <HiArrowRight className="ml-2 w-4 h-4" />
+                Read Bio
               </div>
             </div>
           </Link>
@@ -247,7 +275,7 @@ const Education = () => {
                 </p>
               </div>
               <div className="mt-8 flex items-center section-label group-hover:underline underline-offset-4">
-                View Journey <HiArrowRight className="ml-2 w-4 h-4" />
+                View Journey
               </div>
             </div>
           </Link>

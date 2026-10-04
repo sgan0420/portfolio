@@ -135,7 +135,7 @@ const ProjectDetail = () => {
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"

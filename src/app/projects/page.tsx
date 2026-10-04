@@ -211,7 +211,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-24"
@@ -234,7 +234,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Link key={project.id} href={`/projects/${project.slug}`}>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                // First row is on screen at load, so show it immediately instead of fading in.
+                initial={index < 3 ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}

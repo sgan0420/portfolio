@@ -113,7 +113,7 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-24"
@@ -130,7 +130,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7"
@@ -250,7 +250,7 @@ const Contact = () => {
 
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="lg:col-span-5 space-y-12"

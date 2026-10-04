@@ -10,7 +10,7 @@ const Education = () => {
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-24"
@@ -28,7 +28,7 @@ const Education = () => {
         <div className="space-y-24">
           {/* Monash University */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}

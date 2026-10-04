@@ -61,7 +61,7 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ opacity: 0 }}
+      initial={false}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
       className={`fixed top-0 w-full z-[99999] transition-all duration-300 ${

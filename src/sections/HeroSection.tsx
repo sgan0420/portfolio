@@ -45,7 +45,7 @@ const HeroSection = () => {
     >
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 mt-32 md:mt-40"
-        initial="hidden"
+        initial={false}
         animate="visible"
         variants={textVariants}
       >

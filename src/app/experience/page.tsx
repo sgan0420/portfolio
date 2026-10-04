@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { HiArrowRight } from "react-icons/hi";
+import { HiArrowRight, HiExternalLink } from "react-icons/hi";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Experience = () => {
   return (
@@ -20,14 +21,14 @@ const Experience = () => {
             Experience
           </h1>
           <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
-            My professional journey through fintech giants, full-stack
-            development, and academic mentoring.
+            My professional journey, from a founding role at an AI startup to
+            fintech giants, full-stack development, and academic mentoring.
           </p>
         </motion.div>
 
         {/* Experience Items */}
         <div className="space-y-24">
-          {/* Trontal Group */}
+          {/* Stealth Startup */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,16 +37,86 @@ const Experience = () => {
             className="grid md:grid-cols-12 gap-8 md:gap-12"
           >
             <div className="md:col-span-4">
+              <h2 className="text-2xl font-light mb-2">Stealth Startup</h2>
+              <p className="text-gray-500 dark:text-gray-400 font-light mb-4">
+                Aug 2026 - Present
+              </p>
+              <p className="text-xl italic text-black dark:text-white">
+                Founding Software Engineer
+              </p>
+              <p className="text-sm text-gray-400 font-light">
+                New York, United States
+              </p>
+            </div>
+            <div className="md:col-span-8 space-y-8">
+              <div>
+                <h3 className="text-3xl font-light mb-4">
+                  Productizing AI for the Next Billion Users
+                </h3>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
+                  Founding engineer at a stealth AI startup backed by $20M from
+                  the VCs and angel investors behind companies like Notion and
+                  Anduril. Building at the frontier of AI — architecting systems
+                  across the entire stack from 0 to 1, and turning early ideas
+                  into real products.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                    What I&apos;m Building
+                  </h4>
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
+                    <li>• Systems across the entire stack, 0 to 1</li>
+                    <li>• Context & model orchestration</li>
+                    <li>• Real-world agent systems</li>
+                    <li>• Technical foundations from first principles</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                    The Company
+                  </h4>
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
+                    <li>• $20M raised from VCs and angel investors</li>
+                    <li>• Backers behind Notion, Anduril and more</li>
+                    <li>• Founding engineering team</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+                  Focus
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                  AI Products, Agent Systems, Model Orchestration, Full-Stack
+                  Architecture.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Trontal Group */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-12 gap-8 md:gap-12 border-t border-gray-100 dark:border-gray-900 pt-24"
+          >
+            <div className="md:col-span-4">
               <h2 className="text-2xl font-light mb-2">Trontal Group</h2>
               <p className="text-gray-500 dark:text-gray-400 font-light mb-6">
-                Mar 2025 - Present
+                Mar 2025 - Aug 2026
               </p>
               <div className="space-y-4">
                 <div>
                   <p className="text-xl italic text-black dark:text-white">
                     Full Stack & Charting Engineer
                   </p>
-                  <p className="text-sm text-gray-400 font-light">Current</p>
+                  <p className="text-sm text-gray-400 font-light">Promoted</p>
                 </div>
                 <div>
                   <p className="text-xl italic text-black dark:text-white">
@@ -58,21 +129,42 @@ const Experience = () => {
             <div className="md:col-span-8 space-y-8">
               <div>
                 <h3 className="text-3xl font-light mb-4">
-                  Kiyotaka Trading Platform
+                  OpenMarket Trading Platform
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-6">
-                  Building Kiyotaka.ai — a blockchain quantitative trading
-                  platform — end to end, from system design to deployment.
+                  Built OpenMarket (formerly Kiyotaka.ai) — a blockchain
+                  quantitative trading platform — end to end, from system design
+                  to deployment.
                   Scaled the product from 0 to 50,000 monthly active users while
                   refactoring the codebase into a modular, scalable architecture
                   that kept the system fast and reliable as traffic grew.
                   Promoted to Charting Engineer with ownership of the core
                   charting library and platform infrastructure.
                 </p>
+                <div className="flex flex-wrap gap-6 mb-6">
+                  <a
+                    href="https://openmarket.xyz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white underline-offset-4 hover:underline"
+                  >
+                    <HiExternalLink className="w-4 h-4" />
+                    openmarket.xyz
+                  </a>
+                  <a
+                    href="https://x.com/openmarket_xyz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white underline-offset-4 hover:underline"
+                  >
+                    <FaXTwitter className="w-4 h-4" />
+                    @openmarket_xyz
+                  </a>
+                </div>
                 <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-gray-900 mb-8">
                   <Image
                     src="/kiyotaka.png"
-                    alt="Kiyotaka trading platform interface"
+                    alt="OpenMarket (then Kiyotaka.ai) trading platform interface"
                     fill
                     className="object-contain hover:scale-105 transition-transform duration-500"
                   />
@@ -86,13 +178,29 @@ const Experience = () => {
                   </h4>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-light">
                     <li>• Real-time charting & data visualization</li>
-                    <li>• Kata — AI assistant for authoring kScript indicators</li>
+                    <li>
+                      •{" "}
+                      <Link
+                        href="/projects/kata"
+                        className="underline underline-offset-4 decoration-1 hover:text-black dark:hover:text-white"
+                      >
+                        Kata
+                      </Link>{" "}
+                      — AI assistant for authoring kScript indicators
+                    </li>
                     <li>
                       • Live collaboration over WebSockets (session management &
                       live chat)
                     </li>
                     <li>
-                      • CEX & DEX integrations (Binance, Bybit, Hyperliquid)
+                      •{" "}
+                      <Link
+                        href="/projects/exchange-integrations"
+                        className="underline underline-offset-4 decoration-1 hover:text-black dark:hover:text-white"
+                      >
+                        CEX & DEX integrations
+                      </Link>{" "}
+                      (Binance, Bybit, Hyperliquid)
                     </li>
                   </ul>
                 </div>

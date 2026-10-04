@@ -21,6 +21,8 @@ import {
   FaCubes,
   FaRobot,
   FaHandPaper,
+  FaCode,
+  FaExchangeAlt,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -45,6 +47,38 @@ import {
 const Projects = () => {
   // Projects data
   const projects = [
+    {
+      id: 10,
+      title: "Kata",
+      slug: "kata",
+      org: "OpenMarket",
+      description:
+        "An AI coding assistant inside OpenMarket. Describe an indicator in plain English and Kata writes it in kScript, so traders who don't code can build their own. Built single-handedly at Trontal.",
+      image: "/kata.png",
+      technologies: [
+        { name: "LLMs", icon: FaBrain },
+        { name: "kScript", icon: FaCode },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "Vue 3", icon: SiVuedotjs },
+      ],
+      category: "AI Assistant",
+    },
+    {
+      id: 9,
+      title: "Exchange Integrations",
+      slug: "exchange-integrations",
+      org: "OpenMarket",
+      description:
+        "Trading integrations connecting OpenMarket to Binance and Bybit (centralized) and Hyperliquid (decentralized). Sole developer at Trontal.",
+      image: "/exchange-integrations.png",
+      technologies: [
+        { name: "Binance", icon: SiBinance },
+        { name: "Bybit", icon: FaExchangeAlt },
+        { name: "Hyperliquid", icon: FaCubes },
+        { name: "TypeScript", icon: SiTypescript },
+      ],
+      category: "Trading Integration",
+    },
     {
       id: 8,
       title: "Project Atom",
@@ -186,12 +220,12 @@ const Projects = () => {
             Projects
           </h1>
           <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
-            A showcase of my{" "}
-            <span className="font-semibold">personal projects</span>{" "}
-            and technical skills. Each project represents a unique challenge and
-            demonstrates different aspects of modern software development.
-            Please note that professional industrial projects are not displayed
-            here due to confidentiality.
+            A showcase of features I&apos;ve{" "}
+            <span className="font-semibold">shipped in production</span> and my{" "}
+            <span className="font-semibold">personal projects</span>. Each
+            project represents a unique challenge and demonstrates different
+            aspects of modern software development. Work from Ant International
+            and iFAST is not displayed here due to confidentiality.
           </p>
         </motion.div>
 
@@ -239,6 +273,11 @@ const Projects = () => {
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <HiCode className="w-16 h-16 text-gray-400" />
+                    </div>
+                  )}
+                  {project.org && (
+                    <div className="absolute top-4 left-4 bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+                      {project.org}
                     </div>
                   )}
                   <div className="absolute top-4 right-4 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">

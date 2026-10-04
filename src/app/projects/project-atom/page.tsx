@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   FaGithub,
@@ -181,12 +178,7 @@ const ProjectDetail = () => {
   return (
     <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <div className="mb-12">
             <BackButton href="/projects" text="Back to Projects" />
@@ -229,7 +221,7 @@ const ProjectDetail = () => {
 
           {/* Demo Preview */}
           <div className="mb-24">
-            <div className="relative w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
+            <div className="relative w-full bg-surface rounded-2xl overflow-hidden border border-line">
               <div className="relative aspect-video">
                 <Image
                   src="/project-atom.png"
@@ -239,21 +231,21 @@ const ProjectDetail = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="p-6 border-t border-gray-800">
-                <div className="grid grid-cols-4 gap-3 max-w-lg mx-auto mb-4">
-                  <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 text-center">
+              <div className="p-6 border-t border-line">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto mb-4">
+                  <div className="bg-surface rounded-lg p-3 border border-line text-center">
                     <div className="text-2xl mb-1">&#x1F44A;</div>
                     <div className="text-xs text-subtle">Punch</div>
                   </div>
-                  <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 text-center">
+                  <div className="bg-surface rounded-lg p-3 border border-line text-center">
                     <div className="text-2xl mb-1">&#x1F590;</div>
                     <div className="text-xs text-subtle">Kick</div>
                   </div>
-                  <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 text-center">
+                  <div className="bg-surface rounded-lg p-3 border border-line text-center">
                     <div className="text-2xl mb-1">&#x1F44A;&#x1F44A;</div>
                     <div className="text-xs text-subtle">Box</div>
                   </div>
-                  <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 text-center">
+                  <div className="bg-surface rounded-lg p-3 border border-line text-center">
                     <div className="text-2xl mb-1">&#x1F590;&#x1F590;</div>
                     <div className="text-xs text-subtle">Dance</div>
                   </div>
@@ -307,7 +299,7 @@ const ProjectDetail = () => {
               Get in Touch
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

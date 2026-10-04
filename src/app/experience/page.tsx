@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { HiArrowRight, HiExternalLink } from "react-icons/hi";
@@ -11,29 +8,18 @@ const Experience = () => {
     <div className="page-shell">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="page-heading"
-        >
+        <div className="page-heading">
           <h1 className="page-title">Experience</h1>
           <p className="page-lead">
             My professional journey, from a founding role at an AI startup to
             fintech giants, full-stack development, and academic mentoring.
           </p>
-        </motion.div>
+        </div>
 
         {/* Experience Items */}
         <div className="space-y-8">
           {/* Stealth Startup */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Stealth Startup</h2>
               <p className="text-muted font-normal mb-4">Aug 2026 - Present</p>
@@ -90,16 +76,10 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Trontal Group */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Trontal Group</h2>
               <p className="text-muted font-normal mb-6">Mar 2025 - Aug 2026</p>
@@ -217,16 +197,10 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Ant International */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Ant International</h2>
               <p className="text-muted font-normal mb-4">Nov 2024 - Mar 2025</p>
@@ -303,16 +277,10 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* iFAST Corporation */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">iFAST Corporation</h2>
               <p className="text-muted font-normal mb-4">Nov 2023 - Feb 2024</p>
@@ -372,16 +340,10 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Monash University */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Monash University</h2>
               <p className="text-muted font-normal mb-4">Jul 2023 - Aug 2023</p>
@@ -432,17 +394,11 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Navigation Links */}
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-6 mt-32"
-        >
+        <div className="grid md:grid-cols-2 gap-6 mt-32">
           <Link href="/about" className="group">
             <div className="navigation-card h-full flex flex-col justify-between">
               <div>
@@ -470,7 +426,7 @@ const Experience = () => {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

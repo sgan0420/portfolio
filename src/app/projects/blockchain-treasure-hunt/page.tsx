@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaEthereum, FaCubes } from "react-icons/fa";
 import { HiExternalLink } from "react-icons/hi";
@@ -144,12 +141,7 @@ const ProjectDetail = () => {
   return (
     <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <div className="mb-12">
             <BackButton href="/projects" text="Back to Projects" />
@@ -210,16 +202,16 @@ const ProjectDetail = () => {
 
           {/* Game Preview */}
           <div className="mb-24">
-            <div className="relative w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 p-8">
+            <div className="relative w-full bg-surface rounded-2xl overflow-hidden border border-line p-8">
               <div className="text-center">
-                <h3 className="text-2xl font-normal text-white mb-4">
+                <h3 className="text-2xl font-normal text-ink mb-4">
                   💎 Treasure Hunt
                 </h3>
                 <div className="grid grid-cols-3 gap-2 max-w-[200px] mx-auto mb-4">
                   {[...Array(9)].map((_, i) => (
                     <div
                       key={i}
-                      className="aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-2xl border border-gray-700 hover:border-gray-500 transition-colors"
+                      className="aspect-square bg-surface rounded-lg flex items-center justify-center text-2xl border border-line hover:border-accent transition-colors"
                     >
                       {i === 4 ? "💎" : "?"}
                     </div>
@@ -228,7 +220,7 @@ const ProjectDetail = () => {
                 <p className="text-subtle text-sm">
                   0.001 ETH per dig • Win 0.005 ETH
                 </p>
-                <p className="text-amber-500 text-xs mt-2">
+                <p className="text-amber-700 dark:text-amber-400 text-xs mt-2">
                   ⚠️ Connect to Base Sepolia network
                 </p>
               </div>
@@ -275,7 +267,7 @@ const ProjectDetail = () => {
               Get in Touch
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

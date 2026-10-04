@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { HiArrowRight } from "react-icons/hi";
@@ -10,29 +7,19 @@ const About = () => {
     <div className="page-shell">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="page-heading"
-        >
+        <div className="page-heading">
           <h1 className="page-title">About Me</h1>
           <p className="page-lead">
             Full-stack developer with a passion for building scalable
             applications and solving complex problems. Based in Malaysia,
             thinking globally.
           </p>
-        </motion.div>
+        </div>
 
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-12 gap-12 mb-24">
           {/* Profile Image */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-5"
-          >
+          <div className="md:col-span-5">
             <div className="profile-frame relative aspect-[4/5] w-full overflow-hidden bg-surface">
               <Image
                 src="/me2.png"
@@ -43,15 +30,10 @@ const About = () => {
                 priority
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* Bio & Details */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-7 flex flex-col justify-between"
-          >
+          <div className="md:col-span-7 flex flex-col justify-between">
             <div className="space-y-8 text-lg text-muted leading-relaxed font-normal">
               <p>
                 I view code as a medium for creativity and problem-solving. My
@@ -94,16 +76,11 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Navigation Links */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid md:grid-cols-2 gap-6"
-        >
+        <div className="grid md:grid-cols-2 gap-6">
           <Link href="/education" className="group">
             <div className="navigation-card h-full flex flex-col justify-between">
               <div>
@@ -131,7 +108,7 @@ const About = () => {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
 
@@ -9,29 +6,18 @@ const Education = () => {
     <div className="page-shell">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="page-heading"
-        >
+        <div className="page-heading">
           <h1 className="page-title">Education</h1>
           <p className="page-lead">
             My academic journey, from engineering foundations to computer
             science excellence.
           </p>
-        </motion.div>
+        </div>
 
         {/* Education Items */}
         <div className="space-y-8">
           {/* Monash University */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Monash University</h2>
               <p className="text-muted font-normal mb-4">Oct 2022 - Jul 2025</p>
@@ -44,7 +30,7 @@ const Education = () => {
                 <h3 className="text-3xl font-normal mb-4">
                   Bachelor of Computer Science
                 </h3>
-                <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line mb-6">
+                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
                   <p className="text-lg font-medium mb-1">
                     CGPA: 3.97/4.0 • WAM: 90.15
                   </p>
@@ -93,16 +79,10 @@ const Education = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Imperial College London */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">
                 Imperial College London
@@ -120,7 +100,7 @@ const Education = () => {
                 <p className="text-sm text-subtle mb-4 uppercase tracking-wider">
                   Certificate of Higher Education
                 </p>
-                <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line mb-6">
+                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
                   <p className="text-lg font-medium mb-1">
                     Ranked 2nd in the World (QS 2025)
                   </p>
@@ -160,16 +140,10 @@ const Education = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Taylor's College */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">
                 Taylor&apos;s College
@@ -184,7 +158,7 @@ const Education = () => {
                 <h3 className="text-3xl font-normal mb-4">
                   Cambridge A-Levels
                 </h3>
-                <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line mb-6">
+                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
                   <p className="text-lg font-medium mb-1">
                     4 A* (Perfect Score)
                   </p>
@@ -199,16 +173,10 @@ const Education = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* SMJK Yok Bin */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12"
-          >
+          <div className="timeline-item grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">SMJK Yok Bin</h2>
               <p className="text-muted font-normal mb-4">2013 - 2017</p>
@@ -221,7 +189,7 @@ const Education = () => {
                 <h3 className="text-3xl font-normal mb-4">
                   SPM (Malaysian Certificate of Education)
                 </h3>
-                <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line mb-6">
+                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
                   <p className="text-lg font-medium mb-1">7A+, 2A, 1A-</p>
                   <p className="text-muted">Outstanding Academic Performance</p>
                 </div>
@@ -232,17 +200,11 @@ const Education = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Navigation Links */}
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-6 mt-32"
-        >
+        <div className="grid md:grid-cols-2 gap-6 mt-32">
           <Link href="/about" className="group">
             <div className="navigation-card h-full flex flex-col justify-between">
               <div>
@@ -270,7 +232,7 @@ const Education = () => {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

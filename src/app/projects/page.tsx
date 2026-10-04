@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { HiCode } from "react-icons/hi";
@@ -210,12 +207,7 @@ const Projects = () => {
     <div className="page-shell">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="page-heading"
-        >
+        <div className="page-heading">
           <h1 className="page-title">Projects</h1>
           <p className="page-lead">
             A showcase of features I&apos;ve{" "}
@@ -225,18 +217,14 @@ const Projects = () => {
             aspects of modern software development. Work from Ant International
             and iFAST is not displayed here due to confidentiality.
           </p>
-        </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {projects.map((project) => (
             <Link key={project.id} href={`/projects/${project.slug}`}>
-              <motion.div
+              <div
                 // Keep every card visible in the server-rendered HTML.
-                initial={false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3 }}
                 className="project-card group"
               >
                 <div className="project-card-image relative aspect-[4/3] overflow-hidden">
@@ -313,18 +301,12 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </Link>
           ))}
 
           {/* Coming Soon Card */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="border border-dashed border-line rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]"
-          >
+          <div className="border border-dashed border-line rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]">
             <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-6">
               <span className="text-3xl">🚀</span>
             </div>
@@ -338,17 +320,11 @@ const Projects = () => {
                 In Progress
               </span>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Call to Action */}
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="border-t border-line pt-24"
-        >
+        <div className="border-t border-line pt-24">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-normal mb-6">Want to see more?</h2>
             <p className="text-xl text-muted font-normal mb-8 leading-relaxed">
@@ -374,7 +350,7 @@ const Projects = () => {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

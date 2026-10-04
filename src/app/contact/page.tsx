@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
   HiMail,
@@ -112,27 +111,17 @@ const Contact = () => {
     <div className="page-shell">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="page-heading"
-        >
+        <div className="page-heading">
           <h1 className="page-title">Get in Touch</h1>
           <p className="page-lead">
             Have a project in mind or want to collaborate? I&apos;d love to hear
             from you.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
           {/* Contact Form */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7"
-          >
+          <div className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="contact-form space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -204,25 +193,21 @@ const Contact = () => {
 
               {/* Status Messages */}
               {isSuccess && (
-                <motion.div
-                  initial={false}
-                  animate={{ opacity: 1, y: 0 }}
+                <div
                   role="status"
-                  className="p-4 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-lg"
+                  className="p-4 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-sm rounded-lg"
                 >
                   Message sent successfully! I&apos;ll get back to you soon.
-                </motion.div>
+                </div>
               )}
 
               {error && (
-                <motion.div
-                  initial={false}
-                  animate={{ opacity: 1, y: 0 }}
+                <div
                   role="alert"
                   className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-lg"
                 >
                   {error}
-                </motion.div>
+                </div>
               )}
 
               <button
@@ -236,15 +221,10 @@ const Contact = () => {
                 )}
               </button>
             </form>
-          </motion.div>
+          </div>
 
           {/* Contact Information */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="contact-details lg:col-span-5 space-y-10"
-          >
+          <div className="contact-details lg:col-span-5 space-y-10">
             <div>
               <h3 className="section-label text-muted mb-6">Contact Details</h3>
               <div className="space-y-6">
@@ -277,7 +257,7 @@ const Contact = () => {
                           {info.value}
                         </p>
                         {info.isWhatsApp && (
-                          <div className="flex items-center gap-1 mt-1 text-green-600 dark:text-green-400 text-xs">
+                          <div className="flex items-center gap-1 mt-1 text-green-700 dark:text-green-400 text-xs">
                             <FaWhatsapp className="w-3 h-3" />
                             <span>WhatsApp me directly</span>
                           </div>
@@ -310,10 +290,10 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line">
+            <div className="p-6 bg-surface rounded-lg border border-line">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full "></div>
-                <span className="text-sm font-medium text-green-600 dark:text-green-400">
+                <span className="text-sm font-medium text-green-700 dark:text-green-400">
                   Available for new opportunities
                 </span>
               </div>
@@ -322,7 +302,7 @@ const Contact = () => {
                 opportunities.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

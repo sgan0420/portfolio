@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaChartLine } from "react-icons/fa";
@@ -127,12 +124,7 @@ const ProjectDetail = () => {
   return (
     <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <div className="mb-12">
             <BackButton href="/projects" text="Back to Projects" />
@@ -239,7 +231,7 @@ const ProjectDetail = () => {
               Get in Touch
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

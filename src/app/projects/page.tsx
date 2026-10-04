@@ -237,6 +237,7 @@ const Projects = () => {
                 <div className="project-card-image relative aspect-[16/10] overflow-hidden">
                   {project.image ? (
                     <Image
+                      priority={project.id >= 9}
                       src={project.image}
                       alt={project.title}
                       fill

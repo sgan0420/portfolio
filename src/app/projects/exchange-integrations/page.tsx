@@ -166,6 +166,7 @@ const ProjectDetail = () => {
           <div className="mb-24">
             <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
+                priority
                 src="/exchange-integrations.png"
                 alt="OpenMarket trade panel placing a Binance perpetual order beside the chart"
                 fill

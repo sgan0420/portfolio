@@ -1,166 +1,130 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { HiMenuAlt3, HiX, HiSun, HiMoon } from "react-icons/hi";
+import {
+  HiArrowUpRight,
+  HiBars3,
+  HiXMark,
+  HiSun,
+  HiMoon,
+} from "react-icons/hi2";
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Education", href: "/education" },
+  { name: "Experience", href: "/experience" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-    } else {
-      // Default to light
-      setTheme("light");
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+export default function Header() {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    const isDark = document.documentElement.classList.toggle("dark");
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch {
+      // The toggle still works when browser storage is unavailable.
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (!isOpen) return;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        menuButton.current?.focus();
+      }
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
+    const handleOutside = (event: PointerEvent) => {
+      if (!header.current?.contains(event.target as Node)) setIsOpen(false);
+    };
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener("pointerdown", handleOutside);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("pointerdown", handleOutside);
     };
-  }, []);
+  }, [isOpen]);
 
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Education", href: "/education" },
-    { name: "Experience", href: "/experience" },
-    { name: "Projects", href: "/projects" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <motion.header
-      initial={false}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 w-full z-[99999] transition-all duration-300 ${
-        isScrolled
-          ? "bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-xl font-medium text-black dark:text-white"
+    <header ref={header} className="site-header">
+      <div className="header-inner">
+        <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
+          <span className="brand-mark" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+          Shijie Gan
+        </Link>
+        <nav aria-label="Main navigation" className="desktop-nav">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="nav-link"
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.name}
+              {item.name === "Contact" && <HiArrowUpRight aria-hidden="true" />}
+            </Link>
+          ))}
+        </nav>
+        <div className="header-controls">
+          <button
+            onClick={toggleTheme}
+            className="icon-button theme-toggle"
+            aria-label="Toggle theme"
           >
-            Shijie Gan
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 font-medium underline-effect"
-              >
-                {item.name}
-              </Link>
-            ))}
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <HiSun className="w-5 h-5" />
-              ) : (
-                <HiMoon className="w-5 h-5" />
-              )}
-            </button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 md:hidden">
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-black dark:text-white cursor-pointer"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <HiSun className="w-5 h-5" />
-              ) : (
-                <HiMoon className="w-5 h-5" />
-              )}
-            </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-black dark:text-white"
-              aria-label="Toggle menu"
-            >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                  <HiX key="close" className="w-6 h-6" />
-                ) : (
-                  <HiMenuAlt3 key="menu" className="w-6 h-6" />
-                )}
-              </AnimatePresence>
-            </button>
-          </div>
+            <HiMoon className="theme-moon" aria-hidden="true" />
+            <HiSun className="theme-sun" aria-hidden="true" />
+          </button>
+          <button
+            ref={menuButton}
+            className="icon-button menu-toggle"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isOpen ? (
+              <HiXMark aria-hidden="true" />
+            ) : (
+              <HiBars3 aria-hidden="true" />
+            )}
+          </button>
         </div>
-
-        {/* Mobile Navigation Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black overflow-hidden"
-            >
-              <nav className="flex flex-col py-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
-    </motion.header>
+      <nav
+        id="mobile-navigation"
+        aria-label="Mobile navigation"
+        className="mobile-nav"
+        hidden={!isOpen}
+      >
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            onClick={() => setIsOpen(false)}
+          >
+            {item.name}
+            <HiArrowUpRight aria-hidden="true" />
+          </Link>
+        ))}
+      </nav>
+    </header>
   );
-};
-
-export default Header;
+}

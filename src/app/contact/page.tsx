@@ -109,19 +109,17 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-24"
+          className="page-heading"
         >
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight mb-8">
-            Get in Touch
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
+          <h1 className="page-title">Get in Touch</h1>
+          <p className="page-lead">
             Have a project in mind or want to collaborate? I&apos;d love to hear
             from you.
           </p>
@@ -135,52 +133,45 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="contact-form space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400"
-                  >
+                  <label htmlFor="name" className="section-label text-muted">
                     Your Name
                   </label>
                   <input
                     type="text"
                     id="name"
+                    autoComplete="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full pb-2 bg-transparent border-b border-gray-200 dark:border-gray-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-lg font-light placeholder-gray-300"
+                    className="form-field"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400"
-                  >
+                  <label htmlFor="email" className="section-label text-muted">
                     Email Address
                   </label>
                   <input
                     type="email"
                     id="email"
+                    autoComplete="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full pb-2 bg-transparent border-b border-gray-200 dark:border-gray-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-lg font-light placeholder-gray-300"
+                    className="form-field"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="subject"
-                  className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400"
-                >
+                <label htmlFor="subject" className="section-label text-muted">
                   Subject
                 </label>
                 <input
@@ -190,16 +181,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full pb-2 bg-transparent border-b border-gray-200 dark:border-gray-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-lg font-light placeholder-gray-300"
+                  className="form-field"
                   placeholder="Project Collaboration"
                 />
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="message"
-                  className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400"
-                >
+                <label htmlFor="message" className="section-label text-muted">
                   Message
                 </label>
                 <textarea
@@ -209,7 +197,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full pb-2 bg-transparent border-b border-gray-200 dark:border-gray-800 focus:border-black dark:focus:border-white outline-none transition-colors duration-300 text-lg font-light placeholder-gray-300 resize-none"
+                  className="form-field resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -217,8 +205,9 @@ const Contact = () => {
               {/* Status Messages */}
               {isSuccess && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
+                  role="status"
                   className="p-4 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-lg"
                 >
                   Message sent successfully! I&apos;ll get back to you soon.
@@ -227,8 +216,9 @@ const Contact = () => {
 
               {error && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
+                  role="alert"
                   className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-lg"
                 >
                   {error}
@@ -238,7 +228,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity duration-300 disabled:opacity-50"
+                className="button-primary group disabled:opacity-50"
               >
                 {isLoading ? "Sending..." : "Send Message"}
                 {!isLoading && (
@@ -253,12 +243,10 @@ const Contact = () => {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-5 space-y-12"
+            className="contact-details lg:col-span-5 space-y-10"
           >
             <div>
-              <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-6">
-                Contact Details
-              </h3>
+              <h3 className="section-label text-muted mb-6">Contact Details</h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
@@ -281,13 +269,11 @@ const Contact = () => {
                       className="flex items-start gap-4 group"
                     >
                       <div className="mt-1">
-                        <Icon className="w-5 h-5 text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
+                        <Icon className="w-5 h-5 text-subtle group-hover:text-accent transition-colors duration-300" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                          {info.label}
-                        </p>
-                        <p className="text-lg font-light group-hover:underline underline-offset-4">
+                        <p className="text-sm text-muted mb-1">{info.label}</p>
+                        <p className="text-lg font-normal group-hover:underline underline-offset-4">
                           {info.value}
                         </p>
                         {info.isWhatsApp && (
@@ -304,9 +290,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-6">
-                Socials
-              </h3>
+              <h3 className="section-label text-muted mb-6">Socials</h3>
               <div className="flex gap-6">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon;
@@ -316,7 +300,7 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
+                      className="social-link"
                       aria-label={social.label}
                     >
                       <Icon className="w-6 h-6" />
@@ -326,14 +310,14 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-100 dark:border-gray-800">
+            <div className="p-6 bg-gray-50 dark:bg-surface rounded-lg border border-line">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full "></div>
                 <span className="text-sm font-medium text-green-600 dark:text-green-400">
                   Available for new opportunities
                 </span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
+              <p className="text-sm text-muted font-normal">
                 I&apos;m currently open to new freelance projects and full-time
                 opportunities.
               </p>

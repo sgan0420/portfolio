@@ -17,7 +17,7 @@ const ProjectDetail = () => {
     longDescription: (
       <div className="space-y-12">
         <div>
-          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+          <p className="text-lg leading-relaxed text-muted font-normal mb-8">
             Charts and order-flow data tell traders what the market is doing.
             These integrations let them act on it without leaving OpenMarket,
             across three venues they already trade on: two centralized exchanges
@@ -26,33 +26,31 @@ const ProjectDetail = () => {
         </div>
 
         <div>
-          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-            The Trade Panel
-          </h4>
-          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+          <h4 className="section-label text-muted mb-4">The Trade Panel</h4>
+          <ul className="space-y-3 text-muted font-normal">
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               <span>
                 <span className="font-medium">Trade beside the chart:</span> go
                 long or short on perpetual futures without switching tabs
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               <span>
                 <span className="font-medium">Market and limit orders:</span>{" "}
                 order size in USDT, with quick presets and a slider
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               <span>
                 <span className="font-medium">Risk controls:</span> take-profit
                 and stop-loss on the same ticket
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               <span>
                 <span className="font-medium">Know before you click:</span>{" "}
                 order value, margin, estimated liquidation and current position
@@ -64,26 +62,24 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Venues
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Venues</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
                   <span className="font-medium">Binance:</span> centralized
                   exchange (CEX)
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
                   <span className="font-medium">Bybit:</span> centralized
                   exchange (CEX)
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
                   <span className="font-medium">Hyperliquid:</span>{" "}
                   decentralized exchange (DEX), on-chain
@@ -93,21 +89,19 @@ const ProjectDetail = () => {
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              My Role
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">My Role</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Sole developer of all three integrations
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Bridged two different models: CEX accounts authenticate with API
                 keys, while Hyperliquid orders are signed by a wallet
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 One of several platform features I owned end to end, alongside
                 guest access, the PWA, alerts and push notifications
               </li>
@@ -128,7 +122,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           initial={false}
@@ -142,20 +136,20 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
+          <div className="project-detail-header text-center">
+            <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted font-normal leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.category}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.status}
               </span>
             </div>
@@ -167,7 +161,7 @@ const ProjectDetail = () => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                 >
                   <HiExternalLink className="w-5 h-5" />
                   Visit OpenMarket
@@ -178,11 +172,12 @@ const ProjectDetail = () => {
 
           {/* Project Screenshot */}
           <div className="mb-24">
-            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
                 src="/exchange-integrations.png"
                 alt="OpenMarket trade panel placing a Binance perpetual order beside the chart"
                 fill
+                sizes="(max-width: 768px) 100vw, 896px"
                 className="object-contain p-4"
               />
             </div>
@@ -190,7 +185,7 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-light mb-8 text-center">
+            <h2 className="text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -199,7 +194,7 @@ const ProjectDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                    className="flex items-center gap-3 px-5 py-2 border border-line rounded-full"
                   >
                     <Icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{tech.name}</span>
@@ -213,18 +208,19 @@ const ProjectDetail = () => {
           <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
-            <h2 className="text-3xl font-light mb-6">
+          <div className="text-center border-t border-line pt-24">
+            <h2 className="text-3xl font-normal mb-6">
               Working on Trading Infrastructure?
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
               I&apos;ve built exchange integrations, real-time charting and
               alerting for a platform with 50,000 monthly active users.
             </p>
-            <Link href="/contact" className="inline-block">
-              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                Get in Touch
-              </button>
+            <Link
+              href="/contact"
+              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              Get in Touch
             </Link>
           </div>
         </motion.div>

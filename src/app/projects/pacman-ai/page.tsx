@@ -24,7 +24,7 @@ const ProjectDetail = () => {
     longDescription: (
       <div className="space-y-12">
         <div>
-          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+          <p className="text-lg leading-relaxed text-muted font-normal mb-8">
             Designed intelligent AI agents to master the classic Pac-Man game
             through multiple AI paradigms. This comprehensive project implements
             various artificial intelligence techniques to create sophisticated
@@ -34,48 +34,44 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Search Algorithms
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Search Algorithms</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 A* algorithm for optimal pathfinding
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Custom heuristics for maze navigation
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Real-time search optimization
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 DFS & BFS implementation
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Adversarial Agent
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Adversarial Agent</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Alpha-beta pruning for competition
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Minimax strategic decision making
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Multi-agent ghost scenarios
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Game tree exploration
               </li>
             </ul>
@@ -84,59 +80,55 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            <h4 className="section-label text-muted mb-4">
               Reinforcement Learning
             </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Q-learning strategy adaptation
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Value Iteration for optimal policy
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Reward-based navigation
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Temporal difference learning
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Perceptron Model
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Perceptron Model</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Custom perceptron from scratch
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Move prediction implementation
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Feature extraction & weights
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Real-time decision making
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
-            <strong className="text-black dark:text-white font-medium">
-              Academic Project:
-            </strong>{" "}
+        <div className="p-6 bg-surface rounded-lg border border-line">
+          <p className="text-sm text-muted font-normal">
+            <strong className="text-ink font-medium">Academic Project:</strong>{" "}
             This project demonstrates mastery of fundamental AI concepts through
             practical implementation in a classic gaming environment.
           </p>
@@ -159,7 +151,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           initial={false}
@@ -173,23 +165,23 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
+          <div className="project-detail-header text-center">
+            <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted font-normal leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.category}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.duration}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.status}
               </span>
             </div>
@@ -202,7 +194,7 @@ const ProjectDetail = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                   >
                     <FaGithub className="w-5 h-5" />
                     View Code
@@ -213,7 +205,7 @@ const ProjectDetail = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
                   >
                     <HiExternalLink className="w-5 h-5" />
                     View Demo
@@ -222,8 +214,8 @@ const ProjectDetail = () => {
 
                 {/* Show message when links are not available */}
                 {!project.githubUrl && !project.liveUrl && (
-                  <div className="px-6 py-3 bg-gray-50 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-light">
+                  <div className="px-6 py-3 bg-surface rounded-full border border-line">
+                    <p className="text-muted text-sm font-normal">
                       📚 <strong>Academic Project</strong> - Repository and demo
                       will be available soon
                     </p>
@@ -235,61 +227,62 @@ const ProjectDetail = () => {
 
           {/* Project Demo & Resources */}
           <div className="mb-24 space-y-12">
-            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
                 src="/pacman.png"
                 alt="Pac-Man AI Game Interface"
                 fill
+                sizes="(max-width: 768px) 100vw, 896px"
                 className="object-contain p-4"
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl">
-                <h3 className="text-xl font-light mb-6">
+              <div className="p-8 border border-line rounded-2xl">
+                <h3 className="text-xl font-normal mb-6">
                   AI Techniques Implemented
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Search Algorithms
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         A*, Heuristics, Pathfinding
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Adversarial AI
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         Alpha-Beta Pruning, Minimax
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Reinforcement Learning
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         Q-Learning, Value Iteration
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Neural Networks
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         Custom Perceptron Model
                       </div>
                     </div>
@@ -297,21 +290,23 @@ const ProjectDetail = () => {
                 </div>
               </div>
 
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl flex flex-col justify-center">
-                <h3 className="text-xl font-light mb-4">Academic Excellence</h3>
-                <p className="text-gray-500 dark:text-gray-400 font-light mb-6">
+              <div className="p-8 border border-line rounded-2xl flex flex-col justify-center">
+                <h3 className="text-xl font-normal mb-4">
+                  Academic Excellence
+                </h3>
+                <p className="text-muted font-normal mb-6">
                   This project was developed as part of advanced coursework in
                   Artificial Intelligence. My implementation achieved
                   exceptional performance in the competitive tournament.
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-black dark:text-white font-medium">
+                  <div className="flex items-center gap-3 text-ink font-medium">
                     <FaTrophy className="w-5 h-5 text-yellow-500" />
                     <span>
                       1st Place - Pac-Man AI Challenge (MY & AU Campuses)
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-black dark:text-white font-medium">
+                  <div className="flex items-center gap-3 text-ink font-medium">
                     <FaBrain className="w-5 h-5" />
                     <span>High Distinction Grade</span>
                   </div>
@@ -322,7 +317,7 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-light mb-8 text-center">
+            <h2 className="text-2xl font-normal mb-8 text-center">
               Technologies & Algorithms
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -331,7 +326,7 @@ const ProjectDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                    className="flex items-center gap-3 px-5 py-2 border border-line rounded-full"
                   >
                     <Icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{tech.name}</span>
@@ -345,18 +340,19 @@ const ProjectDetail = () => {
           <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
-            <h2 className="text-3xl font-light mb-6">
+          <div className="text-center border-t border-line pt-24">
+            <h2 className="text-3xl font-normal mb-6">
               Interested in AI & Machine Learning?
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
               Let&apos;s discuss how AI can solve complex problems in your
               domain!
             </p>
-            <Link href="/contact" className="inline-block">
-              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                Explore AI Solutions
-              </button>
+            <Link
+              href="/contact"
+              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              Explore AI Solutions
             </Link>
           </div>
         </motion.div>

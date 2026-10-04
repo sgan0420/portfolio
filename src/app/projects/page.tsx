@@ -207,19 +207,17 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Header Section */}
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-24"
+          className="page-heading"
         >
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight mb-8">
-            Projects
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-3xl">
+          <h1 className="page-title">Projects</h1>
+          <p className="page-lead">
             A showcase of features I&apos;ve{" "}
             <span className="font-semibold">shipped in production</span> and my{" "}
             <span className="font-semibold">personal projects</span>. Each
@@ -230,67 +228,68 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {projects.map((project) => (
             <Link key={project.id} href={`/projects/${project.slug}`}>
               <motion.div
-                // First row is on screen at load, so show it immediately instead of fading in.
-                initial={index < 3 ? false : { opacity: 0, y: 20 }}
+                // Keep every card visible in the server-rendered HTML.
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer border border-gray-300 dark:border-gray-700 rounded-2xl overflow-hidden hover:shadow-xl hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300 bg-white dark:bg-black"
+                transition={{ duration: 0.3 }}
+                className="project-card group"
               >
-                <div className="relative aspect-[4/3] bg-gray-50 dark:bg-gray-900 overflow-hidden border-b border-gray-100 dark:border-gray-800">
+                <div className="project-card-image relative aspect-[4/3] overflow-hidden">
                   {project.image && !project.image.includes("placeholder") ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain p-4 motion-safe:group-hover:scale-[1.03] transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   ) : project.icon === FaRobot ? (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative group-hover:scale-105 transition-transform duration-500">
-                        <FaRobot className="w-32 h-32 text-gray-400 dark:text-gray-500" />
-                        <FaHandPaper className="w-12 h-12 text-gray-600 dark:text-gray-300 absolute -bottom-2 -right-2" />
+                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
+                        <FaRobot className="w-32 h-32 text-subtle" />
+                        <FaHandPaper className="w-12 h-12 text-muted absolute -bottom-2 -right-2" />
                       </div>
                     </div>
                   ) : project.icon === FaEthereum ? (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
                         <FaCubes className="w-36 h-36 text-gray-300 dark:text-gray-700" />
-                        <FaEthereum className="w-16 h-16 text-gray-600 dark:text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        <FaEthereum className="w-16 h-16 text-muted absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       </div>
                     </div>
                   ) : project.icon ? (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative group-hover:scale-105 transition-transform duration-500">
+                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
                         <FaShieldAlt className="w-36 h-36 text-gray-300 dark:text-gray-700" />
-                        <FaCopyright className="w-16 h-16 text-gray-600 dark:text-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                        <FaSearch className="w-10 h-10 text-gray-500 dark:text-gray-400 absolute -bottom-1 -right-1" />
+                        <FaCopyright className="w-16 h-16 text-muted absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        <FaSearch className="w-10 h-10 text-muted absolute -bottom-1 -right-1" />
                       </div>
                     </div>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <HiCode className="w-16 h-16 text-gray-400" />
+                      <HiCode className="w-16 h-16 text-subtle" />
                     </div>
                   )}
                   {project.org && (
-                    <div className="absolute top-4 left-4 bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+                    <div className="absolute top-4 left-4 project-org">
                       {project.org}
                     </div>
                   )}
-                  <div className="absolute top-4 right-4 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+                  <div className="absolute top-4 right-4 project-category">
                     {project.category}
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-2xl font-light mb-3 group-hover:underline underline-offset-4 decoration-1">
+                  <h3 className="text-2xl font-medium mb-3 group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light mb-6 line-clamp-3 leading-relaxed">
+                  <p className="text-muted font-normal mb-6 line-clamp-3 leading-relaxed">
                     {project.description}
                   </p>
 
@@ -300,7 +299,7 @@ const Projects = () => {
                       return (
                         <div
                           key={i}
-                          className="flex items-center gap-2 px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300"
+                          className="flex items-center gap-2 px-3 py-1 border border-line rounded-full text-sm text-muted"
                         >
                           <Icon className="w-4 h-4" />
                           <span>{tech.name}</span>
@@ -308,7 +307,7 @@ const Projects = () => {
                       );
                     })}
                     {project.technologies.length > 3 && (
-                      <div className="px-3 py-1 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-500 dark:text-gray-400">
+                      <div className="px-3 py-1 border border-line rounded-full text-sm text-muted">
                         +{project.technologies.length - 3} more
                       </div>
                     )}
@@ -320,22 +319,22 @@ const Projects = () => {
 
           {/* Coming Soon Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="border border-dashed border-gray-300 dark:border-gray-700 rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]"
+            className="border border-dashed border-line rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]"
           >
-            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center mb-6">
+            <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-6">
               <span className="text-3xl">🚀</span>
             </div>
-            <h3 className="text-2xl font-light mb-3">Coming Soon</h3>
-            <p className="text-gray-500 dark:text-gray-400 font-light mb-6 leading-relaxed">
+            <h3 className="text-2xl font-normal mb-3">Coming Soon</h3>
+            <p className="text-muted font-normal mb-6 leading-relaxed">
               I have many other exciting projects that I want to share with you!
               More project showcases are coming soon.
             </p>
             <div className="flex gap-2">
-              <span className="px-3 py-1 bg-gray-100 dark:bg-gray-900 rounded-full text-sm text-gray-500 dark:text-gray-400">
+              <span className="px-3 py-1 bg-surface rounded-full text-sm text-muted">
                 In Progress
               </span>
             </div>
@@ -344,15 +343,15 @@ const Projects = () => {
 
         {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="border-t border-gray-200 dark:border-gray-800 pt-24"
+          className="border-t border-line pt-24"
         >
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-light mb-6">Want to see more?</h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 leading-relaxed">
+            <h2 className="text-3xl font-normal mb-6">Want to see more?</h2>
+            <p className="text-xl text-muted font-normal mb-8 leading-relaxed">
               These are just a few examples of my work. I&apos;m always working
               on new projects and exploring cutting-edge technologies.
             </p>
@@ -361,14 +360,14 @@ const Projects = () => {
                 href="https://github.com/sgan0420"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
               >
                 <FaGithub className="w-5 h-5" />
                 View GitHub
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 button-secondary"
               >
                 <FaEnvelope className="w-5 h-5" />
                 Contact Me

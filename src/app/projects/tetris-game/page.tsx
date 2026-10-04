@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { HiExternalLink } from "react-icons/hi";
 import { FaGithub, FaGamepad, FaCode, FaCube, FaPlay } from "react-icons/fa";
 import { SiTypescript, SiReactivex, SiHtml5, SiCss3 } from "react-icons/si";
 import BackButton from "../../../components/BackButton";
@@ -17,7 +16,7 @@ const ProjectDetail = () => {
     longDescription: (
       <div className="space-y-12">
         <div>
-          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+          <p className="text-lg leading-relaxed text-muted font-normal mb-8">
             Built a fully interactive, modern Tetris game using TypeScript and
             RxJS, designed with a reactive architecture that handles game logic,
             rendering, and user inputs in real time. The game uses SVG elements
@@ -28,22 +27,20 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Key Features
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Key Features</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span className="font-medium">Reactive Architecture:</span> RxJS
                 Observables for real-time updates
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span className="font-medium">Functional State:</span> Immutable
                 state management
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span className="font-medium">SVG Rendering:</span> Dynamic DOM
                 manipulation
               </li>
@@ -51,24 +48,22 @@ const ProjectDetail = () => {
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Game Features
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Game Features</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Hold queue & Next piece preview
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Hard drop & Wallkick system
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Pause, restart & Level scaling
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Comprehensive scoring system
               </li>
             </ul>
@@ -76,32 +71,32 @@ const ProjectDetail = () => {
         </div>
 
         <div>
-          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+          <h4 className="section-label text-muted mb-4">
             Technical Implementation
           </h4>
-          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+          <ul className="space-y-3 text-muted font-normal">
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Observable streams for game tick management
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Immutable state updates using functional programming
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Dynamic SVG rendering for smooth animations
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Modular TypeScript architecture
             </li>
           </ul>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
-            <strong className="text-black dark:text-white font-medium">
+        <div className="p-6 bg-surface rounded-lg border border-line">
+          <p className="text-sm text-muted font-normal">
+            <strong className="text-ink font-medium">
               Reactive Programming:
             </strong>{" "}
             This project demonstrates advanced reactive programming concepts
@@ -128,7 +123,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           initial={false}
@@ -142,23 +137,23 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
+          <div className="project-detail-header text-center">
+            <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted font-normal leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.category}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.period}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.status}
               </span>
             </div>
@@ -171,7 +166,7 @@ const ProjectDetail = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                   >
                     <FaGithub className="w-5 h-5" />
                     View Code
@@ -182,7 +177,7 @@ const ProjectDetail = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
                   >
                     <FaPlay className="w-5 h-5" />
                     Play Game
@@ -191,7 +186,7 @@ const ProjectDetail = () => {
               </div>
 
               {project.liveUrl && (
-                <p className="text-xs text-gray-400 font-light">
+                <p className="text-xs text-subtle font-normal">
                   🖥️ Best experienced on desktop - mobile controls not supported
                 </p>
               )}
@@ -200,61 +195,62 @@ const ProjectDetail = () => {
 
           {/* Game Demo & Features */}
           <div className="mb-24 space-y-12">
-            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
                 src="/tetris.png"
                 alt="Tetris Game Interface"
                 fill
+                sizes="(max-width: 768px) 100vw, 896px"
                 className="object-contain p-4"
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl">
-                <h3 className="text-xl font-light mb-6">
+              <div className="p-8 border border-line rounded-2xl">
+                <h3 className="text-xl font-normal mb-6">
                   Technical Highlights
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Reactive Architecture
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         RxJS Observables for real-time updates
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Immutable State
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         Functional programming principles
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         SVG Rendering
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         Dynamic graphics without game engine
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <div>
-                      <div className="text-gray-600 dark:text-gray-300 font-medium">
+                      <div className="text-muted font-medium">
                         Modular Design
                       </div>
-                      <div className="text-gray-400 text-sm font-light">
+                      <div className="text-subtle text-sm font-normal">
                         TypeScript for type safety
                       </div>
                     </div>
@@ -262,8 +258,8 @@ const ProjectDetail = () => {
                 </div>
               </div>
 
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl">
-                <h3 className="text-xl font-light mb-6">Game Features</h3>
+              <div className="p-8 border border-line rounded-2xl">
+                <h3 className="text-xl font-normal mb-6">Game Features</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     { icon: FaCube, title: "Hold Queue" },
@@ -276,8 +272,8 @@ const ProjectDetail = () => {
                     const Icon = feature.icon;
                     return (
                       <div key={index} className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-gray-400" />
-                        <span className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                        <Icon className="w-4 h-4 text-subtle" />
+                        <span className="text-sm text-muted font-normal">
                           {feature.title}
                         </span>
                       </div>
@@ -290,7 +286,7 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-light mb-8 text-center">
+            <h2 className="text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -299,7 +295,7 @@ const ProjectDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                    className="flex items-center gap-3 px-5 py-2 border border-line rounded-full"
                   >
                     <Icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{tech.name}</span>
@@ -313,18 +309,19 @@ const ProjectDetail = () => {
           <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
-            <h2 className="text-3xl font-light mb-6">
+          <div className="text-center border-t border-line pt-24">
+            <h2 className="text-3xl font-normal mb-6">
               Interested in Reactive Programming?
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
               Let&apos;s discuss how reactive architecture can enhance your next
               web application!
             </p>
-            <Link href="/contact" className="inline-block">
-              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                Discuss Reactive Solutions
-              </button>
+            <Link
+              href="/contact"
+              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              Discuss Reactive Solutions
             </Link>
           </div>
         </motion.div>

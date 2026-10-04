@@ -17,7 +17,7 @@ const ProjectDetail = () => {
     longDescription: (
       <div className="space-y-12">
         <div>
-          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+          <p className="text-lg leading-relaxed text-muted font-normal mb-8">
             Quickie is your one-click Chrome toolbox. It offers instant access
             to Chrome&apos;s most useful actions, no need to memorize shortcuts
             or dig through menus. From tab management and history to site
@@ -28,52 +28,50 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Key Features
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Key Features</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 One-click access to Chrome&apos;s features
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Tab management tools
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 History & Bookmarks access
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Site settings & permissions
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 QR code generation
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            <h4 className="section-label text-muted mb-4">
               Technical Implementation
             </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Chrome Extension Manifest V3
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Vanilla JavaScript performance
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Responsive popup interface
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Chrome APIs integration
               </li>
             </ul>
@@ -81,34 +79,30 @@ const ProjectDetail = () => {
         </div>
 
         <div>
-          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-            User Experience
-          </h4>
-          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+          <h4 className="section-label text-muted mb-4">User Experience</h4>
+          <ul className="space-y-3 text-muted font-normal">
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Eliminates need for keyboard shortcuts
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Reduces navigation time
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Improves productivity
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Accessible design
             </li>
           </ul>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
-            <strong className="text-black dark:text-white font-medium">
-              Available Now:
-            </strong>{" "}
+        <div className="p-6 bg-surface rounded-lg border border-line">
+          <p className="text-sm text-muted font-normal">
+            <strong className="text-ink font-medium">Available Now:</strong>{" "}
             Download Quickie from the Chrome Web Store and start boosting your
             browsing efficiency today!
           </p>
@@ -130,7 +124,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           initial={false}
@@ -144,23 +138,23 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
+          <div className="project-detail-header text-center">
+            <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted font-normal leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.category}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.duration}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.status}
               </span>
             </div>
@@ -172,7 +166,7 @@ const ProjectDetail = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300"
                 >
                   <FaGithub className="w-5 h-5" />
                   View Code
@@ -181,13 +175,13 @@ const ProjectDetail = () => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-secondary"
                 >
                   <FaDownload className="w-5 h-5" />
                   Install from Chrome Store
                 </a>
               </div>
-              <p className="text-xs text-gray-400 font-light">
+              <p className="text-xs text-subtle font-normal">
                 ✅ Available now on Chrome Web Store
               </p>
             </div>
@@ -195,57 +189,58 @@ const ProjectDetail = () => {
 
           {/* Project Demo & Resources */}
           <div className="mb-24 space-y-12">
-            <div className="relative aspect-video w-full bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
                 src="/quickie.png"
                 alt="Chrome Extension Quickie Interface"
                 fill
+                sizes="(max-width: 768px) 100vw, 896px"
                 className="object-contain p-4"
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl">
-                <h3 className="text-xl font-light mb-6">
+              <div className="p-8 border border-line rounded-2xl">
+                <h3 className="text-xl font-normal mb-6">
                   Quick Access Features
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
-                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-muted font-normal">
                       Tab Management
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
-                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-muted font-normal">
                       History & Bookmarks
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
-                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-muted font-normal">
                       Site Settings
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
-                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-muted font-normal">
                       Downloads Manager
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-black dark:bg-white rounded-full"></div>
-                    <span className="text-gray-600 dark:text-gray-300 font-light">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-muted font-normal">
                       QR Code Generator
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-8 border border-gray-200 dark:border-gray-800 rounded-2xl flex flex-col justify-center">
-                <h3 className="text-xl font-light mb-4">Try it yourself</h3>
-                <p className="text-gray-500 dark:text-gray-400 font-light mb-6">
+              <div className="p-8 border border-line rounded-2xl flex flex-col justify-center">
+                <h3 className="text-xl font-normal mb-4">Try it yourself</h3>
+                <p className="text-muted font-normal mb-6">
                   Experience the efficiency boost firsthand. Install Quickie
                   from the Chrome Web Store.
                 </p>
@@ -253,7 +248,7 @@ const ProjectDetail = () => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-black dark:text-white font-medium hover:underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-ink font-medium hover:underline underline-offset-4"
                 >
                   Visit Chrome Web Store <HiExternalLink className="w-4 h-4" />
                 </a>
@@ -263,7 +258,7 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-light mb-8 text-center">
+            <h2 className="text-2xl font-normal mb-8 text-center">
               Technologies Used
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -272,7 +267,7 @@ const ProjectDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                    className="flex items-center gap-3 px-5 py-2 border border-line rounded-full"
                   >
                     <Icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{tech.name}</span>
@@ -286,18 +281,19 @@ const ProjectDetail = () => {
           <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
-            <h2 className="text-3xl font-light mb-6">
+          <div className="text-center border-t border-line pt-24">
+            <h2 className="text-3xl font-normal mb-6">
               Need a custom browser extension?
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
               Let&apos;s discuss how I can help build productivity tools for
               your users!
             </p>
-            <Link href="/contact" className="inline-block">
-              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                Let&apos;s Build Something
-              </button>
+            <Link
+              href="/contact"
+              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              Let&apos;s Build Something
             </Link>
           </div>
         </motion.div>

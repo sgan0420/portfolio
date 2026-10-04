@@ -1,5 +1,3 @@
-"use client";
-
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 
@@ -54,15 +52,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black dark:bg-white text-white dark:text-black border-t border-gray-800 dark:border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="button-primary border-t border-line">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <h3 className="text-xl font-medium mb-4">Shijie Gan</h3>
-              <p className="text-gray-400 dark:text-gray-600 mb-6 max-w-md leading-relaxed text-sm">
+              <p className="text-muted mb-6 max-w-md leading-relaxed text-sm">
                 Full-Stack Software Engineer. Fast learner passionate about AI
                 technologies and building innovative solutions that drive
                 business success.
@@ -78,7 +76,7 @@ const Footer = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors duration-200"
+                      className="text-muted hover:text-accent transition-colors duration-200"
                       aria-label={social.label}
                     >
                       <Icon className="w-5 h-5" />
@@ -96,7 +94,7 @@ const Footer = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-sm text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors duration-200"
+                    className="text-sm text-muted hover:text-accent transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -126,7 +124,7 @@ const Footer = () => {
                             ? "noopener noreferrer"
                             : undefined
                         }
-                        className="flex items-center text-sm text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors duration-200"
+                        className="flex items-center text-sm text-muted hover:text-accent transition-colors duration-200"
                       >
                         <Icon className="w-4 h-4 mr-3" />
                         <div className="flex flex-col">
@@ -148,9 +146,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 dark:border-gray-200 py-8">
+        <div className="footer-bottom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 dark:text-gray-600 text-sm mb-4 md:mb-0">
+            <div className="text-muted text-sm mb-4 md:mb-0">
               © {new Date().getFullYear()} Shijie Gan. All rights reserved.
             </div>
           </div>

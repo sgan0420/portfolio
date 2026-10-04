@@ -1,125 +1,69 @@
-"use client";
-
-import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { HiArrowDown } from "react-icons/hi";
+import { HiArrowDown, HiArrowUpRight } from "react-icons/hi2";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import SkyField from "@/components/SkyField";
 
-const HeroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const socialLinks = [
+  { icon: FaGithub, href: "https://github.com/sgan0420", label: "GitHub" },
+  {
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/in/shijie-gan/",
+    label: "LinkedIn",
+  },
+  {
+    icon: FaInstagram,
+    href: "https://instagram.com/gan_shijie",
+    label: "Instagram",
+  },
+];
 
-  // Simple fade-in animation
-  const textVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const socialLinks = [
-    {
-      icon: FaGithub,
-      href: "https://github.com/sgan0420",
-      label: "GitHub",
-    },
-    {
-      icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/shijie-gan/",
-      label: "LinkedIn",
-    },
-    {
-      icon: FaInstagram,
-      href: "https://instagram.com/gan_shijie",
-      label: "Instagram",
-    },
-  ];
-
+export default function HeroSection() {
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center pt-20 sm:pt-16 md:pt-0"
-    >
-      <motion.div
-        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 mt-32 md:mt-40"
-        initial={false}
-        animate="visible"
-        variants={textVariants}
-      >
-        {/* Main content */}
-        <div className="space-y-12">
-          {/* Name */}
-          <motion.h1
-            variants={textVariants}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-black dark:text-white"
-          >
-            Shijie Gan
-          </motion.h1>
-
-          {/* Tagline */}
-          <motion.div variants={textVariants} className="max-w-2xl mx-auto">
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-              Software Engineer specializing in Full-Stack Development and AI,
-              building scalable applications in Fintech and Web3
-            </p>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={textVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12"
-          >
-            <Link
-              href="/projects"
-              className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium hover:opacity-80 transition-opacity duration-200 rounded-full"
-            >
-              View Projects
+    <section className="hero">
+      <SkyField />
+      <div className="hero-inner">
+        <div className="hero-copy">
+          <h1>
+            Shijie{" "}
+            <span>
+              Gan
+              <span className="name-period" aria-hidden="true">
+                .
+              </span>
+            </span>
+          </h1>
+          <p className="hero-description">
+            Software Engineer specializing in{" "}
+            <span>Full-Stack Development and AI</span>, building scalable
+            applications in Fintech and Web3
+          </p>
+          <div className="hero-actions">
+            <Link href="/projects" className="button-primary">
+              View Projects <HiArrowUpRight aria-hidden="true" />
             </Link>
-            <Link
-              href="/about"
-              className="px-8 py-3 border border-black dark:border-white text-black dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 rounded-full"
-            >
-              About Me
+            <Link href="/about" className="button-secondary">
+              About Me <HiArrowUpRight aria-hidden="true" />
             </Link>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            variants={textVariants}
-            className="flex justify-center gap-6 mt-16"
-          >
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                  aria-label={social.label}
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            variants={textVariants}
-            className="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-600 mt-20"
-          >
-            <span className="text-xs font-medium">Scroll</span>
-            <HiArrowDown className="w-4 h-4" />
-          </motion.div>
+          </div>
+          <div className="hero-socials">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="social-link"
+              >
+                <Icon aria-hidden="true" />
+              </a>
+            ))}
+          </div>
         </div>
-      </motion.div>
+        <a href="#introduction" className="scroll-link">
+          Scroll <HiArrowDown aria-hidden="true" />
+        </a>
+      </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

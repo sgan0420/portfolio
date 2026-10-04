@@ -1,8 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiArrowLeft } from "react-icons/hi";
+import { HiArrowLeft } from "react-icons/hi2";
 
 interface BackButtonProps {
   href: string;
@@ -10,18 +7,15 @@ interface BackButtonProps {
   className?: string;
 }
 
-const BackButton = ({ href, text, className = "" }: BackButtonProps) => {
+export default function BackButton({
+  href,
+  text,
+  className = "",
+}: BackButtonProps) {
   return (
-    <Link href={href}>
-      <motion.button
-        whileHover={{ x: -5 }}
-        className={`flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 cursor-pointer ${className}`}
-      >
-        <HiArrowLeft className="w-5 h-5" />
-        {text}
-      </motion.button>
+    <Link href={href} className={`back-link ${className}`}>
+      <HiArrowLeft aria-hidden="true" />
+      {text}
     </Link>
   );
-};
-
-export default BackButton;
+}

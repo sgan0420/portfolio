@@ -42,13 +42,13 @@ export default async function BlogPost({
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <article className="max-w-3xl mx-auto px-6 sm:px-8">
         {/* Back Link */}
-        <div className="animate-fade-in">
+        <div className="">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black dark:hover:text-white transition-colors mb-12"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors mb-12"
           >
             <HiArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -56,11 +56,11 @@ export default async function BlogPost({
         </div>
 
         {/* Header */}
-        <header className="mb-12 animate-fade-in">
-          <h1 className="text-4xl sm:text-5xl font-light tracking-tight mb-6 leading-tight">
+        <header className="mb-12 ">
+          <h1 className="text-4xl sm:text-5xl font-normal tracking-tight mb-6 leading-tight">
             {post.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-muted">
             <span className="flex items-center gap-2">
               <HiCalendar className="w-4 h-4" />
               {formatDate(post.date)}
@@ -73,10 +73,10 @@ export default async function BlogPost({
         </header>
 
         {/* Divider */}
-        <hr className="border-gray-200 dark:border-gray-800 mb-12 animate-fade-in" />
+        <hr className="border-line mb-12 " />
 
         {/* Content */}
-        <div className="animate-fade-in">
+        <div className="">
           <BlogContent content={post.content} />
         </div>
       </article>

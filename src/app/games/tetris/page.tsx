@@ -9,29 +9,23 @@ const TetrisGame = () => {
 
   useEffect(() => {
     if (gameContainerRef.current) {
-      // Initialize the Tetris game
-      initializeTetrisGame(gameContainerRef.current);
+      return initSimpleTetris(gameContainerRef.current);
     }
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 text-white">
-      <div className="container mx-auto px-6 py-8">
+    <div className="page-shell">
+      <div className="max-w-5xl mx-auto px-6">
         {/* Back Button */}
-        <Link
-          href="/projects/tetris-game"
-          className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300"
-        >
+        <Link href="/projects/tetris-game" className="back-link mb-8">
           <HiArrowLeft className="w-5 h-5" />
           Back to Project Details
         </Link>
 
         {/* Game Title */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            Play Tetris
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <h1 className="page-title">Play Tetris</h1>
+          <p className="page-lead mx-auto">
             Experience the reactive TypeScript + RxJS Tetris game directly in
             your browser
           </p>
@@ -42,31 +36,33 @@ const TetrisGame = () => {
           ref={gameContainerRef}
           className="flex justify-center"
           id="tetris-game-container"
-        >
-          {/* Game will be injected here */}
-        </div>
+          tabIndex={0}
+          role="region"
+          aria-label="Tetris game. Use arrow keys to move and rotate, Space to drop, C to hold."
+          dangerouslySetInnerHTML={{ __html: gameMarkup }}
+        />
 
         {/* Game Instructions */}
         <div className="mt-8 max-w-2xl mx-auto">
-          <div className="glass rounded-2xl p-6">
+          <div className="glass-panel p-6">
             <h3 className="text-xl font-bold mb-4 text-center">
               Game Controls
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div className="text-center">
-                <div className="bg-gray-700 px-3 py-2 rounded mb-2">↑</div>
+                <div className="bg-surface px-3 py-2 rounded mb-2">↑</div>
                 <p>Rotate</p>
               </div>
               <div className="text-center">
-                <div className="bg-gray-700 px-3 py-2 rounded mb-2">← → ↓</div>
+                <div className="bg-surface px-3 py-2 rounded mb-2">← → ↓</div>
                 <p>Move</p>
               </div>
               <div className="text-center">
-                <div className="bg-gray-700 px-3 py-2 rounded mb-2">Space</div>
+                <div className="bg-surface px-3 py-2 rounded mb-2">Space</div>
                 <p>Hard Drop</p>
               </div>
               <div className="text-center">
-                <div className="bg-gray-700 px-3 py-2 rounded mb-2">C</div>
+                <div className="bg-surface px-3 py-2 rounded mb-2">C</div>
                 <p>Hold/Swap</p>
               </div>
             </div>
@@ -77,17 +73,16 @@ const TetrisGame = () => {
   );
 };
 
-// Simplified Tetris game implementation
-function initializeTetrisGame(container: HTMLElement) {
-  // Create the game HTML structure
-  container.innerHTML = `
+const gameMarkup = `
     <style>
       .tetris-game {
-        font-family: arial, helvetica, sans-serif;
-        background: rgba(141, 178, 196, 0.1);
-        border-radius: 0.25em;
+        font-family: var(--font-sans);
+        background: var(--glass);
+        border: 1px solid var(--line);
+        border-radius: 12px;
         padding: 1em;
         max-width: 600px;
+        width: 100%;
         margin: 0 auto;
       }
       
@@ -100,7 +95,7 @@ function initializeTetrisGame(container: HTMLElement) {
       }
       
       .tetris-canvas {
-        border-radius: 0.1em;
+        border-radius: 8px;
         border: 5px solid rgb(2, 82, 125);
         background-color: rgba(31, 31, 31, 0.95);
       }
@@ -114,17 +109,17 @@ function initializeTetrisGame(container: HTMLElement) {
       
       .tetris-preview {
         border: 2px solid rgb(2, 82, 125);
-        border-radius: 0.1em;
+        border-radius: 8px;
         background-color: rgba(31, 31, 31, 0.95);
         height: 80px;
         width: 160px;
       }
       
       .tetris-info {
-        background: rgba(60, 60, 60, 0.3);
+        background: var(--surface);
         padding: 1em;
-        border-radius: 0.25em;
-        color: white;
+        border-radius: 12px;
+        color: var(--foreground);
       }
       
       .tetris-info .text {
@@ -140,14 +135,14 @@ function initializeTetrisGame(container: HTMLElement) {
         font-weight: bold;
         border: none;
         cursor: pointer;
-        border-radius: 0.25em;
+        border-radius: 12px;
         margin: 0.25em 0;
         transition: all 0.3s;
       }
       
       .pause-button {
         background-color: #17a2b8;
-        color: white;
+        color: var(--foreground);
       }
       
       .pause-button:hover {
@@ -157,7 +152,7 @@ function initializeTetrisGame(container: HTMLElement) {
       
       .restart-button {
         background-color: #007bff;
-        color: white;
+        color: var(--foreground);
       }
       
       .restart-button:hover {
@@ -188,8 +183,8 @@ function initializeTetrisGame(container: HTMLElement) {
       
       .instructions {
         margin-top: 15px;
-        background-color: rgba(47, 42, 42, 0.6);
-        color: #a1a1a1;
+        background-color: var(--surface);
+        color: var(--muted);
         padding: 10px;
         border-radius: 8px;
         font-size: 12px;
@@ -197,7 +192,7 @@ function initializeTetrisGame(container: HTMLElement) {
       }
       
       .key {
-        background-color: #a1a1a1;
+        background-color: var(--muted);
         padding: 2px 6px;
         border: 1px solid #000000;
         border-radius: 5px;
@@ -216,11 +211,11 @@ function initializeTetrisGame(container: HTMLElement) {
         
         <div class="tetris-sidebar">
           <svg id="tetris-next" class="tetris-preview">
-            <text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">NEXT</text>
+            <text x="80" y="50" text-anchor="middle" fill="#9eb9d0" font-size="16" font-weight="bold">NEXT</text>
           </svg>
           
           <svg id="tetris-hold" class="tetris-preview">
-            <text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">HOLD</text>
+            <text x="80" y="50" text-anchor="middle" fill="#9eb9d0" font-size="16" font-weight="bold">HOLD</text>
           </svg>
           
           <div class="tetris-info">
@@ -236,12 +231,20 @@ function initializeTetrisGame(container: HTMLElement) {
               <span>High Score:</span>
               <span id="high-score-text">0</span>
             </div>
-            <button id="pause-button" class="tetris-button pause-button">⏸️ | ▶️</button>
+            <button id="pause-button" class="tetris-button pause-button" aria-label="Pause or resume game">⏸️ | ▶️</button>
             <button id="restart-button" class="tetris-button restart-button">Restart</button>
           </div>
         </div>
       </div>
       
+      <div class="tetris-touch-controls" role="group" aria-label="Game controls">
+        <button data-code="ArrowLeft" aria-label="Move left">←</button>
+        <button data-code="ArrowUp" aria-label="Rotate piece">↑</button>
+        <button data-code="ArrowRight" aria-label="Move right">→</button>
+        <button data-code="ArrowDown" aria-label="Move down">↓</button>
+        <button data-code="Space" aria-label="Hard drop">⤓</button>
+        <button data-code="KeyC" aria-label="Hold or swap piece">C</button>
+      </div>
       <div class="instructions">
         <p><span class="key">↑</span> : rotate</p>
         <p><span class="key">←</span> <span class="key">↓</span> <span class="key">→</span> : move</p>
@@ -250,10 +253,6 @@ function initializeTetrisGame(container: HTMLElement) {
       </div>
     </div>
   `;
-
-  // Initialize a simplified Tetris game
-  initSimpleTetris();
-}
 
 interface TetrisPiece {
   shape: number[][];
@@ -276,7 +275,10 @@ interface GameState {
   dropInterval: number;
 }
 
-function initSimpleTetris() {
+function initSimpleTetris(container: HTMLElement) {
+  const controller = new AbortController();
+  const signal = controller.signal;
+  let frame = 0;
   // Game state
   let gameState: GameState = {
     grid: Array(20)
@@ -478,9 +480,9 @@ function initSimpleTetris() {
     // Clear canvas
     canvas.innerHTML = "";
     nextCanvas.innerHTML =
-      '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">NEXT</text>';
+      '<text x="80" y="50" text-anchor="middle" fill="#9eb9d0" font-size="16" font-weight="bold">NEXT</text>';
     holdCanvas.innerHTML =
-      '<text x="80" y="50" text-anchor="middle" fill="rgb(60, 60, 60)" font-size="16" font-weight="bold">HOLD</text>';
+      '<text x="80" y="50" text-anchor="middle" fill="#9eb9d0" font-size="16" font-weight="bold">HOLD</text>';
 
     // Draw grid
     for (let y = 0; y < 20; y++) {
@@ -545,6 +547,25 @@ function initSimpleTetris() {
       }
     }
 
+    if (gameState.holdPiece) {
+      gameState.holdPiece.shape.forEach((row, y) =>
+        row.forEach((cell, x) => {
+          if (!cell) return;
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect"
+          );
+          rect.setAttribute("x", String((x + 3) * 15));
+          rect.setAttribute("y", String((y + 2) * 15));
+          rect.setAttribute("width", "15");
+          rect.setAttribute("height", "15");
+          rect.setAttribute("fill", gameState.holdPiece!.color);
+          rect.setAttribute("class", "tetris-block");
+          holdCanvas.appendChild(rect);
+        })
+      );
+    }
+
     // Update UI
     levelText.textContent = gameState.level.toString();
     scoreText.textContent = gameState.score.toString();
@@ -564,20 +585,24 @@ function initSimpleTetris() {
           placePiece();
         }
         gameState.dropTime = timestamp;
+        render();
       }
     }
-
-    render();
-    requestAnimationFrame(gameLoop);
+    frame = requestAnimationFrame(gameLoop);
   }
 
-  // Controls
-  document.addEventListener("keydown", (e) => {
-    if (gameState.gameOver || gameState.paused) return;
-
-    if (!gameState.currentPiece) return;
-
-    switch (e.code) {
+  const gameKeys = [
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowDown",
+    "ArrowUp",
+    "Space",
+    "KeyC",
+  ];
+  function control(code: string) {
+    if (gameState.gameOver || gameState.paused || !gameState.currentPiece)
+      return;
+    switch (code) {
       case "ArrowLeft":
         if (isValidMove(gameState.currentPiece, -1, 0)) {
           gameState.currentPiece.x--;
@@ -597,6 +622,18 @@ function initSimpleTetris() {
       case "ArrowUp":
         rotatePiece(gameState.currentPiece);
         break;
+      case "KeyC": {
+        const held = gameState.holdPiece;
+        gameState.holdPiece = { ...gameState.currentPiece, x: 0, y: 0 };
+        gameState.currentPiece = held || gameState.nextPiece;
+        if (!held) gameState.nextPiece = createPiece();
+        if (gameState.currentPiece) {
+          gameState.currentPiece.x =
+            5 - Math.floor(gameState.currentPiece.shape[0].length / 2);
+          gameState.currentPiece.y = 0;
+        }
+        break;
+      }
       case "Space":
         while (isValidMove(gameState.currentPiece, 0, 1)) {
           gameState.currentPiece.y++;
@@ -605,45 +642,82 @@ function initSimpleTetris() {
         placePiece();
         break;
     }
-    e.preventDefault();
-  });
+    render();
+  }
+  container.addEventListener(
+    "keydown",
+    (event) => {
+      if (
+        (event.target as HTMLElement).tagName === "BUTTON" ||
+        !gameKeys.includes(event.code)
+      )
+        return;
+      event.preventDefault();
+      control(event.code);
+    },
+    { signal }
+  );
+  container.addEventListener(
+    "click",
+    (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+        "button[data-code]"
+      );
+      if (button?.dataset.code) control(button.dataset.code);
+    },
+    { signal }
+  );
 
   // Button controls
-  pauseBtn.addEventListener("click", () => {
-    gameState.paused = !gameState.paused;
-    if (gameState.paused) {
-      gamePauseDiv.style.display = "block";
-    } else {
-      gamePauseDiv.style.display = "none";
-    }
-  });
+  pauseBtn.addEventListener(
+    "click",
+    () => {
+      gameState.paused = !gameState.paused;
+      if (gameState.paused) {
+        gamePauseDiv.style.display = "block";
+      } else {
+        gamePauseDiv.style.display = "none";
+      }
+    },
+    { signal }
+  );
 
-  restartBtn.addEventListener("click", () => {
-    gameState = {
-      grid: Array(20)
-        .fill(null)
-        .map(() => Array(10).fill(0)),
-      currentPiece: createPiece(),
-      nextPiece: createPiece(),
-      holdPiece: null,
-      score: 0,
-      level: 0,
-      highScore: parseInt(localStorage.getItem("tetris-high-score") || "0"),
-      gameOver: false,
-      paused: false,
-      dropTime: 0,
-      dropInterval: 1000,
-    };
-    gameOverDiv.style.display = "none";
-    gamePauseDiv.style.display = "none";
-  });
+  restartBtn.addEventListener(
+    "click",
+    () => {
+      gameState = {
+        grid: Array(20)
+          .fill(null)
+          .map(() => Array(10).fill(0)),
+        currentPiece: createPiece(),
+        nextPiece: createPiece(),
+        holdPiece: null,
+        score: 0,
+        level: 0,
+        highScore: parseInt(localStorage.getItem("tetris-high-score") || "0"),
+        gameOver: false,
+        paused: false,
+        dropTime: 0,
+        dropInterval: 1000,
+      };
+      gameOverDiv.style.display = "none";
+      gamePauseDiv.style.display = "none";
+      render();
+    },
+    { signal }
+  );
 
   // Initialize game
   gameState.currentPiece = createPiece();
   gameState.nextPiece = createPiece();
 
-  // Start game loop
-  requestAnimationFrame(gameLoop);
+  // Start game loop and release it when leaving the route.
+  render();
+  frame = requestAnimationFrame(gameLoop);
+  return () => {
+    cancelAnimationFrame(frame);
+    controller.abort();
+  };
 }
 
 export default TetrisGame;

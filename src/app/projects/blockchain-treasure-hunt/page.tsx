@@ -15,7 +15,7 @@ const ProjectDetail = () => {
     longDescription: (
       <div className="space-y-12">
         <div>
-          <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light mb-8">
+          <p className="text-lg leading-relaxed text-muted font-normal mb-8">
             Built a complete decentralized application (dApp) from scratch,
             learning blockchain fundamentals, smart contract development, and
             Web3 frontend integration. The game features a trustless prize pool
@@ -25,64 +25,62 @@ const ProjectDetail = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+            <h4 className="section-label text-muted mb-4">
               Blockchain Skills Gained
             </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
                   <span className="font-medium">Smart Contracts:</span> Wrote
                   Solidity contracts with state management and events
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
-                  <span className="font-medium">Web3 Integration:</span> Connected
-                  frontend using Wagmi/Viem and MetaMask
+                  <span className="font-medium">Web3 Integration:</span>{" "}
+                  Connected frontend using Wagmi/Viem and MetaMask
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
                   <span className="font-medium">JSON-RPC:</span> Frontend to
                   blockchain node communication
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 <span>
-                  <span className="font-medium">ABI Encoding:</span> Function call
-                  encoding/decoding
+                  <span className="font-medium">ABI Encoding:</span> Function
+                  call encoding/decoding
                 </span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-              Technical Stack
-            </h4>
-            <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+            <h4 className="section-label text-muted mb-4">Technical Stack</h4>
+            <ul className="space-y-3 text-muted font-normal">
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Solidity for smart contract development
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Hardhat for testing, compilation, and deployment
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Next.js & TypeScript for the frontend
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Wagmi/Viem for blockchain interactions
               </li>
               <li className="flex gap-3">
-                <span className="text-black dark:text-white">•</span>
+                <span className="text-ink">•</span>
                 Base Sepolia testnet for deployment
               </li>
             </ul>
@@ -90,36 +88,34 @@ const ProjectDetail = () => {
         </div>
 
         <div>
-          <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
-            Key Learnings
-          </h4>
-          <ul className="space-y-3 text-gray-600 dark:text-gray-300 font-light">
+          <h4 className="section-label text-muted mb-4">Key Learnings</h4>
+          <ul className="space-y-3 text-muted font-normal">
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Blockchain data storage: Contract state variables act as a
               decentralized database replicated across all nodes
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Transaction flow: From wallet signing to node validation to
               on-chain execution
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Gas economics: Understanding costs for reads (free) vs writes
               (costs gas)
             </li>
             <li className="flex gap-3">
-              <span className="text-black dark:text-white">•</span>
+              <span className="text-ink">•</span>
               Layer 2 benefits: Using Base for faster and cheaper transactions
               while inheriting Ethereum security
             </li>
           </ul>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-light">
-            <strong className="text-black dark:text-white font-medium">
+        <div className="p-6 bg-surface rounded-lg border border-line">
+          <p className="text-sm text-muted font-normal">
+            <strong className="text-ink font-medium">
               Decentralized Architecture:
             </strong>{" "}
             No backend server needed! The smart contract IS the backend - it
@@ -146,7 +142,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pt-32 pb-20">
+    <div className="page-shell">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           initial={false}
@@ -160,20 +156,20 @@ const ProjectDetail = () => {
           </div>
 
           {/* Project Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-6">
+          <div className="project-detail-header text-center">
+            <h1 className="text-5xl md:text-6xl font-normal tracking-tight mb-6">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted font-normal leading-relaxed max-w-2xl mx-auto mb-8">
               {project.description}
             </p>
 
             {/* Project Meta */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.category}
               </span>
-              <span className="px-4 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+              <span className="px-4 py-1.5 border border-line rounded-full text-sm text-muted">
                 {project.status}
               </span>
             </div>
@@ -185,7 +181,7 @@ const ProjectDetail = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                 >
                   <FaGithub className="w-5 h-5" />
                   View Code
@@ -194,7 +190,7 @@ const ProjectDetail = () => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
                 >
                   <HiExternalLink className="w-5 h-5" />
                   Play Game
@@ -203,7 +199,7 @@ const ProjectDetail = () => {
                   href={project.explorerUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 dark:border-gray-800 text-black dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-8 py-3 button-secondary cursor-pointer"
                 >
                   <FaEthereum className="w-5 h-5" />
                   View on BaseScan
@@ -216,7 +212,7 @@ const ProjectDetail = () => {
           <div className="mb-24">
             <div className="relative w-full bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 p-8">
               <div className="text-center">
-                <h3 className="text-2xl font-light text-white mb-4">
+                <h3 className="text-2xl font-normal text-white mb-4">
                   💎 Treasure Hunt
                 </h3>
                 <div className="grid grid-cols-3 gap-2 max-w-[200px] mx-auto mb-4">
@@ -229,7 +225,7 @@ const ProjectDetail = () => {
                     </div>
                   ))}
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-subtle text-sm">
                   0.001 ETH per dig • Win 0.005 ETH
                 </p>
                 <p className="text-amber-500 text-xs mt-2">
@@ -241,7 +237,7 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-light mb-8 text-center">
+            <h2 className="text-2xl font-normal mb-8 text-center">
               Technologies & Tools
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -250,7 +246,7 @@ const ProjectDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-3 px-5 py-2 border border-gray-200 dark:border-gray-800 rounded-full"
+                    className="flex items-center gap-3 px-5 py-2 border border-line rounded-full"
                   >
                     <Icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{tech.name}</span>
@@ -264,18 +260,19 @@ const ProjectDetail = () => {
           <div className="mb-24">{project.longDescription}</div>
 
           {/* Call to Action */}
-          <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-24">
-            <h2 className="text-3xl font-light mb-6">
+          <div className="text-center border-t border-line pt-24">
+            <h2 className="text-3xl font-normal mb-6">
               Interested in Web3 Development?
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted font-normal mb-8 max-w-2xl mx-auto">
               I can build decentralized applications, smart contracts, and Web3
               integrations for your blockchain projects.
             </p>
-            <Link href="/contact" className="inline-block">
-              <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                Get in Touch
-              </button>
+            <Link
+              href="/contact"
+              className="px-8 py-4 button-primary font-medium rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              Get in Touch
             </Link>
           </div>
         </motion.div>
@@ -285,4 +282,3 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
-

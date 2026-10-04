@@ -141,18 +141,19 @@ const gameMarkup = `
       }
       
       .pause-button {
-        background-color: #17a2b8;
+        background-color: var(--surface);
+        border: 1px solid var(--line);
         color: var(--foreground);
       }
       
       .pause-button:hover {
-        background-color: #138496;
+        background-color: var(--line);
         transform: translateY(-2px);
       }
       
       .restart-button {
-        background-color: #007bff;
-        color: var(--foreground);
+        background-color: #176ab5;
+        color: white;
       }
       
       .restart-button:hover {
@@ -204,7 +205,12 @@ const gameMarkup = `
     <div class="tetris-game">
       <div class="tetris-main">
         <div style="position: relative;">
-          <svg id="tetris-canvas" class="tetris-canvas" width="200" height="400"></svg>
+          <svg id="tetris-canvas" class="tetris-canvas" width="200" height="400">
+            <rect x="60" y="0" width="20" height="20" fill="cyan" class="tetris-block" />
+            <rect x="80" y="0" width="20" height="20" fill="cyan" class="tetris-block" />
+            <rect x="100" y="0" width="20" height="20" fill="cyan" class="tetris-block" />
+            <rect x="120" y="0" width="20" height="20" fill="cyan" class="tetris-block" />
+          </svg>
           <div id="game-over" class="game-message">Game Over</div>
           <div id="game-pause" class="game-message">Game Paused</div>
         </div>
@@ -212,6 +218,10 @@ const gameMarkup = `
         <div class="tetris-sidebar">
           <svg id="tetris-next" class="tetris-preview">
             <text x="80" y="50" text-anchor="middle" fill="#9eb9d0" font-size="16" font-weight="bold">NEXT</text>
+            <rect x="45" y="30" width="15" height="15" fill="yellow" class="tetris-block" />
+            <rect x="60" y="30" width="15" height="15" fill="yellow" class="tetris-block" />
+            <rect x="45" y="45" width="15" height="15" fill="yellow" class="tetris-block" />
+            <rect x="60" y="45" width="15" height="15" fill="yellow" class="tetris-block" />
           </svg>
           
           <svg id="tetris-hold" class="tetris-preview">
@@ -707,9 +717,18 @@ function initSimpleTetris(container: HTMLElement) {
     { signal }
   );
 
-  // Initialize game
-  gameState.currentPiece = createPiece();
-  gameState.nextPiece = createPiece();
+  // Match the server-rendered initial board; later pieces remain random.
+  gameState.currentPiece = { shape: [[1, 1, 1, 1]], color: "cyan", x: 3, y: 0 };
+  gameState.nextPiece = {
+    shape: [
+      [1, 1],
+      [1, 1],
+    ],
+    color: "yellow",
+    x: 4,
+    y: 0,
+  };
+  gameState.dropTime = performance.now();
 
   // Start game loop and release it when leaving the route.
   render();

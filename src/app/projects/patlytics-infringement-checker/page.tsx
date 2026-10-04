@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import ProjectVisual from "@/components/ProjectVisual";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
 import {
@@ -197,12 +197,9 @@ const ProjectDetail = () => {
           {/* Project Screenshot */}
           <div className="mb-24">
             <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
-              <Image
+              <ProjectVisual
                 src="/patlytics.png"
                 alt="Patlytics Infringement Checker Interface"
-                fill
-                sizes="(max-width: 768px) 100vw, 896px"
-                className="object-contain p-4"
               />
             </div>
           </div>

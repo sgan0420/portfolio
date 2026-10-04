@@ -135,6 +135,7 @@ const Experience = () => {
                     src="/kiyotaka.png"
                     alt="OpenMarket (then Kiyotaka.ai) trading platform interface"
                     fill
+                    sizes="(max-width: 768px) 100vw, 640px"
                     className="object-contain hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -226,6 +227,7 @@ const Experience = () => {
                       src="/ant-me.png"
                       alt="At Ant International office"
                       fill
+                      sizes="(max-width: 768px) 100vw, 640px"
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -234,6 +236,7 @@ const Experience = () => {
                       src="/ant-group.png"
                       alt="Ant International team"
                       fill
+                      sizes="(max-width: 768px) 100vw, 640px"
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -302,6 +305,7 @@ const Experience = () => {
                     src="/ifast-group.png"
                     alt="iFAST team group photo"
                     fill
+                    sizes="(max-width: 768px) 100vw, 640px"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>

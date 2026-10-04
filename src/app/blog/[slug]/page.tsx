@@ -42,7 +42,7 @@ export default async function BlogPost({
   }
 
   return (
-    <div className="page-shell">
+    <div className="page-shell article-reading">
       <article className="max-w-3xl mx-auto px-6 sm:px-8">
         {/* Back Link */}
         <div className="">
@@ -77,7 +77,7 @@ export default async function BlogPost({
 
         {/* Content */}
         <div className="">
-          <BlogContent content={post.content} />
+          <BlogContent content={post.content} title={post.title} />
         </div>
       </article>
     </div>

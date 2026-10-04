@@ -121,7 +121,7 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="page-shell">
+    <div className="page-shell project-detail-page">
       <div className="container mx-auto px-6 sm:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
@@ -250,10 +250,10 @@ const ProjectDetail = () => {
 
           {/* Technologies Used */}
           <div className="mb-24">
-            <h2 className="text-2xl font-normal mb-8 text-center">
+            <h2 className="project-tools-heading text-2xl font-normal mb-8 text-center">
               Technologies Used
             </h2>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="project-tools">
               {project.technologies.map((tech, index) => {
                 const Icon = tech.icon;
                 return (

@@ -3,13 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  HiArrowUpRight,
-  HiBars3,
-  HiXMark,
-  HiSun,
-  HiMoon,
-} from "react-icons/hi2";
+import { HiBars3, HiXMark, HiSun, HiMoon } from "react-icons/hi2";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -62,11 +56,6 @@ export default function Header() {
     <header ref={header} className="site-header">
       <div className="header-inner">
         <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
           Shijie Gan
         </Link>
         <nav aria-label="Main navigation" className="desktop-nav">
@@ -78,7 +67,6 @@ export default function Header() {
               aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.name}
-              {item.name === "Contact" && <HiArrowUpRight aria-hidden="true" />}
             </Link>
           ))}
         </nav>
@@ -121,7 +109,6 @@ export default function Header() {
             onClick={() => setIsOpen(false)}
           >
             {item.name}
-            <HiArrowUpRight aria-hidden="true" />
           </Link>
         ))}
       </nav>

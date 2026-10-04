@@ -24,12 +24,9 @@ export default function HeroSection() {
       <div className="hero-inner">
         <div className="hero-copy">
           <h1>
-            Shijie{" "}
-            <span>
-              Gan
-              <span className="name-period" aria-hidden="true">
-                .
-              </span>
+            Shijie Gan
+            <span className="name-period" aria-hidden="true">
+              .
             </span>
           </h1>
           <p className="hero-description">

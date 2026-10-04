@@ -23,13 +23,17 @@ export default function Blog() {
             <article key={post.slug} className="">
               <Link href={`/blog/${post.slug}`} className="group block">
                 <div className="article-card">
+                  <div className="blog-art" aria-hidden="true">
+                    <span />
+                    <i />
+                    <span />
+                    <i />
+                    <span />
+                  </div>
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="article-tags">
                     {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-medium px-3 py-1 bg-surface text-muted rounded-full"
-                      >
+                      <span key={tag} className="">
                         {tag}
                       </span>
                     ))}

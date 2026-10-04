@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { HiCode } from "react-icons/hi";
+import { HiArrowUpRight } from "react-icons/hi2";
 import {
   FaReact,
   FaNodeJs,
@@ -13,7 +13,6 @@ import {
   FaChartLine,
   FaCopyright,
   FaShieldAlt,
-  FaSearch,
   FaEthereum,
   FaCubes,
   FaRobot,
@@ -210,116 +209,78 @@ const Projects = () => {
         <div className="page-heading">
           <h1 className="page-title">Projects</h1>
           <p className="page-lead">
-            A showcase of features I&apos;ve{" "}
-            <span className="font-semibold">shipped in production</span> and my{" "}
-            <span className="font-semibold">personal projects</span>. Each
-            project represents a unique challenge and demonstrates different
-            aspects of modern software development. Work from Ant International
-            and iFAST is not displayed here due to confidentiality.
+            Features I&apos;ve shipped in production, and things I build out of
+            curiosity.
           </p>
+          <details className="detail-disclosure">
+            <summary>About this collection</summary>
+            <div className="disclosure-content text-muted">
+              <p>
+                A showcase of features I&apos;ve shipped in production and my
+                personal projects. Each project represents a unique challenge
+                and demonstrates different aspects of modern software
+                development. Work from Ant International and iFAST is not
+                displayed here due to confidentiality.
+              </p>
+            </div>
+          </details>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div className="projects-grid">
           {projects.map((project) => (
-            <Link key={project.id} href={`/projects/${project.slug}`}>
-              <div
-                // Keep every card visible in the server-rendered HTML.
-                className="project-card group"
+            <article key={project.id} className="project-card">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="group block"
+                aria-label={`Explore ${project.title}`}
               >
-                <div className="project-card-image relative aspect-[4/3] overflow-hidden">
-                  {project.image && !project.image.includes("placeholder") ? (
+                <div className="project-card-image relative aspect-[16/10] overflow-hidden">
+                  {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-contain p-4 motion-safe:group-hover:scale-[1.03] transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain p-5 sm:p-8"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                  ) : project.icon === FaRobot ? (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
-                        <FaRobot className="w-32 h-32 text-subtle" />
-                        <FaHandPaper className="w-12 h-12 text-muted absolute -bottom-2 -right-2" />
-                      </div>
-                    </div>
-                  ) : project.icon === FaEthereum ? (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
-                        <FaCubes className="w-36 h-36 text-gray-300 dark:text-gray-700" />
-                        <FaEthereum className="w-16 h-16 text-muted absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                      </div>
-                    </div>
-                  ) : project.icon ? (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative motion-safe:group-hover:scale-105 transition-transform duration-500">
-                        <FaShieldAlt className="w-36 h-36 text-gray-300 dark:text-gray-700" />
-                        <FaCopyright className="w-16 h-16 text-muted absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                        <FaSearch className="w-10 h-10 text-muted absolute -bottom-1 -right-1" />
-                      </div>
-                    </div>
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <HiCode className="w-16 h-16 text-subtle" />
+                    <div
+                      className="absolute inset-0 flex items-center justify-center text-subtle"
+                      aria-hidden="true"
+                    >
+                      <FaShieldAlt className="w-24 h-24" />
                     </div>
                   )}
-                  {project.org && (
-                    <div className="absolute top-4 left-4 project-org">
-                      {project.org}
-                    </div>
-                  )}
-                  <div className="absolute top-4 right-4 project-category">
-                    {project.category}
+                </div>
+                <div className="project-caption">
+                  <div className="project-meta">
+                    <span>{project.category}</span>
+                    {project.org && <span>{project.org}</span>}
+                  </div>
+                  <div className="flex items-start justify-between gap-4">
+                    <h2>{project.title}</h2>
+                    <HiArrowUpRight
+                      className="w-5 h-5 mt-1 shrink-0"
+                      aria-hidden="true"
+                    />
                   </div>
                 </div>
-
-                <div className="p-6">
-                  <h3 className="text-2xl font-medium mb-3 group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted font-normal mb-6 line-clamp-3 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 3).map((tech, i) => {
-                      const Icon = tech.icon;
-                      return (
-                        <div
-                          key={i}
-                          className="flex items-center gap-2 px-3 py-1 border border-line rounded-full text-sm text-muted"
-                        >
-                          <Icon className="w-4 h-4" />
-                          <span>{tech.name}</span>
-                        </div>
-                      );
-                    })}
-                    {project.technologies.length > 3 && (
-                      <div className="px-3 py-1 border border-line rounded-full text-sm text-muted">
-                        +{project.technologies.length - 3} more
-                      </div>
-                    )}
-                  </div>
-                </div>
+              </Link>
+              <p className="project-description">{project.description}</p>
+              <div className="project-tech">
+                {project.technologies.map((tech) => (
+                  <span key={tech.name}>{tech.name}</span>
+                ))}
               </div>
-            </Link>
+            </article>
           ))}
-
-          {/* Coming Soon Card */}
-          <div className="border border-dashed border-line rounded-2xl p-8 flex flex-col justify-center items-center text-center h-full min-h-[400px]">
-            <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-6">
-              <span className="text-3xl">🚀</span>
-            </div>
-            <h3 className="text-2xl font-normal mb-3">Coming Soon</h3>
-            <p className="text-muted font-normal mb-6 leading-relaxed">
+          <div className="project-coming">
+            <h2>Coming Soon</h2>
+            <p>
               I have many other exciting projects that I want to share with you!
               More project showcases are coming soon.
             </p>
-            <div className="flex gap-2">
-              <span className="px-3 py-1 bg-surface rounded-full text-sm text-muted">
-                In Progress
-              </span>
-            </div>
+            <p className="text-sm mt-4">In Progress</p>
           </div>
         </div>
 

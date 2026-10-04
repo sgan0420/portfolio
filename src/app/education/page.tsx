@@ -25,59 +25,67 @@ const Education = () => {
                 Malaysia
               </div>
             </div>
-            <div className="md:col-span-8 space-y-8">
-              <div>
-                <h3 className="text-3xl font-normal mb-4">
-                  Bachelor of Computer Science
-                </h3>
-                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
-                  <p className="text-lg font-medium mb-1">
-                    CGPA: 3.97/4.0 • WAM: 90.15
-                  </p>
-                  <p className="text-muted">
-                    Monash High Achiever Award (RM30,000 Scholarship)
-                  </p>
-                </div>
-                <p className="text-lg text-muted leading-relaxed font-normal">
-                  Graduated with exceptional academic excellence and outstanding
-                  performance across computer science fundamentals, earning the
-                  Monash High Achiever Award and top marks in multiple core
-                  subjects.
+            <div className="md:col-span-8">
+              <h3 className="text-3xl font-normal mb-4">
+                Bachelor of Computer Science
+              </h3>
+              <div className="timeline-highlight">
+                <p className="text-lg font-medium mb-1">
+                  CGPA: 3.97/4.0 • WAM: 90.15
+                </p>
+                <p className="text-muted">
+                  Monash High Achiever Award (RM30,000 Scholarship)
                 </p>
               </div>
+              <details className="detail-disclosure">
+                <summary>Achievements & background</summary>
+                <div className="disclosure-content space-y-7">
+                  <div>
+                    <p className="text-lg text-muted leading-relaxed font-normal">
+                      Graduated with exceptional academic excellence and
+                      outstanding performance across computer science
+                      fundamentals, earning the Monash High Achiever Award and
+                      top marks in multiple core subjects.
+                    </p>
+                  </div>
 
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="section-label text-subtle mb-4">
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2 text-muted font-normal">
-                    <li>• 1st place in AI Pacman Challenge</li>
-                    <li>• 100% full marks in Python Development</li>
-                    <li>• 100% full marks in Mobile Application</li>
-                    <li>• Highest scores in multiple core subjects</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="section-label text-subtle mb-4">
-                    Skills Developed
-                  </h4>
-                  <ul className="space-y-2 text-muted font-normal">
-                    <li>• Full-stack Development</li>
-                    <li>• Mobile App & Android</li>
-                    <li>• AI & Machine Learning</li>
-                    <li>• Cybersecurity Principles</li>
-                  </ul>
-                </div>
-              </div>
+                  <div className="grid sm:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="section-label text-subtle mb-4">
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-2 text-muted font-normal">
+                        <li>• 1st place in AI Pacman Challenge</li>
+                        <li>• 100% full marks in Python Development</li>
+                        <li>• 100% full marks in Mobile Application</li>
+                        <li>• Highest scores in multiple core subjects</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="section-label text-subtle mb-4">
+                        Skills Developed
+                      </h4>
+                      <ul className="space-y-2 text-muted font-normal">
+                        <li>• Full-stack Development</li>
+                        <li>• Mobile App & Android</li>
+                        <li>• AI & Machine Learning</li>
+                        <li>• Cybersecurity Principles</li>
+                      </ul>
+                    </div>
+                  </div>
 
-              <div>
-                <h4 className="section-label text-subtle mb-4">Tech Stack</h4>
-                <p className="text-muted font-normal leading-relaxed">
-                  Java, Python, JavaScript, TypeScript, React, Node.js, Android
-                  Studio, Oracle Database, MySQL, Linux/Unix, Haskell.
-                </p>
-              </div>
+                  <div>
+                    <h4 className="section-label text-subtle mb-4">
+                      Tech Stack
+                    </h4>
+                    <p className="text-muted font-normal leading-relaxed">
+                      Java, Python, JavaScript, TypeScript, React, Node.js,
+                      Android Studio, Oracle Database, MySQL, Linux/Unix,
+                      Haskell.
+                    </p>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
 
@@ -92,53 +100,59 @@ const Education = () => {
                 London, UK
               </div>
             </div>
-            <div className="md:col-span-8 space-y-8">
-              <div>
-                <h3 className="text-3xl font-normal mb-4">
-                  Mechanical Engineering
-                </h3>
-                <p className="text-sm text-subtle mb-4 uppercase tracking-wider">
-                  Certificate of Higher Education
+            <div className="md:col-span-8">
+              <h3 className="text-3xl font-normal mb-4">
+                Mechanical Engineering
+              </h3>
+              <p className="text-sm text-subtle mb-4">
+                Certificate of Higher Education
+              </p>
+              <div className="timeline-highlight">
+                <p className="text-lg font-medium mb-1">
+                  Ranked 2nd in the World (QS 2025)
                 </p>
-                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
-                  <p className="text-lg font-medium mb-1">
-                    Ranked 2nd in the World (QS 2025)
-                  </p>
-                  <p className="text-muted">
-                    Recognition for Excellence in Design & Manufacture
-                  </p>
-                </div>
-                <p className="text-lg text-muted leading-relaxed font-normal">
-                  Excelled in mechanical engineering at one of the world&apos;s
-                  leading institutions. This foundational experience provided
-                  invaluable problem-solving skills and analytical thinking that
-                  seamlessly transitioned into computer science.
+                <p className="text-muted">
+                  Recognition for Excellence in Design & Manufacture
                 </p>
               </div>
+              <details className="detail-disclosure">
+                <summary>Achievements & background</summary>
+                <div className="disclosure-content space-y-7">
+                  <div>
+                    <p className="text-lg text-muted leading-relaxed font-normal">
+                      Excelled in mechanical engineering at one of the
+                      world&apos;s leading institutions. This foundational
+                      experience provided invaluable problem-solving skills and
+                      analytical thinking that seamlessly transitioned into
+                      computer science.
+                    </p>
+                  </div>
 
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="section-label text-subtle mb-4">
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2 text-muted font-normal">
-                    <li>• Top 10% ranking in multiple exams</li>
-                    <li>• Strong engineering principles mastery</li>
-                    <li>• Advanced mathematical problem-solving</li>
-                  </ul>
+                  <div className="grid sm:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="section-label text-subtle mb-4">
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-2 text-muted font-normal">
+                        <li>• Top 10% ranking in multiple exams</li>
+                        <li>• Strong engineering principles mastery</li>
+                        <li>• Advanced mathematical problem-solving</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="section-label text-subtle mb-4">
+                        Skills Acquired
+                      </h4>
+                      <ul className="space-y-2 text-muted font-normal">
+                        <li>• Python for Engineering</li>
+                        <li>• Data Analysis & Modeling</li>
+                        <li>• CAD Design & SOLIDWORKS</li>
+                        <li>• Finite Element Analysis (FEA)</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="section-label text-subtle mb-4">
-                    Skills Acquired
-                  </h4>
-                  <ul className="space-y-2 text-muted font-normal">
-                    <li>• Python for Engineering</li>
-                    <li>• Data Analysis & Modeling</li>
-                    <li>• CAD Design & SOLIDWORKS</li>
-                    <li>• Finite Element Analysis (FEA)</li>
-                  </ul>
-                </div>
-              </div>
+              </details>
             </div>
           </div>
 
@@ -153,25 +167,25 @@ const Education = () => {
                 Malaysia
               </div>
             </div>
-            <div className="md:col-span-8 space-y-8">
-              <div>
-                <h3 className="text-3xl font-normal mb-4">
-                  Cambridge A-Levels
-                </h3>
-                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
-                  <p className="text-lg font-medium mb-1">
-                    4 A* (Perfect Score)
-                  </p>
-                  <p className="text-muted">
-                    A-Level High Achiever Award • Taylor&apos;s Merit
-                    Scholarship
-                  </p>
-                </div>
-                <p className="text-lg text-muted leading-relaxed font-normal">
-                  Achieved exceptional results with perfect A* grades in
-                  Mathematics, Physics, Chemistry, and Further Mathematics.
+            <div className="md:col-span-8">
+              <h3 className="text-3xl font-normal mb-4">Cambridge A-Levels</h3>
+              <div className="timeline-highlight">
+                <p className="text-lg font-medium mb-1">4 A* (Perfect Score)</p>
+                <p className="text-muted">
+                  A-Level High Achiever Award • Taylor&apos;s Merit Scholarship
                 </p>
               </div>
+              <details className="detail-disclosure">
+                <summary>Achievements & background</summary>
+                <div className="disclosure-content space-y-7">
+                  <div>
+                    <p className="text-lg text-muted leading-relaxed font-normal">
+                      Achieved exceptional results with perfect A* grades in
+                      Mathematics, Physics, Chemistry, and Further Mathematics.
+                    </p>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
 
@@ -184,27 +198,32 @@ const Education = () => {
                 Malaysia
               </div>
             </div>
-            <div className="md:col-span-8 space-y-8">
-              <div>
-                <h3 className="text-3xl font-normal mb-4">
-                  SPM (Malaysian Certificate of Education)
-                </h3>
-                <div className="p-6 bg-surface rounded-lg border border-line mb-6">
-                  <p className="text-lg font-medium mb-1">7A+, 2A, 1A-</p>
-                  <p className="text-muted">Outstanding Academic Performance</p>
-                </div>
-                <p className="text-lg text-muted leading-relaxed font-normal">
-                  Demonstrated exceptional academic performance and leadership
-                  capabilities. President of Chinese Society, Vice President of
-                  Chess Club.
-                </p>
+            <div className="md:col-span-8">
+              <h3 className="text-3xl font-normal mb-4">
+                SPM (Malaysian Certificate of Education)
+              </h3>
+              <div className="timeline-highlight">
+                <p className="text-lg font-medium mb-1">7A+, 2A, 1A-</p>
+                <p className="text-muted">Outstanding Academic Performance</p>
               </div>
+              <details className="detail-disclosure">
+                <summary>Achievements & background</summary>
+                <div className="disclosure-content space-y-7">
+                  <div>
+                    <p className="text-lg text-muted leading-relaxed font-normal">
+                      Demonstrated exceptional academic performance and
+                      leadership capabilities. President of Chinese Society,
+                      Vice President of Chess Club.
+                    </p>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="grid md:grid-cols-2 gap-6 mt-32">
+        <div className="grid md:grid-cols-2 gap-6 mt-12">
           <Link href="/about" className="group">
             <div className="navigation-card h-full flex flex-col justify-between">
               <div>

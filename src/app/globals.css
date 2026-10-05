@@ -280,12 +280,87 @@ h6 {
   width: 18px;
   height: 18px;
 }
-.theme-sun,
-.dark .theme-moon {
-  display: none;
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 64px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--control-radius);
 }
-.dark .theme-sun {
-  display: block;
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 4px 0;
+  border: 1px solid var(--line);
+  border-radius: inherit;
+  background: var(--surface);
+  transition:
+    background var(--motion-fast) var(--motion-ease),
+    border-color var(--motion-fast) var(--motion-ease);
+}
+.theme-toggle-thumb {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--panel);
+  box-shadow: 0 1px 4px rgb(18 19 23 / 12%);
+  transition: transform var(--motion-medium) var(--motion-ease);
+  view-transition-name: theme-toggle-thumb;
+}
+.theme-toggle svg {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 16px;
+  height: 16px;
+  color: var(--subtle);
+  transition:
+    color var(--motion-fast) var(--motion-ease),
+    transform var(--motion-medium) var(--motion-ease);
+}
+.theme-toggle .theme-sun {
+  color: var(--foreground);
+}
+.dark .theme-toggle .theme-moon {
+  color: var(--background);
+}
+.dark .theme-toggle .theme-sun {
+  color: var(--subtle);
+}
+.dark .theme-toggle-thumb {
+  background: var(--foreground);
+  transform: translateX(28px);
+}
+/* Capture finished colors; the native snapshots provide the theme animation. */
+html[data-theme-transition]
+  :is(a, button, .theme-toggle-thumb, .theme-toggle svg),
+html[data-theme-transition] .theme-toggle::before {
+  transition: none;
+}
+html[data-theme-transition]::view-transition-group(root) {
+  animation: none;
+  z-index: 0;
+}
+html[data-theme-transition]::view-transition-group(theme-toggle-thumb) {
+  animation-duration: var(--motion-medium);
+  animation-timing-function: var(--motion-ease);
+  z-index: 1;
+}
+html[data-theme-transition]::view-transition-old(root),
+html[data-theme-transition]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html[data-theme-transition]::view-transition-old(root) {
+  z-index: 1;
+}
+html[data-theme-transition]::view-transition-new(root) {
+  z-index: 2;
 }
 .menu-toggle {
   display: none;
@@ -333,6 +408,7 @@ h6 {
     width: calc(100% - 32px);
     min-height: 60px;
     padding: 8px 12px;
+    gap: 12px;
   }
   .brand {
     font-size: 16px;
@@ -340,7 +416,7 @@ h6 {
     letter-spacing: -0.015em;
   }
   .header-controls {
-    padding-left: 8px;
+    padding-left: 0;
     border-left: 0;
   }
   .icon-button {
@@ -360,7 +436,8 @@ h6 {
 .hero-inner {
   position: relative;
   max-width: 1280px;
-  min-height: min(920px, 100svh);
+  min-height: 100svh;
+  min-height: 100dvh;
   margin: auto;
   padding: 200px 32px 190px;
   display: flex;
@@ -1611,6 +1688,10 @@ a:focus-visible .navigation-card {
   border-color: var(--accent);
 }
 @media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover::before {
+    background: var(--control-hover);
+    border-color: var(--border-hover);
+  }
   .button-primary:hover:not(:disabled),
   .nav-contact:hover {
     background: var(--primary-hover);
@@ -1673,6 +1754,12 @@ a:focus-visible .navigation-card {
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .theme-toggle:hover .theme-sun {
+    transform: rotate(20deg);
+  }
+  .theme-toggle:hover .theme-moon {
+    transform: rotate(-12deg);
+  }
   .project-card-link:hover img {
     transform: scale(1.015);
   }
@@ -1684,6 +1771,10 @@ a:focus-visible .navigation-card {
 .nav-contact:active {
   background: var(--primary-pressed);
   color: var(--background);
+}
+.theme-toggle:active::before {
+  background: var(--control-pressed);
+  border-color: var(--border-hover);
 }
 .button-secondary:active:not(:disabled),
 .icon-button:active:not(:disabled),
@@ -1716,6 +1807,7 @@ a:active .navigation-card {
       .button-secondary,
       .nav-link,
       .icon-button,
+      .theme-toggle,
       .social-link,
       .project-filters button,
       .tetris-touch-controls button,
@@ -1802,7 +1894,6 @@ a:active .navigation-card {
     padding-inline: 24px;
   }
   .hero-inner {
-    min-height: max(690px, 92svh);
     padding: 128px 24px 96px;
     align-items: center;
   }

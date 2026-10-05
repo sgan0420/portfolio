@@ -1,6 +1,6 @@
 # Performance
 
-The portfolio keeps its existing layout, typography, cloud artwork, and cube.
+The portfolio keeps its typography, cloud artwork, and cube.
 Content is prerendered, so reading the site does not depend on its animations.
 
 ## Loading
@@ -30,6 +30,11 @@ Content is prerendered, so reading the site does not depend on its animations.
   is restricted to its previous painted bounds instead of the whole hero, and
   drawing stops after the trail fades.
 - Unchanged cubelets are memoized. Cube turns remain valid when playback pauses.
+- Theme switching uses native view-transition snapshots for a 500 ms circular
+  reveal, with no duplicated page content, added library, or idle animation loop.
+  The small switch highlight moves in its own native transition. Reduced motion
+  and unsupported browsers switch instantly; unavailable storage or interrupted
+  transitions do not prevent changing themes.
 - Tetris uses a timer for the next piece drop instead of polling every animation
   frame. Pause, game over, offscreen state, and hidden documents stop that timer.
   Resuming starts a fresh drop interval without catching up on hidden time.
@@ -74,6 +79,12 @@ Validation covered:
   reduced-motion behavior.
 - Sky and cube pause/resume, offscreen behavior, and visibility-change handling.
 - Project filters, mobile navigation, dark theme, and content without JavaScript.
+- Circular theme reveals in both directions under 4× CPU throttling, keyboard
+  activation, repeated input, saved preferences, and switching while scrolled.
+  Reduced motion, missing API support, blocked storage, and skipped or failed
+  animations preserve working theme controls.
+- Full-height home hero across eleven phone, tablet, and desktop viewports,
+  including 320 × 568 and 1440 × 1100, without the next section peeking through.
 - Tetris movement, hold, hard drop, pause, offscreen suspension, resume, and restart.
 - Deferred contact SDK loading and its existing missing-configuration error state
   in the local preview. No email was sent during testing.
@@ -83,5 +94,6 @@ development server. Chromium's `Network.loadingFinished` reports transferred
 bytes; `Performance.getMetrics` reports main-thread task duration. Record before
 and after with the same viewport, cache state, and throttling settings.
 
-Rendering references: [Google's animation guidance](https://web.dev/articles/animations-guide)
-and [MDN's canvas optimization guidance](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas).
+Rendering references: [Google's animation guidance](https://web.dev/articles/animations-guide),
+[MDN's canvas optimization guidance](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas),
+and [MDN's circular view-transition example](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using).

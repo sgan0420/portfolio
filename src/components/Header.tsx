@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "@/components/IntentLink";
-import { HiBars3, HiXMark, HiSun, HiMoon } from "react-icons/hi2";
+import ThemeToggle from "@/components/ThemeToggle";
+import { HiBars3, HiXMark } from "react-icons/hi2";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -20,15 +21,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
-
-  const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    try {
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    } catch {
-      // The toggle still works when browser storage is unavailable.
-    }
-  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -74,14 +66,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-controls">
-          <button
-            onClick={toggleTheme}
-            className="icon-button theme-toggle"
-            aria-label="Toggle theme"
-          >
-            <HiMoon className="theme-moon" aria-hidden="true" />
-            <HiSun className="theme-sun" aria-hidden="true" />
-          </button>
+          <ThemeToggle />
           <button
             ref={menuButton}
             className="icon-button menu-toggle"

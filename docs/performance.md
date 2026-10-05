@@ -20,6 +20,10 @@ Content is prerendered, so reading the site does not depend on its animations.
 - Clouds and the desktop cube autoplay on visible pages, including devices
   reporting limited memory, fewer processors, Save-Data, or a slow connection.
   The existing controls pause and resume playback when the visitor chooses.
+- Cloud turbulence, displacement, and blur are baked into two transparent WebP
+  atlases, rather than recalculated by live SVG filters. The original shapes,
+  colors, layering, and drift remain. Each atlas includes both themes, so changing
+  themes does not fetch another image. Run `npm run clouds` to regenerate them.
 - Reduced-motion preferences, offscreen state, and document visibility stop
   decorative work. Reduced motion continues to take precedence over play controls.
 - The sky's canvas backing buffer is allocated only for eligible mouse input and
@@ -88,6 +92,30 @@ Validation covered:
 - Tetris movement, hold, hard drop, pause, offscreen suspension, resume, and restart.
 - Deferred contact SDK loading and its existing missing-configuration error state
   in the local preview. No email was sent during testing.
+
+## Safari rendering — 2026-10-06
+
+The previous SVG filters rendered clouds in WebKit at device scale factor 1,
+but produced an empty layer at scale factor 3 with a 393 × 852 viewport. Removing
+the filters restored the artwork, isolating the failure from layout or playback.
+WebKit also has [documented viewport-dependent SVG filter rendering issues](https://bugs.webkit.org/show_bug.cgi?id=266295).
+
+The replacement uses two 640 × 800 atlases totaling 39,596 bytes. Their decoded
+RGBA pixels total 4,096,000 bytes; this does not measure the browser's total
+graphics memory. These are additional homepage assets, so the earlier loading
+measurements above describe the October 5 build, before this rendering fix.
+
+Both palettes now render in WebKit and Chromium at phone scale factors 2 and 3,
+including 320 × 568 and 430 × 932, and on desktop. Playback controls, offscreen
+suspension, reduced motion, and the touch device's zero-sized trail canvas remain
+intact. The circular reveal still lasts 500 ms and normal clouds still autoplay.
+
+Paired headless WebKit measurements on the same computer at 393 × 852 and scale
+factor 3 sampled animation-frame callbacks during six alternating theme reveals.
+The original filtered artwork produced mean callback intervals around 38 ms;
+the baked artwork produced intervals around 14 ms. Extra layer hints or pausing
+clouds during the reveal did not improve that result, so neither was added.
+This is a local engine comparison, not a physical iPhone FPS measurement.
 
 To investigate future regressions, compare production builds rather than the
 development server. Chromium's `Network.loadingFinished` reports transferred

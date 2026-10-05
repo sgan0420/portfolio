@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "icons": "node scripts/generate-icons.mjs",
+    "clouds": "node scripts/generate-clouds.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit"

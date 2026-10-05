@@ -425,7 +425,7 @@ html[data-theme-transition]::view-transition-new(root) {
   }
 }
 
-/* Daylight and moonlight share the same cloud shapes in the initial HTML. */
+/* Both cloud palettes share cached textures and animate only their transforms. */
 .hero {
   position: relative;
   overflow: clip;
@@ -571,17 +571,11 @@ html[data-theme-transition]::view-transition-new(root) {
   position: absolute;
   inset: 0;
 }
-.cloud-highlight {
-  stop-color: #fffdf4;
-}
-.cloud-mid {
-  stop-color: #dde6f5;
-}
-.cloud-shadow {
-  stop-color: #98b0d6;
-}
 .cloud-bank {
   transform-origin: center;
+}
+.dark .cloud-palette {
+  transform: translateY(-1000px);
 }
 .cloud-bank-far {
   opacity: 0.84;
@@ -631,15 +625,6 @@ html[data-theme-transition]::view-transition-new(root) {
   background:
     radial-gradient(ellipse at 60% 8%, #424b7b, transparent 65%),
     linear-gradient(155deg, #172744, #303756 55%, #5d536c);
-}
-.dark .cloud-highlight {
-  stop-color: #8589ad;
-}
-.dark .cloud-mid {
-  stop-color: #4b5b7f;
-}
-.dark .cloud-shadow {
-  stop-color: #25324f;
 }
 .dark .hero-description,
 .dark .hero-description > span {

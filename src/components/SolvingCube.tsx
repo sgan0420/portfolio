@@ -2,7 +2,6 @@
 
 import { memo, useEffect, useRef, useState, type CSSProperties } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
-import { shouldLimitEffects } from "@/lib/performance";
 import {
   axisIndex,
   createCube,
@@ -37,7 +36,7 @@ const Cubelet = memo(function Cubelet({ cubie }: { cubie: Cubie }) {
 export default function SolvingCube() {
   const [cube, setCube] = useState(scrambled);
   const [move, setMove] = useState<CubeMove | null>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [paused, setPaused] = useState(false);
   const [canAnimate, setCanAnimate] = useState(false);
   const [solved, setSolved] = useState(false);
@@ -47,11 +46,9 @@ export default function SolvingCube() {
   const refreshPlayback = useRef(() => {});
 
   useEffect(() => {
-    userPaused.current = shouldLimitEffects();
-    setPaused(userPaused.current);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktop = window.matchMedia("(min-width: 768px)");
-    let visible = false;
+    let visible = true;
     let currentCube = scrambled;
     let cursor = 0;
     let turning = false;

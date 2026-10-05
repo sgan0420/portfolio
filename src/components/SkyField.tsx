@@ -2,15 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
-import { shouldLimitEffects } from "@/lib/performance";
 
 // The sky is SVG in the initial HTML. Canvas only adds a temporary pointer wake.
 export default function SkyField() {
   const field = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [paused, setPaused] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const userPaused = useRef<boolean | null>(null);
+  const [playing, setPlaying] = useState(true);
+  const userPaused = useRef(false);
   const refreshPlayback = useRef(() => {});
 
   useEffect(() => {
@@ -20,18 +19,23 @@ export default function SkyField() {
     if (!element || !surface || !section) return;
     const pointer = matchMedia("(hover: hover) and (pointer: fine)");
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-    userPaused.current ??= shouldLimitEffects();
-    setPaused(userPaused.current);
     let frame = 0;
-    let visible = false;
+    let visible = true;
     let width = 0;
     let height = 0;
     let left = 0;
     let top = 0;
     let context: CanvasRenderingContext2D | null = null;
     let previousTime = 0;
-    let previousCapture = 0;
-    let points: { x: number; y: number; born: number }[] = [];
+    type Point = { x: number; y: number; born: number };
+    let points: Point[] = [];
+    let pendingPoint: Point | null = null;
+    let painted: {
+      left: number;
+      top: number;
+      width: number;
+      height: number;
+    } | null = null;
     const shouldPlay = () =>
       !userPaused.current &&
       !reducedMotion.matches &&
@@ -41,6 +45,8 @@ export default function SkyField() {
       cancelAnimationFrame(frame);
       frame = 0;
       points = [];
+      pendingPoint = null;
+      painted = null;
       // Release the backing buffer on touch devices, when paused or offscreen.
       surface.width = 0;
       surface.height = 0;
@@ -57,6 +63,7 @@ export default function SkyField() {
       surface.width = width * ratio;
       surface.height = height * ratio;
       context?.setTransform(ratio, 0, 0, ratio, 0, 0);
+      painted = null;
     };
     const resize = new ResizeObserver(sizeCanvas);
     const draw = (now: number) => {
@@ -68,13 +75,39 @@ export default function SkyField() {
         return;
       }
       previousTime = now;
-      context.clearRect(0, 0, width, height);
+      // Coalesce high-frequency pointer input into the next drawing frame.
+      if (pendingPoint) {
+        const last = points.at(-1);
+        if (
+          !last ||
+          Math.hypot(last.x - pendingPoint.x, last.y - pendingPoint.y) >= 6
+        )
+          points.push(pendingPoint);
+        if (points.length > 90) points.shift();
+        pendingPoint = null;
+      }
+      // Only the trail changes. Keep clearing away from the rest of the hero.
+      if (painted)
+        brush.clearRect(
+          painted.left,
+          painted.top,
+          painted.width,
+          painted.height
+        );
+      painted = null;
       points = points.filter((point) => now - point.born < 1400);
-      const dark = document.documentElement.classList.contains("dark");
+      let minX = Infinity;
+      let minY = Infinity;
+      let maxX = -Infinity;
+      let maxY = -Infinity;
       points.forEach((point, i) => {
         const age = (now - point.born) / 1400;
         const alpha = (1 - age) * 0.8;
         const y = point.y - age * 24;
+        minX = Math.min(minX, point.x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, point.x);
+        maxY = Math.max(maxY, y);
         if (i > 0) {
           const previous = points[i - 1];
           brush.beginPath();
@@ -83,30 +116,24 @@ export default function SkyField() {
             previous.y - ((now - previous.born) / 1400) * 24
           );
           brush.lineTo(point.x, y);
-          brush.strokeStyle = `rgba(${dark ? "174,199,255" : "255,255,255"},${alpha})`;
+          brush.strokeStyle = `rgba(255,255,255,${alpha})`;
           brush.lineWidth = 2 + age * 10;
           brush.lineCap = "round";
           brush.stroke();
         }
-        if (i % 3 === 0) {
-          brush.fillStyle = `rgba(${dark ? "214,225,255" : "46,75,147"},${alpha * 0.7})`;
-          const size = 2.5 * (1 - age);
-          brush.fillRect(
-            point.x + Math.sin(i * 4) * age * 35,
-            y - 12,
-            size,
-            size
-          );
-        }
       });
+      if (points.length > 1)
+        painted = {
+          left: minX - 8,
+          top: minY - 8,
+          width: maxX - minX + 16,
+          height: maxY - minY + 16,
+        };
       if (points.length) frame = requestAnimationFrame(draw);
     };
     const move = (event: PointerEvent) => {
       if (!shouldPlay() || !pointer.matches || event.pointerType !== "mouse")
         return;
-      const now = performance.now();
-      if (now - previousCapture < 30) return;
-      previousCapture = now;
       // The canvas is optional: allocate it only when the effect is first used.
       if (!context) {
         context = surface.getContext("2d");
@@ -114,15 +141,11 @@ export default function SkyField() {
         sizeCanvas();
         resize.observe(element);
       }
-      const point = {
+      pendingPoint = {
         x: event.pageX - left,
         y: event.pageY - top,
-        born: now,
+        born: performance.now(),
       };
-      const last = points.at(-1);
-      if (last && Math.hypot(last.x - point.x, last.y - point.y) < 6) return;
-      points.push(point);
-      if (points.length > 90) points.shift();
       if (!frame) frame = requestAnimationFrame(draw);
     };
     const sync = () => {

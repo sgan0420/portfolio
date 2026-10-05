@@ -41,11 +41,11 @@ export default function ProjectCollection() {
         </p>
       </div>
       <div className="projects-grid" key={category}>
-        {visible.map((project) => (
+        {visible.map((project, index) => (
           <ProjectCard
             key={project.slug}
             project={project}
-            index={projects.indexOf(project)}
+            priority={index < 2}
           />
         ))}
       </div>

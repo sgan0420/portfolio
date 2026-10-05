@@ -226,7 +226,6 @@ const ProjectDetail = () => {
             <div className="relative w-full bg-surface rounded-2xl overflow-hidden border border-line">
               <div className="relative aspect-video">
                 <Image
-                  priority
                   src="/project-atom.png"
                   alt="Project Atom - 3D Robot"
                   fill

@@ -1,6 +1,6 @@
 import { getPostBySlug, getAllSlugs, formatDate } from "@/lib/blog";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import { HiArrowLeft, HiCalendar, HiClock } from "react-icons/hi";
 import BlogContent from "./BlogContent";
 

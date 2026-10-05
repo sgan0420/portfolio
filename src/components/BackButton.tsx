@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import { HiArrowLeft } from "react-icons/hi2";
 
 interface BackButtonProps {

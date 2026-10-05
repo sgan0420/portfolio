@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { memo, useEffect, useRef, useState, type CSSProperties } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
+import { shouldLimitEffects } from "@/lib/performance";
 import {
   axisIndex,
   createCube,
@@ -10,12 +11,28 @@ import {
   solveMoves,
   turnCube,
   type CubeMove,
+  type Cubie,
 } from "@/lib/rubik-cube";
 
 const faces = ["front", "back", "right", "left", "top", "bottom"];
 const scrambled = scrambleMoves.reduce(turnCube, createCube());
 const sequence = [...solveMoves, ...scrambleMoves];
 const turnDuration = 620;
+
+// A turn changes nine cubies. Keep the other seventeen cubies and their faces
+// out of React's update work, including updates to the playback controls.
+const Cubelet = memo(function Cubelet({ cubie }: { cubie: Cubie }) {
+  return (
+    <div className="cubelet" style={{ transform: cubieTransform(cubie) }}>
+      {faces.map((face, index) => (
+        <span
+          key={face}
+          className={`cube-face cube-${face} cube-${cubie.colors[index]}`}
+        />
+      ))}
+    </div>
+  );
+});
 
 export default function SolvingCube() {
   const [cube, setCube] = useState(scrambled);
@@ -30,6 +47,8 @@ export default function SolvingCube() {
   const refreshPlayback = useRef(() => {});
 
   useEffect(() => {
+    userPaused.current = shouldLimitEffects();
+    setPaused(userPaused.current);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktop = window.matchMedia("(min-width: 768px)");
     let visible = false;
@@ -147,17 +166,7 @@ export default function SolvingCube() {
                     transform: `rotate${(move?.axis ?? "x").toUpperCase()}(${moving ? move.direction * 90 : 0}deg)`,
                   }}
                 >
-                  <div
-                    className="cubelet"
-                    style={{ transform: cubieTransform(cubie) }}
-                  >
-                    {faces.map((face, index) => (
-                      <span
-                        key={face}
-                        className={`cube-face cube-${face} cube-${cubie.colors[index]}`}
-                      />
-                    ))}
-                  </div>
+                  <Cubelet cubie={cubie} />
                 </div>
               );
             })}

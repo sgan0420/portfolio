@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getAllPosts, formatDate } from "@/lib/blog";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import PageHeading from "@/components/PageHeading";
 
 export const metadata: Metadata = { title: "Blog" };

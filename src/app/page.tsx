@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import HeroSection from "@/sections/HeroSection";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/lib/projects";
@@ -71,8 +71,8 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="projects-grid">
-            {projects.slice(0, 2).map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
+            {projects.slice(0, 2).map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import { HiArrowUp, HiArrowDownTray } from "react-icons/hi2";
 
 const explore = [

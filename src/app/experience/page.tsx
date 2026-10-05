@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import PageHeading from "@/components/PageHeading";
 import Image from "next/image";
 import { HiExternalLink } from "react-icons/hi";

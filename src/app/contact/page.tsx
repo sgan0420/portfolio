@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import PageHeading from "@/components/PageHeading";
-import emailjs from "@emailjs/browser";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
@@ -33,6 +32,7 @@ const Contact = () => {
     setError("");
 
     try {
+      const { default: emailjs } = await import("@emailjs/browser");
       // EmailJS configuration using environment variables
       const result = await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,

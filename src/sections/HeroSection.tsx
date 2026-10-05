@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import { HiArrowDown } from "react-icons/hi2";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import SkyField from "@/components/SkyField";

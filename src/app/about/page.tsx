@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import PageHeading from "@/components/PageHeading";
 import Image from "next/image";
 
@@ -28,7 +28,7 @@ const About = () => {
                 alt="Shijie Gan"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 40vw"
+                sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1184px) 40vw, 448px"
                 priority
               />
             </div>

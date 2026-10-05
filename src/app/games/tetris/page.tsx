@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import PageHeading from "@/components/PageHeading";
 import { HiArrowLeft } from "react-icons/hi";
 
@@ -277,7 +277,8 @@ interface GameState {
 function initSimpleTetris(container: HTMLElement) {
   const controller = new AbortController();
   const signal = controller.signal;
-  let frame = 0;
+  let dropTimer: ReturnType<typeof setTimeout> | undefined;
+  let visible = false;
   // Game state
   let gameState: GameState = {
     grid: Array(20)
@@ -571,10 +572,29 @@ function initSimpleTetris(container: HTMLElement) {
     highScoreText.textContent = gameState.highScore.toString();
   }
 
-  // Game loop
+  // Pieces only change on a drop or an input. A timer avoids polling at the
+  // display's refresh rate, especially while the game is paused or hidden.
+  function scheduleDrop() {
+    clearTimeout(dropTimer);
+    dropTimer = undefined;
+    if (gameState.gameOver || gameState.paused || document.hidden || !visible)
+      return;
+    const remaining =
+      gameState.dropInterval - (performance.now() - gameState.dropTime);
+    dropTimer = setTimeout(
+      () => gameLoop(performance.now()),
+      Math.max(16, remaining)
+    );
+  }
+
   function gameLoop(timestamp: number) {
-    if (!gameState.gameOver && !gameState.paused) {
-      if (timestamp - gameState.dropTime > gameState.dropInterval) {
+    if (
+      !gameState.gameOver &&
+      !gameState.paused &&
+      !document.hidden &&
+      visible
+    ) {
+      if (timestamp - gameState.dropTime >= gameState.dropInterval) {
         if (
           gameState.currentPiece &&
           isValidMove(gameState.currentPiece, 0, 1)
@@ -587,7 +607,13 @@ function initSimpleTetris(container: HTMLElement) {
         render();
       }
     }
-    frame = requestAnimationFrame(gameLoop);
+    scheduleDrop();
+  }
+
+  function syncPlayback() {
+    // Resume from the current board without catching up on hidden time.
+    gameState.dropTime = performance.now();
+    scheduleDrop();
   }
 
   const gameKeys = [
@@ -642,6 +668,7 @@ function initSimpleTetris(container: HTMLElement) {
         break;
     }
     render();
+    scheduleDrop();
   }
   container.addEventListener(
     "keydown",
@@ -677,6 +704,7 @@ function initSimpleTetris(container: HTMLElement) {
       } else {
         gamePauseDiv.style.display = "none";
       }
+      syncPlayback();
     },
     { signal }
   );
@@ -696,12 +724,13 @@ function initSimpleTetris(container: HTMLElement) {
         highScore: parseInt(localStorage.getItem("tetris-high-score") || "0"),
         gameOver: false,
         paused: false,
-        dropTime: 0,
+        dropTime: performance.now(),
         dropInterval: 1000,
       };
       gameOverDiv.style.display = "none";
       gamePauseDiv.style.display = "none";
       render();
+      scheduleDrop();
     },
     { signal }
   );
@@ -719,11 +748,18 @@ function initSimpleTetris(container: HTMLElement) {
   };
   gameState.dropTime = performance.now();
 
-  // Start game loop and release it when leaving the route.
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    syncPlayback();
+  });
+  observer.observe(container);
+  document.addEventListener("visibilitychange", syncPlayback, { signal });
+
+  // Start when the board is visible and release it when leaving the route.
   render();
-  frame = requestAnimationFrame(gameLoop);
   return () => {
-    cancelAnimationFrame(frame);
+    clearTimeout(dropTimer);
+    observer.disconnect();
     controller.abort();
   };
 }

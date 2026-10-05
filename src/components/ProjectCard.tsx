@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/IntentLink";
 import type { PortfolioProject } from "@/lib/projects";
 
 export default function ProjectCard({
   project,
-  index = 0,
+  priority = false,
 }: {
   project: PortfolioProject;
-  index?: number;
+  priority?: boolean;
 }) {
   return (
     <article className="project-card" data-reveal>
@@ -23,7 +23,7 @@ export default function ProjectCard({
                 src={project.image}
                 alt={project.title}
                 fill
-                priority={index < 2}
+                priority={priority}
                 className="object-contain"
                 sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1200px) 45vw, 540px"
               />

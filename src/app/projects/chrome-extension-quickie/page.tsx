@@ -185,7 +185,6 @@ const ProjectDetail = () => {
           <div className="mb-24 space-y-12">
             <div className="project-visual relative aspect-video w-full rounded-2xl overflow-hidden border border-line">
               <Image
-                priority
                 src="/quickie.png"
                 alt="Chrome Extension Quickie Interface"
                 fill

@@ -1803,8 +1803,8 @@ a:active .navigation-card {
   }
   .hero-inner {
     min-height: max(690px, 92svh);
-    padding: 155px 24px 175px;
-    align-items: flex-start;
+    padding: 128px 24px 96px;
+    align-items: center;
   }
   .hero h1 {
     font-size: clamp(54px, 12.8vw, 88px);

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { HiBars3, HiXMark, HiSun, HiMoon } from "react-icons/hi2";
 
 const navItems = [
@@ -57,14 +56,9 @@ export default function Header() {
     <header ref={header} className="site-header">
       <div className="header-inner">
         <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
-          <Image
-            src="/favicon.svg?v=split-s"
-            alt=""
-            width={34}
-            height={34}
-            className="brand-mark"
-            priority
-          />
+          <span className="brand-mark" aria-hidden="true">
+            SG<span className="name-period">.</span>
+          </span>
           <span>Shijie Gan</span>
         </Link>
         <nav aria-label="Main navigation" className="desktop-nav">

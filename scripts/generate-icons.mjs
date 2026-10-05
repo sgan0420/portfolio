@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
-// The navigation logo, favicon, and touch icon share one vector source.
+// Favicon and touch icon use outlines of the navbar's SG. font glyphs.
 const source = await readFile(
   new URL("../public/favicon.svg", import.meta.url)
 );

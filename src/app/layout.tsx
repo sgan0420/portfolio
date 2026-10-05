@@ -36,13 +36,13 @@ export const metadata: Metadata = {
   authors: [{ name: "Shijie Gan" }],
   icons: {
     icon: {
-      url: "/favicon.svg?v=split-s",
+      url: "/favicon.svg?v=sg-dot",
       type: "image/svg+xml",
       sizes: "any",
     },
-    shortcut: "/favicon.svg?v=split-s",
+    shortcut: "/favicon.svg?v=sg-dot",
     apple: {
-      url: "/apple-touch-icon.png?v=split-s",
+      url: "/apple-touch-icon.png?v=sg-dot",
       sizes: "180x180",
       type: "image/png",
     },

@@ -193,14 +193,23 @@ h6 {
   white-space: nowrap;
 }
 .brand-mark {
-  width: 34px;
+  width: 46px;
   height: 34px;
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  border-radius: 9px;
+  color: #121317;
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: var(--weight-heading);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 118;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
 }
 .dark .brand-mark {
-  outline: 1px solid var(--line);
+  color: #eef1ff;
 }
 .desktop-nav {
   display: flex;
@@ -2454,6 +2463,17 @@ body:has(.hero) .nav-link:not(.nav-contact)[aria-current] {
   margin-bottom: 40px;
 }
 @media (max-width: 360px) {
+  .site-header .header-inner {
+    gap: 12px;
+  }
+  .site-header .brand {
+    font-size: 15px;
+    gap: 8px;
+  }
+  .brand-mark {
+    width: 40px;
+    font-size: 24px;
+  }
   .project-filters button {
     padding-inline: 8px;
     font-size: var(--type-small);

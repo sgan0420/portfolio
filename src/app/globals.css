@@ -579,11 +579,11 @@ html[data-theme-transition]::view-transition-new(root) {
 }
 .cloud-bank-far {
   opacity: 0.84;
-  animation: cloud-drift 30s ease-in-out infinite alternate;
+  animation: cloud-drift 10s ease-in-out -2s infinite alternate;
 }
 .cloud-bank-near {
   opacity: 0.92;
-  animation: cloud-drift 40s ease-in-out -13s infinite alternate-reverse;
+  animation: cloud-drift 14s ease-in-out -4.5s infinite alternate-reverse;
 }
 .sky-horizon {
   position: absolute;

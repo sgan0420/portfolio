@@ -17,11 +17,15 @@ imageAlt: "The title and first stage of my agentic workflow diagram: asks come i
 
 # How I ship software with a team of AI agents
 
-AI coding agents can now do real engineering work on their own. Getting them to do it reliably, many at a time, without a person checking every line, is a different problem. This post is about that problem.
+I want to become a 10x engineer. More precisely, I want to 100x my development workflow: ship quickly, and ship reliably, at the same time.
+
+AI coding agents make that goal more realistic than it has ever been, because they can now do real engineering work on their own. But getting them to do it reliably, many at a time, without a person checking every line, is a different problem.
+
+To solve it, I studied Lauren Tan's videos on how she ships thousands of pull requests a month with Grok Bot, read through a lot of research on where agents fail, and built my own workflow from what I learned.
 
 In my setup, asks come in from Slack, GitHub and production alarms. A team of AI agents plans the work, writes the tests, builds the change, proves it works, reviews it and ships it to staging. I step in only where a human should: big or unclear work, production releases, and changes to the agents' own rules.
 
-Below is the whole system on one page, the research behind it, and the decision I made at each step to make it reliable.
+This post shares all of it: the whole system on one page, the research behind it, and the decision I made at each step to make it reliable.
 
 > **The short version:** The reliability has to come from the workflow, not the model: small tasks with a written definition of done, separate agents that check each other, proof instead of claims, fresh eyes on every diff, and hard limits on what agents can do.
 
@@ -74,9 +78,9 @@ Second, the gains are not automatic, and the feeling of being faster is not evid
 
 ## 2. What I wanted from it
 
-Part of my inspiration came from Lauren Tan ([@poteto](https://x.com/poteto)), who works on Grok Bot at SpaceXAI. In her talk, [_I shipped 2,000 PRs last month_](https://x.com/poteto/status/2102050467505430555), she explains how she works with coding agents at that volume; by the time she posted it on X, the count was 2,500. Grok Bot's [engineering guide](https://x.ai/bot/guides/grok-bot-for-engineering) describes a setup with some of the same pieces as mine: agents launched with required proof, regular checks of pull requests for review comments, failing CI and merge conflicts, automatic merges for low-risk changes, and nightly audits.
+Lauren Tan ([@poteto](https://x.com/poteto)) works on Grok Bot at SpaceXAI. In her talk, [_I shipped 2,000 PRs last month_](https://x.com/poteto/status/2102050467505430555), she explains how she works with coding agents at that volume; by the time she posted it on X, the count was 2,500. Grok Bot's [engineering guide](https://x.ai/bot/guides/grok-bot-for-engineering) describes a setup with some of the same pieces as mine: agents launched with required proof, regular checks of pull requests for review comments, failing CI and merge conflicts, automatic merges for low-risk changes, and nightly audits.
 
-I wanted to work with many agents at the same time, not sit in one chat window steering one agent. That meant three goals:
+For me, a 10x workflow meant working with many agents at the same time, not sitting in one chat window steering one agent. That meant three goals:
 
 - **Run many tasks in parallel.** Clear tasks should move on their own, without waiting for me.
 - **Let anyone ask, at any hour.** My team should be able to hand work to agents in plain words, from Slack or GitHub, without me in the middle.

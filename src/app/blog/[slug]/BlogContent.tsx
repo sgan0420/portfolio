@@ -1,8 +1,26 @@
 import fs from "fs";
 import path from "path";
-import ReactMarkdown from "react-markdown";
+import type { ComponentType } from "react";
+import ReactMarkdown, { type ExtraProps } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import AgenticWorkflowDiagram from "./AgenticWorkflowDiagram";
+
+// A ```diagram fence holding one of these names renders that diagram as HTML,
+// so a post can show it as text that reflows instead of as an image.
+const DIAGRAMS: Record<string, ComponentType> = {
+  "agentic-workflow": AgenticWorkflowDiagram,
+};
+
+function diagramIn(pre: ExtraProps["node"]) {
+  const code = pre?.children[0];
+  if (code?.type !== "element") return;
+  const className = code.properties.className;
+  if (!Array.isArray(className) || !className.includes("language-diagram"))
+    return;
+  const name = code.children[0];
+  return name?.type === "text" ? DIAGRAMS[name.value.trim()] : undefined;
+}
 
 // Markdown can't give an image's size. Read it from local PNGs so the page
 // reserves the space and the text below doesn't jump when the image loads.
@@ -53,6 +71,10 @@ export default function BlogContent({ content, title }: BlogContentProps) {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={src} alt={alt} title={title} {...localPngSize(src)} />
             ),
+            pre: ({ node, ...props }) => {
+              const Diagram = diagramIn(node);
+              return Diagram ? <Diagram /> : <pre {...props} />;
+            },
           }}
         >
           {body}

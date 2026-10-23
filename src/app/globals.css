@@ -2536,6 +2536,197 @@ a:active .navigation-card {
   border-radius: 8px;
 }
 
+/* Workflow diagram drawn in HTML (AgenticWorkflowDiagram.tsx) */
+.prose-notion .workflow {
+  --decide-bg: #ffedd5;
+  --decide-text: #9a3412;
+  margin: 2em 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.dark .prose-notion .workflow {
+  --decide-bg: rgb(251 146 60 / 16%);
+  --decide-text: #fdba74;
+}
+.prose-notion .workflow p {
+  margin: 0;
+}
+.prose-notion .workflow ol,
+.prose-notion .workflow ul {
+  margin: 0;
+  padding: 0;
+}
+.prose-notion .workflow li {
+  margin: 0;
+  list-style: none;
+}
+.workflow .workflow-decide {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--decide-bg);
+  color: var(--decide-text);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.workflow-legend {
+  margin-bottom: 24px !important;
+  font-size: 14px;
+}
+.workflow-legend .workflow-decide {
+  margin-right: 6px;
+}
+.workflow-stages {
+  counter-reset: stage;
+}
+.workflow-stage {
+  position: relative;
+  padding: 0 0 32px 48px;
+  counter-increment: stage;
+}
+.workflow-stage::before {
+  content: counter(stage);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 14px;
+  font-weight: 600;
+}
+.workflow-stage::after {
+  content: "";
+  position: absolute;
+  top: 38px;
+  bottom: 8px;
+  left: 15px;
+  border-left: 1px dashed var(--border-hover);
+}
+.workflow-stage:last-child {
+  padding-bottom: 0;
+}
+.workflow-stage:last-child::after {
+  display: none;
+}
+.workflow-stage-title {
+  margin-bottom: 12px !important;
+  padding-top: 3px;
+}
+.workflow-stage-title strong {
+  display: block;
+  font-size: 17px;
+}
+.workflow-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+.workflow-cards-wide {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.workflow-card,
+.workflow-step,
+.workflow-note {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.workflow-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+.workflow-card .workflow-decide {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+.workflow-flow {
+  display: grid;
+}
+.workflow-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 4px 16px;
+  font-size: 14px;
+}
+.workflow-step .workflow-decide {
+  margin-left: 8px;
+}
+.workflow-step + li {
+  margin-top: 30px !important;
+}
+.workflow-step:not(:last-child)::after {
+  content: "↓  " attr(data-next);
+  position: absolute;
+  top: 100%;
+  left: 14px;
+  line-height: 30px;
+  font-size: 12px;
+  color: var(--subtle);
+  white-space: pre;
+}
+.workflow-result {
+  justify-self: start;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 14px;
+  font-weight: 600;
+}
+.workflow-loop {
+  margin-top: 10px !important;
+  font-size: 13px;
+  color: var(--subtle);
+}
+.workflow-loop::before {
+  content: "↻ ";
+}
+.workflow-guardrails {
+  margin-top: 32px !important;
+  padding: 14px 16px;
+  border-left: 3px solid var(--decide-text);
+  border-radius: 8px;
+  background: var(--panel);
+  font-size: 14px;
+}
+.workflow figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--subtle);
+}
+@media (max-width: 560px) {
+  .prose-notion .workflow {
+    padding: 16px;
+  }
+  .workflow-stage {
+    padding-left: 42px;
+  }
+  .workflow-step {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* First element no top margin */
 .prose-notion > *:first-child {
   margin-top: 0;

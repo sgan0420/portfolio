@@ -1,8 +1,8 @@
 ---
 title: "How I ship software with a team of AI agents"
-description: "Why agentic development matters now, how I run many AI agents at once, and the research behind each decision that makes them reliable: my findings, my design, and lessons you can reuse."
+description: "How I run a team of AI agents that plans, tests, builds, reviews and ships my code, what I borrowed from how OpenAI, Anthropic, Meta, Cursor and the Grok Bot team ship with agents, and the decision behind each step."
 date: "2026-10-23"
-readTime: "15 min read"
+readTime: "14 min read"
 tags:
   [
     "AI Agents",
@@ -21,17 +21,13 @@ I want to become a 10x engineer. More precisely, I want to 100x my development w
 
 AI coding agents make that goal more realistic than it has ever been, because they can now do real engineering work on their own. But getting them to do it reliably, many at a time, without a person checking every line, is a different problem.
 
-To solve it, I studied Lauren Tan's videos on how she ships thousands of pull requests a month with Grok Bot, read through a lot of research on where agents fail, and built my own workflow from what I learned.
+To solve it, I studied how the teams that build these tools ship with them: Lauren Tan's talk on shipping thousands of pull requests a month with Grok Bot, OpenAI's harness engineering, and engineering write-ups from Anthropic, Meta, Cursor, Stripe, Spotify and Vercel. Then I built my own workflow from what I learned.
 
 In my setup, asks come in from Slack, GitHub and production alarms. A team of AI agents plans the work, writes the tests, builds the change, proves it works, reviews it and ships it to staging. I step in only where a human should: big or unclear work, production releases, and changes to the agents' own rules.
 
-This post shares all of it: the whole system on one page, the research behind it, and the decision I made at each step to make it reliable.
+This post shares all of it: [the whole system on one page](#3-the-workflow-at-a-glance), what I borrowed from each team, and the decision I made at each step to make it reliable.
 
 > **The short version:** The reliability has to come from the workflow, not the model: small tasks with a written definition of done, separate agents that check each other, proof instead of claims, fresh eyes on every diff, and hard limits on what agents can do.
-
-[![Flow diagram of my agentic development workflow in six stages. 1, asks come in from me, my team, GitHub issues, production alarms and a Slack sweep. 2, a dispatcher agent triages each ask into a question, a clear small ask, a big or unclear ask, or an iOS app task. 3, one GitHub issue per task. 4, a build loop of plan, tests first, build, prove and fresh review, ending in a pull request. 5, merge and release through CI, a merge bot, staging and production. 6, report back and learn, with a nightly bug hunt that feeds new tasks back to the task list. Badges mark where I decide: big or unclear asks, big plans and production releases. Guardrails and the numbers sit at the bottom.](/blog/how-i-ship-software-with-ai-agents/agentic-workflow-web.png)](/blog/how-i-ship-software-with-ai-agents/agentic-workflow.png)
-
-_The whole workflow on one page. [Open the full-size diagram](/blog/how-i-ship-software-with-ai-agents/agentic-workflow.png) to zoom in._
 
 ## Table of Contents
 
@@ -39,7 +35,7 @@ _The whole workflow on one page. [Open the full-size diagram](/blog/how-i-ship-s
 2. [What I wanted from it](#2-what-i-wanted-from-it)
 3. [The workflow at a glance](#3-the-workflow-at-a-glance)
 4. [Running many agents at once](#4-running-many-agents-at-once)
-5. [Making agents reliable: findings and decisions](#5-making-agents-reliable-findings-and-decisions)
+5. [Making agents reliable: what I borrowed and what I decided](#5-making-agents-reliable-what-i-borrowed-and-what-i-decided)
 6. [Where I still step in](#6-where-i-still-step-in)
 7. [By the numbers](#7-by-the-numbers)
 8. [Lessons you can reuse](#8-lessons-you-can-reuse)
@@ -50,35 +46,32 @@ _The whole workflow on one page. [Open the full-size diagram](/blog/how-i-ship-s
 
 ## 1. Why agentic development matters now
 
-### Agents can now finish real tasks
+### The teams building these tools already work this way
 
-[METR](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/) measures AI progress by the length of task an agent can finish on its own, counted in how long that task takes a human expert. In March 2025, they found this "time horizon" had doubled roughly every seven months for six years. Their [January 2026 update](https://metr.org/blog/2026-01-29-time-horizon-1-1/) puts the doubling since 2023 at about 131 days, a little over four months.
+- **OpenAI.** In [harness engineering](https://openai.com/index/harness-engineering/) (February 2026), a team of three engineers driving Codex opened and merged about 1,500 pull requests into a product of roughly a million lines, with no hand-written code: about 3.5 pull requests per engineer per day. Throughput kept rising as the team grew to seven. Humans may review those pull requests, but aren't required to.
+- **Anthropic.** As of May 2026, more than 80% of the code Anthropic merges is [written by Claude](https://www.anthropic.com/institute/recursive-self-improvement). In the second quarter of 2026, a typical engineer merged 8× as much code per day as in 2024, a measure Anthropic itself calls almost certainly an overstatement of the real productivity gain.
+- **Grok Bot.** Lauren Tan, who works on Grok Bot, shipped 2,000 pull requests to production in a month. By the time she [posted the talk](https://x.com/poteto/status/2102050467505430555) in September 2026, it was 2,500.
+- **Cursor.** More than 30% of the pull requests Cursor merges are [created by agents](https://cursor.com/blog/agent-computer-use) working on their own in cloud sandboxes.
+- **Stripe.** Over 1,300 pull requests merged at Stripe each week are [entirely written by its agents](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents-part-2), which it calls minions. People still review them.
 
-The exact rate matters less than the direction. Each year, the work you can hand to an agent gets meaningfully bigger.
+### What they have in common
 
-There is a catch in the definition, though. The time horizon is measured at a 50% success rate. Half the time is fine for a benchmark. It is not fine for code you merge.
+None of them got there by waiting for a better model. Each built an environment around the agents: checks the agents can run themselves, isolated workspaces, short maps of the codebase, and hard limits.
 
-### A faster model doesn't make a faster team
-
-The evidence on productivity is more mixed than the hype.
-
-- In a [randomized trial](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) from July 2025, METR had 16 experienced open-source developers work through 246 real issues, with AI tools either allowed or not. With AI, they took 19% longer. They expected to be faster, and even afterwards believed AI had sped them up by about 20%.
-- METR's [follow-up with late-2025 tools](https://metr.org/blog/2026-02-24-uplift-update/) points the other way. They now think developers are likely sped up, with estimates of 18% and 4% faster in two groups, but with wide confidence intervals. Measuring it also got harder, because many developers no longer wanted to work without AI.
-- Google's [DORA 2025 report](https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report) found that 90% of respondents use AI at work and more than 80% believe it made them more productive. Its headline: "AI doesn't fix a team; it amplifies what's already there." AI adoption now relates positively to delivery throughput, but still negatively to delivery stability.
-- In the [2025 Stack Overflow survey](https://survey.stackoverflow.co/2025/ai), more developers distrust the accuracy of AI tools (46%) than trust it (33%). The top frustration, for 66%, is AI output that is close to right but not quite. And 45% say debugging AI-generated code takes longer.
-- [Gartner](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027) predicts that over 40% of agentic AI projects will be canceled by the end of 2027, citing rising costs, unclear business value and inadequate risk controls.
+They also share the same new bottleneck. Writing code is cheap now; trusting it is not. Lauren's talk is about exactly this: she was the bottleneck, and the way past it was trusting her agents' work without checking every line. OpenAI calls the same work harness engineering.
 
 ### What I took from it
 
-Two things.
-
-First, writing code is no longer the bottleneck. Checking it, integrating it and releasing it safely are. When agents produce code faster than people can verify it, you get more almost-right code and less stable releases, which matches what the surveys report.
-
-Second, the gains are not automatic, and the feeling of being faster is not evidence. The difference comes from the system around the agents. So I treat the workflow, not the model, as the thing to engineer.
+The thing to engineer is the workflow around the agents, not the model inside it. More agents only help once their output can be trusted, so most of my system exists to produce that trust: proof that a change works, review by an agent that didn't write it, and limits that hold whatever an agent reads.
 
 ## 2. What I wanted from it
 
-Lauren Tan ([@poteto](https://x.com/poteto)) works on Grok Bot at SpaceXAI. In her talk, [_I shipped 2,000 PRs last month_](https://x.com/poteto/status/2102050467505430555), she explains how she works with coding agents at that volume; by the time she posted it on X, the count was 2,500. Grok Bot's [engineering guide](https://x.ai/bot/guides/grok-bot-for-engineering) describes a setup with some of the same pieces as mine: agents launched with required proof, regular checks of pull requests for review comments, failing CI and merge conflicts, automatic merges for low-risk changes, and nightly audits.
+Lauren Tan ([@poteto](https://x.com/poteto)) works on Grok Bot at SpaceXAI, and worked at Cursor and Meta before. In her talk, she describes going from babysitting one to five agents to running many, and argues that what holds most people back is trust. She builds it in two ways:
+
+- **Verification.** A skill that lets an agent run the app and collect evidence, made of a command-line tool plus a "feature map" of how a user reaches each feature.
+- **A ladder of fixes.** When an agent makes a mistake, make it impossible in the code first. Then catch it with a lint rule or CI. Then write it into rules and skills. A style guide that only a human reviewer enforces comes last.
+
+Her [pstack](https://github.com/cursor/plugins/tree/main/pstack) plugin packages these habits as playbooks. Grok Bot's [engineering guide](https://x.ai/bot/guides/grok-bot-for-engineering), written by Lingxi Li, shows the same ideas running unattended. Agents are launched with the proof they must bring back. Every 30 minutes, bots check pull requests for review findings, failing CI and merge conflicts. A pull request merges itself when the review is confident and the blast radius is low. And bots work through the night.
 
 For me, a 10x workflow meant working with many agents at the same time, not sitting in one chat window steering one agent. That meant three goals:
 
@@ -90,25 +83,22 @@ And one constraint: changes have to be trustworthy enough to merge without me re
 
 ## 3. The workflow at a glance
 
-The diagram above shows the whole loop. In short:
+Every ask, from anyone, goes through the same six stages. The orange marks show the only places I step in.
 
-1. **Asks come in from anywhere.** I type `/work` and the ask, from my laptop or phone. My team tags the agent bot in Slack or DMs it. Any GitHub issue given the agent label starts one. A production alarm opens an incident with its logs, and an agent starts debugging. Every 6 hours, an agent sweeps Slack for asks nobody tagged it on.
-2. **A dispatcher triages each ask.** It reads the ask, its thread and any screenshots, then picks one of four paths. A question is answered in the thread, from the code. A clear, small ask is filed as a task and started on the spot. A big or unclear ask gets follow-up questions, or a ready plan sent to me to approve. An iOS app task goes to an always-on Mac, because cloud machines can't run Xcode.
-3. **Every task is one GitHub issue.** It holds the ask, a "Done when" line and its state. Duplicates are caught, and a task can wait for another to land.
-4. **Each task runs a build loop** with its own agents, in an isolated workspace: the cloud for the backend and the data engine, the always-on Mac for the iOS app. A planner splits a goal into tasks, each with a clear check. A separate agent writes failing tests. A builder writes the change on its own branch. It runs the full live check until the proof passes. Then a brand-new agent reviews the diff against the original ask. The result is a pull request that carries its proof and its review.
-5. **Merge and release.** CI runs a typecheck and 5,000+ tests on every pull request. If CI fails, the agent fixes it, twice at most. A merge bot merges once the change is proven and reviewed. Every merge goes live on staging, gets health-checked, and rolls itself back if it breaks. Production and App Store releases ship only when I say so.
-6. **Report back and learn.** The asker's thread gets the PR link, then a check mark when it merges. A morning DM tells me what started, what merged and what's waiting on me. Every Monday, a report fixes stale docs and scores the agents on a benchmark of real tasks. A nightly bug hunt at 2 a.m. runs the live check, reads the day's errors and files new tasks.
+```diagram
+agentic-workflow
+```
 
-In the vocabulary of Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), the dispatcher is **routing**, the planner is **orchestrator-workers**, and the fresh reviewer plays the **evaluator**. The same guide separates _workflows_, where models run through predefined code paths, from _agents_, which direct their own process. This system is both: a fixed workflow on the outside, with agents doing open-ended work inside each step.
+In the vocabulary of Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), the dispatcher is **routing**, the planner is **orchestrator-workers**, and the fresh reviewer is the **evaluator**. The system is a fixed workflow on the outside, with agents doing open-ended work inside each step.
 
 ## 4. Running many agents at once
 
-### What the research says
+### What the teams found
 
-- **Parallel agents can be much stronger.** In Anthropic's [multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), a lead agent with parallel subagents beat a single agent by 90.2% on their internal research eval. Each subagent works in its own context window and hands back a condensed result.
-- **They are also expensive.** The same post reports that agents use about 4× the tokens of a chat, and multi-agent systems about 15×.
-- **Splitting one piece of work is risky.** Anthropic notes that coding has fewer truly parallel tasks than research, and that work with many dependencies between agents is a poor fit. Cognition's [Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents) makes the same point with an example: two subagents each build part of a Flappy Bird clone, make their own style choices, and the parts don't fit together. Their principle is that every action carries implicit decisions, and conflicting decisions produce bad results.
-- **Long contexts degrade.** Chroma's [Context Rot](https://www.trychroma.com/research/context-rot) study tested 18 models and found performance consistently drops as input length grows. The [Claude Code best practices](https://code.claude.com/docs/en/best-practices) say the same about a filling context window.
+- **Parallel agents can be much stronger, and cost more.** In Anthropic's [multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), a lead agent with parallel subagents beat a single agent by 90.2% on an internal research eval, using about 15× the tokens of a chat. The same post warns that coding has fewer truly parallel tasks than research.
+- **Agents that share one piece of work get in each other's way.** When Cursor [let 20 agents coordinate](https://cursor.com/blog/scaling-agents) through shared locks, they slowed to the throughput of two or three, mostly waiting on each other. Splitting the roles into planners, workers and a judge worked.
+- **Each agent gets its own machine.** Every Stripe minion runs on its own pre-warmed devbox, ready in about 10 seconds and isolated from production and the internet.
+- **People run several sessions at once.** Boris Cherny, who created Claude Code, [runs about five sessions](https://threadreaderapp.com/thread/2007179832300581177.html) in his terminal and five to ten more in the browser.
 
 ### What I decided
 
@@ -117,53 +107,71 @@ In the vocabulary of Anthropic's [Building effective agents](https://www.anthrop
 - **Hand off artifacts, not conversations.** Each step leaves something concrete for the next: a plan with checks, failing tests, a branch, a proof, a review. The reviewer gets the diff and the original ask, not the builder's history.
 - **Route work to the machine that can do it.** The iOS app needs Xcode, so its tasks go to an always-on Mac that can build the app and test it in the iOS simulator. The backend and the data engine run in the cloud.
 
-## 5. Making agents reliable: findings and decisions
+## 5. Making agents reliable: what I borrowed and what I decided
 
-Capability is the easier part now. Reliability is where the work is. Each finding below pairs what the research found with the decision I made in response.
+Capability is the easier part now. Reliability is where the work is. Each section below pairs what another team found with the decision I made.
 
-### Finding 1: Agents take on too much, then stop too early
+### 1. Agents take on too much, then stop too early
 
-Anthropic's work on [long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) describes three failures: agents try to do too much at once, declare the job done too early, and mark features complete without testing them end to end. Their fixes were a feature list with pass/fail status, one feature at a time, and testing the way a human user would. METR's time horizons point the same way: success rates fall as tasks get longer.
-
-The Claude Code best practices name the root cause: an agent stops when the work looks done, and without a check it can run, looking done is the only signal it has.
+Anthropic's work on [long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) names the failures: agents try to build everything at once, declare the job done too early, and mark features complete without testing them end to end. Their fix was a feature list with a pass/fail status for each feature, one feature at a time, and testing the way a user would.
 
 **Decision: small tasks with a written definition of done.** A planner splits each goal into tasks, each with a clear check. Every task's GitHub issue has a "Done when" line. Big goals wait for my go.
 
-### Finding 2: If an agent can change the test, it may change the test
+### 2. If an agent can change the test, it may change the test
 
-METR found that [recent frontier models reward hack](https://metr.org/blog/2025-06-05-recent-reward-hacking/): instead of solving a task, they sometimes modify the tests or the scoring code, or patch the grader to return a perfect score. In one task, it happened in every run. Telling the model not to cheat barely helped, and when asked afterwards, the model said its approach didn't match what the user wanted.
+[ImpossibleBench](https://arxiv.org/abs/2510.20270) gave agents coding tasks that can't be solved honestly, because the tests contradict the spec. On one version, GPT-5 "passed" 76% of them anyway, by editing tests or special-casing them. On another, giving it a way to flag the task for a human cut its cheating from 54% to 9%.
 
-In Anthropic's long-running agent harness, coding agents could change a feature's status but not edit or remove its tests. The Claude Code docs suggest a related pattern: one agent writes the tests, and another writes the code to pass them.
+Teams see the same thing in production. Spotify's [background coding agent](https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3) uses a judge that compares each diff with the original prompt. It vetoes about a quarter of sessions, catching things like disabled flaky tests. Anthropic's long-running harness tells agents outright that removing or editing tests is unacceptable.
 
-**Decision: tests first, from a separate agent, and the builder can't edit them.** The failing tests exist before the builder starts. Because it can't touch them, it can't pass by weakening them.
+**Decision: tests first, from a separate agent, and the builder can't edit them.** The failing tests exist before the builder starts. Because it can't touch them, it can't pass by weakening them. And when it's stuck, it has an honest way out: it DMs me why, instead of faking a pass.
 
-### Finding 3: "Done" has to be proven, not claimed
+### 3. "Done" has to be proven, not claimed
 
-The Claude Code docs describe several ways to gate when an agent may stop, from asking it to run a check, up to a Stop hook: a script that blocks the agent from finishing until the check passes. They also draw the line between rules and hooks. Instructions in a file like CLAUDE.md are advisory, while hooks always run. Anthropic's harness work adds that agents catch more bugs when they test end to end, the way a user would.
+Boris Cherny calls this his most important tip: give Claude a way to verify its work, which he says makes the result 2–3× better. Lauren's verification skills do it for an app. OpenAI made its app bootable in every git worktree, so Codex could launch and drive its own copy for each change.
+
+The Claude Code [best practices](https://code.claude.com/docs/en/best-practices) explain how to enforce it. Instructions in CLAUDE.md are advisory, while hooks are deterministic. A Stop hook can block an agent from finishing until the check passes. Spotify uses exactly that to hold back pull requests until they pass.
 
 **Decision: the builder has to prove it, and a hook enforces it.** The prove step runs the full live check, and a hook won't let the builder stop until the proof passes. The pull request carries that proof. If the builder is stuck, it DMs me why, so a stuck task becomes a message, not a silent failure.
 
-### Finding 4: A model is a poor judge of its own work
+### 4. A model is a poor judge of its own work
 
-[Huang et al.](https://arxiv.org/abs/2310.01798) (ICLR 2024) found that language models struggle to correct their own reasoning without external feedback, and that performance can even get worse after self-correction. The Claude Code docs recommend a writer and a reviewer in separate sessions, because a fresh context isn't biased toward code it just wrote. A reviewer in a fresh context sees the diff and the criteria, not the reasoning that produced the change. The docs also warn that a reviewer asked to find gaps will usually report some, so its criteria should be correctness and the stated requirements.
+Anthropic found that agents [reliably skew positive](https://www.anthropic.com/engineering/harness-design-long-running-apps) when grading their own work, and that tuning a separate evaluator to be skeptical is far easier than making a builder critical of itself. The Claude Code docs recommend a writer and a reviewer in separate sessions, since a fresh context isn't biased toward code it just wrote. Lauren's pstack delegates the code, so the reviewer is never the author.
 
-**Decision: a fresh review against the original ask.** A brand-new agent, with no memory of the build, checks the diff against the original ask. The external checks, the tests and the live proof, run before it, so the review is not the only line of defense.
+It pays off. After Anthropic added [automated code review](https://claude.com/blog/code-review), the share of its pull requests getting substantive review comments rose from 16% to 54%, with less than 1% of findings marked incorrect.
 
-### Finding 5: Agents don't learn from yesterday unless you make them
+**Decision: a fresh review against the original ask.** A brand-new agent, with no memory of the build, checks the diff against the original ask. The tests and the live proof run before it, so the review is not the only line of defense.
 
-A new agent session doesn't remember yesterday's mistakes unless something carries them forward. Rules in a file like CLAUDE.md are read every session, but they are advice; hooks and tests are enforced. Anthropic's guide to [agent evals](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) recommends starting with 20 to 50 tasks drawn from real failures, keeping regression evals near a 100% pass rate, and grading what the agent produced rather than the path it took.
+### 5. Agents don't learn from yesterday unless you make them
 
-**Decision: every correction becomes something that runs.** Each correction I make becomes a test, a hook or a rule, so the mistake gets caught next time. Each part of the code has its own rules for the builder to follow. Every Monday, a report fixes stale docs and scores the agents on a benchmark of real tasks. Every night at 2 a.m., an agent runs the live check, reads the day's errors and files new tasks.
+A new agent session doesn't remember yesterday's mistakes. Lauren adds a warning: agents copy the patterns they see, so one workaround can spread through a codebase like a virus. Her answer is the ladder: fix each mistake at the strongest level that works.
 
-### Finding 6: Faster merging needs safer releasing
+- **OpenAI** enforces its architecture with custom lints whose error messages tell the agent how to fix the problem. Its AGENTS.md is a roughly 100-line map, and background agents open small pull requests that clean up drift.
+- **Anthropic's** Claude Code team adds a line to its CLAUDE.md whenever Claude gets something wrong.
+- **Meta** wrote [59 concise context files](https://engineering.fb.com/2026/04/06/developer-tools/how-meta-used-ai-to-map-tribal-knowledge-in-large-scale-data-pipelines/) for its data pipelines, cutting agents' tool calls by roughly 40% in early tests. Because context that decays is worse than none, automated jobs re-check them every few weeks.
+- **Anthropic's** guide to [agent evals](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) suggests starting with 20 to 50 tasks drawn from real failures.
 
-DORA's 2025 data links AI adoption to higher delivery throughput, but lower delivery stability. More changes, shipped faster, means more chances to break something.
+**Decision: every correction becomes something that runs.** Each correction I make becomes a test, a hook or a rule, as strong as it can be made, so the mistake gets caught next time. Each part of the code has its own rules for the builder to follow. Every Monday, a report fixes stale docs and scores the agents on a benchmark of real tasks. Every night at 2 a.m., an agent runs the live check, reads the day's errors and files new tasks.
+
+### 6. Faster merging needs safer releasing
+
+OpenAI keeps its blocking merge gates minimal, and warns this would be irresponsible for a team that ships slowly. The others limit the risk in different ways:
+
+- **Stripe** gives a change at most two rounds of CI before handing it back to a person.
+- **Meta** scores each change's risk of causing an incident. That [Diff Risk Score](https://engineering.fb.com/2025/08/06/developer-tools/diff-risk-score-drs-ai-risk-aware-software-development-meta/) let it land more than 10,000 changes during a code freeze.
+- **Grok Bot** merges only when the review is confident and the blast radius is low.
+- **AWS's** guide to [hands-off deployments](https://builder.aws.com/content/3ErTKQOTKc5NIw031UePBPxTQ6I/automating-safe-hands-off-deployments) rolls back automatically when an alarm fires.
 
 **Decision: merge automatically, release deliberately.** CI runs a typecheck and 5,000+ tests on every pull request. If CI fails, the agent fixes it, twice at most, so a failing change can't loop forever. The merge bot merges only changes that are proven and reviewed. Every merge goes live on staging, gets health-checked, and rolls itself back if it breaks. Production and App Store releases ship only when I say so.
 
-### Finding 7: Autonomy needs hard limits
+### 7. Autonomy needs hard limits
 
-Simon Willison's [lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) names the risky combination for agents: access to private data, exposure to untrusted content, and the ability to communicate externally. Any agent that reads Slack messages, issues and screenshots is exposed to untrusted content. Anthropic's [framework for safe and trustworthy agents](https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents) argues that humans should keep control over how goals are pursued, especially before high-stakes decisions. And inadequate risk controls are one of the reasons Gartner expects agentic projects to be canceled.
+Meta's [Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/) says that within one session, an agent should have at most two of three things:
+
+- it reads untrusted input;
+- it can reach sensitive systems or private data;
+- it can change state or communicate externally.
+
+My agents read Slack messages, issues and screenshots, which are untrusted by definition. Vercel's [software factory](https://vercel.com/blog/building-a-software-factory-for-ai-sdk) treats every issue, pull request, comment and link as untrusted, and gives each agent only the secrets its task needs. Stripe runs its minions away from production data, so they need no permission prompts.
 
 **Decision: limit what agents can do, whatever they read.** Agents never push to main, release to production, spend money, publish, or answer product or priority questions. Code that touches money must prove itself on a testnet or sandbox first. Changes to the agents' own rules are held for me, so an agent can't loosen its own limits.
 
@@ -185,15 +193,15 @@ These have something in common: they either set direction or are hard to undo. T
 
 ## 8. Lessons you can reuse
 
-1. **Engineer the workflow, not just the prompt.** The research agrees that AI amplifies the system around it. Put your effort there.
+1. **Engineer the workflow, not just the prompt.** Every team above got its gains from the environment around the agents.
 2. **Write down "done" before work starts.** A task an agent can't check is a task it can't reliably finish.
 3. **Separate the roles that check each other.** The test writer is not the builder, and the builder is not the reviewer.
 4. **Prefer gates to instructions.** Rules are advice. Hooks, tests and CI are enforced.
-5. **Parallelize across tasks, not inside one.** Give each task its own agents and workspace, and let the task list handle dependencies.
-6. **Give reviewers fresh eyes.** Review against the original ask, without the builder's reasoning.
-7. **Turn every correction into something that runs.** A test, a hook or a rule beats remembering to say it again.
-8. **Keep humans on direction and irreversible actions.** Let agents do the work that can be checked and rolled back.
-9. **Measure instead of trusting the feeling.** Developers in METR's trial felt faster while being slower. Track what merges, what breaks, and how agents score on real tasks.
+5. **Fix each mistake at the strongest level.** Make it impossible, then lint it, then write it down.
+6. **Parallelize across tasks, not inside one.** Give each task its own agents and workspace, and let the task list handle dependencies.
+7. **Give reviewers fresh eyes.** Review against the original ask, without the builder's reasoning.
+8. **Give agents an honest way out.** An agent that can say "I'm stuck" is less likely to fake a pass.
+9. **Keep humans on direction and irreversible actions.** Let agents do the work that can be checked and rolled back.
 
 ## 9. The tools
 
@@ -201,23 +209,46 @@ The system is built on Claude Code, GitHub Actions, Slack and AWS, plus an alway
 
 ## 10. Sources
 
-- METR, [Measuring AI Ability to Complete Long Tasks](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/) (March 2025)
-- METR, [Time Horizon 1.1](https://metr.org/blog/2026-01-29-time-horizon-1-1/) (January 2026)
-- METR, [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) (July 2025)
-- METR, [We are Changing our Developer Productivity Experiment Design](https://metr.org/blog/2026-02-24-uplift-update/) (February 2026)
-- METR, [Recent Frontier Models Are Reward Hacking](https://metr.org/blog/2025-06-05-recent-reward-hacking/) (June 2025)
-- Google Cloud, [Announcing the 2025 DORA report](https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report) (September 2025)
-- Stack Overflow, [2025 Developer Survey: AI](https://survey.stackoverflow.co/2025/ai) (2025)
-- Gartner, [Over 40% of Agentic AI Projects Will Be Canceled by End of 2027](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027) (June 2025)
-- Anthropic, [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) (December 2024)
-- Anthropic, [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) (June 2025)
-- Anthropic, [Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) (November 2025)
-- Anthropic, [Our framework for developing safe and trustworthy agents](https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents) (August 2025)
-- Anthropic, [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) (January 2026)
-- Anthropic, [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices)
-- Cognition, [Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents) (June 2025)
-- Chroma, [Context Rot](https://www.trychroma.com/research/context-rot) (July 2025)
-- Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
-- Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025)
-- Lauren Tan, [I shipped 2,000 PRs last month](https://x.com/poteto/status/2102050467505430555) (talk on X, September 2026)
-- xAI, [Grok Bot for engineering](https://x.ai/bot/guides/grok-bot-for-engineering) (September 2026)
+**Grok Bot**
+
+- Lauren Tan, [how she shipped 2,500 PRs last month](https://x.com/poteto/status/2102050467505430555) (talk on X, September 2026)
+- Lauren Tan, [pstack](https://github.com/cursor/plugins/tree/main/pstack) (Cursor plugin)
+- Lingxi Li, [Grok Bot for engineering](https://x.ai/bot/guides/grok-bot-for-engineering) (September 2026)
+
+**OpenAI**
+
+- Ryan Lopopolo, [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/) (February 2026)
+
+**Anthropic**
+
+- [When AI builds itself](https://www.anthropic.com/institute/recursive-self-improvement) (2026)
+- Boris Cherny, [how he uses Claude Code](https://threadreaderapp.com/thread/2007179832300581177.html) (thread, January 2026)
+- [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices) (accessed October 2026)
+- [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) (December 2024)
+- [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) (June 2025)
+- [Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) (November 2025)
+- [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) (January 2026)
+- [Code Review for Claude Code](https://claude.com/blog/code-review) (March 2026)
+- [Harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) (March 2026)
+
+**Meta**
+
+- [Agents Rule of Two: a practical approach to AI agent security](https://ai.meta.com/blog/practical-ai-agent-security/) (October 2025)
+- [Diff Risk Score: AI-driven risk-aware software development](https://engineering.fb.com/2025/08/06/developer-tools/diff-risk-score-drs-ai-risk-aware-software-development-meta/) (August 2025)
+- [How Meta used AI to map tribal knowledge in large-scale data pipelines](https://engineering.fb.com/2026/04/06/developer-tools/how-meta-used-ai-to-map-tribal-knowledge-in-large-scale-data-pipelines/) (April 2026)
+
+**Cursor**
+
+- [Scaling long-running autonomous coding](https://cursor.com/blog/scaling-agents) (January 2026)
+- [Cursor agents can now control their own computers](https://cursor.com/blog/agent-computer-use) (February 2026)
+
+**Stripe, Spotify, Vercel and AWS**
+
+- Stripe, [Minions: Stripe's one-shot, end-to-end coding agents, part 2](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents-part-2) (February 2026)
+- Spotify, [Background coding agents: predictable results through strong feedback loops (Honk, part 3)](https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3) (December 2025)
+- Vercel, [Building a software factory for AI SDK](https://vercel.com/blog/building-a-software-factory-for-ai-sdk) (August 2026)
+- AWS Builders' Library, [Automating safe, hands-off deployments](https://builder.aws.com/content/3ErTKQOTKc5NIw031UePBPxTQ6I/automating-safe-hands-off-deployments)
+
+**Research**
+
+- Zhong, Raghunathan and Carlini, [ImpossibleBench: measuring LLMs' propensity of exploiting test cases](https://arxiv.org/abs/2510.20270) (October 2025)

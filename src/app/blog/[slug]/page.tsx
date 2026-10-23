@@ -1,3 +1,4 @@
+import type { ResolvingMetadata } from "next";
 import { getPostBySlug, getAllSlugs, formatDate } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import Link from "@/components/IntentLink";
@@ -11,11 +12,14 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  },
+  parent: ResolvingMetadata
+) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -23,9 +27,17 @@ export async function generateMetadata({
     return { title: "Post Not Found" };
   }
 
+  // A page's openGraph replaces the site's, so keep the site's fields and only
+  // swap in the post's own preview image. Twitter cards inherit it from here.
+  const openGraph = post.image && {
+    ...(await parent).openGraph,
+    images: [{ url: post.image, alt: post.imageAlt }],
+  };
+
   return {
     title: `${post.title} | Blog`,
     description: post.description,
+    ...(openGraph && { openGraph }),
   };
 }
 

@@ -11,6 +11,9 @@ export interface BlogPost {
   date: string;
   readTime: string;
   tags: string[];
+  // Optional link-preview image under public/, e.g. "/blog/<slug>/preview.png"
+  image?: string;
+  imageAlt?: string;
   content: string;
 }
 
@@ -68,6 +71,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
     date: data.date || "",
     readTime: data.readTime || "5 min read",
     tags: data.tags || [],
+    image: data.image,
+    imageAlt: data.imageAlt,
     content,
   };
 }

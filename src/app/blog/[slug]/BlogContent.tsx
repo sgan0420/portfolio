@@ -1,6 +1,19 @@
+import fs from "fs";
+import path from "path";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+
+// Markdown can't give an image's size. Read it from local PNGs so the page
+// reserves the space and the text below doesn't jump when the image loads.
+function localPngSize(src: unknown) {
+  if (typeof src !== "string" || !src.startsWith("/") || !src.endsWith(".png"))
+    return {};
+  const file = path.join(process.cwd(), "public", decodeURI(src));
+  if (!fs.existsSync(file)) return {};
+  const png = fs.readFileSync(file);
+  return { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
+}
 
 interface BlogContentProps {
   content: string;
@@ -32,7 +45,16 @@ export default function BlogContent({ content, title }: BlogContentProps) {
         </aside>
       )}
       <div className="prose-notion">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeSlug]}
+          components={{
+            img: ({ src, alt = "", title }) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={src} alt={alt} title={title} {...localPngSize(src)} />
+            ),
+          }}
+        >
           {body}
         </ReactMarkdown>
       </div>

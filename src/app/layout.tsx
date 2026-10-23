@@ -26,6 +26,7 @@ const googleCode = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shijiegan.com"),
   title: {
     default: "Shijie Gan | Software Engineer",
     template: "%s | Shijie Gan",
@@ -34,6 +35,13 @@ export const metadata: Metadata = {
     "Software engineer specializing in full-stack development and AI, building scalable applications in Fintech and Web3. Explore my work, experience, and engineering notes.",
   keywords: ["developer", "portfolio", "react", "nextjs", "web development"],
   authors: [{ name: "Shijie Gan" }],
+  // Without these, link previews scrape the first large project screenshot.
+  openGraph: {
+    type: "website",
+    siteName: "Shijie Gan",
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: {
       url: "/favicon.svg?v=sg-dot",

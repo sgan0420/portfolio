@@ -17,13 +17,13 @@ imageAlt: "The title and first stage of my agentic workflow diagram: asks come i
 
 # How I ship software with a team of AI agents
 
-A teammate tags the agent bot in Slack and asks for a change in plain words. If the ask is clear and small, an agent files it as a task and starts on the spot. Other agents write the tests, build the change, prove it works and review it. The median task goes from filed to merged in about an hour, and every merge goes live on staging. On a busy day, more than 50 pull requests merge this way.
+AI coding agents can now do real engineering work on their own. Getting them to do it reliably, many at a time, without a person checking every line, is a different problem. This post is about that problem.
 
-The models matter, but the workflow around them matters more: how work comes in, how it is split, how it is checked, and what agents are never allowed to do.
+In my setup, asks come in from Slack, GitHub and production alarms. A team of AI agents plans the work, writes the tests, builds the change, proves it works, reviews it and ships it to staging. I step in only where a human should: big or unclear work, production releases, and changes to the agents' own rules.
 
-This post is the full write-up. It covers why I think agentic workflows matter now, what the research says about where agents fail, the decision I made for each failure, and what I would tell anyone building something similar.
+Below is the whole system on one page, the research behind it, and the decision I made at each step to make it reliable.
 
-> **The short version:** Agents are now capable enough to do real engineering work, but not reliable enough to trust on their own. The workflow has to supply the reliability: small tasks with a written definition of done, separate agents that check each other, proof instead of claims, fresh eyes on every diff, and hard limits on what agents can do.
+> **The short version:** The reliability has to come from the workflow, not the model: small tasks with a written definition of done, separate agents that check each other, proof instead of claims, fresh eyes on every diff, and hard limits on what agents can do.
 
 [![Flow diagram of my agentic development workflow in six stages. 1, asks come in from me, my team, GitHub issues, production alarms and a Slack sweep. 2, a dispatcher agent triages each ask into a question, a clear small ask, a big or unclear ask, or an iOS app task. 3, one GitHub issue per task. 4, a build loop of plan, tests first, build, prove and fresh review, ending in a pull request. 5, merge and release through CI, a merge bot, staging and production. 6, report back and learn, with a nightly bug hunt that feeds new tasks back to the task list. Badges mark where I decide: big or unclear asks, big plans and production releases. Guardrails and the numbers sit at the bottom.](/blog/how-i-ship-software-with-ai-agents/agentic-workflow-web.png)](/blog/how-i-ship-software-with-ai-agents/agentic-workflow.png)
 

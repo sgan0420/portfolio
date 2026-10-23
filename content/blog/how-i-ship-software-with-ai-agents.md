@@ -74,6 +74,8 @@ Second, the gains are not automatic, and the feeling of being faster is not evid
 
 ## 2. What I wanted from it
 
+Part of my inspiration came from Lauren Tan ([@poteto](https://x.com/poteto)), who works on Grok Bot at SpaceXAI. In her talk, [_I shipped 2,000 PRs last month_](https://x.com/poteto/status/2102050467505430555), she explains how she works with coding agents at that volume; by the time she posted it on X, the count was 2,500. Grok Bot's [engineering guide](https://x.ai/bot/guides/grok-bot-for-engineering) describes a setup with some of the same pieces as mine: agents launched with required proof, regular checks of pull requests for review comments, failing CI and merge conflicts, automatic merges for low-risk changes, and nightly audits.
+
 I wanted to work with many agents at the same time, not sit in one chat window steering one agent. That meant three goals:
 
 - **Run many tasks in parallel.** Clear tasks should move on their own, without waiting for me.
@@ -213,3 +215,5 @@ The system is built on Claude Code, GitHub Actions, Slack and AWS, plus an alway
 - Chroma, [Context Rot](https://www.trychroma.com/research/context-rot) (July 2025)
 - Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
 - Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025)
+- Lauren Tan, [I shipped 2,000 PRs last month](https://x.com/poteto/status/2102050467505430555) (talk on X, September 2026)
+- xAI, [Grok Bot for engineering](https://x.ai/bot/guides/grok-bot-for-engineering) (September 2026)

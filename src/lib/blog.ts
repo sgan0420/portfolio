@@ -11,7 +11,8 @@ export interface BlogPost {
   date: string;
   readTime: string;
   tags: string[];
-  // Optional link-preview image under public/, e.g. "/blog/<slug>/preview.png"
+  // Optional preview image under public/, e.g. "/blog/<slug>/preview.png",
+  // used for link previews and the post's card on the blog page
   image?: string;
   imageAlt?: string;
   content: string;
@@ -24,6 +25,7 @@ export interface BlogPostMeta {
   date: string;
   readTime: string;
   tags: string[];
+  image?: string;
 }
 
 // Get all blog posts metadata (for listing page)
@@ -45,6 +47,7 @@ export function getAllPosts(): BlogPostMeta[] {
         date: data.date || "",
         readTime: data.readTime || "5 min read",
         tags: data.tags || [],
+        image: data.image,
       };
     })
     // Sort by date (newest first)

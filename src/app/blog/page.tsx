@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import Link from "@/components/IntentLink";
 import PageHeading from "@/components/PageHeading";
@@ -19,11 +20,25 @@ export default function Blog() {
             <article key={post.slug} data-reveal>
               <Link href={`/blog/${post.slug}`} className="article-card group">
                 <div className="blog-art" aria-hidden="true">
-                  <span />
-                  <i />
-                  <span />
-                  <i />
-                  <span />
+                  {post.image ? (
+                    <div className="blog-art-image">
+                      <Image
+                        src={post.image}
+                        alt=""
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 767px) calc(100vw - 80px), 520px"
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <span />
+                      <i />
+                      <span />
+                      <i />
+                      <span />
+                    </>
+                  )}
                 </div>
                 <div className="article-card-copy">
                   <div className="article-tags">

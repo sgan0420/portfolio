@@ -4,15 +4,26 @@ import type { PortfolioProject } from "@/lib/projects";
 
 export default function ProjectCard({
   project,
+  href = `/projects/${project.slug}`,
   priority = false,
 }: {
-  project: PortfolioProject;
+  project: Pick<
+    PortfolioProject,
+    | "title"
+    | "slug"
+    | "org"
+    | "description"
+    | "image"
+    | "category"
+    | "technologies"
+  >;
+  href?: string;
   priority?: boolean;
 }) {
   return (
     <article className="project-card" data-reveal>
       <Link
-        href={`/projects/${project.slug}`}
+        href={href}
         className="project-card-link"
         aria-label={`Explore ${project.title}`}
       >

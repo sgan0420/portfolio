@@ -1086,7 +1086,8 @@ a:has(> .navigation-card) {
   border-radius: 5px;
 }
 .project-image-kata,
-.project-image-exchange-integrations {
+.project-image-exchange-integrations,
+.project-image-how-i-ship-software-with-ai-agents {
   background: linear-gradient(130deg, var(--blue-wash), var(--surface) 80%);
 }
 .project-caption {

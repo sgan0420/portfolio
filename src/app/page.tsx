@@ -2,6 +2,7 @@ import Link from "@/components/IntentLink";
 import HeroSection from "@/sections/HeroSection";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/lib/projects";
+import { getPostBySlug } from "@/lib/blog";
 import {
   HiArrowDownTray,
   HiCodeBracket,
@@ -10,6 +11,8 @@ import {
 } from "react-icons/hi2";
 
 export default function HomePage() {
+  // The second slot features the AI agents post rather than another project.
+  const agentsPost = getPostBySlug("how-i-ship-software-with-ai-agents");
   return (
     <div>
       <HeroSection />
@@ -71,9 +74,23 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="projects-grid">
-            {projects.slice(0, 2).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+            <ProjectCard project={projects[0]} />
+            {agentsPost && (
+              <ProjectCard
+                href={`/blog/${agentsPost.slug}`}
+                project={{
+                  slug: agentsPost.slug,
+                  title: agentsPost.title,
+                  // The post's full description runs a line longer than Kata's.
+                  description:
+                    "How I run a team of AI agents that plans, tests, builds, reviews and ships my code, and the decision behind each step.",
+                  image: agentsPost.image ?? null,
+                  category: "Blog post",
+                  org: agentsPost.readTime,
+                  technologies: agentsPost.tags.slice(0, 4),
+                }}
+              />
+            )}
           </div>
         </div>
       </section>

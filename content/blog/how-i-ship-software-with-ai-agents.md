@@ -102,7 +102,9 @@ In the vocabulary of Anthropic's [Building effective agents](https://www.anthrop
 
 ### What I decided
 
-- **Parallel across tasks, sequential inside a task.** Independent tasks run at the same time, each with its own agents and isolated workspace. Inside a task, the steps run in order: plan, tests, build, proof, review. One builder writes each change, so there are no parallel halves to reconcile.
+- **Parallel across tasks, sequential inside a task.** Independent tasks run at the same time. Inside a task, the steps run in order: plan, tests, build, proof, review.
+- **Give every task its own world.** Each task gets its own GitHub issue, agents, branch and git worktree, or a whole cloud machine, plus its own test database and simulator. Tasks running side by side never share files, data or a simulator, so they can't collide.
+- **Race builders on hard tasks, don't split them.** A hard task gets two or three builders in parallel, each in its own worktree and working against the same failing tests. The smallest change that passes wins. They compete instead of sharing the work, so there are no parallel halves to reconcile.
 - **Let the task list coordinate.** Dependencies and duplicates are handled at the level of GitHub issues: duplicates are caught, and a task can wait for another to land.
 - **Hand off artifacts, not conversations.** Each step leaves something concrete for the next: a plan with checks, failing tests, a branch, a proof, a review. The reviewer gets the diff and the original ask, not the builder's history.
 - **Route work to the machine that can do it.** The iOS app needs Xcode, so its tasks go to an always-on Mac that can build the app and test it in the iOS simulator. The backend and the data engine run in the cloud.
@@ -115,7 +117,7 @@ Capability is the easier part now. Reliability is where the work is. Each sectio
 
 Anthropic's work on [long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) names the failures: agents try to build everything at once, declare the job done too early, and mark features complete without testing them end to end. Their fix was a feature list with a pass/fail status for each feature, one feature at a time, and testing the way a user would.
 
-**Decision: small tasks with a written definition of done.** A planner splits each goal into tasks, each with a clear check. Every task's GitHub issue has a "Done when" line. Big goals wait for my go.
+**Decision: small tasks with a written definition of done, and a plan before any code.** A planner splits each goal into tasks, each with a clear check. Every task's GitHub issue has a "Done when" line. Big goals wait for my go. Before any code is written, a bug gets reproduced, and a feature gets a short spec: what changes, the check that proves it, and what's out of scope.
 
 ### 2. If an agent can change the test, it may change the test
 
@@ -131,7 +133,7 @@ Boris Cherny calls this his most important tip: give Claude a way to verify its 
 
 The Claude Code [best practices](https://code.claude.com/docs/en/best-practices) explain how to enforce it. Instructions in CLAUDE.md are advisory, while hooks are deterministic. A Stop hook can block an agent from finishing until the check passes. Spotify uses exactly that to hold back pull requests until they pass.
 
-**Decision: the builder has to prove it, and a hook enforces it.** The prove step runs the full live check, and a hook won't let the builder stop until the proof passes. The pull request carries that proof. If the builder is stuck, it DMs me why, so a stuck task becomes a message, not a silent failure.
+**Decision: the builder has to prove it on the real thing, and a hook enforces it.** Passing tests isn't done. A backend change boots the real server on a fresh database and runs requests through its API. An app change gets built, launched in the iOS simulator on the screen it changed, and screenshotted before and after. A hook won't let the builder stop until the proof passes, and the pull request carries that proof. If the builder is stuck, it DMs me why, so a stuck task becomes a message, not a silent failure.
 
 ### 4. A model is a poor judge of its own work
 
@@ -139,7 +141,7 @@ Anthropic found that agents [reliably skew positive](https://www.anthropic.com/e
 
 It pays off. After Anthropic added [automated code review](https://claude.com/blog/code-review), the share of its pull requests getting substantive review comments rose from 16% to 54%, with less than 1% of findings marked incorrect.
 
-**Decision: a fresh review against the original ask.** A brand-new agent, with no memory of the build, checks the diff against the original ask. The tests and the live proof run before it, so the review is not the only line of defense.
+**Decision: a fresh review against the original ask.** No agent grades its own homework. A brand-new agent, with no memory of the build, checks the diff against the original ask. The tests and the live proof run before it, so the review is not the only line of defense.
 
 ### 5. Agents don't learn from yesterday unless you make them
 
@@ -177,6 +179,8 @@ My agents read Slack messages, issues and screenshots, which are untrusted by de
 
 ## 6. Where I still step in
 
+My job is no longer babysitting agents. It's designing the system they work in. I step in for only three things:
+
 - Approving big or unclear asks, and big plans.
 - Production and App Store releases.
 - Changes to the agents' own rules.
@@ -198,7 +202,7 @@ These have something in common: they either set direction or are hard to undo. T
 3. **Separate the roles that check each other.** The test writer is not the builder, and the builder is not the reviewer.
 4. **Prefer gates to instructions.** Rules are advice. Hooks, tests and CI are enforced.
 5. **Fix each mistake at the strongest level.** Make it impossible, then lint it, then write it down.
-6. **Parallelize across tasks, not inside one.** Give each task its own agents and workspace, and let the task list handle dependencies.
+6. **Parallelize across tasks, not inside one.** Give each task its own agents and workspace, and let the task list handle dependencies. On a hard task, race whole attempts instead of splitting the work.
 7. **Give reviewers fresh eyes.** Review against the original ask, without the builder's reasoning.
 8. **Give agents an honest way out.** An agent that can say "I'm stuck" is less likely to fake a pass.
 9. **Keep humans on direction and irreversible actions.** Let agents do the work that can be checked and rolled back.

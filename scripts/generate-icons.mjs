@@ -36,3 +36,8 @@ await sharp(source, { density: 576 })
   .resize(180, 180)
   .png()
   .toFile(new URL("../public/apple-touch-icon.png", import.meta.url).pathname);
+// Google Search doesn't accept SVG favicons and prefers a multiple of 48px.
+await sharp(source, { density: 576 })
+  .resize(192, 192)
+  .png()
+  .toFile(new URL("../public/icon-192.png", import.meta.url).pathname);

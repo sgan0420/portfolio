@@ -43,12 +43,12 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   icons: {
-    icon: {
-      url: "/favicon.svg?v=sg-dot",
-      type: "image/svg+xml",
-      sizes: "any",
-    },
-    shortcut: "/favicon.svg?v=sg-dot",
+    // The PNG comes first for Google Search, which doesn't accept SVG;
+    // browsers still pick the SVG.
+    icon: [
+      { url: "/icon-192.png?v=sg-dot", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.svg?v=sg-dot", type: "image/svg+xml", sizes: "any" },
+    ],
     apple: {
       url: "/apple-touch-icon.png?v=sg-dot",
       sizes: "180x180",

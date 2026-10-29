@@ -10,11 +10,35 @@ import {
   HiChartBar,
 } from "react-icons/hi2";
 
+// Points Google at the preview image for the search result thumbnail,
+// instead of the first project screenshot it finds on the page.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  url: "https://shijiegan.com/",
+  primaryImageOfPage: "https://shijiegan.com/opengraph-image.jpg",
+  mainEntity: {
+    "@type": "Person",
+    name: "Shijie Gan",
+    url: "https://shijiegan.com/",
+    jobTitle: "Software Engineer",
+    sameAs: [
+      "https://github.com/sgan0420",
+      "https://www.linkedin.com/in/shijie-gan/",
+      "https://instagram.com/gan_shijie",
+    ],
+  },
+};
+
 export default function HomePage() {
   // The second slot features the AI agents post rather than another project.
   const agentsPost = getPostBySlug("how-i-ship-software-with-ai-agents");
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <HeroSection />
       <section id="introduction" className="home-introduction">
         <div className="site-container">

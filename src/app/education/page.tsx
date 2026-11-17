@@ -42,8 +42,7 @@ const Education = () => {
             data-reveal
           >
             <div className="md:col-span-4">
-              <h2 className="text-2xl font-normal mb-2">Monash University</h2>
-              <p className="text-muted font-normal mb-4">Oct 2022 - Jul 2025</p>
+              <h2 className="text-2xl font-normal mb-4">Monash University</h2>
               <div className="inline-block px-3 py-1 border border-line rounded-full text-sm text-muted">
                 Malaysia
               </div>
@@ -117,10 +116,9 @@ const Education = () => {
             data-reveal
           >
             <div className="md:col-span-4">
-              <h2 className="text-2xl font-normal mb-2">
+              <h2 className="text-2xl font-normal mb-4">
                 Imperial College London
               </h2>
-              <p className="text-muted font-normal mb-4">Oct 2019 - Jul 2022</p>
               <div className="inline-block px-3 py-1 border border-line rounded-full text-sm text-muted">
                 London, UK
               </div>
@@ -186,10 +184,9 @@ const Education = () => {
             data-reveal
           >
             <div className="md:col-span-4">
-              <h2 className="text-2xl font-normal mb-2">
+              <h2 className="text-2xl font-normal mb-4">
                 Taylor&apos;s College
               </h2>
-              <p className="text-muted font-normal mb-4">Jan 2018 - Jul 2019</p>
               <div className="inline-block px-3 py-1 border border-line rounded-full text-sm text-muted">
                 Malaysia
               </div>
@@ -221,8 +218,7 @@ const Education = () => {
             data-reveal
           >
             <div className="md:col-span-4">
-              <h2 className="text-2xl font-normal mb-2">SMJK Yok Bin</h2>
-              <p className="text-muted font-normal mb-4">2013 - 2017</p>
+              <h2 className="text-2xl font-normal mb-4">SMJK Yok Bin</h2>
               <div className="inline-block px-3 py-1 border border-line rounded-full text-sm text-muted">
                 Malaysia
               </div>

@@ -102,7 +102,7 @@ const Experience = () => {
           >
             <div className="md:col-span-4">
               <h2 className="text-2xl font-normal mb-2">Trontal Group</h2>
-              <p className="text-muted font-normal mb-6">Mar 2025 - Aug 2026</p>
+              <p className="text-muted font-normal mb-6">Jul 2025 - Aug 2026</p>
               <div className="space-y-4">
                 <div>
                   <p className="text-xl italic text-ink">
